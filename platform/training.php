@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+$this_type = $_GET['sound_type'];
+?>
 <html>
 <title>環境音訓練及測試平台</title>
 <meta charset="UTF-8">
@@ -54,77 +57,60 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-  
+
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">Jeans</p>
-    <p class="w3-right">
+    <p class="w3-left">訓練模式</p>
+    <!--<p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <i class="fa fa-search"></i>
-    </p>
+    </p>-->
   </header>
 
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p>8 items</p>
+  <div class="w3-container w3-text-grey" id="sounds">
+    <form>
+      <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
+        <option value="#">分類</option>
+        <option value="forest" <?php if($this_type == "forest") echo 'selected'?>>森林</option>
+        <option value="town" <?php if($this_type == "town") echo 'selected'?>>城市</option>
+      </select>
+    </form>
+    <p>一共有幾筆資料(從資料庫抓)</p>
   </div>
 
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="../picture/test1.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-      </div>
-      <div class="w3-container">
-        <img src="../picture/test2.jpg" style="width:100%">
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-      </div>
-    </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
         <div class="w3-display-container">
-          <img src="../picture/test3.jpg" style="width:100%">
+          <audio id='iron_door'>
+            <source src="../sound/knocking_an_iron_door3.mp3" type="audio/mp3" />
+            <embed height="100" width="100" src="../sound/knocking_an_iron_door3.mp3" />
+          </audio>
+          <img src="../picture/iron_door.jpg" height="100%" width="100%" />
           <span class="w3-tag w3-display-topleft">New</span>
           <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+            <button class="w3-button w3-black " onclick="document.getElementById('iron_door').play(); return false;">Play</button>
           </div>
         </div>
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-      </div>
-      <div class="w3-container">
-        <img src="../picture/test4.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-      </div>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="../picture/test5.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+        <p align = 'center'>鐵置門</p>
       </div>
       <div class="w3-container">
         <div class="w3-display-container">
-          <img src="../picture/test6.jpg" style="width:100%">
-          <span class="w3-tag w3-display-topleft">Sale</span>
+          <audio id='shrill_whistle'>
+            <source src="../sound/shrill_whistle1.mp3" type="audio/mp3" />
+            <embed height="100" width="100" src="../sound/shrill_whistle1.mp3" />
+          </audio>
+          <img src="../picture/shrill_whistle.jpg" height="100%" width="100%" />
+          <span class="w3-tag w3-display-topleft">New</span>
           <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+            <button class="w3-button w3-black " onclick="document.getElementById('shrill_whistle').play(); return false;">Play</button>
           </div>
         </div>
-        <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
+        <p align = 'center'>吹哨</p>
       </div>
-    </div>
 
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="../picture/test7.jpg" style="width:100%">
-        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
-      </div>
-      <div class="w3-container">
-        <img src="../picture/test3.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-      </div>
-    </div>
   </div>
 
   <!-- End page content -->
@@ -144,7 +130,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </div>
 
 <script>
-// Accordion 
+// Accordion
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -163,7 +149,7 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
