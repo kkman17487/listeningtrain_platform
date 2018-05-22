@@ -19,8 +19,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <h3 class="w3-wide"><b>Platform</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="" class="w3-bar-item w3-button">首頁</a>
-    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">訓練模式<i class="fa fa-caret-down"></i>
+    <a href="firstpage.php" class="w3-bar-item w3-button">首頁</a>
+    <a href="training.php" class="w3-button w3-block w3-white w3-left-align">訓練模式<i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="" class="w3-bar-item w3-button">hi</a>
@@ -35,7 +35,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="" class="w3-bar-item w3-button">歷程記錄</a>
     <a href="" class="w3-bar-item w3-button">設定</a>
   </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
+  <a href="contact.php" class="w3-bar-item w3-button w3-padding">Contact</a>
 </nav>
 
 <!-- Top menu on small screens -->
