@@ -67,7 +67,7 @@ include('sidebar.php');
       </div>
   </div>
   <?php
-    //if($i % 4 == 0 || $i == mysql_num_rows($data))echo '</div>';
+    if($i % 4 == 0 || $i == mysql_num_rows($data))echo '</div>';
   }
   ?>
   <!-- End page content -->
