@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <?php
+mysql_connect("localhost","root","az135790");
+mysql_select_db("listeningtrain_platform");
+mysql_query("set names utf8");
+$data = mysql_query("select * from data");
 $this_type = $_GET['sound_type'];
 include('sidebar.php');
 ?>
@@ -17,46 +21,38 @@ include('sidebar.php');
     <form>
       <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
         <option value="#">分類</option>
-        <option value="forest" <?php if($this_type == "forest") echo 'selected'?>>森林</option>
-        <option value="town" <?php if($this_type == "town") echo 'selected'?>>城市</option>
+        <option value="森林" <?php if($this_type == "森林") echo 'selected'?>>森林</option>
+        <option value="城市" <?php if($this_type == "城市") echo 'selected'?>>城市</option>
       </select>
     </form>
-    <p>一共有幾筆資料(從資料庫抓)</p>
+    <p>一共有<?php echo mysql_num_rows($data)?>筆資料</p>
   </div>
 
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
 
     <div class="w3-col l3 s6">
+      <?php
+      for($i = 1;$i <= mysql_num_rows($data);$i++){
+        $rs = mysql_fetch_assoc($data)
+        ?>
       <div class="w3-container">
         <div class="w3-display-container">
-          <audio id='iron_door'>
-            <source src="../sound/knocking_an_iron_door3.mp3" type="audio/mp3" />
-            <embed height="100" width="100" src="../sound/knocking_an_iron_door3.mp3" />
+          <audio id='<?php echo $rs[audio_id]?>'>
+            <source src="<?php echo $rs[sound_src]?>" type="audio/mp3" />
+            <embed height="100" width="100" src="<?php echo $rs[sound_src]?>" />
           </audio>
-          <img src="../picture/iron_door.jpg" height="100%" width="100%" />
-          <span class="w3-tag w3-display-topleft">New</span>
+          <img src="<?php echo $rs[pic_src]?>" height="100%" width="100%" />
+          <?php
+          //if()
+            //echo '<span class="w3-tag w3-display-topleft">New</span>'?>
           <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black " onclick="document.getElementById('iron_door').play(); return false;">Play</button>
+            <button class="w3-button w3-black " onclick="document.getElementById('<?php echo $rs[audio_id]?>').play(); return false;">Play</button>
           </div>
         </div>
-        <p align = 'center'>鐵置門</p>
+        <p align = 'center'><?php echo $rs[name]?></p>
       </div>
-      <div class="w3-container">
-        <div class="w3-display-container">
-          <audio id='shrill_whistle'>
-            <source src="../sound/shrill_whistle1.mp3" type="audio/mp3" />
-            <embed height="100" width="100" src="../sound/shrill_whistle1.mp3" />
-          </audio>
-          <img src="../picture/shrill_whistle.jpg" height="100%" width="100%" />
-          <span class="w3-tag w3-display-topleft">New</span>
-          <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black " onclick="document.getElementById('shrill_whistle').play(); return false;">Play</button>
-          </div>
-        </div>
-        <p align = 'center'>吹哨</p>
-      </div>
-
+    <?php }?>
   </div>
 
   <!-- End page content -->
