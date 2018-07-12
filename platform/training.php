@@ -3,8 +3,9 @@
 mysql_connect("localhost","root","az135790");
 mysql_select_db("listeningtrain_platform");
 mysql_query("set names utf8");
-$data = mysql_query("select * from data");
 $this_type = $_GET['sound_type'];
+$data = mysql_query("select * from data where tag LIKE '%$this_type%'");
+$tag = mysql_query("select tag from data where tag != ''");
 include('sidebar.php');
 ?>
 <html>
@@ -20,22 +21,34 @@ include('sidebar.php');
   <div class="w3-container w3-text-grey" id="sounds">
     <form>
       <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
-        <option value="#">分類</option>
-        <option value="森林" <?php if($this_type == "森林") echo 'selected'?>>森林</option>
-        <option value="城市" <?php if($this_type == "城市") echo 'selected'?>>城市</option>
+        <option value="#">全部</option>
+        <?php
+        $classfication = array();
+        for($j = 1;$j <= mysql_num_rows($tag);$j++){
+          $rs_tag = mysql_fetch_assoc($tag);
+          $tmp = explode("、",$rs_tag[tag]);
+            $classfication = array_merge($classfication, $tmp);
+        }
+        $classfication = array_unique($classfication);
+        foreach ($classfication as $key => $value){
+          echo '<option value="'.$value.'"';
+          if($this_type == "$value")
+            echo 'selected';
+          echo '>'.$value.'</option>';
+        }?>
+
       </select>
     </form>
     <p>一共有<?php echo mysql_num_rows($data)?>筆資料</p>
   </div>
 
   <!-- Product grid -->
-  <div class="w3-row w3-grayscale">
-
+    <?php
+    for($i = 1;$i <= mysql_num_rows($data);$i++){
+      $rs = mysql_fetch_assoc($data);
+      if($i % 4 == 1)echo '<div class="w3-row w3-grayscale">';
+    ?>
     <div class="w3-col l3 s6">
-      <?php
-      for($i = 1;$i <= mysql_num_rows($data);$i++){
-        $rs = mysql_fetch_assoc($data)
-        ?>
       <div class="w3-container">
         <div class="w3-display-container">
           <audio id='<?php echo $rs[audio_id]?>'>
@@ -52,10 +65,12 @@ include('sidebar.php');
         </div>
         <p align = 'center'><?php echo $rs[name]?></p>
       </div>
-    <?php }?>
   </div>
-
+  <?php
+    //if($i % 4 == 0 || $i == mysql_num_rows($data))echo '</div>';
+  }
+  ?>
   <!-- End page content -->
-</div>
+
 </body>
 </html>
