@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<?php ?>
+<?php
+session_start();
+if(isset($_GET['number']) && !isset($_GET['checkanswer']))
+{
+  session_unset();
+  include('connect_to_sql.php');
+  $_SESSION['data'] = mysql_query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
+}?>
 <html>
 <?php include('sidebar.php'); ?>
 
@@ -10,7 +17,7 @@
 
   <!-- Image header -->
   <?php
-  if(!$_GET['number'])
+  if(!isset($_GET['number']))
     echo '<div class="w3-display-container w3-container">
     <img src="../picture/test1.jpg" alt="Jeans" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
@@ -24,27 +31,73 @@
     </div>
   </div>
   <!-- End page content -->';
-  else{
-    include('connect_to_sql.php');
-    $exam = mysql_query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
-    for($i = 1;$i <= mysql_num_rows($exam);$i++){
-      $rs = mysql_fetch_assoc($exam);
+  else if(isset($_GET['number']) && !isset($_GET['checkanswer'])){
     echo '<div class="w3-row w3-grayscale">
-      <div class="w3-col l6 s6">
-        <div class="w3-container">
-          <div class="w3-display-container">
+    <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
+    for($i = 1;$i <= mysql_num_rows($_SESSION['data']);$i++){
+      $rs = mysql_fetch_assoc($_SESSION['data']);
+    echo '
+      <table>
+      <tr>
+      <td>
             <audio id= "'.$rs[audio_id].'">
               <source src="'.$rs[sound_src].'" type="audio/mp3" />
               <embed height="100" width="100" src="'.$rs[sound_src].'" />
             </audio>
             <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">Play</button>
-          </div>
-          <p align = "center">'.$rs[name].'</p>
-        </div>
-      </div>
-    </div>';
+      </td>
+      </tr>
+          <tr>';
+          $randanswer = mysql_query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 2");
+          $answer = array();
+          for($k = 1;$k <= mysql_num_rows($randanswer);$k++)
+          {
+            $rr = mysql_fetch_assoc($randanswer);
+            array_push($answer,$rr['name']);
+          }
+          array_push($answer,$rs['name']);
+          shuffle($answer);
+              for($j = 0;$j < 3;$j++){
+
+              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'</td>';
+              //print_r($rs);
+            }
+          echo '
+        </tr>
+        </table>';
+
 
     }
+    echo '<br><input type="submit" name="submit" align="center"></form></div>';
+  }
+  elseif(isset($_GET['number']) && isset($_GET['checkanswer'])){
+    for($i = 1;$i <= $_GET['number'];$i++)
+      print_r($_POST['answer'.$i]);
+
+    /*for($i = 1;$i <= mysql_num_rows($_SESSION['data']);$i++){
+      $rs = mysql_fetch_assoc($_SESSION['data']);
+    echo '
+      <table>
+      <tr>
+      <td>
+            <audio id= "'.$rs[audio_id].'">
+              <source src="'.$rs[sound_src].'" type="audio/mp3" />
+              <embed height="100" width="100" src="'.$rs[sound_src].'" />
+            </audio>
+            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">Play</button>
+      </td>
+      </tr>
+          <tr>';
+              for($j = 1;$j <=3;$j++){
+              $randanswer = mysql_query("select * from data ORDER BY RAND() LIMIT 2");
+              echo '<td><input type="radio" name="answer'.$i.'" value="'.$rs[name].'">'.$rs[name].'</td>';
+            }
+          echo '
+        </tr>
+        </table>';
+
+
+    }*/
   }
   ?>
 
