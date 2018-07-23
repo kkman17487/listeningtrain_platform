@@ -5,7 +5,7 @@
 <body>
 <?php include('backendsidebar.php'); ?>
 
-<p align=center><img src="../picture/forest.jpg" alt="首頁" style="width:60%"></p>
+<p align=center><img src="../picture/background.jpg" alt="首頁" style="width:60%"></p>
 
 </body>
 </html>
