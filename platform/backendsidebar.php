@@ -24,8 +24,8 @@
             <li><a href="chart.php">圖表</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">修改題目</a></li>
-            <li><a href="">修改題型</a></li>
+            <li><a href="modifytraining.php">修改訓練模式</a></li>
+            <li><a href="modifytesting.php">修改測驗模式</a></li>
             <li><a href="">增加聲音與圖檔</a></li>
           </ul>
           <ul class="nav nav-sidebar">
