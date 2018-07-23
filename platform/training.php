@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php
-mysql_connect("localhost","root","az135790");
-mysql_select_db("listeningtrain_platform");
-mysql_query("set names utf8");
+include('connect_to_sql.php');
 $this_type = $_GET['sound_type'];
 $data = mysql_query("select * from data where tag LIKE '%$this_type%'");
 $tag = mysql_query("select tag from data where tag != ''");
