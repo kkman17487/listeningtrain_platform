@@ -4,7 +4,7 @@
 
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">題庫選擇</p>
+    <p class="w3-left">系統出題</p>
   </header>
 
   <!-- Image header -->
