@@ -6,7 +6,8 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
   session_unset();
   include('connect_to_sql.php');
   $_SESSION['data'] = mysql_query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
-}?>
+}
+?>
 <html>
 <?php include('sidebar.php'); ?>
 
@@ -32,6 +33,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
   </div>
   <!-- End page content -->';
   else if(isset($_GET['number']) && !isset($_GET['checkanswer'])){
+    $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
     <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
     for($i = 1;$i <= mysql_num_rows($_SESSION['data']);$i++){
@@ -55,6 +57,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
             $rr = mysql_fetch_assoc($randanswer);
             array_push($answer,$rr['name']);
           }
+          array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,$rs['name']);
           shuffle($answer);
               for($j = 0;$j < 3;$j++){
@@ -70,10 +73,24 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
     }
     echo '<br><input type="submit" name="submit" align="center"></form></div>';
   }
-  elseif(isset($_GET['number']) && isset($_GET['checkanswer'])){
-    for($i = 1;$i <= $_GET['number'];$i++)
-      print_r($_POST['answer'.$i]);
-
+  else if(isset($_GET['number']) && isset($_GET['checkanswer'])){
+    $correct_answer = $_SESSION['correct_answer'];
+    for($i = 0;$i < $_GET['number'];$i++){
+      include('connect_to_sql.php');
+      $tmp = mysql_query("select * from data where name = '$correct_answer[$i]'");
+      $rs = mysql_fetch_assoc($tmp);
+      echo '<audio id= "'.$rs[audio_id].'">
+        <source src="'.$rs[sound_src].'" type="audio/mp3" />
+        <embed height="100" width="100" src="'.$rs[sound_src].'" />
+      </audio>
+      <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">再聽一次</button>';
+      echo '<p>您第'.($i+1);
+      echo '題的答案:'.$_POST['answer'.($i+1)].'</p>';
+      if($correct_answer[$i] != $_POST['answer'.($i+1)])
+        echo '錯誤！正確答案:'.$correct_answer[$i].'<br>';
+      else
+        echo '正確！！！<br>';
+    }
     /*for($i = 1;$i <= mysql_num_rows($_SESSION['data']);$i++){
       $rs = mysql_fetch_assoc($_SESSION['data']);
     echo '
