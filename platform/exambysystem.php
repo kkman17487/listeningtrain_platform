@@ -5,7 +5,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
 {
   session_unset();
   include('connect_to_sql.php');
-  $_SESSION['data'] = mysql_query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
+  $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
 ?>
 <html>
@@ -36,8 +36,8 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
     $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
     <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
-    for($i = 1;$i <= mysql_num_rows($_SESSION['data']);$i++){
-      $rs = mysql_fetch_assoc($_SESSION['data']);
+    for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
+      $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
       <table>
       <tr>
@@ -50,11 +50,11 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
       </td>
       </tr>
           <tr>';
-          $randanswer = mysql_query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 2");
+          $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 2");
           $answer = array();
-          for($k = 1;$k <= mysql_num_rows($randanswer);$k++)
+          for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
           {
-            $rr = mysql_fetch_assoc($randanswer);
+            $rr = mysqli_fetch_assoc($randanswer);
             array_push($answer,$rr['name']);
           }
           array_push($_SESSION['correct_answer'],$rs['name']);
@@ -77,8 +77,8 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
     $correct_answer = $_SESSION['correct_answer'];
     for($i = 0;$i < $_GET['number'];$i++){
       include('connect_to_sql.php');
-      $tmp = mysql_query("select * from data where name = '$correct_answer[$i]'");
-      $rs = mysql_fetch_assoc($tmp);
+      $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
+      $rs = mysqli_fetch_assoc($tmp);
       echo '<audio id= "'.$rs[audio_id].'">
         <source src="'.$rs[sound_src].'" type="audio/mp3" />
         <embed height="100" width="100" src="'.$rs[sound_src].'" />
@@ -91,8 +91,8 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
       else
         echo '正確！！！<br>';
     }
-    /*for($i = 1;$i <= mysql_num_rows($_SESSION['data']);$i++){
-      $rs = mysql_fetch_assoc($_SESSION['data']);
+    /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
+      $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
       <table>
       <tr>
@@ -106,7 +106,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
       </tr>
           <tr>';
               for($j = 1;$j <=3;$j++){
-              $randanswer = mysql_query("select * from data ORDER BY RAND() LIMIT 2");
+              $randanswer = $con->query("select * from data ORDER BY RAND() LIMIT 2");
               echo '<td><input type="radio" name="answer'.$i.'" value="'.$rs[name].'">'.$rs[name].'</td>';
             }
           echo '

@@ -2,8 +2,8 @@
 <?php
 include('connect_to_sql.php');
 $this_type = $_GET['sound_type'];
-$data = mysql_query("select * from data where tag LIKE '%$this_type%'");
-$tag = mysql_query("select tag from data where tag != ''");
+$data = $con->query("select * from data where tag LIKE '%$this_type%'");
+$tag = $con->query("select tag from data where tag != ''");
 include('sidebar.php');
 ?>
 <html>
@@ -22,8 +22,8 @@ include('sidebar.php');
         <option value="#">全部</option>
         <?php
         $classfication = array();
-        for($j = 1;$j <= mysql_num_rows($tag);$j++){
-          $rs_tag = mysql_fetch_assoc($tag);
+        for($j = 1;$j <= mysqli_num_rows($tag);$j++){
+          $rs_tag = mysqli_fetch_assoc($tag);
           $tmp = explode("、",$rs_tag[tag]);
             $classfication = array_merge($classfication, $tmp);
         }
@@ -37,13 +37,13 @@ include('sidebar.php');
 
       </select>
     </form>
-    <p>一共有<?php echo mysql_num_rows($data)?>筆資料</p>
+    <p>一共有<?php echo mysqli_num_rows($data)?>筆資料</p>
   </div>
 
   <!-- Product grid -->
     <?php
-    for($i = 1;$i <= mysql_num_rows($data);$i++){
-      $rs = mysql_fetch_assoc($data);
+    for($i = 1;$i <= mysqli_num_rows($data);$i++){
+      $rs = mysqli_fetch_assoc($data);
       if($i % 4 == 1)echo '<div class="w3-row w3-grayscale">';
     ?>
     <div class="w3-col l3 s6">
@@ -65,7 +65,7 @@ include('sidebar.php');
       </div>
   </div>
   <?php
-    if($i % 4 == 0 || $i == mysql_num_rows($data))echo '</div>';
+    if($i % 4 == 0 || $i == mysqli_num_rows($data))echo '</div>';
   }
   ?>
   <!-- End page content -->
