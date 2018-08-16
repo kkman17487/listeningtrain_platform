@@ -10,7 +10,20 @@ if(isset($_POST['password']) && isset($_POST['username']))
 {
 include('connect_to_sql.php')
 $admin = $con->query("select * from admin where username LIKE '%$_POST["username"]%'");
-if(is_null()
+$rs = mysqli_fetch_assoc($admin);
+if(is_null($admin) || $_POST['password'] != $rs['password'])
+{
+  <script>
+  alert("<{ $alert_2 }>");
+  </script>
+  header("Location: login.php"); /* Redirect browser */
+  exit();
+}
+else {
+  $_SESSION['login'] = "yes";
+  header("Location: backend.php"); /* Redirect browser */
+  exit();
+}
 }
  ?>
 <html>
