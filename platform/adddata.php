@@ -2,14 +2,22 @@
 <html lang="zh-Hant-TW">
 <?php include('backendheader.php'); ?>
 
+<style>
+.button{width:120px;height:40px;font-size:20px;}
+</style>
+
 <body>
 <?php include('backendsidebar.php'); ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">新增、刪除 聲音資料</h1>
+<h1 class="sub-header">修改聲音資料</h1>
     <div class="table-responsive">
-        <button type="button">新增</button>
-		<button type="button">刪除</button>
-		<button type="button">修改</button>
+	
+        <u><strong>新增</strong></u>
+			<form action="upload.php" method="post" enctype="multipart/form-data">選擇檔案:
+　				<input type="file" name="file" id="file"/><br>
+　				<input type="submit" name="submit" value="上傳檔案"/>
+　			</form>
+		<br><u><strong>刪除</strong></u>
     </div>
 </div>
 </body>
