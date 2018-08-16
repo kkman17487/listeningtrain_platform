@@ -8,7 +8,7 @@ if($_SESSION['login'] == "yes")
 }
 if(isset($_POST['password']) && isset($_POST['username']))
 {
-include('connect_to_sql.php')
+include('connect_to_sql.php');
 $admin = $con->query('select * from admin where username LIKE "%$_POST['username']%"');
 $rs = mysqli_fetch_assoc($admin);
   if(is_null($admin) || $_POST['password'] != $rs['password'])
