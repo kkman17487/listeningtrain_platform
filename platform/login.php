@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if($_SESSION['login'] == "yes")
+if(isset($_SESSION['login']) && $_SESSION['login'] == "yes")
 {
   header("Location: backend.php"); /* Redirect browser */
   exit();
