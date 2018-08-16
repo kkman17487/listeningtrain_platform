@@ -14,9 +14,6 @@ $admin = $con->query("select * from admin where username LIKE '%$username%'");
 $rs = mysqli_fetch_assoc($admin);
   if(is_null($admin) || $_POST['password'] != $rs['password'])
   {
-    <script>
-    alert("<{ $alert_2 }>");
-    </script>
     header("Location: login.php"); /* Redirect browser */
     exit();
   }
