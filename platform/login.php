@@ -167,8 +167,8 @@ span.psw {
     </div>
 
     <div class="container">
-      <label for="uername"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uername" required>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
