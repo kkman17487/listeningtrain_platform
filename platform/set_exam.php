@@ -110,7 +110,7 @@
 <h1 class="sub-header">出題模式</h1>
 題庫選擇
 <?php
-include("connet_to_sql.php");
+include("connect_to_sql.php");
 $data = $con->query("select * from exam");
 //讓資料由最新呈現到最舊
 ?>
