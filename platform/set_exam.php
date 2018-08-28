@@ -91,14 +91,14 @@
   font-weight:bold;
   color:#ffffff;
 }
-.CSSTableGenerator tr:first-child:hover td{
+/*.CSSTableGenerator tr:first-child:hover td{
   background:-o-linear-gradient(bottom, #005fbf 5%, #005fbf 100%);
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #005fbf) );
   background:-moz-linear-gradient( center top, #005fbf 5%, #005fbf 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#005fbf");
   background: -o-linear-gradient(top,#005fbf,005fbf);
   background-color:#005fbf;
-}
+}*/
 
 
 </style>
