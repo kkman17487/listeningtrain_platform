@@ -117,9 +117,11 @@ if(isset($_POST['name']) && isset($_POST['question']))
   $name = $_POST['name'];
   foreach($_POST['question'] as $key => $value)
   {
-    $question .= ",".$value;
+    $question .= $value.",";
   }
-  $con->query("UPDATE exam SET question='$question',name='$name' WHERE id='$ID'");
+  $quesion = substr($question, 0, -1)
+  $date = date('m-d-Y h:i:s a', time());
+  $con->query("UPDATE exam SET question='$question',name='$name',recent_edit_time='$date' WHERE id='$ID'");
 }
 if(!isset($_GET['ID'])){
 $data = $con->query("select * from exam");
