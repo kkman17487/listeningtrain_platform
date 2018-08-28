@@ -131,7 +131,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 ?>
 
             <tr>
-              <td width="5%"><a href="set_exam.php?ID="><?php echo $rs['id'];?></td>
+              <td width="5%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="55%"><?php echo $rs['sound_no'];?></td>
               <td width="10%"><?php echo $rs['creator'];?></td>
