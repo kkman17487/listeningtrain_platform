@@ -111,7 +111,7 @@
 題庫選擇
 <?php
 include("connect_to_sql.php");
-if(isset($_POST['name']) && isset($_POST['sound']))
+if(isset($_POST['name']) && isset($_POST['question']))
 {
   $ID = $_GET['ID'];
   $name = $_POST['name'];
