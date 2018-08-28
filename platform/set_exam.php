@@ -111,6 +111,7 @@
 題庫選擇
 <?php
 include("connect_to_sql.php");
+if(!isset($_GET['ID'])){
 $data = $con->query("select * from exam");
 //讓資料由最新呈現到最舊
 ?>
@@ -130,7 +131,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 ?>
 
             <tr>
-              <td width="5%"><?php echo $rs['id'];?></td>
+              <td width="5%"><a href="set_exam.php?ID="><?php echo $rs['id'];?></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="55%"><?php echo $rs['sound_no'];?></td>
               <td width="10%"><?php echo $rs['creator'];?></td>
@@ -140,6 +141,51 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </table>
 </div>
 </div>
+<?php
+}
+else{
+  $data = $con->query("select * from exam where id = '$_GET["id"]'");
+  $sound = $con->query("select * from data")
+  //讓資料由最新呈現到最舊
+?>
+  <div class="container">
+    <div class="CSSTableGenerator">
+        <table align="center">
+              <tr>
+                <td width="5%">ID</td>
+                <td width="10%">名稱</td>
+                <td width="55%">題目</td>
+                <td width="10%">作者</td>
+                <td width="20%">創造時間</td>
+              </tr>
+<?php
+ $rs=mysqli_fetch_assoc($data);
+?>
+
+            <tr>
+              <td width="5%"><a href="set_exam.php?ID="><?php echo $rs['id'];?></td>
+              <td width="10%"><?php echo $rs['name'];?></td>
+              <td width="55%">
+                <?php
+                  $sound_no = explode(",",$rs['sound_no']);
+                  foreach($sound_no as $key => $value)
+                  {
+                    $sound = $con->query("select * from data where id = '$value'");
+                    $rs_sound = mysqli_fetch_assoc($sound);
+                    echo $value;
+                    echo ':';
+                    echo $rs_sound['name'];
+                  }
+                ?>
+              </td>
+              <td width="10%"><?php echo $rs['creator'];?></td>
+              <td width="20%"><?php echo $rs['create_time'];?></td>
+            </tr>
+<?php } ?>
+</table>
+</div>
+</div>
+<?php }?>
 </div>
 </body>
 </html>
