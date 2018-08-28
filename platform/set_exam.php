@@ -122,6 +122,7 @@ if(isset($_POST['name']) && isset($_POST['question']))
   $quesion = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
   $con->query("UPDATE exam SET question='$question',name='$name',recent_edit_time='$date' WHERE id='$ID'");
+  document.location.href='set_exam.php';
 }
 if(!isset($_GET['ID'])){
 $data = $con->query("select * from exam");
