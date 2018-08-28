@@ -194,7 +194,7 @@ else{
                       echo " checked";
                       $j++;
                     }
-                    echo .">".$rs_sound['id'].":".$rs_sound['name'];
+                    echo ">".$rs_sound['id'].":".$rs_sound['name'];
                   }
                 ?>
               </td>
