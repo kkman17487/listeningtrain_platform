@@ -177,7 +177,7 @@ else{
 ?>
   <div class="container">
     <div class="CSSTableGenerator">
-      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $_GET['ID'];?>">
+      <form method="post" name="exam" action="set_exam.php">
         <table align="center">
               <tr>
                 <td width="5%">ID</td>
