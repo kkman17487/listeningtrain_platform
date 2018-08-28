@@ -184,13 +184,15 @@ else{
               <td width="55%">
                 <?php
                   $sound_no = explode(",",$rs['sound_no']);
-                  foreach($sound_no as $key => $value)
+                  $j = 0;
+                  for($i = 1; $i <= mysqli_num_rows($sound); $i++)
                   {
-                    $sound = $con->query("select * from data where id = '$value'");
                     $rs_sound = mysqli_fetch_assoc($sound);
-                    echo $value;
-                    echo ':';
-                    echo $rs_sound['name'];
+                    echo "<input type=checkbox";
+                    if($j < sizeof($sound_no) && $sound_no == $rs_sound['id'])
+                      echo " checked=check";
+                    echo ">";
+                    echo $rs_sound['id'].":".$rs_sound['name'];
                   }
                 ?>
               </td>
@@ -198,8 +200,8 @@ else{
               <td width="20%"><?php echo $rs['create_time'];?></td>
             </tr>
 </table>
-<input type="submit">修改
-<button onclick="">
+<input type="submit">
+<button onclick="">取消</button>
 </form>
 </div>
 </div>
