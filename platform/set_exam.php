@@ -179,7 +179,7 @@ else{
 ?>
 
             <tr>
-              <td width="5%"><a href="set_exam.php?ID="><?php echo $rs['id'];?></td>
+              <td width="5%"><?php echo $rs['id'];?></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="55%">
                 <?php
