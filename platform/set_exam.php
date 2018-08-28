@@ -202,8 +202,8 @@ else{
               <td width="20%"><?php echo $rs['create_time'];?></td>
             </tr>
 </table>
-<input type="submit">
-<button onclick="">取消</button>
+<input type="submit" value="修改">
+<input type="button" value="取消" onclick="document.location.href='set_exam.php'" />
 </form>
 </div>
 </div>
