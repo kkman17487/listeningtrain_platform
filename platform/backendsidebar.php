@@ -24,6 +24,7 @@
             <li><a href="chart.php">圖表</a></li>
           </ul>
           <ul class="nav nav-sidebar">
+            <li><a href="set_exam.php">出題模式</a></li>
             <li><a href="modifyexam.php">修改測驗模式</a></li>
             <li><a href="adddata.php">增加聲音與圖檔</a></li>
           </ul>
