@@ -139,11 +139,9 @@ $sound = $con->query("select * from data");
 //讓資料由最新呈現到最舊
 ?>
   <div class="container">
+    <a onclick="add()">新增</a>
     <div class="CSSTableGenerator">
         <table align="center">
-          <tr>
-            <a onclick="add()">新增</a>
-          </tr>
               <tr>
                 <td width="5%">ID</td>
                 <td width="10%">名稱</td>
