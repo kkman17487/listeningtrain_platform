@@ -122,7 +122,6 @@ if(isset($_POST['name']) && isset($_POST['question']))
   $con->query("UPDATE exam SET question='$question',name='$name' WHERE id='$ID'");
 }
 if(!isset($_GET['ID'])){
-$ID = $_GET['ID'];
 $data = $con->query("select * from exam");
 $sound = $con->query("select * from data");
 //讓資料由最新呈現到最舊
@@ -177,7 +176,7 @@ else{
 ?>
   <div class="container">
     <div class="CSSTableGenerator">
-      <form method="post" name="exam" action="set_exam.php">
+      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $ID;?>">
         <table align="center">
               <tr>
                 <td width="5%">ID</td>
