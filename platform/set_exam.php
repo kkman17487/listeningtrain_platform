@@ -111,10 +111,20 @@
 題庫選擇
 <?php
 include("connect_to_sql.php");
+if(isset($_POST['name']) && isset($_POST['sound']))
+{
+  $ID = $_GET['ID'];
+  $name = $_POST['name'];
+  foreach($_POST['question'] as $key => $value)
+  {
+    $question .= ",".$value;
+  }
+  $con->query("UPDATE exam SET question='$question',name='$name' WHERE id='$ID'");
+}
 if(!isset($_GET['ID'])){
 $ID = $_GET['ID'];
 $data = $con->query("select * from exam");
-$sound = $con->query("select * from data")
+$sound = $con->query("select * from data");
 //讓資料由最新呈現到最舊
 ?>
   <div class="container">
@@ -123,9 +133,10 @@ $sound = $con->query("select * from data")
               <tr>
                 <td width="5%">ID</td>
                 <td width="10%">名稱</td>
-                <td width="55%">題目</td>
+                <td width="35%">題目</td>
                 <td width="10%">作者</td>
                 <td width="20%">創造時間</td>
+                <td width="20%">最近修改時間</td>
               </tr>
 <?php
 for($i=1;$i<=mysqli_num_rows($data);$i++){
@@ -135,10 +146,10 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
             <tr>
               <td width="5%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></td>
               <td width="10%"><?php echo $rs['name'];?></td>
-              <td width="55%">
+              <td width="35%">
                 <?php
-                  $sound_no = explode(",",$rs['sound_no']);
-                  foreach($sound_no as $key => $value)
+                  $question = explode(",",$rs['question']);
+                  foreach($question as $key => $value)
                   {
                     $sound = $con->query("select * from data where id = '$value'");
                     $rs_sound = mysqli_fetch_assoc($sound);
@@ -150,6 +161,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
               </td>
               <td width="10%"><?php echo $rs['creator'];?></td>
               <td width="20%"><?php echo $rs['create_time'];?></td>
+              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
             </tr>
 <?php } ?>
 </table>
@@ -165,14 +177,15 @@ else{
 ?>
   <div class="container">
     <div class="CSSTableGenerator">
-      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $_GET['ID'];?>&message=error">
+      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $_GET['ID'];?>">
         <table align="center">
               <tr>
                 <td width="5%">ID</td>
                 <td width="10%">名稱</td>
-                <td width="55%">題目</td>
+                <td width="35%">題目</td>
                 <td width="10%">作者</td>
                 <td width="20%">創造時間</td>
+                <td width="20%">最近修改時間</td>
               </tr>
 <?php
  $rs=mysqli_fetch_assoc($data);
@@ -180,16 +193,16 @@ else{
 
             <tr>
               <td width="5%"><?php echo $rs['id'];?></td>
-              <td width="10%"><?php echo $rs['name'];?></td>
-              <td width="55%">
+              <td width="10%"><input type="text" name="name" value="<?php echo $rs['name'];?>"</td>
+              <td width="35%">
                 <?php
-                  $sound_no = explode(",",$rs['sound_no']);
+                  $question = explode(",",$rs['question']);
                   $j = 0;
                   for($i = 1; $i <= mysqli_num_rows($sound); $i++)
                   {
                     $rs_sound = mysqli_fetch_assoc($sound);
-                    echo "<input type=checkbox name=question value=".$rs_sound['audio_id'];
-                    if($j < sizeof($sound_no) && $sound_no[$j] == $rs_sound['id'])
+                    echo "<input type=checkbox name=question[] value=".$rs_sound['id'];
+                    if($j < sizeof($question) && $question[$j] == $rs_sound['id'])
                     {
                       echo " checked";
                       $j++;
@@ -200,6 +213,7 @@ else{
               </td>
               <td width="10%"><?php echo $rs['creator'];?></td>
               <td width="20%"><?php echo $rs['create_time'];?></td>
+              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
             </tr>
 </table>
 <input type="submit" value="修改">
