@@ -130,11 +130,11 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 ?>
 
             <tr>
-              <td width="5%"><?php echo "<p align=center>$rs['id']</p>"?></td>
-              <td width="10%"><?php echo "<p align=center>$rs['name']</p>"?></td>
-              <td width="55%"><?php echo "<p align=center>$rs['sound_no']</p>"?></td>
-              <td width="10%"><?php echo "<p align=center>$rs['creator']</p>"?></td>
-              <td width="20%"><?php echo "<p align=center>$rs['create_time']</p>"?></td>
+              <td width="5%"><?php echo "<p align=center>$rs['id']</p>";?></td>
+              <td width="10%"><?php echo "<p align=center>$rs['name']</p>";?></td>
+              <td width="55%"><?php echo "<p align=center>$rs['sound_no']</p>";?></td>
+              <td width="10%"><?php echo "<p align=center>$rs['creator']</p>";?></td>
+              <td width="20%"><?php echo "<p align=center>$rs['create_time']</p>";?></td>
             </tr>
 <?php } ?>
 </table>
