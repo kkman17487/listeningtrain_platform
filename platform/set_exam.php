@@ -114,40 +114,32 @@ include("connect_to_sql.php");
 $data = $con->query("select * from exam");
 //讓資料由最新呈現到最舊
 ?>
-
-<body>
-
+  <div class="container">
+    <div class="CSSTableGenerator">
+        <table align="center">
+              <tr>
+                <td width="5%">ID</td>
+                <td width="10%">試卷名稱</td>
+                <td width="55%">題目</td>
+                <td width="10%">作者</td>
+                <td width="20%">創造時間</td>
+              </tr>
 <?php
 for($i=1;$i<=mysqli_num_rows($data);$i++){
  $rs=mysqli_fetch_assoc($data);
 ?>
-<div class="container">
-  <div class="CSSTableGenerator">
-      <table align="center">
+
             <tr>
-              <td><?php echo $rs['id']?></td>
+              <td width="5%"><?php echo $rs['id']?></td>
+              <td width="10%"><?php echo $rs['name']?></td>
+              <td width="55%"><?php echo $rs['sound_no']?></td>
+              <td width="10%"><?php echo $rs['creator']?></td>
+              <td width="20%"><?php echo $rs['create_time']?></td>
             </tr>
-            <tr>
-              <td width="25%">試卷名稱</td>
-              <td width="75%"><?php echo $rs['name']?></td>
-            </tr>
-            <tr>
-              <td>題目</td>
-              <td><?php echo $rs['sound_no']?></td>
-            </tr>
-            <tr>
-              <td>作者</td>
-              <td><?php echo $rs['creator']?></td>
-            </tr>
-            <tr>
-              <td>創建時間</td>
-              <td><?php echo $rs['create_time']?></td>
-            </tr>
-        </table>
- </div>
-</div>
-<br />
 <?php } ?>
+</table>
+</div>
+</div>
 </div>
 </body>
 </html>
