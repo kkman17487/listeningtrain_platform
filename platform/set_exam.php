@@ -144,7 +144,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 <?php
 }
 else{
-  $ID = $_GET['id'];
+  $ID = $_GET['ID'];
   $data = $con->query("select * from exam where id = '$ID'");
   $sound = $con->query("select * from data")
   //讓資料由最新呈現到最舊
