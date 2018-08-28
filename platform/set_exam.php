@@ -190,7 +190,10 @@ else{
                     $rs_sound = mysqli_fetch_assoc($sound);
                     echo "<input type=checkbox name=question value=".$rs_sound['audio_id'];
                     if($j < sizeof($sound_no) && $sound_no == $rs_sound['id'])
+                    {
                       echo " checked".">".$rs_sound['id'].":".$rs_sound['name'];
+                      $j++;
+                    }
                   }
                 ?>
               </td>
