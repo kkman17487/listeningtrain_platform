@@ -110,6 +110,7 @@ if(isset($_POST['name']) && isset($_POST['question']))
 {
   $ID = $_GET['ID'];
   $name = $_POST['name'];
+  $question = "";
   foreach($_POST['question'] as $key => $value)
   {
     $question .= $value.",";
