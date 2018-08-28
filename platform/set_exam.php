@@ -181,7 +181,6 @@ else{
               <td width="10%"><?php echo $rs['creator'];?></td>
               <td width="20%"><?php echo $rs['create_time'];?></td>
             </tr>
-<?php } ?>
 </table>
 </div>
 </div>
