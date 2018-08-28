@@ -112,7 +112,9 @@
 <?php
 include("connect_to_sql.php");
 if(!isset($_GET['ID'])){
+$ID = $_GET['ID'];
 $data = $con->query("select * from exam");
+$sound = $con->query("select * from data")
 //讓資料由最新呈現到最舊
 ?>
   <div class="container">
@@ -133,7 +135,19 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
             <tr>
               <td width="5%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></td>
               <td width="10%"><?php echo $rs['name'];?></td>
-              <td width="55%"><?php echo $rs['sound_no'];?></td>
+              <td width="55%">
+                <?php
+                  $sound_no = explode(",",$rs['sound_no']);
+                  foreach($sound_no as $key => $value)
+                  {
+                    $sound = $con->query("select * from data where id = '$value'");
+                    $rs_sound = mysqli_fetch_assoc($sound);
+                    echo $value;
+                    echo ':';
+                    echo $rs_sound['name'];
+                  }
+                ?>
+              </td>
               <td width="10%"><?php echo $rs['creator'];?></td>
               <td width="20%"><?php echo $rs['create_time'];?></td>
             </tr>
@@ -151,6 +165,7 @@ else{
 ?>
   <div class="container">
     <div class="CSSTableGenerator">
+      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $_GET['ID'];?>&message=error">
         <table align="center">
               <tr>
                 <td width="5%">ID</td>
@@ -183,6 +198,9 @@ else{
               <td width="20%"><?php echo $rs['create_time'];?></td>
             </tr>
 </table>
+<input type="submit">修改
+<button onclick="">
+</form>
 </div>
 </div>
 <?php }?>

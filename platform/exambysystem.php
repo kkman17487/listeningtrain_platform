@@ -26,7 +26,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
       <h1 class="w3-hide-small">Welcome</h1>
       <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
-        傾向: <input type="checkbox" name="email"><br>
+        傾向: <input type="checkbox" name="like"><br>
         <input type="submit">
       </form>
     </div>
