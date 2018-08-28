@@ -118,8 +118,8 @@ $data = $con->query("select * from exam");
 <body>
 
 <?php
-for($i=1;$i<=mysql_num_rows($data);$i++){
- $rs=mysql_fetch_assoc($data);
+for($i=1;$i<=mysqli_num_rows($data);$i++){
+ $rs=mysqli_fetch_assoc($data);
 ?>
 <div class="container">
   <div class="CSSTableGenerator">
