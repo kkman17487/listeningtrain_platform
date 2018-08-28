@@ -103,12 +103,7 @@
 
 </style>
 </head>
-<?php include('backendheader.php'); ?>
-<body>
-<?php include('backendsidebar.php'); ?>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">出題模式</h1>
-題庫選擇
+
 <?php
 include("connect_to_sql.php");
 if(isset($_POST['name']) && isset($_POST['question']))
@@ -125,6 +120,13 @@ if(isset($_POST['name']) && isset($_POST['question']))
   header("Location: set_exam.php");
   die();
 }
+include('backendheader.php'); ?>
+<body>
+<?php include('backendsidebar.php'); ?>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h1 class="sub-header">出題模式</h1>
+題庫選擇
+<?php
 if(!isset($_GET['ID'])){
 $data = $con->query("select * from exam");
 $sound = $con->query("select * from data");
