@@ -106,6 +106,11 @@
 
 <?php
 include("connect_to_sql.php");
+function add()
+{
+  $con->query("INSERT INTO exam ('id','name','question','creator','create_time','recent_edit_time') VALUES (NULL,"","","Ian",NULL,NULL)");
+  header("Location: set_exam.php?ID=".mysqli_num_rows($exam));
+}
 if(isset($_POST['name']) && isset($_POST['question']))
 {
   $ID = $_GET['ID'];
@@ -136,6 +141,9 @@ $sound = $con->query("select * from data");
   <div class="container">
     <div class="CSSTableGenerator">
         <table align="center">
+          <tr>
+            <a onclick="add()">新增</a>
+          </tr>
               <tr>
                 <td width="5%">ID</td>
                 <td width="10%">名稱</td>
