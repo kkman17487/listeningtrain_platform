@@ -120,7 +120,7 @@ if(isset($_POST['name']) && isset($_POST['question']))
     $question .= $value.",";
   }
   $quesion = substr($question, 0, -1)
-  $date = date('m-d-Y h:i:s a', time());
+  $date = date('m-d-Y h:i:s', time());
   $con->query("UPDATE exam SET question='$question',name='$name',recent_edit_time='$date' WHERE id='$ID'");
 }
 if(!isset($_GET['ID'])){
