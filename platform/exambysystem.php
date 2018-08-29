@@ -45,7 +45,6 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
         <input type="submit">
       </form>
-      <h1 class="w3-hide-small">題庫選擇</h1>
     </div>
   </div>
   <!-- End page content -->
