@@ -13,25 +13,27 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
 
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">系統出題</p>
+    <p class="w3-left">測驗模式</p>
   </header>
 
   <!-- Image header -->
   <?php
-  if(!isset($_GET['number']))
-    echo '<div class="w3-display-container w3-container">
+  if(!isset($_GET['number'])){
+  ?>
+    <div class="w3-display-container w3-container">
     <img src="../picture/test1.jpg" alt="Jeans" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-      <h1 class="w3-jumbo w3-hide-small">系統出題</h1>
+      <h1 class="w3-jumbo w3-hide-small">測驗模式</h1>
       <h1 class="w3-hide-small">Welcome</h1>
       <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
-        傾向: <input type="checkbox" name="like"><br>
         <input type="submit">
       </form>
     </div>
   </div>
-  <!-- End page content -->';
+  <!-- End page content -->
+
+  <?php}
   else if(isset($_GET['number']) && !isset($_GET['checkanswer'])){
     $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
