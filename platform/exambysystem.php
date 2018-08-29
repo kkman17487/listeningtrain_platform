@@ -47,8 +47,6 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
       <h1 class="w3-hide-small">題庫選擇</h1>
       <div class="container">
         <div class="CSSTableGenerator">
-          <a href="set_exam.php?add=true">新增</a>
-          <form method="post" action="">
             <table align="center">
                   <tr>
                     <td width="5%">ID</td>
@@ -57,7 +55,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
                     <td width="10%">作者</td>
                     <td width="60%">最近修改時間</td>
                   </tr>';
-    $data = $con->query("select * from exam");
+    $data = $con->query("SELECT * FROM exam");
     for($i=1;$i<=mysqli_num_rows($data);$i++){
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
