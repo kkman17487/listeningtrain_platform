@@ -146,9 +146,10 @@ $data = $con->query("select * from exam");
 $sound = $con->query("select * from data");
 //讓資料由最新呈現到最舊
 ?>
-<button onclick="add()" value="新增">
+
   <div class="container">
     <div class="CSSTableGenerator">
+      <a href="" onclick="add()">新增</a>
       <form method="post" action="">
         <table align="center">
               <tr>
