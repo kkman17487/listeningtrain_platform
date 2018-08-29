@@ -11,7 +11,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 {
   session_unset();
   include('connect_to_sql.php');
-  $ID = $GET['ID'];
+  $ID = $_GET['ID'];
   $question = $con->query("SELECT * FROM exam WHERE id = '$ID'");
   $rs_question = mysqli_fetch_assoc($question);
   $tmp_question = explode(',',$rs_question['question']);
@@ -77,8 +77,12 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && !isset($_GET['checkanswer'])){
     $_SESSION['correct_answer'] = array();
-    echo '<div class="w3-row w3-grayscale">
+    echo '<div class="w3-row w3-grayscale">';
+    if(isset($_GET['number']))
+    echo '
     <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
+    elseif(isset($_GET['ID']))
+    echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&checkanswer=true">'
     for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
