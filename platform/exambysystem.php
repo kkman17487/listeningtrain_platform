@@ -49,7 +49,8 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     </div>
   </div>
   <!-- End page content -->
-  <?php}
+  <?php}?>
+  <?php
   else if(isset($_GET['number']) && !isset($_GET['checkanswer'])){
     $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
