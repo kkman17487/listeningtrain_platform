@@ -47,12 +47,12 @@ for ($i = 0; $i < $fileCount; $i++) {
 	}*/
 	
 	  # 檢查檔案是否已經存在
-    if (file_exists('../picture/' . $_FILES['my_file']['name'][$i])){
+    if (file_exists('../picture/' . $_FILES['file']['name'][$i])){
       echo '檔案已存在。<br/>';
     }
 	else {
-      $file = $_FILES['my_file']['tmp_name'][$i];
-      $dest = '../picture/' . $_FILES['my_file']['name'][$i];
+      $file = $_FILES['file']['tmp_name'][$i];
+      $dest = '../picture/' . $_FILES['file']['name'][$i];
 
       # 將檔案移至指定位置
       move_uploaded_file($file, $dest);
