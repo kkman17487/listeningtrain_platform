@@ -18,7 +18,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   $sql = "SELECT * FROM data ORDER BY RAND() WHERE";
   foreach($tmp_question as $key => $value)
   {
-  $sql .= "id = '$value' OR "
+  $sql .= "id = '$value' OR ";
   }
   $sql = substr($sql,0,-4);
   $_SESSION['data'] = $con->query($sql);
