@@ -112,6 +112,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
 
 </style>
 </head>
+
 <?php include('sidebar.php'); ?>
 
   <!-- Top header -->
