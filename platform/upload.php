@@ -18,7 +18,7 @@ for ($i = 0; $i < $fileCount; $i++) {
     echo '暫存名稱: ' .$tmp_name.'<br/>';
 
     # 檢查檔案是否已經存在
-	if($type == "application/jpg" || $type == "application/png" || $type == "application/jpeg" || $type == "application/gif")
+	/*if($type == "application/jpg" || $type == "application/png" || $type == "application/jpeg" || $type == "application/gif")
 	{	
 		if (file_exists('../picture/' . $_FILES['file']['name'][$i])){
 			echo '檔案已存在。<br/>';
@@ -44,7 +44,20 @@ for ($i = 0; $i < $fileCount; $i++) {
 		# 將檔案移至指定位置
 		move_uploaded_file($files, $dest);
 		}
-	}
+	}*/
+	
+	  # 檢查檔案是否已經存在
+    if (file_exists('../picture/' . $_FILES['my_file']['name'][$i])){
+      echo '檔案已存在。<br/>';
+    }
+	else {
+      $file = $_FILES['my_file']['tmp_name'][$i];
+      $dest = '../picture/' . $_FILES['my_file']['name'][$i];
+
+      # 將檔案移至指定位置
+      move_uploaded_file($file, $dest);
+    }
+	
   } 
   
   else {
