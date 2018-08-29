@@ -108,6 +108,7 @@
 include("connect_to_sql.php");
 function add()
 {
+  $exam = $con->query("select * from exam");
   $con->query("INSERT INTO exam ('id','name','question','creator','create_time','recent_edit_time') VALUES (NULL,'','','Ian',NULL,NULL)");
   header("Location: set_exam.php?ID=".mysqli_num_rows($exam));
 }
