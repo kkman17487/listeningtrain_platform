@@ -123,7 +123,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
-    for($i = 0;$i < $_GET['number'];$i++){
+    for($i = 0;$i < sizeof($correct_answer);$i++){
       include('connect_to_sql.php');
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
       $rs = mysqli_fetch_assoc($tmp);
