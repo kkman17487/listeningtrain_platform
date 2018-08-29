@@ -1,8 +1,7 @@
 <?php
-session_start();
-if(!isset($_SESSION['login']))
-  $_SESSION['login'] = "";
-if($_SESSION['login'] != "yes")
+if(!isset($_COOKIE['login']))
+  setcookie("login","",time()+3600);
+if($_COOKIE['login'] != "yes")
 {
   header("Location: login.php"); /* Redirect browser */
   exit();

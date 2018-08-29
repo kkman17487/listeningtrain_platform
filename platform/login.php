@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <?php
-session_start();
-if(!isset($_SESSION['login']))
-  $_SESSION['login'] = "";
-if($_SESSION['login'] == "yes")
+if(!isset($_COOKIE['login']))
+  setcookie("login","",time()+3600);
+if($_COOKIE['login'] == "yes")
 {
   header("Location: backend.php"); /* Redirect browser */
   exit();
@@ -20,7 +19,7 @@ $rs = mysqli_fetch_assoc($admin);
     exit();
   }
   else {
-    $_SESSION['login'] = "yes";
+    setcookie("login","yes",time()+3600);
     header("Location: backend.php"); /* Redirect browser */
     exit();
   }
