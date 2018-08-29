@@ -112,6 +112,13 @@ function add()
   $con->query("INSERT INTO exam ('id','name','question','creator','create_time','recent_edit_time') VALUES (NULL,'','','Ian',NULL,NULL)");
   header("Location: set_exam.php?ID=".mysqli_num_rows($exam));
 }
+if(isset($_POST['delete']))
+{
+  foreach ($_POST['delete'] as $key => $value) {
+    $con->query("DELETE FROM exam WHERE id = '$value'");
+  }
+  header("Location: set_exam.php");
+}
 if(isset($_POST['name']) && isset($_POST['question']))
 {
   $ID = $_GET['ID'];
@@ -142,9 +149,11 @@ $sound = $con->query("select * from data");
   <div class="container">
     <button onclick="add()" value="新增">
     <div class="CSSTableGenerator">
+      <form method="post" action="">
         <table align="center">
               <tr>
-                <td width="5%">ID</td>
+                <td width="1%"></td>
+                <td width="4%">ID</td>
                 <td width="10%">名稱</td>
                 <td width="35%">題目</td>
                 <td width="10%">作者</td>
@@ -157,7 +166,8 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 ?>
 
             <tr>
-              <td width="5%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></td>
+              <td width="1%"><input type="checkbox" name="delete[]" value="<?php echo $rs['id'];?>"></td>
+              <td width="4%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="35%">
                 <?php
@@ -178,6 +188,8 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
             </tr>
 <?php } ?>
 </table>
+<input type="submit" value="刪除">
+</form>
 </div>
 </div>
 <?php
