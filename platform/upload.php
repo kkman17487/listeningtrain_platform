@@ -5,17 +5,18 @@ $fileCount = count($_FILES['file']['name']);
 $name=$_FILES['file']['name'];
 $type=$_FILES['file']['type'];
 $size=$_FILES['file']['size'];
-#$tmp_name=$_FILES['file']['tmp_name'];
+$tmp_name=$_FILES['file']['tmp_name'];
 
 for ($i = 0; $i < $fileCount; $i++) {
   # 檢查檔案是否上傳成功
   if ($_FILES['file']['error'][$i] === UPLOAD_ERR_OK){
 	  
 	$sizemb=round($size/1024000,3);
+	
     echo '檔案名稱:' .$name.'<br/>';
     echo '檔案類型:' .$type.'<br/>';
-    echo '檔案大小:' .$size.'MB <br/>';
-    echo '暫存名稱: ' .$tmp_name.'<br/>';
+    echo '檔案大小:' .$sizemb.'MB <br/>';
+    echo '暫存名稱:' .$tmp_name.'<br/>';
 
     # 檢查檔案是否已經存在
 	/*if($type == "application/jpg" || $type == "application/png" || $type == "application/jpeg" || $type == "application/gif")
