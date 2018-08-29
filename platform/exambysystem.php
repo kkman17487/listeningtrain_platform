@@ -7,6 +7,22 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
+else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
+{
+  session_unset();
+  include('connect_to_sql.php');
+  $ID = $GET['ID'];
+  $question = $con->query("SELECT * FROM exam WHERE id = '$ID'");
+  $rs_question = mysqli_fetch_assoc($question);
+  $tmp_question = explode(',',$rs_question['question']);
+  $sql = "SELECT * FROM data ORDER BY RAND() WHERE";
+  foreach($tmp_question as $key => $value)
+  {
+  $sql .= "id = '$value' OR "
+  }
+  $sql = substr($sql,0,-4);
+  $_SESSION['data'] = $con->query($sql);
+}
 ?>
 <html>
 <head>
@@ -169,7 +185,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
   <!-- End page content -->
 
   <?php}
-  else if(isset($_GET['number']) && !isset($_GET['checkanswer'])){
+  else if((isset($_GET['number']) || isset($_GET['ID'])) && !isset($_GET['checkanswer'])){
     $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
     <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
@@ -210,7 +226,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
     }
     echo '<br><input type="submit" name="submit" align="center"></form></div>';
   }
-  else if(isset($_GET['number']) && isset($_GET['checkanswer'])){
+  else if((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
     for($i = 0;$i < $_GET['number'];$i++){
       include('connect_to_sql.php');
