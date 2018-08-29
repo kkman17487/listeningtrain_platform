@@ -169,7 +169,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 
             <tr>
               <td width="1%"><input type="checkbox" name="delete[]" value="<?php echo $rs['id'];?>"></td>
-              <td width="4%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></td>
+              <td width="4%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="35%">
                 <?php
