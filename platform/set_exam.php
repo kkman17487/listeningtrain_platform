@@ -106,7 +106,7 @@
 
 <?php
 include("connect_to_sql.php");
-function add()
+if(isset($_GET['add']))
 {
   $exam = $con->query("select * from exam");
   $con->query("INSERT INTO exam ('id','name','question','creator','create_time','recent_edit_time') VALUES (NULL,'','','Ian',NULL,NULL)");
@@ -149,7 +149,7 @@ $sound = $con->query("select * from data");
 
   <div class="container">
     <div class="CSSTableGenerator">
-      <a href="" onclick="add()">新增</a>
+      <a href="set_exam.php?add=true">新增</a>
       <form method="post" action="">
         <table align="center">
               <tr>
