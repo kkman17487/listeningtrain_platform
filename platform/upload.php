@@ -15,7 +15,7 @@ for ($i = 0; $i < $fileCount; $i++) {
     echo '檔案名稱:' .$name.'<br/>';
     echo '檔案類型:' .$type.'<br/>';
     echo '檔案大小:' .$size.'MB <br/>';
-    #echo '暫存名稱: ' .$tmp_name.'<br/>';
+    echo '暫存名稱: ' .$tmp_name.'<br/>';
 
     # 檢查檔案是否已經存在
 	if($type == "application/jpg" || $type == "application/png" || $type == "application/jpeg" || $type == "application/gif")

@@ -11,10 +11,11 @@
         <u><strong>新增</strong></u>
 			<form action="upload.php" method="post" enctype="multipart/form-data">
 　			選擇檔案:<input type="file" name="file[]" multiple><br />
-			<!--選擇圖片:<input type="file" name="picturefile[]" multiple><br />-->
-　			<input type="submit" name="submit" value="上傳檔案" />
+　			<input type="submit" value="上傳檔案" />
 　			</form>
-		<br><u><strong>刪除</strong></u>
+		<br>
+		<u><strong>刪除</strong></u>
+		
     </div>
 </div>
 </body>
