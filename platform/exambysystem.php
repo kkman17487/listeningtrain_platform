@@ -7,7 +7,7 @@ if(isset($_GET['number']) && !isset($_GET['checkanswer']))
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
-else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
+elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 {
   session_unset();
   include('connect_to_sql.php');
@@ -35,7 +35,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   <!-- Image header -->
   <?php
   include("connect_to_sql.php");
-  if(!isset($_GET['number'])){
+  if(!isset($_GET['number']) && !isset($_GET['ID'])){
     echo '<div class="w3-display-container w3-container">
     <img src="../picture/test1.jpg" alt="Jeans" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
