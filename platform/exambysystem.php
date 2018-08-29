@@ -51,7 +51,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   <!-- End page content -->
   <?php}?>
   <?php
-  else if(isset($_GET['number']) && !isset($_GET['checkanswer'])){
+  elseif(isset($_GET['number']) && !isset($_GET['checkanswer'])){
     $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
     <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
