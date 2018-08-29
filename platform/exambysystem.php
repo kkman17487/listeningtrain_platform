@@ -61,7 +61,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
                 echo '<tr>
-                  <td width="5%"><a href="set_exam.php?ID='.$rs['id'].'">'.$rs['id'].'</a></td>
+                  <td width="5%"><a href="exambysystem.php?ID='.$rs['id'].'">'.$rs['id'].'</a></td>
                   <td width="10%">'.$rs['name'].'</td>
                   <td width="15%">'.sizeof($rs_question).'</td>
                   <td width="10%">'.$rs['creator'].'</td>
@@ -75,7 +75,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   </div>
   <!-- End page content -->';
   }
-  elseif(isset($_GET['number']) && !isset($_GET['checkanswer'])){
+  elseif((isset($_GET['number']) || isset($_GET['ID'])) && !isset($_GET['checkanswer'])){
     $_SESSION['correct_answer'] = array();
     echo '<div class="w3-row w3-grayscale">
     <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
@@ -116,7 +116,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     }
     echo '<br><input type="submit" name="submit" align="center"></form></div>';
   }
-  else if(isset($_GET['number']) && isset($_GET['checkanswer'])){
+  elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
     for($i = 0;$i < $_GET['number'];$i++){
       include('connect_to_sql.php');
