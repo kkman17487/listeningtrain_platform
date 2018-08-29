@@ -34,6 +34,7 @@ else if(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 
   <!-- Image header -->
   <?php
+  include("connect_to_sql.php");
   if(!isset($_GET['number'])){
     echo '<div class="w3-display-container w3-container">
     <img src="../picture/test1.jpg" alt="Jeans" style="width:100%">
