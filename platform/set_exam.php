@@ -108,9 +108,10 @@
 include("connect_to_sql.php");
 if(isset($_GET['add']))
 {
-  $exam = $con->query("select * from exam");
   $con->query("INSERT INTO exam ('id','name','question','creator','create_time','recent_edit_time') VALUES (NULL,'','','Ian',NULL,NULL)");
-  header("Location: set_exam.php?ID=".mysqli_num_rows($exam));
+  $exam = $con->query("SELECT * FROM exam ORDER BY id DESC LIMIT 1");
+  $tmp = mysqli_fetch_assoc($exam);
+  header("Location: set_exam.php?ID=".$tmp['id']);
 }
 if(isset($_POST['delete']))
 {
