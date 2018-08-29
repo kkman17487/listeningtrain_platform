@@ -15,12 +15,13 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   $question = $con->query("SELECT * FROM exam WHERE id = '$ID'");
   $rs_question = mysqli_fetch_assoc($question);
   $tmp_question = explode(',',$rs_question['question']);
-  $sql = "SELECT * FROM data ORDER BY RAND() WHERE ";
+  $sql = "SELECT * FROM data WHERE ";
   foreach($tmp_question as $key => $value)
   {
   $sql .= "id = '$value' OR ";
   }
   $sql = substr($sql,0,-4);
+  $sql .= " ORDER BY RAND()";
   $_SESSION['data'] = $con->query($sql);
 }
 ?>
