@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<style>
+<!--<style>
 .top{
  margin:auto;
  width:60vw;
@@ -101,7 +101,7 @@
 }
 
 
-</style>
+</style>-->
 </head>
 
 <?php
