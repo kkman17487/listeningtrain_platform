@@ -8,11 +8,11 @@
           </button>
           <a class="navbar-brand" href="backend.php">環境音訓練及測試平台 後台管理</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <!--<div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
           </form>
-        </div>
+        </div>-->
       </div>
     </nav>
 
