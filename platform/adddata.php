@@ -10,7 +10,7 @@
 	
         <u><strong>新增</strong></u>
 			<form action="upload.php" method="post" enctype="multipart/form-data">
-　			選擇檔案:<input type="file" name="file[]" multiple><br />
+　			選擇檔案:<input type="file" name="my_file[]" multiple><br />
 　			<input type="submit" value="上傳檔案" />
 　			</form>
 		<br>
