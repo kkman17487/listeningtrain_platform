@@ -1,0 +1,23 @@
+overall frequency 
+
+broom 2000~8000
+brush 1023 1136
+clock (¤£¦P¬q)6307 13710 8454
+coin 13253 17356
+cut 187 1901
+door_bell 1555
+coor_chi 714
+fan 80 55
+key 17129 11842
+knock_wooden 43
+knock_iron 46
+letter 47
+news 265
+pc_key 37
+printer 167
+scissor 6500 10100
+shower 1381 2887
+tap 5972
+tower 38
+wash 1600
+zipper 172

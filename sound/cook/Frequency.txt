@@ -1,0 +1,8 @@
+overall frequency 
+bol 47
+cut 168
+drink 161
+put 168
+roast 1726 1155
+table 50
+wash 41
