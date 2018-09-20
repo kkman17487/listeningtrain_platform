@@ -105,9 +105,9 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
             $rr = mysqli_fetch_assoc($randanswer);
             $tmp = array();
             array_push($tmp,$rr['name'],$rr['pic_src']);
-            print_r($tmp);
             array_push($answer,$tmp);
           }
+          print_r($answer);
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,array($rs['name'],$rs['pic_src']));
           shuffle($answer);
