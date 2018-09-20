@@ -87,6 +87,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
+    <div class="w3-col l6 s6">
       <table>
       <tr>
       <td>
@@ -110,15 +111,16 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,$rs['name']);
           shuffle($answer);
-          echo '<div class="w3-col l6 s6">';
+
               for($j = 0;$j < 4;$j++){
 
               echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'</td><img src="'.$img[$j].'">';
               //print_r($rs);
             }
-          echo '</div>
+          echo '
         </tr>
-        </table>';
+        </table>
+        </div>';
 
 
     }
