@@ -111,6 +111,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,array($rs['name'],$rs['pic_src']));
           shuffle($answer);
+          print_r($answer);
 
               for($j = 0;$j < 4;$j++){
 
