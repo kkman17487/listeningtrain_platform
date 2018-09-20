@@ -16,8 +16,7 @@ include('sidebar.php');
     </p>-->
   </header>
 
-  <!--<div class="w3-container w3-text-grey" id="sounds">-->
-  <div class="w3-container" id="sounds">
+  <div class="w3-container w3-text-grey" id="sounds">
     <form>
       <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
         <option value="#">全部</option>
@@ -45,7 +44,7 @@ include('sidebar.php');
     <?php
     for($i = 1;$i <= mysqli_num_rows($data);$i++){
       $rs = mysqli_fetch_assoc($data);
-      if($i % 4 == 1)echo '<div class="w3-row w3-grayscale">';
+      if($i % 4 == 1)echo '<div class="w3-row w3-grayscale-min">';
     ?>
     <div class="w3-col l3 s6">
       <div class="w3-container">
