@@ -99,13 +99,13 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
       </tr>
           <tr>';
           $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 3");
-          $answer = array();
-          $img = array();
+          $answer = array(array());
+          $tmp = array();
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
           {
             $rr = mysqli_fetch_assoc($randanswer);
-            array_push($answer,$rr['name']);
-            array_push($img,$rr['pic_src']);
+            array_push($tmp,$rr['name'],$rr['pic_src']);
+            array_push($answer,$tmp);
           }
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,$rs['name']);
@@ -113,13 +113,9 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 
               for($j = 0;$j < 4;$j++){
 
-              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'<img height="100" width="100" src="'.$img[$j].'"></td>';
+              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j][$j].'">'.$answer[$j][$j].'<img height="100" width="100" src="'.$answer[$j][$j+1].'"></td>';
               //print_r($rs);
             }
-            echo $img[0];
-            echo $img[1];
-            echo $img[2];
-            echo $img[3];
           echo '
         </tr>
         </table>';
