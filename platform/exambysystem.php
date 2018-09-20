@@ -111,7 +111,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           shuffle($answer);
               for($j = 0;$j < 4;$j++){
 
-              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'</td><img src="$img[$j]">';
+              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'</td><img src="'.$img[$j].'">';
               //print_r($rs);
             }
           echo '
