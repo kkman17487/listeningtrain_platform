@@ -103,18 +103,16 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
           {
             $rr = mysqli_fetch_assoc($randanswer);
-            $tmp = array();
-            array_push($tmp,$rr['name'],$rr['pic_src']);
-            array_push($answer,$tmp);
+            array_push($answer,array($rr['name'],$rr['pic_src']));
           }
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,array($rs['name'],$rs['pic_src']));
           array_unique($answer)
           shuffle($answer);
 
-              foreach($answer as $key => $value){
+              foreach($answer as $row){
 
-              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$key][0].'">'.$answer[$key][0].'<img height="100" width="100" src="'.$answer[$key][1].'"></td>';
+              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$row['name'].'">'.$row['name'].'<img height="100" width="100" src="'.$row['pic_src'].'"></td>';
               //print_r($rs);
             }
           echo '
