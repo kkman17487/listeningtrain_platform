@@ -105,7 +105,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           {
             $rr = mysqli_fetch_assoc($randanswer);
             array_push($answer,$rr['name']);
-            array_push($img,$rr['img_src']);
+            array_push($img,$rr['pic_src']);
           }
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,$rs['name']);
