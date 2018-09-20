@@ -4,7 +4,7 @@
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left"></p>
+    <p class="w3-left">環境音訓練及測試平台</p>
   </header>
 
   <!-- Image header -->
