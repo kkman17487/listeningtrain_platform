@@ -108,6 +108,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,array($rs['name'],$rs['pic_src']));
           $answer = array_unique($answer);
+          print_r($answer);
           shuffle($answer);
 
               foreach($answer as $key => $value){
