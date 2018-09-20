@@ -110,7 +110,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,$rs['name']);
           shuffle($answer);
-          echo '<div class="w3-col l6 s6">'
+          echo '<div class="w3-col l6 s6">';
               for($j = 0;$j < 4;$j++){
 
               echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'</td><img src="'.$img[$j].'">';
