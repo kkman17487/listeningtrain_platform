@@ -16,7 +16,8 @@ include('sidebar.php');
     </p>-->
   </header>
 
-  <div class="w3-container w3-text-grey" id="sounds">
+  <!--<div class="w3-container w3-text-grey" id="sounds">-->
+  <div class="w3-container" id="sounds">
     <form>
       <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
         <option value="#">全部</option>
