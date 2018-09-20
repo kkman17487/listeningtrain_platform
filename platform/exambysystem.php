@@ -115,7 +115,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 
               for($j = 0;$j < 4;$j++){
 
-              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j][$j].'">'.$answer[$j][$j].'<img height="100" width="100" src="'.$answer[$j][$j+1].'"></td>';
+              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td>';
               //print_r($rs);
             }
           echo '
