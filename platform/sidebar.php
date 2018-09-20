@@ -22,18 +22,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="homepage.php" class="w3-bar-item w3-button">首頁</a>
     <a href="training.php" class="w3-bar-item w3-button">訓練模式</a>
 	<a href="exambysystem.php" class="w3-bar-item w3-button">測驗模式</a>
-	
-	<!--<a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">測驗模式<i class="fa fa-caret-down"></i>
-    </a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="exam.php" class="w3-bar-item w3-button">題庫選擇</a>
-      <a href="exambysystem.php" class="w3-bar-item w3-button">系統出題</a>
-    </div> 	-->
-	<br>
-    <a href="" class="w3-bar-item w3-button">歷程記錄</a>
-    <a href="" class="w3-bar-item w3-button">設定</a>
   </div>
-  <a href="contact.php" class="w3-bar-item w3-button w3-padding">Contact</a>
 </nav>
 
 <!-- Top menu on small screens -->
