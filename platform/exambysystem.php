@@ -116,6 +116,10 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
               echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'<img height="100" width="100" src="'.$img[$j].'"></td>';
               //print_r($rs);
             }
+            echo $img[0];
+            echo $img[1];
+            echo $img[2];
+            echo $img[3];
           echo '
         </tr>
         </table>';
