@@ -44,7 +44,7 @@ include('sidebar.php');
     <?php
     for($i = 1;$i <= mysqli_num_rows($data);$i++){
       $rs = mysqli_fetch_assoc($data);
-      if($i % 4 == 1)echo '<div class="w3-row w3-grayscale-min">';
+      //if($i % 4 == 1)echo '<div class="w3-row w3-grayscale-min">';
     ?>
     <div class="w3-col l3 s6">
       <div class="w3-container">
@@ -65,7 +65,7 @@ include('sidebar.php');
       </div>
   </div>
   <?php
-    if($i % 4 == 0 || $i == mysqli_num_rows($data))echo '</div>';
+    //if($i % 4 == 0 || $i == mysqli_num_rows($data))echo '</div>';
   }
   ?>
   <!-- End page content -->
