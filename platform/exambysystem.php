@@ -100,6 +100,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           <tr>';
           $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 3");
           $answer = array();
+          $img = array();
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
           {
             $rr = mysqli_fetch_assoc($randanswer);
