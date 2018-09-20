@@ -8,11 +8,6 @@
           </button>
           <a class="navbar-brand" href="backend.php">環境音訓練及測試平台 後台管理</a>
         </div>
-        <!--<div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
-        </div>-->
       </div>
     </nav>
 
@@ -20,6 +15,7 @@
      <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
+			<br>
             <li><a href="answerstate.php">使用者作答記錄</a></li>
           </ul>
           <ul class="nav nav-sidebar">
