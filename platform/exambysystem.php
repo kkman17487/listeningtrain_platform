@@ -98,7 +98,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
       </td>
       </tr>
           <tr>';
-          $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 2");
+          $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 3");
           $answer = array();
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
           {
@@ -108,7 +108,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,$rs['name']);
           shuffle($answer);
-              for($j = 0;$j < 3;$j++){
+              for($j = 0;$j < 4;$j++){
 
               echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j].'">'.$answer[$j].'</td>';
               //print_r($rs);
