@@ -45,7 +45,7 @@ include('sidebar.php');
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
                 echo '<tr>
-                  <td width="5%"><a href="training.php?ID='.$rs['id'].'">'.$rs['id'].'</a></td>
+                  <td width="5%"><a href="training.php?ID='.$rs['id'].'&no=1">'.$rs['id'].'</a></td>
                   <td width="10%">'.$rs['name'].'</td>
                   <td width="15%">'.sizeof($rs_question).'</td>
                   <td width="10%">'.$rs['creator'].'</td>
@@ -60,6 +60,11 @@ include('sidebar.php');
   <!-- End page content -->';
   }
   else{
+      $no = $_GET['no'] -1;
+      $data = $con->query("select * from data where ID = $_SESSION[question][$no]");
+      $rs = mysqli_fetch_assoc($data);
+      $previous = $_GET['no'] - 1;
+      $next = $_GET['no'] + 1;
     ?>
     <div class="w3-col l12 s12">
       <div class="w3-container">
@@ -77,6 +82,8 @@ include('sidebar.php');
           </div>
         </div>
         <p align = 'center'><?php echo $rs[name]?></p>
+        <button onclick="location.href='training.php?ID=<?php echo $_GET['ID']?>&no=<?php echo $previous?>" type="button" <?php if($previous<0) echo disabled?>>上一題</button>
+        <button onclick="location.href='training.php?ID=<?php echo $_GET['ID']?>&no=<?php echo $next?>" type="button" <?php if($next>=sizeof($_SESSION['question'])) echo disabled?>>下一題</button>
       </div>
   </div>
 <?php
