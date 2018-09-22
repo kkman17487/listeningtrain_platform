@@ -42,7 +42,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
       <h1 class="w3-jumbo w3-hide-small">系統出題</h1>
       <h1 class="w3-hide-small">系統出題</h1>
-      <form action="exambysystem.php?number='.$_GET['number'].'&no=1" method="get">
+      <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
         <input type="submit">
       </form>
@@ -81,9 +81,9 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     echo '<div class="w3-row">';
     if(isset($_GET['number']))
     echo '
-    <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
+    <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'">';
     elseif(isset($_GET['ID']))
-    echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&checkanswer=true">';
+    echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'">';
     for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
