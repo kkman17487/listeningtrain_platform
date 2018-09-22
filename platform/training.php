@@ -45,7 +45,7 @@ include('sidebar.php');
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
                 echo '<tr>
-                  <td width="5%"><a href="training.php?ID='.$rs['id'].'&no=1">'.$rs['id'].'</a></td>
+                  <td width="5%"><a href="training.php?ID='.$rs['id'].'&no=0">'.$rs['id'].'</a></td>
                   <td width="10%">'.$rs['name'].'</td>
                   <td width="15%">'.sizeof($rs_question).'</td>
                   <td width="10%">'.$rs['creator'].'</td>
