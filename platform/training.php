@@ -65,6 +65,7 @@ include('sidebar.php');
       $rs = mysqli_fetch_assoc($data);
       $previous = $_GET['no'] - 1;
       $next = $_GET['no'] + 1;
+      print_r($_SESSION['question']);
     ?>
     <div class="w3-col l12 s12">
       <div class="w3-container">
