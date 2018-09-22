@@ -79,6 +79,7 @@ include('sidebar.php');
         <p align = 'center'><?php echo $rs[name]?></p>
       </div>
   </div>
+<?php
 }
   ?>
   <!-- End page content -->
