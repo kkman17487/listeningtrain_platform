@@ -107,14 +107,14 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           }
           array_push($_SESSION['correct_answer'],$rs['name']);
           array_push($answer,array($rs['name'],$rs['pic_src']));
-          print_r($answer);
+          //print_r($answer);
           $answer = array_filter($answer);
-          print_r($answer);
+          //print_r($answer);
           shuffle($answer);
 
-              foreach($answer as $key => $value){
+              for($j = 1;$j <= 4;$j++){
 
-              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$key[0].'">'.$key[0].'<img height="100" width="100" src="'.$key[1].'"></td>';
+              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td>';
               //print_r($rs);
             }
           echo '
