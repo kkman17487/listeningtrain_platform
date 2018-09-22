@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <?php
+session_start();
 include('connect_to_sql.php');
+if(!isset($_GET['ID']))
+{
+unset($_SESSION['question']);
 $data = $con->query("select * from train");
+}
+else {
+  $data = $con->query("select * from train WHERE ID = '$_GET[ID]'")
+  $rs = mysqli_fetch_assoc($data);
+  $_SESSION['question'] = explode(',',$rs['question']);
+}
 include('sidebar.php');
 ?>
 <html>
@@ -31,7 +41,6 @@ include('sidebar.php');
                     <td width="10%">作者</td>
                     <td width="60%">最近修改時間</td>
                   </tr>';
-    $data = $con->query("SELECT * FROM train");
     for($i=1;$i<=mysqli_num_rows($data);$i++){
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
@@ -52,37 +61,7 @@ include('sidebar.php');
   }
   else{
     ?>
-  <div class="w3-container w3-text-grey" id="sounds">
-    <form>
-      <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
-        <option value="#">全部</option>
-        <?php
-        $classfication = array();
-        for($j = 1;$j <= mysqli_num_rows($tag);$j++){
-          $rs_tag = mysqli_fetch_assoc($tag);
-          $tmp = explode("、",$rs_tag[tag]);
-            $classfication = array_merge($classfication, $tmp);
-        }
-        $classfication = array_unique($classfication);
-        foreach ($classfication as $key => $value){
-          echo '<option value="'.$value.'"';
-          if($this_type == "$value")
-            echo 'selected';
-          echo '>'.$value.'</option>';
-        }?>
-
-      </select>
-    </form>
-    <p>一共有<?php echo mysqli_num_rows($data);?>筆資料</p>
-  </div>
-
-  <!-- Product grid -->
-    <?php
-    for($i = 1;$i <= mysqli_num_rows($data);$i++){
-      $rs = mysqli_fetch_assoc($data);
-      if($i % 4 == 1)echo '<div class="w3-row">';
-    ?>
-    <div class="w3-col l3 s6">
+    <div class="w3-col l12 s12">
       <div class="w3-container">
         <div class="w3-display-container">
           <audio id='<?php echo $rs[audio_id]?>'>
@@ -100,9 +79,6 @@ include('sidebar.php');
         <p align = 'center'><?php echo $rs[name]?></p>
       </div>
   </div>
-  <?php
-    if($i % 4 == 0 || $i == mysqli_num_rows($data))echo '</div>';
-  }
 }
   ?>
   <!-- End page content -->

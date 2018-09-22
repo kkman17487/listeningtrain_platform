@@ -3,13 +3,13 @@
 session_start();
 if(isset($_GET['number']) && !isset($_GET['checkanswer']))
 {
-  session_unset();
+  unset($_SESSION['data']);
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
 elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 {
-  session_unset();
+  unset($_SESSION['data']);
   include('connect_to_sql.php');
   $ID = $_GET['ID'];
   $question = $con->query("SELECT * FROM exam WHERE id = '$ID'");
