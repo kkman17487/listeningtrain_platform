@@ -140,9 +140,9 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_POST['answer'.($i+1)].'</p>';
       if($correct_answer[$i] != $_POST['answer'.($i+1)])
-        echo '錯誤！正確答案:'.$correct_answer[$i].'<br>';
+        echo '錯誤！正確答案:'.$correct_answer[$i].'<img height="100" width="100" src="'.$rs[pic_src].'"><br>';
       else
-        echo '正確！！！<br>';
+        echo '正確！！！<br>'.$rs[pic_src];
     }
     /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
