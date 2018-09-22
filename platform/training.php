@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <?php
 include('connect_to_sql.php');
-$this_type = $_GET['sound_type'];
-$data = $con->query("select * from data where tag LIKE '%$this_type%'");
-$tag = $con->query("select tag from data where tag != ''");
+$data = $con->query("select * from train");
 include('sidebar.php');
 ?>
 <html>
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">訓練模式</p>
+    <p class="w3-left">教材選擇</p>
     <!--<p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <i class="fa fa-search"></i>
     </p>-->
   </header>
-
+  <body>
+  <?php
+  if(!isset($_GET['ID'])){
+    echo '<div class="w3-display-container w3-container">
+    <img src="../picture/test2.jpg" alt="Photo" style="width:100%">
+    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
+      <h1 class="w3-jumbo w3-hide-small">教材選擇</h1>
+      <h1 class="w3-hide-small">教材選擇</h1>
+      <div class="container">
+        <div class="CSSTableGenerator">
+            <table align="center">
+                  <tr>
+                    <td width="5%">ID</td>
+                    <td width="10%">名稱</td>
+                    <td width="15%">題數</td>
+                    <td width="10%">作者</td>
+                    <td width="60%">最近修改時間</td>
+                  </tr>';
+    $data = $con->query("SELECT * FROM train");
+    for($i=1;$i<=mysqli_num_rows($data);$i++){
+     $rs=mysqli_fetch_assoc($data);
+     $rs_question = explode(',',$rs['question']);
+                echo '<tr>
+                  <td width="5%"><a href="training.php?ID='.$rs['id'].'">'.$rs['id'].'</a></td>
+                  <td width="10%">'.$rs['name'].'</td>
+                  <td width="15%">'.sizeof($rs_question).'</td>
+                  <td width="10%">'.$rs['creator'].'</td>
+                  <td width="60%">'.$rs['recent_edit_time'].'</td>
+                </tr>';
+    }
+    echo '</table>
+    </div>
+    </div>
+    </div>
+  </div>
+  <!-- End page content -->';
+  }
+  else{
+    ?>
   <div class="w3-container w3-text-grey" id="sounds">
     <form>
       <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
@@ -67,6 +103,7 @@ include('sidebar.php');
   <?php
     if($i % 4 == 0 || $i == mysqli_num_rows($data))echo '</div>';
   }
+}
   ?>
   <!-- End page content -->
 
