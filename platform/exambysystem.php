@@ -42,7 +42,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
       <h1 class="w3-jumbo w3-hide-small">系統出題</h1>
       <h1 class="w3-hide-small">系統出題</h1>
-      <form action="exambysystem.php" method="get">
+      <form action="exambysystem.php?number='.$_GET['number'].'&no=1" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
         <input type="submit">
       </form>
