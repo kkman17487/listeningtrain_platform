@@ -81,9 +81,9 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
     echo '<div class="w3-row">';
     if(isset($_GET['number']))
     echo '
-    <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'">';
+    <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
     elseif(isset($_GET['ID']))
-    echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'">';
+    echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&checkanswer=true">';
     for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
