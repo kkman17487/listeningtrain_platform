@@ -61,8 +61,8 @@ include('sidebar.php');
   }
   else{
       $no = $_GET['no'];
-      $data = $con->query("select * from data where ID = '$_SESSION[question][$no]'");
-      echo $_SESSION['question'][$no];
+      $ID = $_SESSION['question'][$no];
+      $data = $con->query("select * from data where ID = '$ID'");
       $rs = mysqli_fetch_assoc($data);
       $previous = $_GET['no'] - 1;
       $next = $_GET['no'] + 1;
