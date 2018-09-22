@@ -108,17 +108,17 @@
 include("connect_to_sql.php");
 if(isset($_GET['add']))
 {
-  $con->query("INSERT INTO `exam` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL, '', '', 'Ian', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);");
-  $exam = $con->query("SELECT * FROM exam ORDER BY id DESC LIMIT 1");
-  $tmp = mysqli_fetch_assoc($exam);
-  header("Location: set_exam.php?ID=".$tmp['id']);
+  $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL, '', '', 'Ian', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);");
+  $train = $con->query("SELECT * FROM train ORDER BY id DESC LIMIT 1");
+  $tmp = mysqli_fetch_assoc($train);
+  header("Location: edit_train.php?ID=".$tmp['id']);
 }
 if(isset($_POST['delete']))
 {
   foreach ($_POST['delete'] as $key => $value) {
-    $con->query("DELETE FROM exam WHERE id = '$value'");
+    $con->query("DELETE FROM train WHERE id = '$value'");
   }
-  header("Location: set_exam.php");
+  header("Location: edit_train.php");
 }
 if(isset($_POST['name']) && isset($_POST['question']))
 {
@@ -131,8 +131,8 @@ if(isset($_POST['name']) && isset($_POST['question']))
   }
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
-  $con->query("UPDATE exam SET question='$question',name='$name',recent_edit_time='$date' WHERE id='$ID'");
-  header("Location: set_exam.php");
+  $con->query("UPDATE train SET question='$question',name='$name',recent_edit_time='$date' WHERE id='$ID'");
+  header("Location: edit_train.php");
   die();
 }
 include('backendheader.php'); ?>
@@ -143,14 +143,14 @@ include('backendheader.php'); ?>
 題庫選擇
 <?php
 if(!isset($_GET['ID'])){
-$data = $con->query("select * from exam");
+$data = $con->query("select * from train");
 $sound = $con->query("select * from data");
 //讓資料由最新呈現到最舊
 ?>
 
   <div class="container">
     <div class="CSSTableGenerator">
-      <a href="set_exam.php?add=true">新增</a>
+      <a href="edit_train.php?add=true">新增</a>
       <form method="post" action="">
         <table align="center">
               <tr>
@@ -169,7 +169,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 
             <tr>
               <td width="1%"><input type="checkbox" name="delete[]" value="<?php echo $rs['id'];?>"></td>
-              <td width="4%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
+              <td width="4%"><a href="edit_train.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="35%">
                 <?php
@@ -198,13 +198,13 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 }
 else{
   $ID = $_GET['ID'];
-  $data = $con->query("select * from exam where id = '$ID'");
+  $data = $con->query("select * from train where id = '$ID'");
   $sound = $con->query("select * from data")
   //讓資料由最新呈現到最舊
 ?>
   <div class="container">
     <div class="CSSTableGenerator">
-      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $ID;?>">
+      <form method="post" name="train" action="edit_train.php?ID=<?php echo $ID;?>">
         <table align="center">
               <tr>
                 <td width="5%">ID</td>
@@ -244,7 +244,7 @@ else{
             </tr>
 </table>
 <input type="submit" value="修改">
-<input type="button" value="取消" onclick="document.location.href='set_exam.php'" />
+<input type="button" value="取消" onclick="document.location.href='edit_train.php'" />
 </form>
 </div>
 </div>
