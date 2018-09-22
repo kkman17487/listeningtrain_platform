@@ -62,10 +62,10 @@ include('sidebar.php');
   else{
       $no = $_GET['no'] -1;
       $data = $con->query("select * from data where ID = '$_SESSION[question][$no]'");
+      echo $_SESSION[question][$no];
       $rs = mysqli_fetch_assoc($data);
       $previous = $_GET['no'] - 1;
       $next = $_GET['no'] + 1;
-      print_r($rs);
     ?>
     <div class="w3-col l12 s12">
       <div class="w3-container">
