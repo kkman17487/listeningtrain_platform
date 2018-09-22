@@ -111,6 +111,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
           $answer = array_filter($answer);
           //print_r($answer);
           shuffle($answer);
+          print_r($answer);
 
               for($j = 1;$j <= 4;$j++){
 
