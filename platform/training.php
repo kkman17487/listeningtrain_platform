@@ -2,6 +2,7 @@
 <?php
 session_start();
 include('connect_to_sql.php');
+$name;
 if(!isset($_GET['ID']))
 {
 unset($_SESSION['question']);
@@ -10,6 +11,7 @@ $data = $con->query("select * from train");
 else {
   $data = $con->query("select * from train WHERE ID = '$_GET[ID]'");
   $rs = mysqli_fetch_assoc($data);
+  $name = $rs['name'];
   $_SESSION['question'] = explode(',',$rs['question']);
 }
 include('sidebar.php');
@@ -21,7 +23,7 @@ include('sidebar.php');
       if(!isset($_GET['ID']))
         echo '<p class="w3-left">教材選擇</p>';
       else
-        echo '<p class="w3-left">教材'.$_GET['ID'].':'.$rs['name'].'</p>';
+        echo '<p class="w3-left">教材'.$_GET['ID'].':'.$name.'</p>';
     ?>
 
     <!--<p class="w3-right">
