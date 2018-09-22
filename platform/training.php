@@ -8,7 +8,7 @@ unset($_SESSION['question']);
 $data = $con->query("select * from train");
 }
 else {
-  $data = $con->query("select * from train WHERE ID = '$_GET[ID]'")
+  $data = $con->query("select * from train WHERE ID = '$_GET[ID]'");
   $rs = mysqli_fetch_assoc($data);
   $_SESSION['question'] = explode(',',$rs['question']);
 }
