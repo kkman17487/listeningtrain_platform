@@ -91,6 +91,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
     }
     echo '<div class="w3-row">';
     $next = $_GET['no'] +1;
+    print_r($_SESSION['data']);
     if($_GET['no'] == (mysqli_num_rows($_SESSION['data'])-1))
     {
       if(isset($_GET['ID']))
