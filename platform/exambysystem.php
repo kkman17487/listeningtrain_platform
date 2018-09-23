@@ -48,6 +48,7 @@ elseif ($_GET['no'] > 0)
       <h1 class="w3-hide-small">系統出題</h1>
       <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
+        <input name="no" value="1" hidden>
         <input type="submit">
       </form>
       <h1 class="w3-hide-small">題庫選擇</h1>
