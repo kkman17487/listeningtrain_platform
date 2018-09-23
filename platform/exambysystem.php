@@ -180,7 +180,7 @@ elseif(isset($_GET['checkanswer']))
       else
         echo '<p style="color:green;">正確！！！</p><img height="100" width="100" src="'.$rs[pic_src].'"><br>';
       echo '</div></div></div>';
-      if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div>';
+      if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
     }
     /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
