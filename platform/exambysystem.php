@@ -91,9 +91,9 @@ elseif ($_GET['no'] > 0)
     echo '<div class="w3-row">';
     if(isset($_GET['number']))
       echo '
-      <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$_GET['no']+1.'">';
+      <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$_GET['no']+1\.'">';
     elseif(isset($_GET['ID']))
-      echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$_GET['no']+1.'">';
+      echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$_GET['no']+1\.'">';
     elseif($_GET['no'] == (sizeof($_SESSION['data'])-1))
       if(isset($_GET['ID']))
         echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'checkanswer=true">';
