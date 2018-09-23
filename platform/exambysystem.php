@@ -48,7 +48,7 @@ elseif ($_GET['no'] > 0)
       <h1 class="w3-hide-small">系統出題</h1>
       <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
-        <input name="no" value="1" hidden>
+        <input name="no" value="0" hidden>
         <input type="submit">
       </form>
       <h1 class="w3-hide-small">題庫選擇</h1>
@@ -91,16 +91,16 @@ elseif ($_GET['no'] > 0)
     }
     echo '<div class="w3-row">';
     $next = $_GET['no'] +1;
-    if(isset($_GET['number']))
-      echo '
-      <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$next.'">';
-    elseif(isset($_GET['ID']))
-      echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
-    elseif($_GET['no'] == (sizeof($_SESSION['data'])-1))
+    if($_GET['no'] == (sizeof($_SESSION['data'])-1))
       if(isset($_GET['ID']))
         echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'checkanswer=true">';
       elseif(isset($_GET['number']))
         echo '<form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'checkanswer=true">';
+    elseif(isset($_GET['number']))
+      echo '
+      <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$next.'">';
+    elseif(isset($_GET['ID']))
+      echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
 
     $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
@@ -138,7 +138,10 @@ elseif ($_GET['no'] > 0)
           echo '
         </tr>
         </table>';
-    echo '<br><input type="submit" name="submit" align="center"></form></div>';
+    if($_GET['no'] == (sizeof($_SESSION['data'])-1))
+      echo '<br><input type="submit" name="submit" value="提交" align="center"></form></div>';
+    else
+      echo '<br><input type="submit" name="submit" value="下一題" align="center"></form></div>';
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
