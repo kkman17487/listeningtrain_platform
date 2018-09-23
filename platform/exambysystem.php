@@ -164,6 +164,10 @@ elseif(isset($_GET['checkanswer']))
       include('connect_to_sql.php');
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
       $rs = mysqli_fetch_assoc($tmp);
+      if($i % 4 == 0)echo '<div class="w3-row">';
+      echo '<div class="w3-col l3 s6">
+        <div class="w3-container">
+          <div class="w3-display-container">';
       echo '<audio id= "'.$rs[audio_id].'">
         <source src="'.$rs[sound_src].'" type="audio/mp3" />
         <embed height="100" width="100" src="'.$rs[sound_src].'" />
@@ -175,6 +179,8 @@ elseif(isset($_GET['checkanswer']))
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="100" width="100" src="'.$rs[pic_src].'"><br>';
       else
         echo '<p style="color:green;">正確！！！</p><img height="100" width="100" src="'.$rs[pic_src].'"><br>';
+      echo '</div></div></div>';
+      if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div>';
     }
     /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
