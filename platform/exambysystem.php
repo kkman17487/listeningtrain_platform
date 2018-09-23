@@ -82,7 +82,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
   <!-- End page content -->';
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && !isset($_GET['checkanswer'])){
-    if($_GET['no'] == 0)
+    if(isset($_GET['no']) && $_GET['no'] == 0)
     {
       unset($_SESSION['correct_answer']);
       unset($_SESSION['select_answer']);
@@ -105,13 +105,6 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
       echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
 
     $rs = mysqli_fetch_assoc($_SESSION['data']);
-    print_r($rs);
-    $r1 = mysqli_fetch_assoc($_SESSION['data']);
-    print_r($r1);
-    $r2 = mysqli_fetch_assoc($_SESSION['data']);
-    print_r($r2);
-    $r3 = mysqli_fetch_assoc($_SESSION['data']);
-    print_r($r3);
     echo '
       <table>
       <tr>
