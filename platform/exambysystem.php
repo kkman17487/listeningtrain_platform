@@ -3,6 +3,7 @@ session_start();
 if(isset($_GET['number']) && $_GET['no'] == 0)
 {
   unset($_SESSION['data']);
+  unset($_SESSION['read']);
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
   for($i = 0;$i < mysqli_num_rows($_SESSION['data']);$i++)
@@ -13,6 +14,7 @@ if(isset($_GET['number']) && $_GET['no'] == 0)
 elseif(isset($_GET['ID']) && $_GET['no'] == 0)
 {
   unset($_SESSION['data']);
+  unset($_SESSION['read']);
   include('connect_to_sql.php');
   $ID = $_GET['ID'];
   $question = $con->query("SELECT * FROM exam WHERE id = '$ID'");
