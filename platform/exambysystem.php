@@ -109,11 +109,11 @@ elseif($_GET['no'] > 0)
       <table>
       <tr>
       <td>
-            <audio id= "'.$rs[audio_id].'">
-              <source src="'.$rs[sound_src].'" type="audio/mp3" />
-              <embed height="100" width="100" src="'.$rs[sound_src].'" />
+            <audio id= "'.$rs['audio_id'].'">
+              <source src="'.$rs['sound_src'].'" type="audio/mp3" />
+              <embed height="100" width="100" src="'.$rs['sound_src'].'" />
             </audio>
-            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">Play</button>
+            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); return false;">Play</button>
       </td>
       </tr>
           <tr>';
