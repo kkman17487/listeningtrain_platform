@@ -104,6 +104,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
       echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
 
     $rs = mysqli_fetch_assoc($_SESSION['data']);
+    $_SESSION['data'] = $_SESSION['data'];
     echo '
       <table>
       <tr>
