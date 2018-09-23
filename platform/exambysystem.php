@@ -3,14 +3,12 @@
 session_start();
 if(isset($_GET['number']) && $_GET['no'] == 0)
 {
-  echo 'n';
   unset($_SESSION['data']);
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
 elseif(isset($_GET['ID']) && $_GET['no'] == 0)
 {
-  echo 'i';
   unset($_SESSION['data']);
   include('connect_to_sql.php');
   $ID = $_GET['ID'];
@@ -28,8 +26,9 @@ elseif(isset($_GET['ID']) && $_GET['no'] == 0)
 }
 elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
-  echo 'nn';
   array_push($_SESSION['select_answer'],$_POST['answer']);
+  print_r($_SESSION['select_answer']);
+  print_r($_POST['answer']);
 }
 print_r($_SESSION['data']);
 ?>
