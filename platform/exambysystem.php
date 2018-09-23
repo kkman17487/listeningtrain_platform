@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 if(isset($_GET['number']) && $_GET['no'] == 0)
@@ -27,8 +26,6 @@ elseif(isset($_GET['ID']) && $_GET['no'] == 0)
 elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
   array_push($_SESSION['select_answer'],$_POST['answer']);
-  print_r($_SESSION['select_answer']);
-  //print_r($_POST['answer']);
 }
 ?>
 <html>
@@ -92,7 +89,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
       $_SESSION['select_answer'] = array();
     }
     echo '<div class="w3-row">';
-    $next = $_GET['no'] +1;
+    $next = $_GET['no'] + 1;
     if($_GET['no'] == (mysqli_num_rows($_SESSION['data'])-1))
     {
       if(isset($_GET['ID']))
