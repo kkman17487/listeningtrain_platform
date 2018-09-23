@@ -28,9 +28,8 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
   array_push($_SESSION['select_answer'],$_POST['answer']);
   print_r($_SESSION['select_answer']);
-  print_r($_POST['answer']);
+  //print_r($_POST['answer']);
 }
-print_r($_SESSION['data']);
 ?>
 <html>
 <?php include('sidebar.php'); ?>
