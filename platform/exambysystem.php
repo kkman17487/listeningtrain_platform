@@ -92,10 +92,12 @@ elseif ($_GET['no'] > 0)
     echo '<div class="w3-row">';
     $next = $_GET['no'] +1;
     if($_GET['no'] == (mysqli_num_rows($_SESSION['data'])-1))
+    {
       if(isset($_GET['ID']))
         echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&checkanswer=true">';
       elseif(isset($_GET['number']))
         echo '<form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
+    }
     elseif(isset($_GET['number']))
       echo '
       <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$next.'">';
