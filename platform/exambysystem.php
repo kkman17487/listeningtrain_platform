@@ -44,7 +44,6 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
       <h1 class="w3-hide-small">系統出題</h1>
       <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
-        <input name="no" value="0" hidden>
         <input type="submit">
       </form>
       <h1 class="w3-hide-small">題庫選擇</h1>
@@ -63,7 +62,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
                 echo '<tr>
-                  <td width="5%"><a href="exambysystem.php?ID='.$rs['id'].'&no=0">'.$rs['id'].'</a></td>
+                  <td width="5%"><a href="exambysystem.php?ID='.$rs['id'].'">'.$rs['id'].'</a></td>
                   <td width="10%">'.$rs['name'].'</td>
                   <td width="15%">'.sizeof($rs_question).'</td>
                   <td width="10%">'.$rs['creator'].'</td>
