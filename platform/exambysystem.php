@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(isset($_GET['number']) && !isset($_GET['checkanswer']))
+if(isset($_GET['number']) && !isset($_GET['checkanswer']) && $_GET['no'] == 0)
 {
   unset($_SESSION['data']);
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
-elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
+elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']) && $_GET['no'] == 0)
 {
   unset($_SESSION['data']);
   include('connect_to_sql.php');
@@ -23,6 +23,10 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   $sql = substr($sql,0,-4);
   $sql .= " ORDER BY RAND()";
   $_SESSION['data'] = $con->query($sql);
+}
+elseif ($_GET['no'] > 0)
+{
+  array_push($_SESSION['select_answer'],$_POST['answer']);
 }
 ?>
 <html>
@@ -62,7 +66,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
      $rs=mysqli_fetch_assoc($data);
      $rs_question = explode(',',$rs['question']);
                 echo '<tr>
-                  <td width="5%"><a href="exambysystem.php?ID='.$rs['id'].'">'.$rs['id'].'</a></td>
+                  <td width="5%"><a href="exambysystem.php?ID='.$rs['id'].'&no=0">'.$rs['id'].'</a></td>
                   <td width="10%">'.$rs['name'].'</td>
                   <td width="15%">'.sizeof($rs_question).'</td>
                   <td width="10%">'.$rs['creator'].'</td>
@@ -77,15 +81,26 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
   <!-- End page content -->';
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && !isset($_GET['checkanswer'])){
-    $_SESSION['correct_answer'] = array();
+    if($_GET['no'] == 0)
+    {
+      unset($_SESSION['correct_answer']);
+      unset($_SESSION['select_answer']);
+      $_SESSION['correct_answer'] = array();
+      $_SESSION['select_answer'] = array();
+    }
     echo '<div class="w3-row">';
     if(isset($_GET['number']))
-    echo '
-    <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&checkanswer=true">';
+      echo '
+      <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$_GET['no']+1.'">';
     elseif(isset($_GET['ID']))
-    echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&checkanswer=true">';
-    for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
-      $rs = mysqli_fetch_assoc($_SESSION['data']);
+      echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$_GET['no']+1.'">';
+    elseif($_GET['no'] == (sizeof($_SESSION['data'])-1))
+      if(isset($_GET['ID']))
+        echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'checkanswer=true">';
+      elseif(isset($_GET['number']))
+        echo '<form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'checkanswer=true">';
+
+    $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
       <table>
       <tr>
@@ -115,15 +130,12 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
 
               for($j = 0;$j < 4;$j++){
 
-              echo '<td><input type="radio" id="answer'.$i.'" name="answer'.$i.'" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td>';
+              echo '<td><input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td>';
               //print_r($rs);
             }
           echo '
         </tr>
         </table>';
-
-
-    }
     echo '<br><input type="submit" name="submit" align="center"></form></div>';
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
@@ -138,8 +150,8 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']))
       </audio>
       <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">再聽一次</button>';
       echo '<p>您第'.($i+1);
-      echo '題的答案:'.$_POST['answer'.($i+1)].'</p>';
-      if($correct_answer[$i] != $_POST['answer'.($i+1)])
+      echo '題的答案:'.$_SESSION['select_answer'][$i]'</p>';
+      if($correct_answer[$i] != $_SESSION['select_answer'][$i])
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="100" width="100" src="'.$rs[pic_src].'"><br>';
       else
         echo '<p style="color:green;">正確！！！</p><img height="100" width="100" src="'.$rs[pic_src].'"><br>';
