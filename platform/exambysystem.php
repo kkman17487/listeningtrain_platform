@@ -37,7 +37,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
   array_push($_SESSION['select_answer'],$_POST['answer']);
 }
-elseif(isset($checkanswer))
+elseif(isset($_GET['checkanswer']))
 {
   array_push($_SESSION['select_answer'],$_POST['answer']);
 }
