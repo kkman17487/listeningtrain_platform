@@ -5,6 +5,10 @@ if(isset($_GET['number']) && $_GET['no'] == 0)
   unset($_SESSION['data']);
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
+  for($i = 0;$i < mysqli_num_rows($_SESSION['data']);$i++)
+  {
+    $_SESSION['read'][$i] = mysqli_fetch_assoc($_SESSION['data']);
+  }
 }
 elseif(isset($_GET['ID']) && $_GET['no'] == 0)
 {
@@ -22,6 +26,10 @@ elseif(isset($_GET['ID']) && $_GET['no'] == 0)
   $sql = substr($sql,0,-4);
   $sql .= " ORDER BY RAND()";
   $_SESSION['data'] = $con->query($sql);
+  for($i = 0;$i < mysqli_num_rows($_SESSION['data']);$i++)
+  {
+    $_SESSION['read'][$i] = mysqli_fetch_assoc($_SESSION['data']);
+  }
 }
 elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
@@ -90,7 +98,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
     }
     echo '<div class="w3-row">';
     $next = $_GET['no'] + 1;
-    if($_GET['no'] == (mysqli_num_rows($_SESSION['data'])-1))
+    if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
       if(isset($_GET['ID']))
         echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&checkanswer=true">';
@@ -103,8 +111,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
     elseif(isset($_GET['ID']))
       echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
 
-    $rs = mysqli_fetch_assoc($_SESSION['data']);
-    $_SESSION['data'] = $_SESSION['data'];
+    $rs = mysqli_fetch_assoc($_SESSION['read'][$_GET['no']]);
     echo '
       <table>
       <tr>
@@ -140,7 +147,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
           echo '
         </tr>
         </table>';
-    if($_GET['no'] == (mysqli_num_rows($_SESSION['data'])-1))
+    if($_GET['no'] == (sizeof($_SESSION['read'])-1))
       echo '<br><input type="submit" name="submit" value="提交" align="center"></form></div>';
     else
       echo '<br><input type="submit" name="submit" value="下一題" align="center"></form></div>';
