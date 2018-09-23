@@ -24,7 +24,7 @@ elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']) && $_GET['no'] == 0)
   $sql .= " ORDER BY RAND()";
   $_SESSION['data'] = $con->query($sql);
 }
-elseif ($_GET['no'] > 0)
+elseif($_GET['no'] > 0)
 {
   array_push($_SESSION['select_answer'],$_POST['answer']);
 }
