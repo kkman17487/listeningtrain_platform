@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_GET['number']) && $_GET['no'] == 0)
+if(isset($_GET['number']) && (isset($_GET['no']) && $_GET['no'] == 0))
 {
   unset($_SESSION['data']);
   unset($_SESSION['read']);
@@ -11,7 +11,7 @@ if(isset($_GET['number']) && $_GET['no'] == 0)
     $_SESSION['read'][$i] = mysqli_fetch_assoc($_SESSION['data']);
   }
 }
-elseif(isset($_GET['ID']) && $_GET['no'] == 0)
+elseif(isset($_GET['ID']) && (isset($_GET['no']) && $_GET['no'] == 0))
 {
   unset($_SESSION['data']);
   unset($_SESSION['read']);
@@ -104,7 +104,6 @@ elseif(isset($_GET['checkanswer']))
     }
     echo '<div class="w3-row">';
     $next = $_GET['no'] + 1;
-    echo sizeof($_SESSION['read']);
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
       if(isset($_GET['ID']))
@@ -161,6 +160,7 @@ elseif(isset($_GET['checkanswer']))
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
+    print_r($_SESSION['select_answer']);
     for($i = 0;$i < sizeof($correct_answer);$i++){
       include('connect_to_sql.php');
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
