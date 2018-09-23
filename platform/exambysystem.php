@@ -137,7 +137,7 @@ elseif ($_GET['no'] > 0)
             }
           echo '
         </tr>
-        </table>';
+        </table>'.sizeof($_SESSION['data']);
     if($_GET['no'] == (sizeof($_SESSION['data'])-1))
       echo '<br><input type="submit" name="submit" value="提交" align="center"></form></div>';
     else
