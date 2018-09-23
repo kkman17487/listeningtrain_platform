@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(isset($_GET['number']) && !isset($_GET['checkanswer']) && $_GET['no'] == 0)
+if(isset($_GET['number']) && $_GET['no'] == 0)
 {
   unset($_SESSION['data']);
   include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
 }
-elseif(isset($_GET['ID']) && !isset($_GET['checkanswer']) && $_GET['no'] == 0)
+elseif(isset($_GET['ID']) && $_GET['no'] == 0)
 {
   unset($_SESSION['data']);
   include('connect_to_sql.php');
@@ -91,7 +91,6 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
     }
     echo '<div class="w3-row">';
     $next = $_GET['no'] +1;
-    print_r($_SESSION['data']);
     if($_GET['no'] == (mysqli_num_rows($_SESSION['data'])-1))
     {
       if(isset($_GET['ID']))
