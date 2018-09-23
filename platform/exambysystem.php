@@ -111,7 +111,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)
     elseif(isset($_GET['ID']))
       echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
 
-    $rs = mysqli_fetch_assoc($_SESSION['read'][$_GET['no']]);
+    $rs = $_SESSION['read'][$_GET['no']];
     echo '
       <table>
       <tr>
