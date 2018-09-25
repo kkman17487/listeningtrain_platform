@@ -41,10 +41,12 @@ if(isset($_POST['formSubmit']))
 	
     <a href="adddata.php?add=true">新增</a>
 		<form action="test_post.php" method="post">
-		中文名稱<input type="text" name="ChineseName"/><p>
-		英文名稱<input type="text" name="EnglishName"/><p>
- 
-		<label for='formcategory[]'>選擇類別</label> <br>
+		中文名稱<input type="text" name="ChineseName"/>
+		<br>
+		英文名稱<input type="text" name="EnglishName"/>
+		<p>
+		<label for='formcategory[]'>選擇類別</label>
+		<br>
 		<select multiple="multiple" name="formcategory[]">
 			<option value="City">城市、房子</option>
 			<option value="Nature">自然、動物</option>
@@ -54,8 +56,8 @@ if(isset($_POST['formSubmit']))
 		</select>
 		
 		<p>
-		<form action="uploads.php" method="post" enctype="multipart/form-data">選擇聲音<input type="file" name="my_file[]" multiple></form> <br>
-		<form action="uploadp.php" method="post" enctype="multipart/form-data">選擇圖片<input type="file" name="my_file[]" multiple></form> <br> 
+		<form action="uploads.php" method="post" enctype="multipart/form-data">選擇聲音<input type="file" name="my_file[]" multiple></form>
+		<form action="uploadp.php" method="post" enctype="multipart/form-data">選擇圖片<input type="file" name="my_file[]" multiple></form><br> 
 		
 　		<input type="submit" value="送出" />
 		</form>
