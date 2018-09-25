@@ -7,7 +7,7 @@ include('backendheader.php');
 include('connect_to_sql.php');
 
 if(isset($_GET['add'])){
-	$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES('','','','.$_POST["ChineseName"].','','.$_POST["ChineseName"].');");
+	$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES('','','',ChineseName,CURRENT_TIMESTAMP,EnglishName);");
 }
 
 if(isset($_POST['formSubmit'])) 
