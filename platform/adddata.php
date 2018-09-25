@@ -7,7 +7,7 @@ include('backendheader.php');
 include('connect_to_sql.php');
 
 if(isset($_GET['add'])){
-	$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES('','','','.$_POST["ChineseName"].','','.$_POST["ChineseName"].';");
+	$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES('','','','.$_POST["ChineseName"].','','.$_POST["ChineseName"].');");
 }
 
 if(isset($_POST['formSubmit'])) 
@@ -45,7 +45,7 @@ if(isset($_POST['formSubmit']))
 		<input type="text" name="ChineseName" placeholder="中文名"/>
 		
 		<label>聲音英文名稱</label>
-		<input type="text" name="EnglishName"/ placeholder="英文名">
+		<input type="text" name="EnglishName" placeholder="英文名"/>
 		<br><br>
 		
 		<label for='formcategory[]'>選擇類別</label>
