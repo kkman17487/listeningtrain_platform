@@ -41,11 +41,11 @@ if(isset($_POST['formSubmit']))
 	
     <a href="adddata.php?add=true">新增</a>
 		<form action="" method="post">
-		<label>聲音中文名稱</label>
-		<input type="text" name="ChineseName" placeholder="中文名"/>
+		<label>中文名稱</label>
+		<input type="text" name="ChineseName" placeholder="中文"/>
 		
-		<label>聲音英文名稱</label>
-		<input type="text" name="EnglishName" placeholder="英文名"/>
+		<label>英文名稱</label>
+		<input type="text" name="EnglishName" placeholder="English"/>
 		<br><br>
 		
 		<label for='formcategory[]'>選擇類別</label>
