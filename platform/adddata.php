@@ -42,9 +42,9 @@ if(isset($_POST['formSubmit']))
     <a href="adddata.php?add=true">新增</a>
 		<form action="test_post.php" method="post">
 		中文名稱 <input type="text" name="ChineseName"/><br>
-　		英文名稱 <input type="text" name="EnglishName"/><br>
-		選擇類別 
-		<label for='formcategory[]'>請選擇類別</label><br>
+　		英文名稱 <input type="text" name="EnglishName"/><p>
+ 
+		<label for='formcategory[]'>選擇類別</label><br>
 		<select multiple="multiple" name="formcategory[]">
 			<option value="City">城市、房子</option>
 			<option value="Nature">自然、動物</option>
@@ -52,7 +52,7 @@ if(isset($_POST['formSubmit']))
 			<option value="Restaurant">餐廳</option>
 			<option value="Others">其他</option>
 		</select>
-
+		<br>
 		<form action="upload.php" method="post" enctype="multipart/form-data">
 　		選擇聲音 <input type="file" name="my_file[]" multiple><br> </form>
 		<form action="upload.php" method="post" enctype="multipart/form-data">
