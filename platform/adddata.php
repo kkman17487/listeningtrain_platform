@@ -52,15 +52,15 @@ if(isset($_POST['formSubmit']))
 			<option value="Restaurant">餐廳</option>
 			<option value="Others">其他</option>
 		</select>
-		<br>
+		<p>
 		<form action="upload.php" method="post" enctype="multipart/form-data">
-　		選擇聲音 <input type="file" name="my_file[]" multiple><br> </form>
+　		選擇聲音 <input type="file" name="my_file[]" multiple></form> <br>
 		<form action="upload.php" method="post" enctype="multipart/form-data">
-		選擇圖片 <input type="file" name="my_file[]" multiple><br> </form>
+		選擇圖片 <input type="file" name="my_file[]" multiple></form> <br> 
 		
 　		<input type="submit" value="送出" />
 		</form>
-	<br>
+	<p>
 		<u><strong>刪除</strong></u>
 		
     </div>
