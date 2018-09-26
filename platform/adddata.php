@@ -4,10 +4,16 @@
 <?php 
 session_start();
 include('backendheader.php');
+?>
+
+<body>
+<?php include('backendsidebar.php'); 
+
 include('connect_to_sql.php');
 
 if(isset($_GET['add'])){
-	$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES('','','',ChineseName,CURRENT_TIMESTAMP,EnglishName);");
+	//$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',ChineseName,CURRENT_TIMESTAMP,EnglishName);");
+	$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',$_POST[ChineseName],CURRENT_TIMESTAMP,$_POST[EnglishName]);");
 }
 
 if(isset($_POST['formSubmit'])) 
@@ -30,10 +36,8 @@ if(isset($_POST['formSubmit']))
     echo("</p>");
   }
 }
-?>
 
-<body>
-<?php include('backendsidebar.php'); ?>
+?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">修改聲音、圖片</h1>
