@@ -56,9 +56,14 @@ if(isset($_POST['formSubmit']))
 		<br>
 		<select multiple="multiple" name="formcategory[]">
 			<option value="City">城市、房子</option>
+			<option value="Street">街道</option>
+			<option value="Dailylife">日常生活</option>
 			<option value="Nature">自然、動物</option>
 			<option value="Kitchen">廚房</option>
+			<option value="Instrument">樂器</option>
 			<option value="Restaurant">餐廳</option>
+			<option value="School">學校</option>
+			<option value="Event">活動</option>
 			<option value="Others">其他</option>
 		</select>
 		
