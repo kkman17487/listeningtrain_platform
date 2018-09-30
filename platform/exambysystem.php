@@ -35,11 +35,11 @@ elseif(isset($_GET['ID']) && (isset($_GET['no']) && $_GET['no'] == 0))
 }
 elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
-  array_push($_SESSION['select_answer'],$_POST['answer']);
+  array_push($_SESSION['select_answer'],$_POST['answer'],$_POST['time']);
 }
 elseif(isset($_GET['checkanswer']))
 {
-  array_push($_SESSION['select_answer'],$_POST['answer']);
+  array_push($_SESSION['select_answer'],$_POST['answer'],$_POST['time']);
 }
 ?>
 <html>
@@ -100,7 +100,7 @@ elseif(isset($_GET['checkanswer']))
       unset($_SESSION['correct_answer']);
       unset($_SESSION['select_answer']);
       $_SESSION['correct_answer'] = array();
-      $_SESSION['select_answer'] = array();
+      $_SESSION['select_answer'] = array(array());
     }
     //echo '<div class="w3-row">';
     echo $_GET['no']+1.0.'/'.sizeof($_SESSION['read']);
@@ -124,7 +124,7 @@ elseif(isset($_GET['checkanswer']))
               <source src="'.$rs['sound_src'].'" type="audio/mp3" />
               <embed height="100" width="100" src="'.$rs['sound_src'].'" />
             </audio>
-            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); return false;">Play</button>';
+            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); set_timer(); return false;">Play</button>';
           $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 3");
           $answer = array(array());
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
@@ -145,6 +145,7 @@ elseif(isset($_GET['checkanswer']))
                   <div class="w3-container">
                     <div class="w3-display-container">';
               echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="50%" width="100%" src="'.$answer[$j][1].'"></div></div></div>';
+              echo '<input type="text" id="time" hidden>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
@@ -169,8 +170,8 @@ elseif(isset($_GET['checkanswer']))
       </audio>
       <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">再聽一次</button>';
       echo '<p>您第'.($i+1);
-      echo '題的答案:'.$_SESSION['select_answer'][$i].'</p>';
-      if($correct_answer[$i] != $_SESSION['select_answer'][$i])
+      echo '題的答案:'.$_SESSION['select_answer'][$i][0].'時間:'.$_SESSION['select_answer'][$i][1].'</p>';
+      if($correct_answer[$i] != $_SESSION['select_answer'][$i][0])
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs[pic_src].'"><br>';
       else
         echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs[pic_src].'"><br>';
@@ -203,6 +204,19 @@ elseif(isset($_GET['checkanswer']))
     }*/
   }
   ?>
-
+<script>
+var time;
+function set_timer()
+{
+  time = new Date();
+  timer();
+}
+function timer()
+{
+  var timeDiff = new Date() - time;
+  document.getElementById('time').value=new Date(timeDiff).getMilliseconds();
+  var t=setTimeout("timer()",1);
+}
+</script>
 </body>
 </html>
