@@ -169,6 +169,7 @@ elseif(isset($_GET['checkanswer']))
         <embed height="100" width="100" src="'.$rs[sound_src].'" />
       </audio>
       <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">再聽一次</button>';
+print_r($_SESSION['select_answer']);
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i][0].'時間:'.$_SESSION['select_answer'][$i][1].'</p>';
       if($correct_answer[$i] != $_SESSION['select_answer'][$i][0])
