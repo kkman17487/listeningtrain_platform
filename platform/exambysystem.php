@@ -103,7 +103,7 @@ elseif(isset($_GET['checkanswer']))
       $_SESSION['select_answer'] = array();
     }
     //echo '<div class="w3-row">';
-    echo '<div class="w3-col"><div class="w3-container"><div class="w3-display-container"><p class="w3-right">'.$_GET['no']+1.0.'/'.sizeof($_SESSION['read']).'</p></div></div></div>';
+    echo '<p class="w3-right">'.$_GET['no']+1.0.'/'.sizeof($_SESSION['read']).'</p>';
     $next = $_GET['no'] + 1;
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
