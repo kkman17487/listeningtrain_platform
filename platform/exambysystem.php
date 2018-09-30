@@ -48,7 +48,6 @@ elseif(isset($_GET['checkanswer']))
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">系統出題</p>
-    <?php if((isset($_GET['ID']) || isset($_GET['number'])) && !isset($_GET['checkanswer'])) echo '<p class="w3-right">'.$_GET['no'].'/'.mysqli_num_rows($_SESSION['data']);?>
   </header>
 
   <!-- Image header -->
@@ -104,6 +103,7 @@ elseif(isset($_GET['checkanswer']))
       $_SESSION['select_answer'] = array();
     }
     //echo '<div class="w3-row">';
+    echo '<p class="w3-right">'.$_GET['no']+1.'/'.sizeof($_SESSION['read']);
     $next = $_GET['no'] + 1;
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
