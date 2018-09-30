@@ -72,7 +72,7 @@ if(isset($_POST['formSubmit']))
 		<form action="uploadp.php" method="post" enctype="multipart/form-data">選擇圖片<input type="file" name="my_file[]" multiple></form><br> 
 		
 		<input type="submit" value="送出" />
-		</form>
+		</form> 
 	
 	<br><br>
 		<u><strong>刪除</strong></u>
