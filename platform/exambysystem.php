@@ -48,6 +48,7 @@ elseif(isset($_GET['checkanswer']))
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">系統出題</p>
+    <?php if((isset($_GET['ID']) || isset($_GET['number'])) && !isset($_GET['checkanswer'])) echo '<p class="w3-right">'.$_GET['no'].'/'.mysqli_num_rows($_SESSION['data']);?>
   </header>
 
   <!-- Image header -->
@@ -102,7 +103,7 @@ elseif(isset($_GET['checkanswer']))
       $_SESSION['correct_answer'] = array();
       $_SESSION['select_answer'] = array();
     }
-    echo '<div class="w3-row">';
+    //echo '<div class="w3-row">';
     $next = $_GET['no'] + 1;
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
@@ -144,11 +145,14 @@ elseif(isset($_GET['checkanswer']))
           //print_r($answer);
           shuffle($answer);
           //print_r($answer);
-
               for($j = 0;$j < 4;$j++){
-
-              echo '<td><input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td>';
+                if($j%2==0)echo '<div class="w3-row">';
+                echo '<div class="w3-col l6 s6">
+                  <div class="w3-container">
+                    <div class="w3-display-container">';
+              echo '<td><input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td></div></div></div>';
               //print_r($rs);
+              if($j%2==1)echo '</div>';
             }
           echo '
         </tr>
