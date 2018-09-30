@@ -156,6 +156,7 @@ elseif(isset($_GET['checkanswer']))
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
+    array_filter($_SESSION['select_answer']);
     for($i = 0;$i < sizeof($correct_answer);$i++){
       include('connect_to_sql.php');
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
@@ -169,7 +170,6 @@ elseif(isset($_GET['checkanswer']))
         <embed height="100" width="100" src="'.$rs[sound_src].'" />
       </audio>
       <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">再聽一次</button>';
-print_r($_SESSION['select_answer']);
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i][0].'時間:'.$_SESSION['select_answer'][$i][1].'</p>';
       if($correct_answer[$i] != $_SESSION['select_answer'][$i][0])
