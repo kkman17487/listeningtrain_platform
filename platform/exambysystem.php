@@ -214,7 +214,7 @@ function set_timer()
 function timer()
 {
   var timeDiff = new Date() - time;
-  document.getElementById('time').value=new Date(timeDiff).getMilliseconds();
+  document.getElementById('time').value=new Date(timeDiff);
   var t=setTimeout("timer()",1);
 }
 </script>
