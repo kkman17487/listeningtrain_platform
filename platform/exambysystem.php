@@ -35,11 +35,11 @@ elseif(isset($_GET['ID']) && (isset($_GET['no']) && $_GET['no'] == 0))
 }
 elseif(isset($_GET['no']) && $_GET['no'] > 0)
 {
-  array_push($_SESSION['select_answer'],$_POST['answer'],$_POST['time']);
+  array_push($_SESSION['select_answer'],array($_POST['answer'],$_POST['time']));
 }
 elseif(isset($_GET['checkanswer']))
 {
-  array_push($_SESSION['select_answer'],$_POST['answer'],$_POST['time']);
+  array_push($_SESSION['select_answer'],array($_POST['answer'],$_POST['time']));
 }
 ?>
 <html>
