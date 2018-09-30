@@ -120,17 +120,11 @@ elseif(isset($_GET['checkanswer']))
 
     $rs = $_SESSION['read'][$_GET['no']];
     echo '
-      <table>
-      <tr>
-      <td>
             <audio id= "'.$rs['audio_id'].'">
               <source src="'.$rs['sound_src'].'" type="audio/mp3" />
               <embed height="100" width="100" src="'.$rs['sound_src'].'" />
             </audio>
             <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); return false;">Play</button>
-      </td>
-      </tr>
-          <tr>';
           $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 3");
           $answer = array(array());
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
@@ -150,13 +144,10 @@ elseif(isset($_GET['checkanswer']))
                 echo '<div class="w3-col l6 s6">
                   <div class="w3-container">
                     <div class="w3-display-container">';
-              echo '<td><input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></td></div></div></div>';
+              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></div></div></div>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
-          echo '
-        </tr>
-        </table>';
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
       echo '<br><input type="submit" name="submit" value="提交" align="center"></form></div>';
     else
