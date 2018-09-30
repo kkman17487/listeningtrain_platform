@@ -79,7 +79,7 @@ include('sidebar.php');
       <div class="w3-container">
         <div class="w3-display-container">
           <p class="w3-right">
-            <?php echo $_GET['no']+1.'/'.sizeof($_SESSION['question']);?>
+            <?php echo $_GET['no']+1.0.'/'.sizeof($_SESSION['question']);?>
           </p>
           <audio id='<?php echo $rs[audio_id]?>'>
             <source src="<?php echo $rs[sound_src]?>" type="audio/mp3" />
