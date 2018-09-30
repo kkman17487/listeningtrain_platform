@@ -144,7 +144,7 @@ elseif(isset($_GET['checkanswer']))
                 echo '<div class="w3-col l6 s6">
                   <div class="w3-container">
                     <div class="w3-display-container">';
-              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="100" width="100" src="'.$answer[$j][1].'"></div></div></div>';
+              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img src="'.$answer[$j][1].'"></div></div></div>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
@@ -171,9 +171,9 @@ elseif(isset($_GET['checkanswer']))
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i].'</p>';
       if($correct_answer[$i] != $_SESSION['select_answer'][$i])
-        echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="100" width="100" src="'.$rs[pic_src].'"><br>';
+        echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs[pic_src].'"><br>';
       else
-        echo '<p style="color:green;">正確！！！</p><img height="100" width="100" src="'.$rs[pic_src].'"><br>';
+        echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs[pic_src].'"><br>';
       echo '</div></div></div>';
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
     }
