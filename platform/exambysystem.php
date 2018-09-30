@@ -145,7 +145,7 @@ elseif(isset($_GET['checkanswer']))
                   <div class="w3-container">
                     <div class="w3-display-container">';
               echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="50%" width="100%" src="'.$answer[$j][1].'"></div></div></div>';
-              echo '<input type="text" name="time" id="time" hidden>';
+              echo '<input type="text" name="time" id="time">';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
