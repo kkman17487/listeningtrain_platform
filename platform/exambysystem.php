@@ -117,7 +117,7 @@ elseif(isset($_GET['checkanswer']))
       <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$next.'">';
     elseif(isset($_GET['ID']))
       echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
-
+    echo '<input type="text" name="time" id="time">';
     $rs = $_SESSION['read'][$_GET['no']];
     echo '
             <audio id= "'.$rs['audio_id'].'">
@@ -145,7 +145,6 @@ elseif(isset($_GET['checkanswer']))
                   <div class="w3-container">
                     <div class="w3-display-container">';
               echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="50%" width="100%" src="'.$answer[$j][1].'"></div></div></div>';
-              echo '<input type="text" name="time" id="time">';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
