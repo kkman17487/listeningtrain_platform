@@ -117,7 +117,7 @@ elseif(isset($_GET['checkanswer']))
       <form name="answer" method="post" action="exambysystem.php?number='.$_GET['number'].'&no='.$next.'">';
     elseif(isset($_GET['ID']))
       echo '<form name="answer" method="post" action="exambysystem.php?ID='.$_GET['ID'].'&no='.$next.'">';
-    echo '<input type="text" name="time" id="time">';
+    echo '<input type="text" name="time" id="time" hidden>';
     $rs = $_SESSION['read'][$_GET['no']];
     echo '
             <audio id= "'.$rs['audio_id'].'">
