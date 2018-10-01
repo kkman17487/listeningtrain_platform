@@ -42,8 +42,11 @@ if(isset($_POST['formSubmit']))
 <h1 class="sub-header">修改聲音、圖片</h1>
     <div class="table-responsive">
 	
-    <a href="adddata.php?add=true">新增</a>
-		<form action="" method="post">
+    <u><strong>新增</strong></u>
+		<form action="upload.php" method="post" enctype="multipart/form-data">選擇檔案<input type="file" name="my_file[]" multiple></form>
+		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
+		<br>
+		
 		<label>中文名稱</label>
 		<input type="text" name="ChineseName" placeholder="中文"/>
 		
@@ -68,9 +71,7 @@ if(isset($_POST['formSubmit']))
 		</select>
 		
 		<br><br>
-		<form action="uploads.php" method="post" enctype="multipart/form-data">選擇聲音<input type="file" name="my_file[]" multiple></form>
-		<form action="uploadp.php" method="post" enctype="multipart/form-data">選擇圖片<input type="file" name="my_file[]" multiple></form><br> 
-		
+
 		<input type="submit" value="送出" />
 		</form> 
 	
