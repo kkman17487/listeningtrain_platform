@@ -43,7 +43,7 @@ if(isset($_POST['formSubmit']))
     <div class="table-responsive">
 	
     <u><strong>新增</strong></u>
-		<form action="upload.php" method="post" enctype="multipart/form-data">選擇檔案<input type="file" name="my_file[]" multiple></form>
+		<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
 		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
 		<br>
 		
