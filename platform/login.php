@@ -27,6 +27,7 @@ $rs = mysqli_fetch_assoc($admin);
  ?>
 <html>
 <head>
+<link rel="icon" href="../picture/gears.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
