@@ -23,10 +23,11 @@ include('sidebar.php');
 				<div class="w3-display-middle w3-display-hover">
 					<button class="w3-button w3-black " onclick="document.getElementById('<?php echo $rs[audio_id]?>').play(); return false;">Play</button>
 				</div>
-			</div>
+
 			<p align = 'center'><?php echo $rs[name]?></p>
+			</div>
 		</div>
-</div>
+	</div>
 
 </body>
 </html>
