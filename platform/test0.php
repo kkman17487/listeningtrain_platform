@@ -11,7 +11,7 @@ let mouse = {
 }
 
 //加入監聽器
-window.addEventListener('mousemove',(event) => {
+window.addEventListener('onmousemove',(event) => {
   //在這裡把滑鼠座標寫到物件mouse中
   mouse.x = event.pageX;
   mouse.y = event.pageY;
