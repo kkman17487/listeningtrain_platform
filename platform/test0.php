@@ -1,32 +1,37 @@
-<script>
-let canvas = document.getElementById("myCanvas");
-let ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
 
-//建立一個物件儲存滑鼠目前的x,y座標
-let mouse = {
-    x : 0,
-    y : 0,
+<div onmousemove="myFunction(event)" onmouseout="clearCoor()"></div>
+
+<p>Mouse over the rectangle above, and get the coordinates of your mouse pointer.</p>
+
+<p>When the mouse is moved over the div, the p element will display the horizontal and vertical coordinates of your mouse pointer, whose values are returned from the clientX and clientY properties on the
+MouseEvent object.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction(e) {
+    var x = e.clientX;
+    var y = e.clientY;
+    var coor = "Coordinates: (" + x + "," + y + ")";
+    document.getElementById("demo").innerHTML = coor;
 }
 
-//加入監聽器
-window.addEventListener('onmousemove',(event) => {
-  //在這裡把滑鼠座標寫到物件mouse中
-  mouse.x = event.pageX;
-  mouse.y = event.pageY;
-})
-function run()
-{
-  document.getElementById('x').value = mouse.x;
-	document.getElementById('y').value = mouse.y;
-  var t=setTimeout("run()",1);
+function clearCoor() {
+    document.getElementById("demo").innerHTML = "";
 }
 </script>
-<body onload="run()">
-	<canvas id="myCanvas"></canvas>
-	<form>
-		<input type="text" id="x" name="x">
-		<input type="text" id="y" name="y">
-	</form>
+
 </body>
+</html>
