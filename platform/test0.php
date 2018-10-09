@@ -23,7 +23,7 @@ function run()
   var t=setTimeout("run()",1);
 }
 </script>
-<body>
+<body onload="run()">
 	<canvas id="myCanvas"></canvas>
 	<form>
 		<input type="text" id="x" name="x">

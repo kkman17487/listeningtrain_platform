@@ -217,7 +217,7 @@ function timer()
   var timestr = new Date(timeDiff).getSeconds();
   timestr += ".";
   timestr += new Date(timeDiff).getMilliseconds();
-  document.getElementById('time').value= timestr;
+  document.getElementById('time').value = timestr;
   var t=setTimeout("timer()",1);
 }
 </script>
