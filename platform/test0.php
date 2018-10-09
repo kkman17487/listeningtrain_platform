@@ -3,6 +3,7 @@
 include('connect_to_sql.php');
 $data = $con->query("select * from data LIMIT 1");
 $rs = mysqli_fetch_assoc($data);
+include('sidebar.php');
  ?>
 <html>
 <head>
@@ -31,7 +32,7 @@ div {
 	</div>
 
 </div>
-
+<p id="demo"></p>
 
 <script>
 function myFunction(e) {
