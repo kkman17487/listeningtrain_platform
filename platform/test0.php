@@ -8,7 +8,8 @@ include('sidebar.php');
 <html>
 <head>
 <style>
-div {
+
+.test {
     width: 700px;
     height: 700px;
     border: 1px solid black;
@@ -17,7 +18,7 @@ div {
 </head>
 <body>
 
-<div onmousemove="myFunction(event)" onmouseout="clearCoor()">
+<div class="test" onmousemove="myFunction(event)" onmouseout="clearCoor()">
 
 	<div class="w3-col">
 		<div class="w3-container">
