@@ -69,6 +69,7 @@ chart.render();
         </table>
 		
     </div>
+	要有的項目?:
 	人名
 	作答(可點進看結果)
 	答對率
@@ -97,7 +98,7 @@ chart.render();
               <span class="text-muted">Something else</span>
             </div>
     </div> 
-
+<br>參考php圖表:https://canvasjs.com/php-charts/ <br>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </div>
