@@ -16,7 +16,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
 			<br>
-			<li><a href="answerstate.php">使用者作答記錄</a></li>
+			<li><a href="history.php">使用者作答記錄</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="edit_train.php">編輯訓練模式教材</a></li>
