@@ -38,33 +38,34 @@ chart.render();
 <body>
 <?php include('backendsidebar.php'); ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">TRY! 作答情況</h1>
+<h1 class="sub-header">作答情況</h1>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
                   <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>姓名</th>
+                  <th>作答情況</th>
+                  <th>答對率</th>
+                  <th>時間</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
+			<?php
+			$Arr=array('','','');
+			$i=count($Arr);
+			for($j=1;$j<$i;$j++){
+				echo '
+				<tr>
+					<td>'.$j.'</td>
+					<td>Lorem</td>
+					<td>ipsum</td>
+					<td>dolor</td>
+					<td>sit</td>
+				</tr>
+					'
+			}
+			?>
             </tbody>
         </table>
 		
@@ -79,7 +80,7 @@ chart.render();
     <div class="row placeholders">
 		<br>參考php圖表:https://canvasjs.com/php-charts/ <br>
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-		<!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>
 </div>
 </body>
