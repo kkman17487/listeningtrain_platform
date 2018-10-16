@@ -19,10 +19,10 @@ window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "作答時間"
+		text: "Answer Time"
 	},
 	axisY: {
-		title: "答對率"
+		title: "Correct Rate"
 	},
 	data: [{
 		type: "line",
@@ -77,30 +77,10 @@ chart.render();
 		
 <h1 class="page-header">圖表</h1>
     <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-    </div> 
-<br>參考php圖表:https://canvasjs.com/php-charts/ <br>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+		<br>參考php圖表:https://canvasjs.com/php-charts/ <br>
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+    </div>
 </div>
 </body>
 </html>	
