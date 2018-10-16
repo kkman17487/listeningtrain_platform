@@ -183,9 +183,7 @@ elseif(isset($_GET['checkanswer']))
     $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `time`) VALUES (NULL, $name, $data_string, CURRENT_TIMESTAMP)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
-    } else  {
-    // Do here what you need
-    }
+    } 
     /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
