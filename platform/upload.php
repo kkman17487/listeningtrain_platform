@@ -14,7 +14,7 @@ for ($i = 0; $i < $fileCount; $i++) {
     if($type=="image/jpeg" || $type=="image/jpeg" || $type=="image/png" || $type=="image/gif"){
 		if (file_exists('../picture/' . $_FILES['my_file']['name'][$i])){
 			echo '檔案已存在。<br/>';
-		} 
+		}
 		else {
 			$file = $_FILES['my_file']['tmp_name'][$i];
 			$dest = '../picture/' . $_FILES['my_file']['name'][$i];
@@ -22,11 +22,11 @@ for ($i = 0; $i < $fileCount; $i++) {
 			# 將檔案移至指定位置
 			move_uploaded_file($file, $dest);
 		}
-	} 
+	}
 	else if($type=="audio/mp3" || $type=="audio/wav"){
 		if (file_exists('../sound/' . $_FILES['my_file']['name'][$i])){
 			echo '檔案已存在。<br/>';
-		} 
+		}
 		else {
 			$file = $_FILES['my_file']['tmp_name'][$i];
 			$dest = '../sound/' . $_FILES['my_file']['name'][$i];
@@ -38,5 +38,6 @@ for ($i = 0; $i < $fileCount; $i++) {
 	else {
 		echo '錯誤代碼：' . $_FILES['my_file']['error'] . '<br/>';
 	}
+}
 }
 ?>
