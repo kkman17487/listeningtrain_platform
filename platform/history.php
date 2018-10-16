@@ -19,7 +19,7 @@ window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "Answer Time"
+		text: "Time"
 	},
 	axisY: {
 		title: "Correct Rate"
@@ -80,7 +80,6 @@ chart.render();
 				<td><?php echo $rs[1]?></td>
 				<td><?php echo $rs[2]?></td>
 				<td><?php echo $rs[3]?></td>
-				<td><?php echo $rs[4]?></td>
 			</tr>
 			<?php
 			}
@@ -89,15 +88,9 @@ chart.render();
         </table>
 		
     </div>
-	要有的項目?:
-	人名
-	作答(可點進看結果)
-	答對率
-	時間
-		
+
 <h1 class="page-header">圖表</h1>
     <div class="row placeholders">
-		<br>參考php圖表:https://canvasjs.com/php-charts/ <br>
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>
