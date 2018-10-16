@@ -1,0 +1,73 @@
+animal
+	
+cook
+	boiling1		   6.00 Hz
+	cutting			 650.00 Hz
+	drinking		 300.00 Hz
+	putting_a_bottle	1330.00 Hz
+	roast			  32.00 Hz
+	tableware		4000.00 Hz
+	washing-tableware	  94.00 Hz
+event
+	Beeper			2078.00 Hz
+	Buzzers			1104.00 Hz
+	buzzer1			1266.00 Hz
+	clapping		1752.00 Hz
+	firework		 80~110 Hz
+	少數人喊叫聲		 813.00 Hz
+	吹氣球			3984.00 Hz
+	鼓掌聲			1000.00 Hz
+house
+	brooming		  22.00 Hz
+	brushing_teeth		  23.00 Hz
+	clock_bell		8889.00 Hz
+	coin			8021.00 Hz
+	cutting_papper		8303.00 Hz
+	door_bell		1582.00 Hz
+	door_chime		700~900 Hz
+	fan			  76.00 Hz
+	key			6316.00 Hz
+	knocking_a_wooden_door	  64.00 Hz
+	knocking_a_iron_door	  23.00 Hz
+	letter_box		 234.00 Hz
+	newspaper		1664.00 Hz
+	pc_keyboard		  29.00 Hz
+	printer			 662.00 Hz
+	壁爐木頭		 145.00 Hz
+	scissor			9926.00 Hz
+	shower			  12.00 Hz
+	tap			5943.00 Hz
+	towel			  38.00 Hz
+	washstand		9234.00 Hz
+	zipper			  41.00 Hz
+instrument
+	bass_drum		  41.00 Hz
+	guitar			 264.00 Hz
+	piano		      1012~2250 Hz
+nature
+	axe			 813.00 Hz
+	autumn_insects		8559.00 Hz
+	breaking_branchs	  11.00 Hz
+	brook			  23.00 Hz
+	cicadas			  23.00 Hz
+	cricket			3871.00 Hz
+	fire			  43.00 Hz
+	flogs			3240.00 Hz
+	heavy_rain		  35.00 Hz
+	lightning		 100.00 Hz
+	rain_thunder		 100.00 Hz
+	small_ice		1351.00 Hz
+	string_wind		   5.00 Hz
+	summer_beach		 807.00 Hz
+	summer_hill		  27.00 Hz
+	thunder			 100.00 Hz
+	wind_bell		5273.00 Hz
+	下大雨			   5.00 Hz
+	溪水			 474.00 Hz
+school
+	Alarm_bell		6110.00 Hz
+	badminton		  32.00 Hz
+	消防車			1206.00 Hz
+	警車警報器		1227.00 Hz
+	school_chime	 	 809.00 Hz
+	sgrill_whistle	  	2202.00 Hz
