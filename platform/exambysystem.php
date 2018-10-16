@@ -1,10 +1,10 @@
 <?php
 session_start();
+include("connect_to_sql.php");
 if(isset($_GET['number']) && (isset($_GET['no']) && $_GET['no'] == 0))
 {
   unset($_SESSION['data']);
   unset($_SESSION['read']);
-  include('connect_to_sql.php');
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
   for($i = 0;$i < mysqli_num_rows($_SESSION['data']);$i++)
   {
@@ -15,7 +15,6 @@ elseif(isset($_GET['ID']) && (isset($_GET['no']) && $_GET['no'] == 0))
 {
   unset($_SESSION['data']);
   unset($_SESSION['read']);
-  include('connect_to_sql.php');
   $ID = $_GET['ID'];
   $question = $con->query("SELECT * FROM exam WHERE id = '$ID'");
   $rs_question = mysqli_fetch_assoc($question);
@@ -52,7 +51,6 @@ elseif(isset($_GET['checkanswer']))
 
   <!-- Image header -->
   <?php
-  include("connect_to_sql.php");
   if(!isset($_GET['number']) && !isset($_GET['ID'])){
     echo '<div class="w3-display-container w3-container">
     <img src="../picture/test2.jpg" alt="Photo" style="width:100%">
@@ -62,7 +60,7 @@ elseif(isset($_GET['checkanswer']))
       <form action="exambysystem.php" method="get">
         題數: <input type="text" maxlength="2" size="2" name="number"><br>
         <input name="no" value="0" hidden>
-        <input type="submit">
+        <input type="submit" value="提交">
       </form>
       <h1 class="w3-hide-small">題庫選擇</h1>
       <div class="container">
@@ -156,27 +154,37 @@ elseif(isset($_GET['checkanswer']))
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
     $_SESSION['select_answer'] = array_filter($_SESSION['select_answer']);
+    $data_string = '';
     for($i = 0;$i < sizeof($correct_answer);$i++){
-      include('connect_to_sql.php');
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
       $rs = mysqli_fetch_assoc($tmp);
+      $data_string .= $correct_answer[$i].','.$_SESSION['select_answer'][$i+1][0].','.strval($_SESSION['select_answer'][$i+1][1]).';';
       if($i % 4 == 0)echo '<div class="w3-row">';
       echo '<div class="w3-col l3 s6">
         <div class="w3-container">
           <div class="w3-display-container">';
-      echo '<audio id= "'.$rs[audio_id].'">
-        <source src="'.$rs[sound_src].'" type="audio/mp3" />
-        <embed height="100" width="100" src="'.$rs[sound_src].'" />
+      echo '<audio id= "'.$rs['audio_id'].'">
+        <source src="'.$rs['sound_src'].'" type="audio/mp3" />
+        <embed height="100" width="100" src="'.$rs['sound_src'].'" />
       </audio>
-      <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">再聽一次</button>';
+      <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); return false;">再聽一次</button>';
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i+1][0].'<br>時間:'.$_SESSION['select_answer'][$i+1][1].'</p>';
       if($correct_answer[$i] != $_SESSION['select_answer'][$i+1][0])
-        echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs[pic_src].'"><br>';
+        echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
       else
-        echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs[pic_src].'"><br>';
+        echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
       echo '</div></div></div>';
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
+    }
+    $data_string = substr($data_string,0,strlen($data_string)-1);
+    $name = $_SESSION['name'];
+    echo $data_string.' '.$name;
+    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `time`) VALUES (NULL, $name, $data_string, CURRENT_TIMESTAMP)");
+    if (!$res) {
+    die('Invalid query: ' . mysqli_error($con));
+    } else  {
+    // Do here what you need
     }
     /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);

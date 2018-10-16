@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$dataPoints = array(
 	array("y" => 25, "label" => "Sunday"),
 	array("y" => 15, "label" => "Monday"),
@@ -16,7 +16,7 @@
 <head>
 <script>
 window.onload = function () {
- 
+
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
 		text: "Time"
@@ -30,18 +30,18 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 chart.render();
- 
+
 }
 </script>
 </head>
 
 <body>
-<?php 
-	include('backendsidebar.php'); 
+<?php
+	include('backendsidebar.php');
 	include('connect_to_sql.php');
-	
+
 	$sql ="select * from `history`";
-	$data = mysqli_query($conn, $sql);
+	$data = mysqli_query($con, $sql);
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
@@ -72,21 +72,21 @@ chart.render();
 			}*/
 			?>
 			<?php
-				for($i=1;$i<=mysqli_num_rows($data);$i++){
-				$rs=mysqli_fetch_row($data);
+				for($i=0;$i<mysqli_num_rows($data);$i++){
+				$rs=mysqli_fetch_assoc($data);
 			?>
 			<tr>
-				<td><?php echo $rs[0]?></td>
-				<td><?php echo $rs[1]?></td>
-				<td><?php echo $rs[2]?></td>
-				<td><?php echo $rs[3]?></td>
+				<td><?php echo $rs['id']?></td>
+				<td><?php echo $rs['name']?></td>
+				<td><?php echo $rs['data']?></td>
+				<td><?php echo $rs['time']?></td>
 			</tr>
 			<?php
 			}
 			?>
             </tbody>
         </table>
-		
+
     </div>
 
 <h1 class="page-header">圖表</h1>
@@ -96,4 +96,4 @@ chart.render();
     </div>
 </div>
 </body>
-</html>	
+</html>
