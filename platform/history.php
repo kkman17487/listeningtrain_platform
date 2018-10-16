@@ -38,7 +38,7 @@ chart.render();
 <body>
 <?php include('backendsidebar.php'); ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">作答情況</h1>
+<h1 class="sub-header">作答紀錄</h1>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -47,23 +47,22 @@ chart.render();
                   <th>姓名</th>
                   <th>作答情況</th>
                   <th>答對率</th>
-                  <th>時間</th>
+                  <th>作答時間</th>
                 </tr>
             </thead>
             <tbody>
 			<?php
-			$Arr=array('','','');
-			$i=count($Arr);
-			for($j=1;$j<$i;$j++){
+			$Arr=array('','','','');
+			foreach(&Arr as $key => $value)
 				echo '
 				<tr>
-					<td>'.$j.'</td>
+					<td>'.$key.'</td>
 					<td>Lorem</td>
 					<td>ipsum</td>
 					<td>dolor</td>
 					<td>sit</td>
 				</tr>
-					'
+				'
 			}
 			?>
             </tbody>
