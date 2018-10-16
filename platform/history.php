@@ -19,10 +19,10 @@ window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "Push-ups Over a Week"
+		text: "作答時間"
 	},
 	axisY: {
-		title: "Number of Push-ups"
+		title: "答對率"
 	},
 	data: [{
 		type: "line",
@@ -100,7 +100,7 @@ chart.render();
     </div> 
 <br>參考php圖表:https://canvasjs.com/php-charts/ <br>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
 </div>
 </body>
 </html>	
