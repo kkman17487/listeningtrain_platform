@@ -36,7 +36,13 @@ chart.render();
 </head>
 
 <body>
-<?php include('backendsidebar.php'); ?>
+<?php 
+	include('backendsidebar.php'); 
+	include('connect_to_sql.php');
+	
+	$sql ="select * from `history`";
+	$data = mysqli_query($conn, $sql);
+?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
     <div class="table-responsive">
@@ -52,7 +58,7 @@ chart.render();
             </thead>
             <tbody>
 			<?php
-			$Arr=array('','','','');
+			/*$Arr=array('<?php ?>','','','');
 			foreach(&Arr as $key => $value)
 				echo '
 				<tr>
@@ -63,6 +69,20 @@ chart.render();
 					<td>sit</td>
 				</tr>
 				'
+			}*/
+			?>
+			<?php
+				for($i=1;$i<=mysqli_num_rows($data);$i++){
+				$rs=mysqli_fetch_row($data);
+			?>
+			<tr>
+				<td><?php echo $rs[0]?></td>
+				<td><?php echo $rs[1]?></td>
+				<td><?php echo $rs[2]?></td>
+				<td><?php echo $rs[3]?></td>
+				<td><?php echo $rs[4]?></td>
+			</tr>
+			<?php
 			}
 			?>
             </tbody>
