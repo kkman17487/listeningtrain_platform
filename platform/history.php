@@ -7,6 +7,7 @@
 	array("y" => 10, "label" => "Thursday"),
 	array("y" => 0, "label" => "Friday"),
 	array("y" => 20, "label" => "Saturday")
+	//array("y" => correct rate, "label" => "Reaction Time")
 );
 ?>
 

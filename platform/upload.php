@@ -10,6 +10,13 @@ for ($i = 0; $i < $fileCount; $i++) {
     echo '檔案大小: ' . ($_FILES['my_file']['size'][$i] / 1024000) . ' MB<br/>';
     echo '暫存名稱: ' . $_FILES['my_file']['tmp_name'][$i] . '<br/>';
 
+	/*$allowed =  array('gif','png' ,'jpg');
+	$filename = $_FILES['video_file']['name'];
+	$ext = pathinfo($filename, PATHINFO_EXTENSION);
+	if(!in_array($ext,$allowed) ) {
+		echo 'error';
+	}*/
+	
     # 檢查檔案是否已經存在
     if($type=="image/jpeg" || $type=="image/jpeg" || $type=="image/png" || $type=="image/gif"){
 		if (file_exists('../picture/' . $_FILES['my_file']['name'][$i])){
