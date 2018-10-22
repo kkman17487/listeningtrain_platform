@@ -43,12 +43,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
 	}]
 });
-chart.render();
 
-}
-
-window.onload = function() {
- 
 var chart = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
@@ -64,7 +59,10 @@ var chart = new CanvasJS.Chart("chartContainer2", {
 		dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
 	}]
 });
+
 chart.render();
+
+}
 
 </script>
 </head>
