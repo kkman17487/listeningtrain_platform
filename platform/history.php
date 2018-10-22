@@ -94,7 +94,7 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 });
 chart2.render();
 
-var chart3 = new CanvasJS.Chart("chartContainer", {
+var chart3 = new CanvasJS.Chart("chartContainer3", {
 	animationEnabled: true,
 	title:{
 		text: "Server Performance"
@@ -116,7 +116,7 @@ var chart3 = new CanvasJS.Chart("chartContainer", {
 		name: "Server Jupiter",
 		markerType: "square",
 		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints1); ?>
+		dataPoints: <?php echo json_encode($dataPoints3); ?>
 	},
 	{
 		type: "scatter",
@@ -124,7 +124,7 @@ var chart3 = new CanvasJS.Chart("chartContainer", {
 		markerType: "triangle",
 		showInLegend: true, 
 		toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
-		dataPoints: <?php echo json_encode($dataPoints2); ?>
+		dataPoints: <?php echo json_encode($dataPoints4); ?>
 	}
 	]
 });
