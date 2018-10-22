@@ -20,7 +20,39 @@
 	array("y" => 612.453, "label" => "Netherlands" )
 	);
 
-
+	$dataPoints3 = array(
+	array("x" => 23, "y" => 340),
+	array("x" => 28, "y" => 390),
+	array("x" => 39, "y" => 400),
+	array("x" => 34, "y" => 430),
+	array("x" => 24, "y" => 321),
+	array("x" => 29, "y" => 250),
+	array("x" => 29, "y" => 400),
+	array("x" => 23, "y" => 290),
+	array("x" => 27, "y" => 250),
+	array("x" => 34, "y" => 380),
+	array("x" => 36, "y" => 350),
+	array("x" => 33, "y" => 405),
+	array("x" => 32, "y" => 453),
+	array("x" => 21, "y" => 292)
+	);
+ 
+	$dataPoints4 = array(
+	array("x" => 19, "y" => 192),
+	array("x" => 27, "y" => 250),
+	array("x" => 35, "y" => 330),
+	array("x" => 32, "y" => 190),
+	array("x" => 29, "y" => 189),
+	array("x" => 22, "y" => 160),
+	array("x" => 27, "y" => 200),
+	array("x" => 26, "y" => 192),
+	array("x" => 24, "y" => 225),
+	array("x" => 33, "y" => 330),
+	array("x" => 34, "y" => 250),
+	array("x" => 30, "y" => 120),
+	array("x" => 37, "y" => 160),
+	array("x" => 24, "y" => 196)
+	);
 
 ?>
 
@@ -62,6 +94,51 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 });
 chart2.render();
 
+var chart3 = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title:{
+		text: "Server Performance"
+	},
+	axisX: {
+		title:"Server Load (in TPS)"
+	},
+	axisY:{
+		title: "Response Time (in ms)"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: toggleDataSeries
+	},
+	data: [
+	{
+		type: "scatter",
+		toolTipContent: "<span style=\"color:#4F81BC \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
+		name: "Server Jupiter",
+		markerType: "square",
+		showInLegend: true,
+		dataPoints: <?php echo json_encode($dataPoints1); ?>
+	},
+	{
+		type: "scatter",
+		name: "Server Neptune",
+		markerType: "triangle",
+		showInLegend: true, 
+		toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
+		dataPoints: <?php echo json_encode($dataPoints2); ?>
+	}
+	]
+});
+
+chart3.render();
+function toggleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart3.render();
+}
 }
 
 </script>
