@@ -81,10 +81,10 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "Gold Reserves"
+		text: "Kind"
 	},
 	axisY: {
-		title: "Gold Reserves (in tonnes)"
+		title: "Correct Rate"
 	},
 	data: [{
 		type: "column",
@@ -97,7 +97,7 @@ chart2.render();
 var chart3 = new CanvasJS.Chart("chartContainer3", {
 	animationEnabled: true,
 	title:{
-		text: "Server Performance"
+		text: "?"
 	},
 	axisX: {
 		title:"Server Load (in TPS)"
