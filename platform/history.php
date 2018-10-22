@@ -81,7 +81,7 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "Kind"
+		text: "Sort"
 	},
 	axisY: {
 		title: "Correct Rate"
@@ -97,7 +97,7 @@ chart2.render();
 var chart3 = new CanvasJS.Chart("chartContainer3", {
 	animationEnabled: true,
 	title:{
-		text: "?"
+		text: "What?"
 	},
 	axisX: {
 		title:"Server Load (in TPS)"
