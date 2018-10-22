@@ -90,11 +90,24 @@ chart.render();
 
     </div>
 
-<h1 class="page-header">圖表</h1>
+<h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>
+
+<h1 class="page-header">柱狀圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
+
+<h1 class="page-header">散佈圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>	
+	
 </div>
 </body>
 </html>
