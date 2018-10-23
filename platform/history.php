@@ -1,7 +1,7 @@
 <?php
 	$dataPoints = array(
-	array("y" => 25%, "label" => "2018/10/23 12:20(test)"),
-	array("y" => 15%, "label" => "2018/10/24 02:45")
+	array("y" => 75, "label" => "2018/10/23 12:20(test)"),
+	array("y" => 90, "label" => "2018/10/24 02:45")
 	/*array("y" => 15, "label" => "Monday"),
 	array("y" => 25, "label" => "Tuesday"),
 	array("y" => 5, "label" => "Wednesday"),
