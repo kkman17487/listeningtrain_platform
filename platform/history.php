@@ -14,8 +14,6 @@
 	$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
 	array("y" => 2435.94, "label" => "France" ),
-	array("y" => 1842.55, "label" => "China" ),
-	array("y" => 1828.55, "label" => "Russia" ),
 	array("y" => 1039.99, "label" => "Switzerland" ),
 	array("y" => 765.215, "label" => "Japan" ),
 	array("y" => 612.453, "label" => "Netherlands" )
@@ -27,7 +25,7 @@
 	array("x" => 39, "y" => 400),
 	array("x" => 34, "y" => 430),
 	array("x" => 24, "y" => 321),
-	array("x" => 29, "y" => 250),
+	/*array("x" => 29, "y" => 250),
 	array("x" => 29, "y" => 400),
 	array("x" => 23, "y" => 290),
 	array("x" => 27, "y" => 250),
@@ -35,7 +33,7 @@
 	array("x" => 36, "y" => 350),
 	array("x" => 33, "y" => 405),
 	array("x" => 32, "y" => 453),
-	array("x" => 21, "y" => 292)
+	array("x" => 21, "y" => 292)*/
 	);
  
 	$dataPoints4 = array(
@@ -45,14 +43,14 @@
 	array("x" => 32, "y" => 190),
 	array("x" => 29, "y" => 189),
 	array("x" => 22, "y" => 160),
-	array("x" => 27, "y" => 200),
+	/*array("x" => 27, "y" => 200),
 	array("x" => 26, "y" => 192),
 	array("x" => 24, "y" => 225),
 	array("x" => 33, "y" => 330),
 	array("x" => 34, "y" => 250),
 	array("x" => 30, "y" => 120),
 	array("x" => 37, "y" => 160),
-	array("x" => 24, "y" => 196)
+	array("x" => 24, "y" => 196)*/
 	);
 
 ?>
