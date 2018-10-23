@@ -1,13 +1,14 @@
 <?php
 	$dataPoints = array(
-	array("y" => 25, "label" => "Sunday"),
-	array("y" => 15, "label" => "Monday"),
+	array("y" => 25%, "label" => "2018/10/23 12:20(test)"),
+	array("y" => 15%, "label" => "2018/10/24 02:45")
+	/*array("y" => 15, "label" => "Monday"),
 	array("y" => 25, "label" => "Tuesday"),
 	array("y" => 5, "label" => "Wednesday"),
 	array("y" => 10, "label" => "Thursday"),
 	array("y" => 0, "label" => "Friday"),
 	array("y" => 20, "label" => "Saturday")
-	//array("y" => correct rate, "label" => "Reaction Time")
+	array("y" => correct rate, "label" => "Reaction Time")*/
 	);
 
 	$dataPoints2 = array( 
