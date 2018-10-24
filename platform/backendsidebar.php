@@ -19,7 +19,7 @@
             <li><a href="adddata.php">修改聲音與圖檔</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">設定</a></li>
+            <li><a href="setting.php">設定</a></li>
           </ul>
         </div>
 	 </div>
