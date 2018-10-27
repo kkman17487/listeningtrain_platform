@@ -1,6 +1,7 @@
 <?php
 # 取得上傳檔案數量
 $fileCount = count($_FILES['my_file']['name']);
+$type=$_FILES['my_file']['type'];
 
 for ($i = 0; $i < $fileCount; $i++) {
   # 檢查檔案是否上傳成功
