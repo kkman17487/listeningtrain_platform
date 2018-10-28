@@ -1,144 +1,145 @@
 animal
-	Dog			1168.00 Hz	中間高，其他低
-	Horse			1900.00 Hz	趨於平緩
-	bird			2659.00 Hz	高頻高，其他平緩
-	cat		      1529~3386 Hz	聲音密集於高頻
-	camel			296~581 Hz	聲音變化不大，高音較小
-	Monkey		      1050~4156	Hz	聲音變化不大，高音較大
-	cow		       953~1567 Hz	聲音波型發散
-	dophin		      1895~3876 Hz
-	donkey		       759~1556 Hz
-	Pig			275~506 Hz
-	elephant	       571~6019 Hz
-	geese		       630~1351 Hz
-	goat			495~748 Hz
-	lion			358~450 Hz
-	rat			   6481 Hz
-	crow			   1351 Hz
-	owl			293~400 Hz
+	50 Dog			1168.00 Hz	中間高，兩邊低
+	Horse			1900.00 Hz	中間高，兩邊低
+	bird			2659.00 Hz	中間高，兩邊低
+	cat		      1529~3386 Hz	平緩
+	camel			296~581 Hz	平緩
+	Monkey		      1050~4156	Hz	中間低，兩邊高
+	cow		       953~1567 Hz	平緩
+	dophin		      1895~3876 Hz	平緩
+	donkey		       759~1556 Hz	平緩
+	Pig			275~506 Hz	低頻高
+	97 sheep	      2492~6320 Hz	平緩
+	elephant	       571~6019 Hz	低頻高
+	geese		       630~1351 Hz	高頻高
+	goat			495~748 Hz	中間低，兩邊高
+	lion			264~495 Hz	中間低，兩邊高
+	rat			   6481 Hz	中間高，兩邊低
+	crow			   1351 Hz	中間高，兩邊低
+	owl			293~400 Hz	平緩
 cook
-	boiling1		   6.00 Hz
-	cutting			 650.00 Hz
-	drinking		 300.00 Hz
-	putting_a_bottle	1330.00 Hz
-	roast			  32.00 Hz
-	tableware		4000.00 Hz
-	washing-tableware	  94.00 Hz
+	boiling1		   6.00 Hz	平緩
+	cutting			 650.00 Hz	中間高，兩邊低
+	drinking		 300.00 Hz	低頻高
+	putting_a_bottle	1330.00 Hz	中間高，兩邊低
+	roast			  32.00 Hz	低頻高
+	tableware		4000.00 Hz	平緩
+	washing-tableware	  94.00 Hz	低頻高
 event
-	Beeper			2078.00 Hz
-	Buzzers			1104.00 Hz
-	buzzer1			1266.00 Hz
-	clapping		1752.00 Hz
-	firework		 80~110 Hz
-	少數人喊叫聲		 813.00 Hz
-	吹氣球			3984.00 Hz
-	鼓掌聲			1000.00 Hz
+	Beeper			2078.00 Hz	中間高，兩邊低
+	Buzzers			1104.00 Hz	平緩
+	buzzer1			1266.00 Hz	低頻高
+	clapping		1752.00 Hz	中間高，兩邊低
+	firework		 80~110 Hz	低頻高
+	少數人喊叫聲		 813.00 Hz	中間高，兩邊低
+	吹氣球			3984.00 Hz	平緩
+	鼓掌聲			1000.00 Hz	中間高，兩邊低
 house
-	brooming		  22.00 Hz
-	brushing_teeth		  23.00 Hz
-	clock_bell		8889.00 Hz
-	coin			8021.00 Hz
-	cutting_papper		8303.00 Hz
-	door_bell		1582.00 Hz
-	door_chime		700~900 Hz
-	fan			  76.00 Hz
-	key			6316.00 Hz
-	knocking_a_wooden_door	  64.00 Hz
-	knocking_an_iron_door	  23.00 Hz
-	letter_box		 234.00 Hz
-	newspaper		1664.00 Hz
-	pc_keyboard		  29.00 Hz
-	printer			 662.00 Hz
-	壁爐木頭		 145.00 Hz
-	scissor			9926.00 Hz
-	shower			  12.00 Hz
-	tap			5943.00 Hz
-	towel			  38.00 Hz
-	washstand		9234.00 Hz
-	zipper			  41.00 Hz
+	brooming		  22.00 Hz	低頻高
+	brushing_teeth		  23.00 Hz	中間低，兩邊高
+	clock_bell		8889.00 Hz	高頻高
+	coin			8021.00 Hz	高頻高
+	cutting_papper		8303.00 Hz	平緩
+	door_bell		1582.00 Hz	高頻高
+	door_chime		700~900 Hz	高頻高
+	fan			  76.00 Hz	低頻高
+	key			6316.00 Hz	高頻高
+	knocking_a_wooden_door	  64.00 Hz	低頻高
+	knocking_an_iron_door	  23.00 Hz	低頻高
+	letter_box		 234.00 Hz	中間高，兩邊低
+	newspaper		1664.00 Hz	中間低，兩邊高
+	pc_keyboard		  29.00 Hz	低頻高
+	printer			 662.00 Hz	中間高，兩邊低
+	壁爐木頭		 145.00 Hz	平緩
+	scissor			9926.00 Hz	高頻高
+	shower			  12.00 Hz	中間低，兩邊高
+	tap			5943.00 Hz	中間低，兩邊高
+	towel			  38.00 Hz	低頻高
+	washstand		9234.00 Hz	平緩
+	zipper			  41.00 Hz	中間高，兩邊低
 instrument
-	bass_drum		  41.00 Hz
-	guitar			 264.00 Hz
-	piano		      1012~2250 Hz
+	bass_drum		  41.00 Hz	低頻高
+	guitar			 264.00 Hz	低頻高
+	piano		      1012~2250 Hz	中間高，兩邊低
 nature
-	axe			 813.00 Hz
-	autumn_insects		8559.00 Hz
-	breaking_branchs	  11.00 Hz
-	brook			  23.00 Hz
-	cicadas			  23.00 Hz
-	cricket			3871.00 Hz
-	fire			  43.00 Hz
-	flogs			3240.00 Hz
-	heavy_rain		  35.00 Hz
-	lightning		 100.00 Hz
-	rain_thunder		 100.00 Hz
-	small_ice		1351.00 Hz
-	string_wind		   5.00 Hz
-	summer_beach		 807.00 Hz
-	summer_hill		  27.00 Hz
-	thunder			 100.00 Hz
-	wind_bell		5273.00 Hz
-	下大雨			   5.00 Hz
-	溪水			 474.00 Hz
+	axe			 813.00 Hz	中間高，兩邊低
+	autumn_insects		8559.00 Hz	低頻高
+	breaking_branchs	  11.00 Hz	低頻高
+	brook			  23.00 Hz	中間低，兩邊高
+	cicadas			  23.00 Hz	低頻高
+	cricket			3871.00 Hz	中間高
+	fire			  43.00 Hz	低頻高
+	flogs			3240.00 Hz	中間高，兩邊低
+	heavy_rain		  35.00 Hz	平緩
+	lightning		 100.00 Hz	平緩
+	rain_thunder		 100.00 Hz	低頻高
+	small_ice		1351.00 Hz	高頻高
+	strong_wind		   5.00 Hz	低頻高	
+	summer_beach		 807.00 Hz	中間低，兩邊高
+	summer_hill		  27.00 Hz	平緩
+	thunder			 100.00 Hz	低頻高
+	wind_bell		5273.00 Hz	高頻高
+	下大雨			   5.00 Hz	平緩
+	溪水			 474.00 Hz	平緩
 school
-	Alarm_bell		6110.00 Hz
-	badminton		  32.00 Hz
-	消防車			1206.00 Hz
-	警車警報器		1227.00 Hz
-	school_chime	 	 809.00 Hz
-	shrill_whistle	  	2202.00 Hz
+	Alarm_bell		6110.00 Hz	高頻高
+	badminton		  32.00 Hz	低頻高
+	消防車			1206.00 Hz	中間高，兩邊低
+	警車警報器		1227.00 Hz	中間高，兩邊低
+	school_chime	 	 809.00 Hz	中間高，兩邊低
+	shrill_whistle	  	2202.00 Hz	中間高，兩邊低
 street
-	汽車引擎		3510.00 Hz
-	bicycle bell	     5733~14901 Hz
-	church bell3	      1604~4070 Hz
-	church bell2		479~786 Hz
-	church bell1	       770~1007 Hz
-	railroad bell	     6019~10000 Hz
-	ambulance_passing      832~1113 Hz
-	fire_engine_passing	 826.00 Hz
-	建築打洞機		 92~404 Hz
-	電動螺絲起子	      1416~3031 Hz
-	site_of_construction1	 48~124 Hz
-	toll_bar	      1421~3575 Hz
-	train_passing		145~732	Hz
-	trucks4			  11~32 Hz
-	汽車方向燈		318~517 Hz
-	汽車喇叭	       825~2885	Hz
-	腳踏車鈴鐺	     9453~14422 Hz
-	10-04 Alarm	      1016~1414 Hz
-	10-07 Alarm		   3284 Hz
-	Desk Bell		  13512 Hz
-	Bubbles Underwater	102~404 Hz
-	Bubbles In Water	318~913 Hz
-	camera			   1604 Hz
-	Bill Counter	       732~1685	Hz
-	chains			 560.00 Hz
-	chainsaw		323~770 Hz
-	切東西 鉅子		124~711 Hz
-	鐵鎚			 662.00	Hz
-	紙張燃燒		   5~32 Hz
-	直升飛機盤旋		 59~824 Hz
-	捏碎易開罐	      1007~1222 Hz
-	鬧鐘鬧鈴		  10067 Hz
-	冰塊掉到玻璃杯	      1604~2153 Hz
-	刀叉		      2202~7144 Hz
-	水沸騰			145~614 Hz
-	小吹風機		1147.00 Hz
-	大吹風機		 415.00 Hz
-	飲料倒入杯子		 958.00 Hz
-	理髮店1			 124.00 Hz
-	理髮店2			 124.00 Hz
-	烤麵包機		393~524 Hz
-	廁所馬桶		264~468 Hz
-	吸塵器1		      1949~3558 Hz
-	吸塵器2			 345.00 Hz
-	淋浴		      3510~5593 Hz
-	除草機		       748~1453 Hz
-	揉紙袋		      1195~3967 Hz
-	揉塑膠袋	      1351~3779 Hz
+	5-01 汽車引擎		3510.00 Hz	平緩
+	bicycle bell	     5733~14901 Hz	高頻高
+	church bell3	      1604~4070 Hz	平緩
+	church bell2		479~786 Hz	中間高，兩邊低
+	church bell1	       770~1007 Hz	中間高，兩邊低
+	railroad bell	     6019~10000 Hz	高頻高
+	ambulance_passing      832~1113 Hz	中間高，兩邊低
+	fire_engine_passing	 826.00 Hz	低頻高
+	建築打洞機		 92~404 Hz	平緩
+	電動螺絲起子	      1416~3031 Hz	中間高，兩邊低
+	site_of_construction1	 48~124 Hz	中間高，兩邊低
+	toll_bar	      1421~3575 Hz	中間高，兩邊低
+	train_passing		145~732	Hz	平緩
+	trucks4			  11~32 Hz	平緩
+	汽車方向燈		318~517 Hz	高頻高
+	汽車喇叭	       825~2885	Hz	高頻高
+	走路			113~275 Hz	中間高，兩邊低
+	腳踏車鈴鐺	     9453~14422 Hz	中間高，兩邊低
+日常生活
+	10-04 Alarm	      1016~1414 Hz	中間高，兩邊低
+	10-07 Alarm		   3284 Hz	中間高，兩邊低
+	Desk Bell		  13512 Hz	高頻高
+	Bubbles Underwater	102~404 Hz	低頻高
+	Bubbles In Water	318~913 Hz	低頻高
+	camera			   1604 Hz	高頻高
+	Bill Counter	       732~1685	Hz	平緩
+	chains			 560.00 Hz	平緩
+	chainsaw		323~770 Hz	平緩
+	切東西 鉅子		124~711 Hz	低頻高
+	鐵鎚			 662.00	Hz	平緩
+	紙張燃燒		   5~32 Hz	低頻高
+	直升飛機盤旋		 59~824 Hz	低頻高
+	捏碎易開罐	      1007~1222 Hz	高頻高
+	鬧鐘鬧鈴		  10067 Hz	高頻高
+	冰塊掉到玻璃杯	      1604~2153 Hz	高頻高
+	刀叉		      2202~7144 Hz	平緩
+	水沸騰			145~614 Hz	平緩
+	小吹風機		1147.00 Hz	中間高，兩邊低
+	大吹風機		 415.00 Hz	平緩
+	飲料倒入杯子		 958.00 Hz	高頻高
+	理髮店1			 124.00 Hz	平緩
+	理髮店2			 124.00 Hz	平緩
+	烤麵包機		393~524 Hz	平緩
+	廁所馬桶		264~468 Hz	低頻高
+	吸塵器1		      1949~3558 Hz	高頻高
+	吸塵器2			 345.00 Hz	低頻高
+	淋浴		      3510~5593 Hz	高頻高
+	除草機		       748~1453 Hz	平緩
+	揉紙袋		      1195~3967 Hz	高頻高
+	揉塑膠袋	      1351~3779 Hz	高頻高
 軍事
-	airplane		 108.00 Hz
-	militare battle		  46.00 Hz
-	開槍			167~307 Hz
-sound
-	
+	airplane		 108.00 Hz	平緩
+	militare battle		  46.00 Hz	低頻高
+	開槍			167~307 Hz	平緩
