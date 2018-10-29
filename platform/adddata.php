@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<body>
 <?php
 session_start();
 include('backendheader.php');
@@ -41,10 +43,6 @@ if(isset($_POST['formSubmit']))
   }
 }
 ?>
-
-<html lang="zh-Hant-TW">
-
-<body>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">修改聲音、圖片</h1>
     <div class="table-responsive">
@@ -84,8 +82,9 @@ if(isset($_POST['formSubmit']))
 			<option value="f1">100~300</option>
 			<option value="f2">300~500</option>
 			<option value="f3">500~700</option>
-		<br></br>
-		
+		</select>
+
+		<br></br>		
 		<label>選擇波型</label>
 		<select name="formwaveform">
 			<option value="w0">平緩</option>
@@ -93,6 +92,7 @@ if(isset($_POST['formSubmit']))
 			<option value="w2">高頻高</option>
 			<option value="w3">中間高，兩邊低</option>
 			<option value="w4">中間低，兩邊高</option>		
+		</select>
 		
 		<br></br>
 		<input type="submit" value="送出" />
