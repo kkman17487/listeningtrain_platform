@@ -8,7 +8,7 @@ for($i=1;$i<mysqli_num_rows($data);$i++)
 
 <?php
 	$dataPoints = array(
-	array("y" => '<?php echo $labelrs[0]?>', "label" => '<?php echo $labelrs[3]?>'),
+	array("y" => <?php echo '$labelrs[0]'?>, "label" => <?php echo '$labelrs[3]'?>),
 	/*array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => 15, "label" => "Monday"),
 	array("y" => 25, "label" => "Tuesday"),
