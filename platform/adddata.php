@@ -39,6 +39,16 @@ if(isset($_POST['formSubmit']))
     echo("</p>");
   }
 }
+
+if(isset($_POST['formSubmit'])
+{
+	$frequency = $_POST['frequency'];
+}
+
+if(isset($_POST['formSubmit'])
+{
+	$waveform = $_POST['waveform'];
+}
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -73,8 +83,21 @@ if(isset($_POST['formSubmit']))
 			<option value="Others">其他</option>
 		</select>
 
-		<br><br>
-
+		<br>
+		<select name="frequency">
+			<option value="0"><100</option>
+			<option value="1">100~300</option>
+			<option value="2">300~500</option>
+			<option value="3">500~700</option>
+		<br>
+		<select name="waveform">
+			<option value="0">平緩</option>
+			<option value="1">低頻高</option>
+			<option value="2">高頻高</option>
+			<option value="3">中間高，兩邊低</option>
+			<option value="4">中間低，兩邊高</option>
+		
+		<br>
 		<input type="submit" value="送出" />
 		</form>
 
