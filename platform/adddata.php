@@ -19,9 +19,9 @@ if(isset($_GET['add'])){
 	}
 }
 
-if(isset($_POST['formSubmit']))
+if(isset($_POST['formSubmit1']))
 {
-  $acategory = $_POST['formcategory1'];
+  $acategory = $_POST['formcategory'];
 
   if(!isset($acategory))
   {
@@ -42,12 +42,12 @@ if(isset($_POST['formSubmit']))
 
 if(isset($_POST['formSubmit2'])
 {
-	$frequency = $_POST['frequency'];
+	$frequency = $_POST['formfrequency'];
 }
 
 if(isset($_POST['formSubmit3'])
 {
-	$waveform = $_POST['waveform'];
+	$waveform = $_POST['formwaveform'];
 }
 ?>
 
@@ -84,13 +84,13 @@ if(isset($_POST['formSubmit3'])
 		</select>
 
 		<br>
-		<select name="frequency">
+		<select name="formfrequency">
 			<option value="0"><100</option>
 			<option value="1">100~300</option>
 			<option value="2">300~500</option>
 			<option value="3">500~700</option>
 		<br>
-		<select name="waveform">
+		<select name="formwaveform">
 			<option value="0">平緩</option>
 			<option value="1">低頻高</option>
 			<option value="2">高頻高</option>
