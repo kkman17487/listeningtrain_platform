@@ -21,7 +21,7 @@ if(isset($_GET['add'])){
 
 if(isset($_POST['formSubmit']))
 {
-  $acategory = $_POST['formcategory'];
+  $acategory = $_POST['formcategory1'];
 
   if(!isset($acategory))
   {
@@ -40,12 +40,12 @@ if(isset($_POST['formSubmit']))
   }
 }
 
-if(isset($_POST['formSubmit'])
+if(isset($_POST['formSubmit2'])
 {
 	$frequency = $_POST['frequency'];
 }
 
-if(isset($_POST['formSubmit'])
+if(isset($_POST['formSubmit3'])
 {
 	$waveform = $_POST['waveform'];
 }
