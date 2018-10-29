@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
-
 <?php
 session_start();
 include('backendheader.php');
 ?>
 
-<body>
-<?php include('backendsidebar.php');
-
+<?php 
+include('backendsidebar.php');
 include('connect_to_sql.php');
 
 if(isset($_GET['add'])){
@@ -19,11 +16,12 @@ if(isset($_GET['add'])){
 	}
 }
 
-if(isset($_POST['formSubmit1']))
+if(isset($_POST['formSubmit']))
 {
   $acategory = $_POST['formcategory'];
 	
 	$frequency = $_POST['formfrequency'];
+	
 	$waveform = $_POST['formwaveform'];
 	
   if(!isset($acategory))
@@ -44,6 +42,9 @@ if(isset($_POST['formSubmit1']))
 }
 ?>
 
+<html lang="zh-Hant-TW">
+
+<body>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">修改聲音、圖片</h1>
     <div class="table-responsive">
@@ -51,17 +52,17 @@ if(isset($_POST['formSubmit1']))
     <u><strong>新增</strong></u>
 		<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
 		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
-		<br>
+		<br></br>
 
 		<label>中文名稱</label>
 		<input type="text" name="ChineseName" placeholder="中文"/>
 
 		<label>英文名稱</label>
 		<input type="text" name="EnglishName" placeholder="English"/>
-		<br><br>
+		<br></br>
 
 		<label for='formcategory[]'>選擇類別</label>
-		<br>
+		<br></br>
 		<select multiple="multiple" name="formcategory[]">
 			<option value="City">城市、房子</option>
 			<option value="Street">街道</option>
@@ -75,24 +76,25 @@ if(isset($_POST['formSubmit1']))
 			<option value="Dailylife">日常生活</option>
 			<option value="Others">其他</option>
 		</select>
-
-		<p>
-		選擇頻率
+		
+		<br></br>
+		<label>選擇頻率</label>
 		<select name="formfrequency">
 			<option value="f0"><100</option>
 			<option value="f1">100~300</option>
 			<option value="f2">300~500</option>
 			<option value="f3">500~700</option>
-		<p>
-		選擇波型
+		<br></br>
+		
+		<label>選擇波型</label>
 		<select name="formwaveform">
 			<option value="w0">平緩</option>
 			<option value="w1">低頻高</option>
 			<option value="w2">高頻高</option>
 			<option value="w3">中間高，兩邊低</option>
-			<option value="w4">中間低，兩邊高</option>
+			<option value="w4">中間低，兩邊高</option>		
 		
-		<br>
+		<br></br>
 		<input type="submit" value="送出" />
 		</form>
 
@@ -103,4 +105,4 @@ if(isset($_POST['formSubmit1']))
 </div>
 </body>
 
-</html>	
+</html>
