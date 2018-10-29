@@ -48,10 +48,7 @@ if(isset($_POST['formSubmit']))
     <div class="table-responsive">
 
     <h4>新增</h4>
-		<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
-		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
-		<br></br>
-
+		
 		<label>中文名稱</label>
 		<input type="text" name="ChineseName" placeholder="中文"/>
 
@@ -59,6 +56,11 @@ if(isset($_POST['formSubmit']))
 		<input type="text" name="EnglishName" placeholder="English"/>
 		<br></br>
 
+		<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
+		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
+		<br></br>
+
+		
 		<label for='formcategory[]'>選擇類別</label>
 		<select multiple="multiple" name="formcategory[]">
 			<option value="City">城市、房子</option>
