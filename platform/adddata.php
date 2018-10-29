@@ -47,7 +47,7 @@ if(isset($_POST['formSubmit']))
 <h1 class="sub-header">修改聲音、圖片</h1>
     <div class="table-responsive">
 
-    <u><strong>新增</strong></u>
+    <h4>新增</h4>
 		<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
 		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
 		<br></br>
@@ -60,7 +60,6 @@ if(isset($_POST['formSubmit']))
 		<br></br>
 
 		<label for='formcategory[]'>選擇類別</label>
-		<br></br>
 		<select multiple="multiple" name="formcategory[]">
 			<option value="City">城市、房子</option>
 			<option value="Street">街道</option>
@@ -98,8 +97,8 @@ if(isset($_POST['formSubmit']))
 		<input type="submit" value="送出" />
 		</form>
 
-	<br><br>
-		<u><strong>刪除</strong></u>
+	<!--<br><br>
+		<u><strong>刪除</strong></u>-->
 
     </div>
 </div>
