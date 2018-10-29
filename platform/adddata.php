@@ -22,7 +22,10 @@ if(isset($_GET['add'])){
 if(isset($_POST['formSubmit1']))
 {
   $acategory = $_POST['formcategory'];
-
+	
+	$frequency = $_POST['formfrequency'];
+	$waveform = $_POST['formwaveform'];
+	
   if(!isset($acategory))
   {
     echo("<p>You didn't select any category!</p>\n");
@@ -38,16 +41,6 @@ if(isset($_POST['formSubmit1']))
     }
     echo("</p>");
   }
-}
-
-if(isset($_POST['formSubmit2'])
-{
-	$frequency = $_POST['formfrequency'];
-}
-
-if(isset($_POST['formSubmit3'])
-{
-	$waveform = $_POST['formwaveform'];
 }
 ?>
 
