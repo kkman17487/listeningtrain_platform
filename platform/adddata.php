@@ -76,19 +76,21 @@ if(isset($_POST['formSubmit1']))
 			<option value="Others">其他</option>
 		</select>
 
-		<br>
+		<p>
+		選擇頻率
 		<select name="formfrequency">
-			<option value="0"><100</option>
-			<option value="1">100~300</option>
-			<option value="2">300~500</option>
-			<option value="3">500~700</option>
-		<br>
+			<option value="f0"><100</option>
+			<option value="f1">100~300</option>
+			<option value="f2">300~500</option>
+			<option value="f3">500~700</option>
+		<p>
+		選擇波型
 		<select name="formwaveform">
-			<option value="0">平緩</option>
-			<option value="1">低頻高</option>
-			<option value="2">高頻高</option>
-			<option value="3">中間高，兩邊低</option>
-			<option value="4">中間低，兩邊高</option>
+			<option value="w0">平緩</option>
+			<option value="w1">低頻高</option>
+			<option value="w2">高頻高</option>
+			<option value="w3">中間高，兩邊低</option>
+			<option value="w4">中間低，兩邊高</option>
 		
 		<br>
 		<input type="submit" value="送出" />
