@@ -80,17 +80,11 @@ if(isset($_POST['formSubmit']))
 		<label>選擇頻率</label>
 		<select name="formfrequency">
 			<option value="f0"><100</option>
-			<option value="f1">100~300</option>
-			<option value="f2">300~500</option>
-			<option value="f3">500~700</option>
-			<option value="f4">700~900</option>
-			<option value="f5">900~1100</option>
-			<option value="f6">1100~1300</option>
-			<option value="f7">1300~1500</option>
-			<option value="f8">1500~1700</option>
-			<option value="f9">1700~1900</option>
-			<option value="f10">1900~2100</option>
-			<option value="f11">>2100</option>
+			<option value="f1">100~1000</option>
+			<option value="f2">1000~2000</option>
+			<option value="f3">2000~4000</option>
+			<option value="f4">4000~7000</option>
+			<option value="f5">>7000</option>
 		</select>
 
 		<br></br>		
