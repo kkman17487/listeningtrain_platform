@@ -85,6 +85,7 @@ if(isset($_POST['formSubmit']))
 			<option value="f3">2000~4000</option>
 			<option value="f4">4000~7000</option>
 			<option value="f5">>7000</option>
+			<option value="f6">全部</option>
 		</select>
 
 		<br></br>		
@@ -94,7 +95,8 @@ if(isset($_POST['formSubmit']))
 			<option value="w1">低頻高</option>
 			<option value="w2">高頻高</option>
 			<option value="w3">中間高，兩邊低</option>
-			<option value="w4">中間低，兩邊高</option>		
+			<option value="w4">中間低，兩邊高</option>
+			<option value="w5">全部</option>
 		</select>
 		
 		<br></br>
