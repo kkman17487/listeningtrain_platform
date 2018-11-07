@@ -78,7 +78,7 @@ include('sidebar.php');
             <source src="<?php echo $rs[sound_src]?>" type="audio/mp3" />
             <embed height="100" width="100" src="<?php echo $rs[sound_src]?>" />
           </audio>
-          <img src="<?php echo $rs[pic_src]?>" height="80%" width="80%" align ="center"/>
+          <img src="<?php echo $rs[pic_src]?>" height="85%" width="85%" align="center"/>
           <?php
           //if()
             //echo '<span class="w3-tag w3-display-topleft">New</span>'?>
@@ -86,7 +86,7 @@ include('sidebar.php');
             <button class="w3-button w3-black " onclick="document.getElementById('<?php echo $rs[audio_id]?>').play(); return false;">Play</button>
           </div>
         </div>
-        <p align ="center"><?php echo $rs[name]?></p>
+        <p align="left"><?php echo $rs[name]?></p>
         <button onclick="location.href='training.php?ID=<?php echo $_GET['ID']?>&no=<?php echo $previous?>'" type="button" <?php if($previous<0) echo disabled?>>上一題</button>
         <button onclick="location.href='training.php?ID=<?php echo $_GET['ID']?>&no=<?php echo $next?>'" type="button" <?php if($next>=sizeof($_SESSION['question'])) echo disabled?>>下一題</button>
       </div>
