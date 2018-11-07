@@ -78,7 +78,7 @@ include('sidebar.php');
             <source src="<?php echo $rs[sound_src]?>" type="audio/mp3" />
             <embed height="100" width="100" src="<?php echo $rs[sound_src]?>" />
           </audio>
-          <img src="<?php echo $rs[pic_src]?>" height="90%" width="90%" />
+          <img src="<?php echo $rs[pic_src]?>" height="90%" width="90%" style="margin:auto;"/>
           <?php
           //if()
             //echo '<span class="w3-tag w3-display-topleft">New</span>'?>

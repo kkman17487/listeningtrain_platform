@@ -119,7 +119,7 @@ elseif(isset($_GET['checkanswer']))
               <source src="'.$rs['sound_src'].'" type="audio/mp3" />
               <embed height="100" width="100" src="'.$rs['sound_src'].'" />
             </audio>
-            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); set_timer(); return false;">Play</button>';
+            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); set_timer(); return false;">Play</button><br>';
           $randanswer = $con->query("select * from data WHERE id != $rs[id] ORDER BY RAND() LIMIT 3");
           $answer = array(array());
           for($k = 1;$k <= mysqli_num_rows($randanswer);$k++)
