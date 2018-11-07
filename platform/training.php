@@ -25,11 +25,6 @@ include('sidebar.php');
       else
         echo '<p class="w3-left">教材'.$_GET['ID'].':'.$name.'</p>';
     ?>
-
-    <!--<p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
-    </p>-->
   </header>
   <body>
   <?php
