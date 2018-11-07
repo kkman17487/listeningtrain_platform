@@ -73,6 +73,7 @@ include('sidebar.php');
       <div class="w3-container">
         <div class="w3-display-container">
             <?php echo $_GET['no']+1.0.'/'.sizeof($_SESSION['question']);?>
+			<br>
           <audio id='<?php echo $rs[audio_id]?>'>
             <source src="<?php echo $rs[sound_src]?>" type="audio/mp3" />
             <embed height="100" width="100" src="<?php echo $rs[sound_src]?>" />
