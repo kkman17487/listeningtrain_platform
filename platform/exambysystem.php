@@ -139,7 +139,7 @@ elseif(isset($_GET['checkanswer']))
                 echo '<div class="w3-col l6 s6">
                   <div class="w3-container">
                     <div class="w3-display-container">';
-              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="35%" width="70%" src="'.$answer[$j][1].'"></div></div></div>';
+              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="40%" width="80%" src="'.$answer[$j][1].'"><br></br></div></div></div>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
