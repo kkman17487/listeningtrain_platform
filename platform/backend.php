@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <?php include('backendheader.php'); ?>
-
+<head>
+<style>
+li {
+	font-weight:bold;
+}
+</style>
+</head>
 <body>
 <?php include('backendsidebar.php'); ?>
 
