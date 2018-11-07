@@ -52,7 +52,7 @@ elseif(isset($_GET['checkanswer']))
   <?php
   if(!isset($_GET['number']) && !isset($_GET['ID'])){
     echo '<div class="w3-display-container w3-container">
-    <img src="../picture/test2.jpg" alt="Photo" style="width:80%">
+    <img src="../picture/test2.jpg" alt="Photo" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
       <h1 class="w3-hide-small">系統出題</h1>
       <form action="exambysystem.php" method="get">
@@ -139,7 +139,7 @@ elseif(isset($_GET['checkanswer']))
                 echo '<div class="w3-col l6 s6">
                   <div class="w3-container">
                     <div class="w3-display-container">';
-              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="50%" width="100%" src="'.$answer[$j][1].'"></div></div></div>';
+              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'">'.$answer[$j][0].'<img height="50%" width="80%" src="'.$answer[$j][1].'"></div></div></div>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
