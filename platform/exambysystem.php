@@ -63,7 +63,7 @@ elseif(isset($_GET['checkanswer']))
       </form>
 	  <br></br>
       <h1 class="w3-hide-small">題庫選擇</h1>
-      <div class="w3-container w3-text-blue">
+      <div class="w3-text-blue">
         <div class="CSSTableGenerator">
             <table align="center">
                   <tr>
