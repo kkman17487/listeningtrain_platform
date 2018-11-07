@@ -12,7 +12,7 @@ li {
 <body>
 <?php include('backendsidebar.php'); ?>
 
-<p align=center><img src="../picture/background.jpg" alt="首頁" style="width:30%"></p>
+<p align=center><img src="../picture/background.jpg" alt="首頁" style="width:40%"></p>
 
 </body>
 </html>
