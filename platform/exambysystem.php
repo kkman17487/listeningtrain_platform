@@ -44,10 +44,10 @@ elseif(isset($_GET['checkanswer']))
 
 <html>
 <?php include('sidebar.php'); ?>
-  <!-- Top header 
+  <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">系統出題</p>
-  </header>-->
+    <!--<p class="w3-left">系統出題</p>-->
+  </header>
   <!-- Image header -->
   <?php
   if(!isset($_GET['number']) && !isset($_GET['ID'])){
