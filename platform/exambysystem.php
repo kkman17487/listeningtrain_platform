@@ -64,9 +64,8 @@ elseif(isset($_GET['checkanswer']))
       </form>
 	  <br></br>
       <h1 class="w3-hide-small">題庫選擇</h1>
-	  <div class="w3-container">
 	  <div class="CSSTableGenerator">
-            <table align="center">
+            <table align="center" style="color:white;">
                   <tr>
                     <td width="5%">ID</td>
                     <td width="10%">名稱</td>
@@ -87,7 +86,6 @@ elseif(isset($_GET['checkanswer']))
                 </tr>';
     }
     echo '</table>
-	</div>
 	</div>
 	</div>
   </div>
