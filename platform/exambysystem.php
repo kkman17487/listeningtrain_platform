@@ -66,7 +66,7 @@ elseif(isset($_GET['checkanswer']))
       <div class="container">
         <div class="CSSTableGenerator">
             <table align="center">
-                  <tr font-color="white">
+                  <tr><font color="white">
                     <td width="5%">ID</td>
                     <td width="10%">名稱</td>
                     <td width="15%">題數</td>
