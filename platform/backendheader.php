@@ -19,7 +19,7 @@ include('backend_check.php');
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 	<style>
 	li {
-	font-size:130%;
+	font-size:120%;
 	font-family:微軟正黑體;
 	}
 	</style>
