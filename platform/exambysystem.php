@@ -41,6 +41,7 @@ elseif(isset($_GET['checkanswer']))
   array_push($_SESSION['select_answer'],array($_POST['answer'],$_POST['time']));
 }
 ?>
+
 <html>
 <?php include('sidebar.php'); ?>
 
@@ -63,8 +64,7 @@ elseif(isset($_GET['checkanswer']))
       </form>
 	  <br></br>
       <h1 class="w3-hide-small">題庫選擇</h1>
-      <div class="CSSTableGenerator">
-	  <div class="w3-text-blue">
+	  <div class="CSSTableGenerator">
             <table align="center">
                   <tr>
                     <td width="5%">ID</td>
@@ -88,7 +88,6 @@ elseif(isset($_GET['checkanswer']))
     echo '</table>
 	</div>
 	</div>
-    </div>
   </div>
   <!-- End page content -->';
   }
