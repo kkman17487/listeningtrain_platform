@@ -46,7 +46,7 @@ elseif(isset($_GET['checkanswer']))
 <?php include('sidebar.php'); ?>
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">.</p>
+    <p class="w3-left">測驗</p>
   </header>
   <!-- Image header -->
   <?php
