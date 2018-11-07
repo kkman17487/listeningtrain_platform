@@ -4,7 +4,7 @@
 <head>
 <style>
 li {
-	font-size:150%;
+	font-size:130%;
 	font-family:微軟正黑體;
 }
 </style>
