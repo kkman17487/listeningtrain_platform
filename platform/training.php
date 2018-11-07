@@ -21,7 +21,7 @@ include('sidebar.php');
   <header class="w3-container w3-xlarge">
     <?php
       if(!isset($_GET['ID']))
-        echo '<p class="w3-left">教材選擇</p>';
+        echo '<p class="w3-left">訓練模式</p>';
       else
         echo '<p class="w3-left">教材'.$_GET['ID'].':'.$name.'</p>';
     ?>
