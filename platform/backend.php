@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <?php include('backendheader.php'); ?>
-<head>
-<style>
-li {
-	font-size:130%;
-	font-family:微軟正黑體;
-}
-</style>
-</head>
+
 <body>
 <?php include('backendsidebar.php'); ?>
 
