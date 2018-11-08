@@ -102,6 +102,7 @@ elseif(isset($_GET['checkanswer']))
     //echo '<div class="w3-row">';
     echo $_GET['no']+1.0.'/'.sizeof($_SESSION['read']);
     $next = $_GET['no'] + 1;
+    print_r($_SESSION['correct_answer'],$_SESSION['correct_answer']);
     if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_SESSION['correct_answer'][$_GET['no']-1])
     {
       echo 'incorrect'.$_SESSION['correct_answer'][$_GET['no']-1].$_SESSION['correct_answer'][$_GET['no']-1];
