@@ -1,68 +1,3 @@
-<?php
-for($i=1;$i<mysqli_num_rows($data);$i++)
-{ 
-	$labelrs=mysqli_fetch_row($data);
-}
-?>
-
-
-<?php
-	$dataPoints = array(
-	array("y" => echo $labelrs[0], "label" => echo $labelrs[3])
-	/*array("y" => 90, "label" => "2018/10/24 02:45")
-	array("y" => 15, "label" => "Monday"),
-	array("y" => 25, "label" => "Tuesday"),
-	array("y" => 5, "label" => "Wednesday"),
-	array("y" => 10, "label" => "Thursday"),
-	array("y" => 0, "label" => "Friday"),
-	array("y" => 20, "label" => "Saturday")
-	array("y" => correct rate, "label" => "Reaction Time")*/
-	);
-
-	$dataPoints2 = array( 
-	array("y" => 3373.64, "label" => "Germany" ),
-	array("y" => 2435.94, "label" => "France" ),
-	array("y" => 1039.99, "label" => "Switzerland" ),
-	array("y" => 765.215, "label" => "Japan" ),
-	array("y" => 612.453, "label" => "Netherlands" )
-	);
-
-	$dataPoints3 = array(
-	array("x" => 23, "y" => 340),
-	array("x" => 28, "y" => 390),
-	array("x" => 39, "y" => 400),
-	array("x" => 34, "y" => 430),
-	array("x" => 24, "y" => 321),
-	/*array("x" => 29, "y" => 250),
-	array("x" => 29, "y" => 400),
-	array("x" => 23, "y" => 290),
-	array("x" => 27, "y" => 250),
-	array("x" => 34, "y" => 380),
-	array("x" => 36, "y" => 350),
-	array("x" => 33, "y" => 405),
-	array("x" => 32, "y" => 453),
-	array("x" => 21, "y" => 292)*/
-	);
- 
-	$dataPoints4 = array(
-	array("x" => 19, "y" => 192),
-	array("x" => 27, "y" => 250),
-	array("x" => 35, "y" => 330),
-	array("x" => 32, "y" => 190),
-	array("x" => 29, "y" => 189),
-	array("x" => 22, "y" => 160),
-	/*array("x" => 27, "y" => 200),
-	array("x" => 26, "y" => 192),
-	array("x" => 24, "y" => 225),
-	array("x" => 33, "y" => 330),
-	array("x" => 34, "y" => 250),
-	array("x" => 30, "y" => 120),
-	array("x" => 37, "y" => 160),
-	array("x" => 24, "y" => 196)*/
-	);
-
-?>
-
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <?php include('backendheader.php'); ?>
@@ -152,6 +87,7 @@ function toggleDataSeries(e){
 </head>
 
 <body>
+
 <?php
 	include('backendsidebar.php');
 	include('connect_to_sql.php');
@@ -159,6 +95,70 @@ function toggleDataSeries(e){
 	$sql ="select * from `history`";
 	$data = mysqli_query($con, $sql);
 ?>
+<?php
+for($i=1;$i<mysqli_num_rows($data);$i++)
+{ 
+	$labelrs=mysqli_fetch_row($data);
+}
+?>
+
+<?php
+	$dataPoints = array(
+	array("y" => echo $labelrs[0], "label" => echo $labelrs[3])
+	/*array("y" => 90, "label" => "2018/10/24 02:45")
+	array("y" => 15, "label" => "Monday"),
+	array("y" => 25, "label" => "Tuesday"),
+	array("y" => 5, "label" => "Wednesday"),
+	array("y" => 10, "label" => "Thursday"),
+	array("y" => 0, "label" => "Friday"),
+	array("y" => 20, "label" => "Saturday")
+	array("y" => correct rate, "label" => "Reaction Time")*/
+	);
+
+	$dataPoints2 = array( 
+	array("y" => 3373.64, "label" => "Germany" ),
+	array("y" => 2435.94, "label" => "France" ),
+	array("y" => 1039.99, "label" => "Switzerland" ),
+	array("y" => 765.215, "label" => "Japan" ),
+	array("y" => 612.453, "label" => "Netherlands" )
+	);
+
+	$dataPoints3 = array(
+	array("x" => 23, "y" => 340),
+	array("x" => 28, "y" => 390),
+	array("x" => 39, "y" => 400),
+	array("x" => 34, "y" => 430),
+	array("x" => 24, "y" => 321),
+	/*array("x" => 29, "y" => 250),
+	array("x" => 29, "y" => 400),
+	array("x" => 23, "y" => 290),
+	array("x" => 27, "y" => 250),
+	array("x" => 34, "y" => 380),
+	array("x" => 36, "y" => 350),
+	array("x" => 33, "y" => 405),
+	array("x" => 32, "y" => 453),
+	array("x" => 21, "y" => 292)*/
+	);
+ 
+	$dataPoints4 = array(
+	array("x" => 19, "y" => 192),
+	array("x" => 27, "y" => 250),
+	array("x" => 35, "y" => 330),
+	array("x" => 32, "y" => 190),
+	array("x" => 29, "y" => 189),
+	array("x" => 22, "y" => 160),
+	/*array("x" => 27, "y" => 200),
+	array("x" => 26, "y" => 192),
+	array("x" => 24, "y" => 225),
+	array("x" => 33, "y" => 330),
+	array("x" => 34, "y" => 250),
+	array("x" => 30, "y" => 120),
+	array("x" => 37, "y" => 160),
+	array("x" => 24, "y" => 196)*/
+	);
+
+?>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
     <div class="table-responsive">
