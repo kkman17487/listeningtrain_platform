@@ -134,7 +134,7 @@ function toggleDataSeries(e){
 	}
 	
 	$dataPoints = array(
-	array("y" => 'echo $labelrs[0]', "label" => echo '$labelrs[3]')
+	array("y" => "echo $labelrs[0]", "label" => "echo $labelrs[3]")
 	/*array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => 15, "label" => "Monday"),
 	array("y" => correct rate, "label" => "Reaction Time")*/
