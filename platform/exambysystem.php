@@ -114,7 +114,7 @@ elseif(isset($_GET['checkanswer']))
     {
       echo '<img height=50 width=50 src="../picture/'.$_SESSION['star'][$i].'">';
     }
-    for($i = 0;$i < sizeof($_SESSION['read']) - count($_SESSION['star']));$i++)
+    for($i = 0;$i < sizeof($_SESSION['read']) - count($_SESSION['star']);$i++)
     {
       echo '<img height=50 width=50 src="../picture/灰色星星.png">';
     }
