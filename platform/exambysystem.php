@@ -102,12 +102,14 @@ elseif(isset($_GET['checkanswer']))
     //echo '<div class="w3-row">';
     echo $_GET['no']+1.0.'/'.sizeof($_SESSION['read']);
     $next = $_GET['no'] + 1;
-    if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_SESSION['select_answer'][$_GET['no']-1][0])
+    if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_SESSION['correct_answer'][$_GET['no']-1])
     {
+      echo 'incorrect'.$_SESSION['correct_answer'][$_GET['no']-1].$_SESSION['correct_answer'][$_GET['no']-1];
       $_SESSION['star'][$_GET['no']-1] = "紅色星星.png";
     }
     elseif($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] == $_SESSION['select_answer'][$_GET['no']-1][0])
     {
+      echo 'correct'.$_SESSION['correct_answer'][$_GET['no']-1].$_SESSION['correct_answer'][$_GET['no']-1];
       $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";
     }
     for($i = 0;$i < count($_SESSION['star']);$i++)
