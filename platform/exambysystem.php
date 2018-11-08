@@ -198,7 +198,7 @@ elseif(isset($_GET['checkanswer']))
     $data_string = substr($data_string,0,strlen($data_string)-1);
     $name = $_SESSION['name'];
     echo $data_string.' '.$name;
-    $res = $con->query('INSERT INTO `history` (`id`, `name`, `data`, `time`) VALUES (NULL, $name, $data_string, CURRENT_TIMESTAMP)');
+    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `time`) VALUES (NULL, $name, $data_string, CURRENT_TIMESTAMP)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
