@@ -19,7 +19,7 @@ if(isset($_GET['add'])){
 
 if(isset($_POST['formSubmit']))
 {
-  $acategory = $_POST['formcategory'];
+	$acategory = $_POST['formcategory'];
 	
 	$frequency = $_POST['formfrequency'];
 	
@@ -40,6 +40,39 @@ if(isset($_POST['formSubmit']))
     }
     echo("</p>");
   }
+  
+  if(!isset($frequency))
+  {
+    echo("<p>You didn't select any frequency!</p>\n");
+  }
+  else
+  {
+    $nfrequency = count($frequency);
+
+    echo("<p>You selected $nfrequency categorys: ");
+    for($i=0; $i < $nfrequency; $i++)
+    {
+      echo($frequency[$i] . " ");
+    }
+    echo("</p>");
+  }
+  
+  if(!isset($waveform))
+  {
+    echo("<p>You didn't select any waveform!</p>\n");
+  }
+  else
+  {
+    $nwaveform = count($waveform);
+
+    echo("<p>You selected $nwaveform categorys: ");
+    for($i=0; $i < $nwaveform; $i++)
+    {
+      echo($waveform[$i] . " ");
+    }
+    echo("</p>");
+  }
+  
 }
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -76,8 +109,8 @@ if(isset($_POST['formSubmit']))
 		</select>
 		
 		<br></br>
-		<label>選擇頻率</label>
-		<select name="formfrequency">
+		<label for='formcategory[]'>選擇頻率</label>
+		<select multiple="multiple" name="formfrequency[]">
 			<option value="f0"><100</option>
 			<option value="f1">100~1000</option>
 			<option value="f2">1000~2000</option>
@@ -89,7 +122,7 @@ if(isset($_POST['formSubmit']))
 
 		<br></br>		
 		<label>選擇波型</label>
-		<select name="formwaveform">
+		<select multiple="multiple" name="formwaveform[]">
 			<option value="w0">平緩</option>
 			<option value="w1">低頻高</option>
 			<option value="w2">高頻高</option>
