@@ -127,14 +127,14 @@ function toggleDataSeries(e){
         </table>
     </div>
 
-<?php	
-	/*for($i=1;$i<mysqli_num_rows($dbdata);$i++)
+	
+	<!--for($i=1;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
 		$labelrs=mysqli_fetch_row($dbdata);
-	}*/
-	
+	}-->
+<?php 	
 	$dataPoints = array(
-	array("y" => echo $rs[0], "label" => echo $rs[3])
+	array("y" => $rs[0], "label" => $rs[3])
 	/*array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => 15, "label" => "Monday"),
 	array("y" => correct rate, "label" => "Reaction Time")*/
@@ -163,7 +163,6 @@ function toggleDataSeries(e){
 	array("x" => 29, "y" => 189),
 	array("x" => 22, "y" => 160)
 	);
-
 ?>
 
 <h1 class="page-header">折線圖</h1>
