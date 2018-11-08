@@ -94,12 +94,11 @@ function toggleDataSeries(e){
 
 	$sql ="select * from `history`";
 	$data = mysqli_query($con, $sql);
-?>
-<?php
-for($i=1;$i<mysqli_num_rows($data);$i++)
-{ 
-	$labelrs=mysqli_fetch_row($data);
-}
+
+	for($i=1;$i<mysqli_num_rows($data);$i++)
+	{ 
+		$labelrs=mysqli_fetch_row($data);
+	}
 ?>
 
 <?php
