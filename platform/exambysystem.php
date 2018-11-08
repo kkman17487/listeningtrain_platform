@@ -3,6 +3,7 @@ session_start();
 include("connect_to_sql.php");
 if(isset($_GET['number']) && (isset($_GET['no']) && $_GET['no'] == 0))
 {
+  $_SESSION['star'] = array();
   unset($_SESSION['data']);
   unset($_SESSION['read']);
   $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
@@ -13,6 +14,7 @@ if(isset($_GET['number']) && (isset($_GET['no']) && $_GET['no'] == 0))
 }
 elseif(isset($_GET['ID']) && (isset($_GET['no']) && $_GET['no'] == 0))
 {
+  $_SESSION['star'] = array();
   unset($_SESSION['data']);
   unset($_SESSION['read']);
   $ID = $_GET['ID'];
@@ -100,6 +102,22 @@ elseif(isset($_GET['checkanswer']))
     //echo '<div class="w3-row">';
     echo $_GET['no']+1.0.'/'.sizeof($_SESSION['read']);
     $next = $_GET['no'] + 1;
+    if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_SESSION['select_answer'][$_GET['no']-1][0])
+    {
+      $_SESSION['star'][$_GET['no']-1] = "紅色星星.png";
+    }
+    elseif($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] == $_SESSION['select_answer'][$_GET['no']-1][0])
+    {
+      $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";
+    }
+    for($i = 0;$i < count($_SESSION['star']));$i++)
+    {
+      echo '<img height=50 width=50 src="../picture/'.$_SESSION['star'][$i].'">';
+    }
+    for($i = 0;$i < sizeof($_SESSION['read']) - count($_SESSION['star']));$i++)
+    {
+      echo '<img height=50 width=50 src="../picture/灰色星星.png">';
+    }
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
       if(isset($_GET['ID']))
@@ -180,7 +198,7 @@ elseif(isset($_GET['checkanswer']))
     $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `time`) VALUES (NULL, $name, $data_string, CURRENT_TIMESTAMP)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
-    } 
+    }
     /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
       $rs = mysqli_fetch_assoc($_SESSION['data']);
     echo '
