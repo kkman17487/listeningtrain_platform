@@ -93,7 +93,7 @@ function toggleDataSeries(e){
 	include('connect_to_sql.php');
 
 	$sql ="select * from `history`";
-	$data = mysqli_query($con, $sql);
+	$dbdata = mysqli_query($con, $sql);
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -111,8 +111,8 @@ function toggleDataSeries(e){
             </thead>
             <tbody>
 			<?php
-				for($i=0;$i<mysqli_num_rows($data);$i++){
-				$rs=mysqli_fetch_assoc($data);
+				for($i=0;$i<mysqli_num_rows($dbdata);$i++){
+				$rs=mysqli_fetch_assoc($dbdata);
 			?>
 			<tr>
 				<td><?php echo $rs['id']?></td>
@@ -128,13 +128,13 @@ function toggleDataSeries(e){
     </div>
 
 <?php	
-	for($i=1;$i<mysqli_num_rows($data);$i++)
+	/*for($i=1;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
-		$labelrs=mysqli_fetch_row($data);
-	}
+		$labelrs=mysqli_fetch_row($dbdata);
+	}*/
 	
 	$dataPoints = array(
-	array("y" => 'echo $labelrs[0]', "label" => echo '$labelrs[3]')
+	array("y" => echo $rs[0], "label" => echo $rs[3])
 	/*array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => 15, "label" => "Monday"),
 	array("y" => correct rate, "label" => "Reaction Time")*/
