@@ -105,12 +105,12 @@ elseif(isset($_GET['checkanswer']))
     //print_r($_SESSION['correct_answer']);
     if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_POST['answer'])
     {
-      echo 'incorrect'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
+      //echo 'incorrect'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
       $_SESSION['star'][$_GET['no']-1] = "紅色星星.png";
     }
     elseif($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] == $_POST['answer'])
     {
-      echo 'correct'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
+      //echo 'correct'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
       $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";
     }
     for($i = 0;$i < count($_SESSION['star']);$i++)
@@ -176,7 +176,7 @@ elseif(isset($_GET['checkanswer']))
     for($i = 0;$i < sizeof($correct_answer);$i++){
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
       $rs = mysqli_fetch_assoc($tmp);
-      $data_string .= $correct_answer[$i].','.$_SESSION['select_answer'][$i+1][0].','.strval($_SESSION['select_answer'][$i+1][1]).';';
+      $data_string .= $correct_answer[$i].'.'.$_SESSION['select_answer'][$i+1][0].'.'.strval($_SESSION['select_answer'][$i+1][1]).';';
       if($i % 4 == 0)echo '<div class="w3-row">';
       echo '<div class="w3-col l3 s6">
         <div class="w3-container">
