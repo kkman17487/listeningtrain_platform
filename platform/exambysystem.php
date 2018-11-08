@@ -110,7 +110,7 @@ elseif(isset($_GET['checkanswer']))
     {
       $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";
     }
-    for($i = 0;$i < count($_SESSION['star']));$i++)
+    for($i = 0;$i < count($_SESSION['star']);$i++)
     {
       echo '<img height=50 width=50 src="../picture/'.$_SESSION['star'][$i].'">';
     }
