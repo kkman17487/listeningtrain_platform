@@ -176,7 +176,7 @@ elseif(isset($_GET['checkanswer']))
     for($i = 0;$i < sizeof($correct_answer);$i++){
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
       $rs = mysqli_fetch_assoc($tmp);
-      $data_string .= $correct_answer[$i].'.'.$_SESSION['select_answer'][$i+1][0].'.'.strval($_SESSION['select_answer'][$i+1][1]).';';
+      $data_string .= $correct_answer[$i].'/'.$_SESSION['select_answer'][$i+1][0].'/'.strval($_SESSION['select_answer'][$i+1][1]).';';
       if($i % 4 == 0)echo '<div class="w3-row">';
       echo '<div class="w3-col l3 s6">
         <div class="w3-container">
