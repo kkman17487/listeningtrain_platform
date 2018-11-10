@@ -4,11 +4,10 @@
 	include('backendheader.php');
 	include('backendsidebar.php');
 ?>
-<header>
-
-<header>	
+<head>	
 <script type="text/javascript" src="history.js"></script>
-</header>
+</head>
+
 <body>
 <?php	
 	include('connect_to_sql.php');
