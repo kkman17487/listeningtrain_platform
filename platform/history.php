@@ -5,7 +5,7 @@
 	include('backendsidebar.php');
 ?>
 <head>	
-<script type="text/javascript" src="history.js"></script>
+<script src="history.js"></script>
 </head>
 
 <body>
