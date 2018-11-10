@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<?php 
+	include('backendheader.php');
+	include('backendsidebar.php');
+?>
 <?php	
 	include('connect_to_sql.php');
 	
@@ -36,12 +42,6 @@
 	$rs=mysqli_fetch_assoc($dbdata);
 ?>
 
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<?php 
-	include('backendheader.php');
-	include('backendsidebar.php');
-?>
 <head>	
 <script>
 window.onload = function () {
