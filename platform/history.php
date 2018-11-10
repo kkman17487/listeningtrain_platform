@@ -87,41 +87,13 @@ function toggleDataSeries(e){
 }
 </script>
 </head>
+<body>
 <?php	
 	include('connect_to_sql.php');
 	
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
 ?>
-
-<?php
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{ 
-		$labelrs=mysqli_fetch_row($dbdata);
-	}	
-	
-	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	print_r ($dataPoints1);	
-	
-	$dataPoints2 = array( 
-	array("y" => 3373.64, "label" => "Germany" ),
-	array("y" => 2435.94, "label" => "France" ),
-	array("y" => 1039.99, "label" => "Switzerland" ),
-	);
-
-	$dataPoints3 = array(
-	array("x" => 23, "y" => 340),
-	array("x" => 28, "y" => 390),
-	array("x" => 24, "y" => 321)
-	);
- 
-	$dataPoints4 = array(
-	array("x" => 19, "y" => 192),
-	array("x" => 27, "y" => 250),
-	array("x" => 22, "y" => 160)
-	);
-?>
-<body>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
     <div class="table-responsive">
@@ -169,7 +141,33 @@ function toggleDataSeries(e){
 		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>	
+<?php
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{ 
+		$labelrs=mysqli_fetch_row($dbdata);
+	}	
 	
+	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
+	print_r ($dataPoints1);	
+	
+	$dataPoints2 = array( 
+	array("y" => 3373.64, "label" => "Germany" ),
+	array("y" => 2435.94, "label" => "France" ),
+	array("y" => 1039.99, "label" => "Switzerland" ),
+	);
+
+	$dataPoints3 = array(
+	array("x" => 23, "y" => 340),
+	array("x" => 28, "y" => 390),
+	array("x" => 24, "y" => 321)
+	);
+ 
+	$dataPoints4 = array(
+	array("x" => 19, "y" => 192),
+	array("x" => 27, "y" => 250),
+	array("x" => 22, "y" => 160)
+	);
+?>	
 </div>
 </body>
 </html>
