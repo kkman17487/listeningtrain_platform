@@ -132,35 +132,29 @@ function toggleDataSeries(e){
 	{ 
 		$labelrs=mysqli_fetch_row($dbdata);
 	
-	$dataPoints = array("y" => $labelrs[0], "label" => $labelrs[3]);
+		$dataPoints = array("y" => $labelrs[0], "label" => $labelrs[3]);
 	/*
 	array("y" => 90, "label" => "2018/10/24 02:45")
-	array("y" => 15, "label" => "Monday"),
 	array("y" => correct rate, "label" => "Reaction Time")*/
-	echo ($dataPoints);
+		echo ($labelrs);
+		echo ($dataPoints);
 	}
 	
 	/*$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
 	array("y" => 2435.94, "label" => "France" ),
 	array("y" => 1039.99, "label" => "Switzerland" ),
-	array("y" => 765.215, "label" => "Japan" )
 	);
 
 	$dataPoints3 = array(
 	array("x" => 23, "y" => 340),
 	array("x" => 28, "y" => 390),
-	array("x" => 39, "y" => 400),
-	array("x" => 34, "y" => 430),
 	array("x" => 24, "y" => 321)
 	);
  
 	$dataPoints4 = array(
 	array("x" => 19, "y" => 192),
 	array("x" => 27, "y" => 250),
-	array("x" => 35, "y" => 330),
-	array("x" => 32, "y" => 190),
-	array("x" => 29, "y" => 189),
 	array("x" => 22, "y" => 160)
 	);*/
 ?>
