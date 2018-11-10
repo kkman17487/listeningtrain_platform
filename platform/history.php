@@ -50,7 +50,7 @@
 	}
 	
 		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-		echo ($dataPoints1);	
+		echo $dataPoints1;	
 	
 	$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
