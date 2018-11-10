@@ -7,6 +7,7 @@
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
 ?>
+
 <?php
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
@@ -21,7 +22,7 @@
 		echo ($dataPoints1);
 	}
 	
-	/*$dataPoints2 = array( 
+	$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
 	array("y" => 2435.94, "label" => "France" ),
 	array("y" => 1039.99, "label" => "Switzerland" ),
@@ -37,7 +38,7 @@
 	array("x" => 19, "y" => 192),
 	array("x" => 27, "y" => 250),
 	array("x" => 22, "y" => 160)
-	);*/
+	);
 ?>
 
 <head>
