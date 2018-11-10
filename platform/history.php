@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <?php include('backendheader.php'); ?>
+
+<?php
+	include('backendsidebar.php');
+	include('connect_to_sql.php');
+
+	$sql ="select * from `history`";
+	$dbdata = mysqli_query($con, $sql);
+?>
+<?php
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{ 
+		//$labelrs=mysqli_fetch_row($dbdata);
+		$labelrs=mysqli_fetch_assoc($dbdata);
+	
+		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
+	/*
+	array("y" => 90, "label" => "2018/10/24 02:45")
+	array("y" => correct rate, "label" => "Reaction Time")*/
+		echo $labelrs['time'];
+		echo ($dataPoints1);
+	}
+	
+	/*$dataPoints2 = array( 
+	array("y" => 3373.64, "label" => "Germany" ),
+	array("y" => 2435.94, "label" => "France" ),
+	array("y" => 1039.99, "label" => "Switzerland" ),
+	);
+
+	$dataPoints3 = array(
+	array("x" => 23, "y" => 340),
+	array("x" => 28, "y" => 390),
+	array("x" => 24, "y" => 321)
+	);
+ 
+	$dataPoints4 = array(
+	array("x" => 19, "y" => 192),
+	array("x" => 27, "y" => 250),
+	array("x" => 22, "y" => 160)
+	);*/
+?>
+
 <head>
 <script>
 window.onload = function () {
@@ -87,15 +128,6 @@ function toggleDataSeries(e){
 </head>
 
 <body>
-
-<?php
-	include('backendsidebar.php');
-	include('connect_to_sql.php');
-
-	$sql ="select * from `history`";
-	$dbdata = mysqli_query($con, $sql);
-?>
-
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
     <div class="table-responsive">
@@ -126,39 +158,6 @@ function toggleDataSeries(e){
             </tbody>
         </table>
     </div>
-
-<?php
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{ 
-		//$labelrs=mysqli_fetch_row($dbdata);
-		$labelrs=mysqli_fetch_assoc($dbdata);
-	
-		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	/*
-	array("y" => 90, "label" => "2018/10/24 02:45")
-	array("y" => correct rate, "label" => "Reaction Time")*/
-		echo $labelrs['time'];
-		echo ($dataPoints1);
-	}
-	
-	/*$dataPoints2 = array( 
-	array("y" => 3373.64, "label" => "Germany" ),
-	array("y" => 2435.94, "label" => "France" ),
-	array("y" => 1039.99, "label" => "Switzerland" ),
-	);
-
-	$dataPoints3 = array(
-	array("x" => 23, "y" => 340),
-	array("x" => 28, "y" => 390),
-	array("x" => 24, "y" => 321)
-	);
- 
-	$dataPoints4 = array(
-	array("x" => 19, "y" => 192),
-	array("x" => 27, "y" => 250),
-	array("x" => 22, "y" => 160)
-	);*/
-?>
 
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
