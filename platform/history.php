@@ -10,37 +10,6 @@
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
 ?>
-<?php
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{ 
-		$labelrs=mysqli_fetch_row($dbdata);
-	}	
-	
-	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	print_r ($dataPoints1);	
-	
-	$dataPoints2 = array( 
-	array("y" => 3373.64, "label" => "Germany" ),
-	array("y" => 2435.94, "label" => "France" ),
-	array("y" => 1039.99, "label" => "Switzerland" ),
-	);
-
-	$dataPoints3 = array(
-	array("x" => 23, "y" => 340),
-	array("x" => 28, "y" => 390),
-	array("x" => 24, "y" => 321)
-	);
- 
-	$dataPoints4 = array(
-	array("x" => 19, "y" => 192),
-	array("x" => 27, "y" => 250),
-	array("x" => 22, "y" => 160)
-	);
-?>
-<?php
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++){
-	$rs=mysqli_fetch_assoc($dbdata);
-?>
 
 <head>	
 <script>
@@ -125,7 +94,33 @@ function toggleDataSeries(e){
 }
 </script>
 </head>
+<?php
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{ 
+		$labelrs=mysqli_fetch_row($dbdata);
+	}	
+	
+	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
+	print_r ($dataPoints1);	
+	
+	$dataPoints2 = array( 
+	array("y" => 3373.64, "label" => "Germany" ),
+	array("y" => 2435.94, "label" => "France" ),
+	array("y" => 1039.99, "label" => "Switzerland" ),
+	);
 
+	$dataPoints3 = array(
+	array("x" => 23, "y" => 340),
+	array("x" => 28, "y" => 390),
+	array("x" => 24, "y" => 321)
+	);
+ 
+	$dataPoints4 = array(
+	array("x" => 19, "y" => 192),
+	array("x" => 27, "y" => 250),
+	array("x" => 22, "y" => 160)
+	);
+?>
 <body>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
@@ -141,6 +136,10 @@ function toggleDataSeries(e){
                 </tr>
             </thead>
             <tbody>
+			<?php
+				for($i=0;$i<mysqli_num_rows($dbdata);$i++){
+				$rs=mysqli_fetch_assoc($dbdata);
+			?>
 			<tr>
 				<td><?php echo $rs['id']?></td>
 				<td><?php echo $rs['name']?></td>
