@@ -137,10 +137,10 @@ function toggleDataSeries(e){
 	array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => 15, "label" => "Monday"),
 	array("y" => correct rate, "label" => "Reaction Time")*/
-	print_r ($dataPoints);
+	echo ($dataPoints);
 	}
 	
-	$dataPoints2 = array( 
+	/*$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
 	array("y" => 2435.94, "label" => "France" ),
 	array("y" => 1039.99, "label" => "Switzerland" ),
@@ -162,7 +162,7 @@ function toggleDataSeries(e){
 	array("x" => 32, "y" => 190),
 	array("x" => 29, "y" => 189),
 	array("x" => 22, "y" => 160)
-	);
+	);*/
 ?>
 
 <h1 class="page-header">折線圖</h1>
