@@ -75,6 +75,7 @@ for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	array("x" => 22, "y" => 160)
 	);
 ?>	
+<script type="text/javascript" src="history.js"></script>
 
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
@@ -95,6 +96,5 @@ for($i=0;$i<mysqli_num_rows($dbdata);$i++)
     </div>	
 	
 </div>
-<script type="text/javascript" src="history.js"></script>
 </body>
 </html>
