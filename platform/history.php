@@ -128,12 +128,12 @@ function toggleDataSeries(e){
     </div>
 
 <?php
-	for($i=1;$i<mysqli_num_rows($dbdata);$i++)
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
 		$labelrs=mysqli_fetch_row($dbdata);
 	}
 	$dataPoints = array(
-	array("y" => $labelrs[0], "label" => $labelrs[3])
+	array("y" => echo $labelrs[0], "label" => echo $labelrs[3])
 	/*array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => 15, "label" => "Monday"),
 	array("y" => correct rate, "label" => "Reaction Time")*/
