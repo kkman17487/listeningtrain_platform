@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-<?php include('backendheader.php'); ?>
+<?php 
 
-<?php
-	include('backendsidebar.php');
-	include('connect_to_sql.php');
+	include('backendheader.php');
 
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
@@ -128,6 +126,10 @@ function toggleDataSeries(e){
 </head>
 
 <body>
+<?php
+	include('backendsidebar.php');
+	include('connect_to_sql.php');
+?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
     <div class="table-responsive">
