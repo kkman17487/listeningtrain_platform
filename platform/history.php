@@ -136,7 +136,7 @@ function toggleDataSeries(e){
 	/*
 	array("y" => 90, "label" => "2018/10/24 02:45")
 	array("y" => correct rate, "label" => "Reaction Time")*/
-		echo ($labelrs);
+		echo ($labelrs[0]);
 		echo ($dataPoints);
 	}
 	
