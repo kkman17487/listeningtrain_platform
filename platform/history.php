@@ -4,7 +4,11 @@
 	include('backendheader.php');
 	include('backendsidebar.php');
 ?>
+<header>
 
+<header>	
+<script type="text/javascript" src="history.js"></script>
+</header>
 <body>
 <?php	
 	include('connect_to_sql.php');
@@ -50,7 +54,7 @@
 	}
 	
 		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-		echo $dataPoints1;	
+		print_r ($dataPoints1);	
 	
 	$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
@@ -70,8 +74,6 @@
 	array("x" => 22, "y" => 160)
 	);
 ?>
-	
-<script type="text/javascript" src="history.js"></script>
 
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
