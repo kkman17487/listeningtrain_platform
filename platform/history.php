@@ -3,14 +3,15 @@
 	
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
-
+?>
+<?php
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
 		$labelrs=mysqli_fetch_row($dbdata);
-	}
+	}	
 	
-		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-		print_r ($dataPoints1);	
+	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
+	print_r ($dataPoints1);	
 	
 	$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
@@ -29,6 +30,10 @@
 	array("x" => 27, "y" => 250),
 	array("x" => 22, "y" => 160)
 	);
+?>
+<?php
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++){
+	$rs=mysqli_fetch_assoc($dbdata);
 ?>
 
 <!DOCTYPE html>
@@ -136,10 +141,6 @@ function toggleDataSeries(e){
                 </tr>
             </thead>
             <tbody>
-			<?php
-				for($i=0;$i<mysqli_num_rows($dbdata);$i++){
-				$rs=mysqli_fetch_assoc($dbdata);
-			?>
 			<tr>
 				<td><?php echo $rs['id']?></td>
 				<td><?php echo $rs['name']?></td>
