@@ -99,8 +99,6 @@
   background: -o-linear-gradient(top,#005fbf,005fbf);
   background-color:#005fbf;
 }
-
-
 </style>-->
 </head>
 
