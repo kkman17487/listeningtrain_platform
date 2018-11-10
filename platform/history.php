@@ -4,13 +4,6 @@
 	include('backendheader.php');
 	include('backendsidebar.php');
 ?>
-<?php	
-	include('connect_to_sql.php');
-	
-	$sql ="select * from `history`";
-	$dbdata = mysqli_query($con, $sql);
-?>
-
 <head>	
 <script>
 window.onload = function () {
@@ -94,6 +87,13 @@ function toggleDataSeries(e){
 }
 </script>
 </head>
+<?php	
+	include('connect_to_sql.php');
+	
+	$sql ="select * from `history`";
+	$dbdata = mysqli_query($con, $sql);
+?>
+
 <?php
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
