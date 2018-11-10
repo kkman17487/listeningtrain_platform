@@ -44,18 +44,13 @@
         </table>
     </div>
 <?php
-for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{ 
-		//$labelrs=mysqli_fetch_row($dbdata);
-		$labelrs=mysqli_fetch_assoc($dbdata);
+		$labelrs=mysqli_fetch_row($dbdata);
+	}
 	
 		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	/*
-	array("y" => 90, "label" => "2018/10/24 02:45")
-	array("y" => correct rate, "label" => "Reaction Time")*/
-		echo $labelrs['time'];
-		echo ($dataPoints1);
-	}
+		echo ($dataPoints1);	
 	
 	$dataPoints2 = array( 
 	array("y" => 3373.64, "label" => "Germany" ),
@@ -74,7 +69,8 @@ for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	array("x" => 27, "y" => 250),
 	array("x" => 22, "y" => 160)
 	);
-?>	
+?>
+	
 <script type="text/javascript" src="history.js"></script>
 
 <h1 class="page-header">折線圖</h1>
