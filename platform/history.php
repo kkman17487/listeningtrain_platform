@@ -116,6 +116,7 @@ function toggleDataSeries(e){
 				<td><?php echo $rs['id']?></td>
 				<td><?php echo $rs['name']?></td>
 				<td><?php echo $rs['data']?></td>
+				<td><?php echo $rs['frequency']?></td>
 				<td><?php echo $rs['time']?></td>
 			</tr>
 			<?php
