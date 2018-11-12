@@ -114,8 +114,8 @@ function toggleDataSeries(e){
 			?>
 			<tr>
 				<td width="5%"><?php echo $rs['id']?></td>
-				<td width="15%"><?php echo $rs['name']?></td>
-				<td width="20%"><?php echo $rs['data']?></td>
+				<td width="10%"><?php echo $rs['name']?></td>
+				<td width="25%"><?php echo $rs['data']?></td>
 				<td width="15%"><?php echo $rs['correct']?></td>
 				<td width="15%"><?php echo $rs['time']?></td>
 			</tr>
