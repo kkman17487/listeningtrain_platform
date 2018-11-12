@@ -113,11 +113,11 @@ function toggleDataSeries(e){
 				$rs=mysqli_fetch_assoc($dbdata);
 			?>
 			<tr>
-				<td><?php echo $rs['id']?></td>
-				<td><?php echo $rs['name']?></td>
-				<td><?php echo $rs['data']?></td>
-				<td><?php echo $rs['correct']?></td>
-				<td><?php echo $rs['time']?></td>
+				<td width="5%"><?php echo $rs['id']?></td>
+				<td width="15%"><?php echo $rs['name']?></td>
+				<td width="20%"><?php echo $rs['data']?></td>
+				<td width="15%"><?php echo $rs['correct']?></td>
+				<td width="15%"><?php echo $rs['time']?></td>
 			</tr>
 			<?php
 			}
