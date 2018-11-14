@@ -189,14 +189,12 @@ elseif(isset($_GET['checkanswer']))
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i+1][0].'<br>時間:'.$_SESSION['select_answer'][$i+1][1].'</p>';
       $correct_number = 0;
-      print_r($correct_answer);
-      print_r($_SESSION['select_answer']);
       if($correct_answer[$i] != $_SESSION['select_answer'][$i+1][0])
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
       else
       {
         echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
-        $correct_number = $correct_number + 1;
+        $correct_number++;
       }
       echo '</div></div></div>';
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
