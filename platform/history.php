@@ -1,16 +1,6 @@
 
 <?php
-include('connect_to_sql.php');
-$dbdata = $con->query("select * from history");
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{
-		$labelrs=mysqli_fetch_row($dbdata);
-		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-		
-		print_r($labelrs);
-	}	
-	
-		$dataPoints2 = array(
+$dataPoints2 = array(
 			array("y" => 3373.64, "label" => "Germany" ),
 			array("y" => 2435.94, "label" => "France" ),
 			array("y" => 1039.99, "label" => "Switzerland" ),
@@ -27,6 +17,17 @@ $dbdata = $con->query("select * from history");
 			array("x" => 27, "y" => 250),
 			array("x" => 22, "y" => 160)
 		);
+include('connect_to_sql.php');
+$dbdata = $con->query("select * from history");
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{
+		$labelrs=mysqli_fetch_row($dbdata);
+		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
+		
+		print_r($labelrs);
+	}	
+	
+		
 ?>
 
 <!DOCTYPE html>
