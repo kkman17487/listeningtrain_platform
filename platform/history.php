@@ -5,12 +5,12 @@ $dataPoints2 = array(
 			array("y" => 2435.94, "label" => "France" ),
 			array("y" => 1039.99, "label" => "Switzerland" ),
 		);
-
-		$dataPoints3 = array(
+		$tmp = array(
 			array("x" => 23, "y" => 340),
 			array("x" => 28, "y" => 390),
 			array("x" => 24, "y" => 321)
 		);
+		$dataPoints3 = $tmp;
 
 		$dataPoints4 = array(
 			array("x" => 19, "y" => 192),
