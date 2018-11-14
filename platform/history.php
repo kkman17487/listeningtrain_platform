@@ -4,11 +4,9 @@
 	include('backendheader.php');
 	include('backendsidebar.php');
 ?>
-
 <body>
 <?php
 	include('connect_to_sql.php');
-
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
 ?>
@@ -170,6 +168,5 @@ function toggleDataSeries(e){
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>
 </div>
-
 </body>
 </html>
