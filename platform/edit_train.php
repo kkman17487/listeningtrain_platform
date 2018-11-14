@@ -197,7 +197,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 else{
   $ID = $_GET['ID'];
   $data = $con->query("select * from train where id = '$ID'");
-  $sound = $con->query("select * from data")
+  $sound = $con->query("select * from data");
   //讓資料由最新呈現到最舊
 ?>
   <div class="container">

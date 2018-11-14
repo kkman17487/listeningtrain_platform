@@ -18,14 +18,14 @@ $dataPoints2 = array(
 			array("x" => 22, "y" => 160)
 		);
 include('connect_to_sql.php');
-/*$dbdata = $con->query("select * from history");
+$dbdata = $con->query("select * from history");
+$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-		
-		print_r($labelrs);
-	}	*/
+		$inner = array_push(array("y" => $labelrs[0], "label" => $labelrs[3]));
+	}	
+	$dataPoints1 = array($inner);
 	
 		
 ?>
