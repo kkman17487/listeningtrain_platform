@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-<?php 
+<?php
 	include('backendheader.php');
 	include('backendsidebar.php');
 ?>
-<head>	
+<head>
 <script>
 window.onload = function () {
 
@@ -67,7 +67,7 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 		type: "scatter",
 		name: "Server Neptune",
 		markerType: "triangle",
-		showInLegend: true, 
+		showInLegend: true,
 		toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
 		dataPoints: <?php echo json_encode($dataPoints4); ?>
 	}
@@ -88,9 +88,9 @@ function toggleDataSeries(e){
 </script>
 </head>
 <body>
-<?php	
+<?php
 	include('connect_to_sql.php');
-	
+
 	$sql ="select * from `history`";
 	$dbdata = mysqli_query($con, $sql);
 ?>
@@ -116,7 +116,7 @@ function toggleDataSeries(e){
 				<td width="5%"><?php echo $rs['id']?></td>
 				<td width="10%"><?php echo $rs['name']?></td>
 				<td width="25%"><?php echo $rs['data']?></td>
-				<td width="15%"><?php echo $rs['correct']?></td>
+				<td width="15%"><?php echo $rs['correct']?>%</td>
 				<td width="15%"><?php echo $rs['time']?></td>
 			</tr>
 			<?php
@@ -125,17 +125,17 @@ function toggleDataSeries(e){
             </tbody>
         </table>
     </div>
-	
+
 <?php
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{ 
+	{
 		$labelrs=mysqli_fetch_row($dbdata);
-	}	
-	
+	}
+
 	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	print_r ($dataPoints1);	
-	
-	$dataPoints2 = array( 
+	print_r ($dataPoints1);
+
+	$dataPoints2 = array(
 	array("y" => 3373.64, "label" => "Germany" ),
 	array("y" => 2435.94, "label" => "France" ),
 	array("y" => 1039.99, "label" => "Switzerland" ),
@@ -146,14 +146,14 @@ function toggleDataSeries(e){
 	array("x" => 28, "y" => 390),
 	array("x" => 24, "y" => 321)
 	);
- 
+
 	$dataPoints4 = array(
 	array("x" => 19, "y" => 192),
 	array("x" => 27, "y" => 250),
 	array("x" => 22, "y" => 160)
 	);
 ?>
-	
+
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
@@ -170,7 +170,7 @@ function toggleDataSeries(e){
     <div class="row placeholders">
 		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    </div>	
+    </div>
 </div>
 </body>
 </html>
