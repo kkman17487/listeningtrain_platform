@@ -8,7 +8,8 @@ $dbdata = $con->query("select * from history");
 		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
 		
 		print_r($labelrs);
-
+	}	
+	
 		$dataPoints2 = array(
 			array("y" => 3373.64, "label" => "Germany" ),
 			array("y" => 2435.94, "label" => "France" ),
@@ -26,7 +27,6 @@ $dbdata = $con->query("select * from history");
 			array("x" => 27, "y" => 250),
 			array("x" => 22, "y" => 160)
 		);
-	}	
 ?>
 
 <!DOCTYPE html>
