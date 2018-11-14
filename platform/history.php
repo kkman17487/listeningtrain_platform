@@ -22,7 +22,7 @@ $inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("y" => $labelrs[0], "labelrs" => $labelrs[3]));
+		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
 	}	
 	$dataPoints1 = $inner;
 	print_r($dataPoints1);
