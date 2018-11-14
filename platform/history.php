@@ -5,13 +5,11 @@ $dataPoints2 = array(
 			array("y" => 2435.94, "label" => "France" ),
 			array("y" => 1039.99, "label" => "Switzerland" ),
 		);
-		$tmp = array(
+		$dataPoints3 = array(
 			array("x" => 23, "y" => 340),
 			array("x" => 28, "y" => 390),
 			array("x" => 24, "y" => 321)
 		);
-		$dataPoints3 = $tmp;
-
 		$dataPoints4 = array(
 			array("x" => 19, "y" => 192),
 			array("x" => 27, "y" => 250),
@@ -23,7 +21,7 @@ $inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("y" => $labelrs[0], "label" => $labelrs[3]));
+		array_push($inner,array("y" => $labelrs[0], "x" => $labelrs[3]));
 	}	
 	$dataPoints1 = array($inner);
 	print_r($dataPoints1);
