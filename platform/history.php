@@ -49,6 +49,7 @@ $dataPoints2 = array(
     </div>
 
 <?php
+$dbdata = $con->query("select * from history");
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
