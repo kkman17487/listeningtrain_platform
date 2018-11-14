@@ -49,7 +49,7 @@ $inner = array();
                   <th>姓名</th>
                   <th>作答情況</th>
                   <th>答對率</th>
-                  <th>平均作答時間</th>
+                  <th>平均作答反應時間</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@ $inner = array();
 				<td width="10%"><?php echo $rs['name']?></td>
 				<td width="25%"><?php echo $rs['data']?></td>
 				<td width="15%"><?php echo $rs['correct']?>%</td>
-				<td width="15%"><?php echo $rs['time']?></td>
+				<td width="20%"><?php echo $rs['time']?></td>
 			</tr>
 			<?php
 			}
