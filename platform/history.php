@@ -24,7 +24,7 @@ $inner = array();
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("y" => $labelrs[0], "labelrs" => $labelrs[3]));
 	}	
-	$dataPoints1 = array($inner);
+	$dataPoints1 = $inner;
 	print_r($dataPoints1);
 		
 ?>
