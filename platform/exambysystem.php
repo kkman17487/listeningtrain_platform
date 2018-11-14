@@ -211,8 +211,8 @@ elseif(isset($_GET['checkanswer']))
     }
     $time /= sizeof($_SESSION['select_answer']);
     $correct_rate = $correct_number / sizeof($correct_answer);
-    echo $data_string.' '.$name;
-    $res = $con->query("INSERT INTO `history` (`id`, `eee`, `data`, `correct`, `time`) VALUES (NULL, $name, $data_string, $correct_rate, $time)");
+    echo $data_string.' '.$name.' '.gettype($_SESSION['name']).' '.gettype($name);
+    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `correct`, `time`) VALUES (NULL, $name, $data_string, $correct_rate, $time)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
