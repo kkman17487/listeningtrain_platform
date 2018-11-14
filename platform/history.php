@@ -26,7 +26,7 @@ $inner = array();
 		array_push($inner,array("y" => $labelrs[0], "label" => $labelrs[3]));
 	}	
 	$dataPoints1 = array($inner);
-	
+	print_r($dataPoints1);
 		
 ?>
 
@@ -87,6 +87,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{
 		type: "line",
 		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
+		
 	}]
 });
 chart.render();
