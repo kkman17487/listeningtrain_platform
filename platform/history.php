@@ -53,10 +53,9 @@ $dbdata = $con->query("select * from history");
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
+		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
 	}
-	print_r($labelrs);
-	/*$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	print_r ($dataPoints1);*/
+	//print_r($labelrs);
 
 	/*$dataPoints2 = array(
 	array("y" => 3373.64, "label" => "Germany" ),
