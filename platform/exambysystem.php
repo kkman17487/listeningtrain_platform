@@ -189,6 +189,8 @@ elseif(isset($_GET['checkanswer']))
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i+1][0].'<br>時間:'.$_SESSION['select_answer'][$i+1][1].'</p>';
       $correct_number = 0;
+      print_r($correct_answer);
+      print_r($_SESSION['select_answer']);
       if($correct_answer[$i] != $_SESSION['select_answer'][$i+1][0])
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
       else
@@ -208,10 +210,10 @@ elseif(isset($_GET['checkanswer']))
     for($i = 1;$i <= sizeof($_SESSION['select_answer']);$i++)
     {
       $time += $_SESSION['select_answer'][$i][1];
-      echo $time.' ';
+      //echo $time.' ';
     }
     $time /= sizeof($_SESSION['select_answer']);
-    echo $time.' '.sizeof($_SESSION['select_answer']);
+    //echo $time.' '.sizeof($_SESSION['select_answer']);
     $correct_rate = $correct_number * 100 / sizeof($correct_answer);
     echo $correct_rate.' '.$correct_number.' '.sizeof($correct_answer);
     $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `correct`, `time`) VALUES (NULL, '$name', '$data_string', $correct_rate, round($time,3))");
