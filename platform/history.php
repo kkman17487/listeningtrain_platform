@@ -54,15 +54,15 @@ $dataPoints2 = array(
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
 	}
-
+	print_r($labelrs);
 	/*$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
 	print_r ($dataPoints1);*/
 
-	$dataPoints2 = array(
+	/*$dataPoints2 = array(
 	array("y" => 3373.64, "label" => "Germany" ),
 	array("y" => 2435.94, "label" => "France" ),
 	array("y" => 1039.99, "label" => "Switzerland" ),
-	);
+	);*/
 
 	/*$dataPoints3 = array(
 	array("x" => 23, "y" => 340),
