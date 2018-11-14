@@ -173,6 +173,7 @@ elseif(isset($_GET['checkanswer']))
     $correct_answer = $_SESSION['correct_answer'];
     $_SESSION['select_answer'] = array_filter($_SESSION['select_answer']);
     $data_string = '';
+    $correct_number = 0;
     for($i = 0;$i < sizeof($correct_answer);$i++){
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
       $rs = mysqli_fetch_assoc($tmp);
@@ -188,7 +189,6 @@ elseif(isset($_GET['checkanswer']))
       <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); return false;">再聽一次</button>';
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i+1][0].'<br>時間:'.$_SESSION['select_answer'][$i+1][1].'</p>';
-      $correct_number = 0;
       if($correct_answer[$i] != $_SESSION['select_answer'][$i+1][0])
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
       else
