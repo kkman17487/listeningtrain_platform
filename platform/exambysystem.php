@@ -194,7 +194,7 @@ elseif(isset($_GET['checkanswer']))
       else
       {
         echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
-        $correct_number += 1;
+        $correct_number = $correct_number + 1;
       }
       echo '</div></div></div>';
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
@@ -205,7 +205,7 @@ elseif(isset($_GET['checkanswer']))
     else
       $name = "訪客";
     $time = 0;
-    for($i = 0;$i < sizeof($_SESSION['select_answer']);$i++)
+    for($i = 1;$i <= sizeof($_SESSION['select_answer']);$i++)
     {
       $time += $_SESSION['select_answer'][$i][1];
       echo $time.' ';
