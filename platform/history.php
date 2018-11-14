@@ -104,7 +104,7 @@ function toggleDataSeries(e){
                   <th>姓名</th>
                   <th>作答情況</th>
                   <th>答對率</th>
-                  <th>作答時間</th>
+                  <th>平均作答時間</th>
                 </tr>
             </thead>
             <tbody>

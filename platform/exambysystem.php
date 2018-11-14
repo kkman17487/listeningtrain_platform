@@ -188,17 +188,28 @@ elseif(isset($_GET['checkanswer']))
       <button class="w3-button w3-black" onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); return false;">再聽一次</button>';
       echo '<p>您第'.($i+1);
       echo '題的答案:'.$_SESSION['select_answer'][$i+1][0].'<br>時間:'.$_SESSION['select_answer'][$i+1][1].'</p>';
+      $correct_number = 0;
       if($correct_answer[$i] != $_SESSION['select_answer'][$i+1][0])
         echo '<p style="color:red;">錯誤！</p>正確答案:'.$correct_answer[$i].'<img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
       else
+      {
         echo '<p style="color:green;">正確！！！</p><img height="200" width="200" src="'.$rs['pic_src'].'"><br>';
+        $correct_number += 1;
+      }
       echo '</div></div></div>';
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
     }
     $data_string = substr($data_string,0,strlen($data_string)-1);
     $name = $_SESSION['name'];
-    echo $data_string.' '.$name;
-    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `time`) VALUES (NULL, $name, $data_string, CURRENT_TIMESTAMP)");
+    $time = 0;
+    for($i = 0;$i < sizeof($_SESSION['select_answer']);$i++)
+    {
+      $time += $_SESSION['select_answer'][$i][1];
+    }
+    $time /= sizeof($_SESSION['select_answer']);
+    $correct_rate = $correct_number / sizeof($correct_answer);
+    echo $data_string.' '.$name.' '.sizeof($_SESSION['select_answer']);
+    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `correct`, `time`) VALUES (NULL, $name, $data_string, $correct_rate, $time)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
