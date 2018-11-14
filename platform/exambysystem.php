@@ -200,7 +200,10 @@ elseif(isset($_GET['checkanswer']))
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
     }
     $data_string = substr($data_string,0,strlen($data_string)-1);
-    $name = $_SESSION['name'];
+    if(isset($_SESSION['name']))
+      $name = $_SESSION['name'];
+    else
+      $name = "訪客";
     $time = 0;
     for($i = 0;$i < sizeof($_SESSION['select_answer']);$i++)
     {
@@ -208,8 +211,8 @@ elseif(isset($_GET['checkanswer']))
     }
     $time /= sizeof($_SESSION['select_answer']);
     $correct_rate = $correct_number / sizeof($correct_answer);
-    echo $data_string.' '.$name.' '.sizeof($_SESSION['select_answer']);
-    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `correct`, `time`) VALUES (NULL, $name, $data_string, $correct_rate, $time)");
+    echo $data_string.' '.$name;
+    $res = $con->query("INSERT INTO `history` (`id`, `eee`, `data`, `correct`, `time`) VALUES (NULL, $name, $data_string, $correct_rate, $time)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
