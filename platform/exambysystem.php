@@ -210,9 +210,8 @@ elseif(isset($_GET['checkanswer']))
       $time += $_SESSION['select_answer'][$i][1];
     }
     $time /= sizeof($_SESSION['select_answer']);
-    $correct_rate = $correct_number / sizeof($correct_answer) * 100;
-    echo $data_string.' '.$name;
-    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `correct`, `time`) VALUES (NULL, '$name', '$data_string', $correct_rate, $time)");
+    $correct_rate = $correct_number * 100 / sizeof($correct_answer);
+    $res = $con->query("INSERT INTO `history` (`id`, `name`, `data`, `correct`, `time`) VALUES (NULL, '$name', '$data_string', $correct_rate, round($time,3))");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
