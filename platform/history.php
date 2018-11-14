@@ -1,3 +1,10 @@
+<?php
+$dataPoints2 = array(
+	array("y" => 3373.64, "label" => "Germany" ),
+	array("y" => 2435.94, "label" => "France" ),
+	array("y" => 1039.99, "label" => "Switzerland" ),
+	);
+?>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <?php
@@ -48,8 +55,8 @@
 		$labelrs=mysqli_fetch_row($dbdata);
 	}
 
-	$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-	print_r ($dataPoints1);
+	/*$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
+	print_r ($dataPoints1);*/
 
 	$dataPoints2 = array(
 	array("y" => 3373.64, "label" => "Germany" ),
@@ -57,7 +64,7 @@
 	array("y" => 1039.99, "label" => "Switzerland" ),
 	);
 
-	$dataPoints3 = array(
+	/*$dataPoints3 = array(
 	array("x" => 23, "y" => 340),
 	array("x" => 28, "y" => 390),
 	array("x" => 24, "y" => 321)
@@ -67,7 +74,7 @@
 	array("x" => 19, "y" => 192),
 	array("x" => 27, "y" => 250),
 	array("x" => 22, "y" => 160)
-	);
+	);*/
 ?>
 <script>
 window.onload = function () {
