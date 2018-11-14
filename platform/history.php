@@ -14,8 +14,7 @@ $dataPoints2 = array(
 <body>
 <?php
 	include('connect_to_sql.php');
-	$sql ="select * from `history`";
-	$dbdata = mysqli_query($con, $sql);
+	$dbdata = $con->query("select * from history");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
