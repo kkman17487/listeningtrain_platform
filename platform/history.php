@@ -17,7 +17,7 @@ $dataPoints2 = array(
 			array("x" => 27, "y" => 250),
 			array("x" => 22, "y" => 160)
 		);
-include('connect_to_sql.php');
+/*include('connect_to_sql.php');
 $dbdata = $con->query("select * from history");
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -25,7 +25,7 @@ $dbdata = $con->query("select * from history");
 		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
 		
 		print_r($labelrs);
-	}	
+	}	*/
 	
 		
 ?>
