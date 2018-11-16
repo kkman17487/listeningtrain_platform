@@ -262,7 +262,9 @@ function timer()
 }
 function enable()
 {
-  $('input[type="radio"]').removeAttr('disabled');
+  $(document).ready(function() {
+	    	$("#answer").attr("disabled", false);
+});
 }
 </script>
 </body>
