@@ -1,3 +1,34 @@
+
+<?php
+$dataPoints2 = array(
+			array("y" => 3373.64, "label" => "Germany" ),
+			array("y" => 2435.94, "label" => "France" ),
+			array("y" => 1039.99, "label" => "Switzerland" ),
+		);
+		$dataPoints3 = array(
+			array("x" => 23, "y" => 340),
+			array("x" => 28, "y" => 390),
+			array("x" => 24, "y" => 321)
+		);
+		$dataPoints4 = array(
+			array("x" => 19, "y" => 192),
+			array("x" => 27, "y" => 250),
+			array("x" => 22, "y" => 160)
+		);
+		print_r($dataPoints4);
+include('connect_to_sql.php');
+$dbdata = $con->query("select * from history");
+$inner = array();
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{
+		$labelrs=mysqli_fetch_row($dbdata);
+		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
+	}	
+	$dataPoints1 = $inner;
+	print_r($dataPoints1);
+		
+?>
+
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <?php
@@ -6,7 +37,6 @@
 ?>
 <body>
 <?php
-	include('connect_to_sql.php');
 	$dbdata = $con->query("select * from history");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -19,7 +49,7 @@
                   <th>姓名</th>
                   <th>作答情況</th>
                   <th>答對率</th>
-                  <th>平均作答時間</th>
+                  <th>平均作答反應時間</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +62,7 @@
 				<td width="10%"><?php echo $rs['name']?></td>
 				<td width="25%"><?php echo $rs['data']?></td>
 				<td width="15%"><?php echo $rs['correct']?>%</td>
-				<td width="15%"><?php echo $rs['time']?></td>
+				<td width="20%"><?php echo $rs['time']?></td>
 			</tr>
 			<?php
 			}
@@ -41,34 +71,7 @@
         </table>
     </div>
 
-<?php
-$dbdata = $con->query("select * from history");
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{
-		$labelrs=mysqli_fetch_row($dbdata);
-		$dataPoints1 = array("y" => $labelrs[0], "label" => $labelrs[3]);
-		
-		//print_r($labelrs);
 
-		$dataPoints2 = array(
-			array("y" => 3373.64, "label" => "Germany" ),
-			array("y" => 2435.94, "label" => "France" ),
-			array("y" => 1039.99, "label" => "Switzerland" ),
-		);
-
-		$dataPoints3 = array(
-			array("x" => 23, "y" => 340),
-			array("x" => 28, "y" => 390),
-			array("x" => 24, "y" => 321)
-		);
-
-		$dataPoints4 = array(
-			array("x" => 19, "y" => 192),
-			array("x" => 27, "y" => 250),
-			array("x" => 22, "y" => 160)
-		);
-	}	
-?>
 
 <script>
 window.onload = function () {
@@ -83,6 +86,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{
 		type: "line",
 		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
+		
 	}]
 });
 chart.render();
