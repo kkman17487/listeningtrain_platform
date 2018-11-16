@@ -160,7 +160,7 @@ elseif(isset($_GET['checkanswer']))
                 echo '<div class="w3-col l6 s6">
                   <div class="w3-container">
                     <div class="w3-display-container">';
-              echo '<input type="radio" id="answer" name="answer" value="'.$answer[$j][0].'" disabled>'.$answer[$j][0].'<br><img height="40%" width="90%" src="'.$answer[$j][1].'"></div></div></div>';
+              echo '<input type="radio" id="answer[]" name="answer" value="'.$answer[$j][0].'" disabled>'.$answer[$j][0].'<br><img height="40%" width="90%" src="'.$answer[$j][1].'"></div></div></div>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
@@ -262,10 +262,8 @@ function timer()
 }
 function enable()
 {
-  document.getElementById("answer").disabled = false;
-  document.getElementById("answer").disabled = false;
-  document.getElementById("answer").disabled = false;
-  document.getElementById("answer").disabled = false;
+  for(var i = 0;i < 4;i++)
+    document.getElementById("answer[i]").disabled = false;
 }
 </script>
 </body>
