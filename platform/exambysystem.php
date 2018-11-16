@@ -275,8 +275,9 @@ function enable_submit()
 }
 $(window).ready(function() {
   $('#question_number').submit(function() {
+    var number = document.getElementById('number').value;
     var numberOFdata = <?php Print($numberOFdata); ?>;
-    if($('#number').val() <= 0 || $('#number').val() > numberOFdata)
+    if(number <= 0 || number > numberOFdata)
     {
       alert("有效範圍為：" + 1 + "~" + numberOFdata);
       return false;
