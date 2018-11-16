@@ -273,7 +273,17 @@ function enable_submit()
 {
   document.getElementById("submit").disabled = false;
 }
-$(window).ready(function() {
+document.getElementById('question_number').addEventListener('submit', function(event){
+  var number = document.getElementById('number').value;
+  var numberOFdata = <?php Print($numberOFdata); ?>;
+  if(number <= 0 || number > numberOFdata)
+  {
+    event.preventDefault();
+    alert("有效範圍為：" + 1 + "~" + numberOFdata);
+    return false;
+  }
+});
+/*$(window).ready(function() {
   $('#question_number').submit(function() {
     var number = document.getElementById('number').value;
     var numberOFdata = <?php Print($numberOFdata); ?>;
@@ -285,7 +295,7 @@ $(window).ready(function() {
     else
       return true;
   });
-});
+});*/
 </script>
 </body>
 </html>
