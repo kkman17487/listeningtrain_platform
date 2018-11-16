@@ -52,13 +52,15 @@ elseif(isset($_GET['checkanswer']))
   </header>
   <!-- Image header -->
   <?php
+  $numberOFdata = $con->query("select * from data");
+  $numberOFdata = mysqli_num_rows($numberOFdata);
   if(!isset($_GET['number']) && !isset($_GET['ID'])){
     echo '<div class="w3-display-container w3-container">
     <img src="../picture/test2.jpg" alt="Photo" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
       <h1 class="w3-hide-small">系統出題</h1>
-      <form action="exambysystem.php" method="get">
-        題數: <input type="text" maxlength="2" size="2" name="number"><br>
+      <form action="exambysystem.php" method="get" id="question_number">
+        題數: <input type="text" maxlength="2" size="2" name="number" id="number">有效範圍：1~'.$numberOFdata.'<br>
         <input name="no" value="0" hidden>
         <input type="submit" value="提交">
       </form>
@@ -271,6 +273,16 @@ function enable_submit()
 {
   document.getElementById("submit").disabled = false;
 }
+$('#question_number').submit(function() {
+  var numberOFdata = <?php Print($numberOFdata); ?>;
+  if($('#number').val() <= 0 || $('#number').val() > numberOFdata)
+  {
+    alert("有效範圍為：" + 1 + "~" + numberOFdata);
+    return false;
+  }
+  else
+    return true;
+});
 </script>
 </body>
 </html>
