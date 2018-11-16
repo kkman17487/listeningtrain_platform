@@ -262,12 +262,7 @@ function timer()
 }
 function enable()
 {
-  $(document).ready(function() {
-	    	$("#answer").attr("disabled", false);
-});
-  $('#answer_sheet').submit(function() {
-     return false;
-});
+  document.getElementById("answer").disabled = false;
 }
 </script>
 </body>
