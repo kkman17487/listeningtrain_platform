@@ -265,7 +265,7 @@ function enable()
   $(document).ready(function() {
 	    	$("#answer").attr("disabled", false);
 });
-  $('#answer').submit(function() {
+  $('#answer_sheet').submit(function() {
      return false;
 });
 }
