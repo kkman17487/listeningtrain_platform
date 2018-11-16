@@ -165,9 +165,9 @@ elseif(isset($_GET['checkanswer']))
               if($j%2==1)echo '</div>';
             }
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
-      echo '<br><input type="submit" name="submit" value="提交" align="center"></form></div>';
+      echo '<br><input type="submit" name="submit" value="提交" align="center" disabled></form></div>';
     else
-      echo '<br><input type="submit" name="submit" value="下一題" align="center"></form></div>';
+      echo '<br><input type="submit" name="submit" value="下一題" align="center" disabled></form></div>';
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
