@@ -273,15 +273,17 @@ function enable_submit()
 {
   document.getElementById("submit").disabled = false;
 }
-$('#question_number').submit(function() {
-  var numberOFdata = <?php Print($numberOFdata); ?>;
-  if($('#number').val() <= 0 || $('#number').val() > numberOFdata)
-  {
-    alert("有效範圍為：" + 1 + "~" + numberOFdata);
-    return false;
-  }
-  else
-    return true;
+$(window).ready(function() {
+  $('#question_number').submit(function() {
+    var numberOFdata = <?php Print($numberOFdata); ?>;
+    if($('#number').val() <= 0 || $('#number').val() > numberOFdata)
+    {
+      alert("有效範圍為：" + 1 + "~" + numberOFdata);
+      return false;
+    }
+    else
+      return true;
+  });
 });
 </script>
 </body>
