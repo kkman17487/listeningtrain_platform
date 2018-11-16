@@ -265,10 +265,9 @@ function enable()
   $(document).ready(function() {
 	    	$("#answer").attr("disabled", false);
 });
-  $("#answer").on("submit", function (e) {
-      e.preventDefault();//stop submit event
-      $("#answer").off("submit");//need form submit event off.
-  });
+  $('#answer').submit(function() {
+     return false;
+});
 }
 </script>
 </body>
