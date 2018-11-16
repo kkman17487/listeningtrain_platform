@@ -263,6 +263,9 @@ function timer()
 function enable()
 {
   document.getElementById("answer").disabled = false;
+  document.getElementById("answer").disabled = false;
+  document.getElementById("answer").disabled = false;
+  document.getElementById("answer").disabled = false;
 }
 </script>
 </body>
