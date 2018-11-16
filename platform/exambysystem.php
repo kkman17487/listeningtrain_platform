@@ -276,7 +276,7 @@ function enable_submit()
 document.getElementById('question_number').addEventListener('submit', function(event){
   var number = document.getElementById('number').value;
   var numberOFdata = <?php Print($numberOFdata); ?>;
-  if(number <= 0 || number > numberOFdata)
+  if(!Number.isInteger(number) || number <= 0 || number > numberOFdata)
   {
     event.preventDefault();
     alert("有效範圍為：" + 1 + "~" + numberOFdata);
