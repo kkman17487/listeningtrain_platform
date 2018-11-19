@@ -70,8 +70,6 @@
         </table>
     </div>
 
-
-
 <script>
 window.onload = function () {
 
@@ -155,6 +153,7 @@ function toggleDataSeries(e){
 }
 </script>
 
+<br></br>
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
