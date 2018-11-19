@@ -1,19 +1,19 @@
 <?php
-$dataPoints2 = array(
-			array("y" => 3373.64, "label" => "Germany" ),
-			array("y" => 2435.94, "label" => "France" ),
-			array("y" => 1039.99, "label" => "Switzerland" ),
-		);
-		$dataPoints3 = array(
-			array("x" => 23, "y" => 340),
-			array("x" => 28, "y" => 390),
-			array("x" => 24, "y" => 321)
-		);
-		$dataPoints4 = array(
-			array("x" => 19, "y" => 192),
-			array("x" => 27, "y" => 250),
-			array("x" => 22, "y" => 160)
-		);
+	$dataPoints2 = array(
+		array("y" => 3373.64, "label" => "Germany" ),
+		array("y" => 2435.94, "label" => "France" ),
+		array("y" => 1039.99, "label" => "Switzerland" ),
+	);
+	$dataPoints3 = array(
+		array("x" => 23, "y" => 340),
+		array("x" => 28, "y" => 390),
+		array("x" => 24, "y" => 321)
+	);
+	$dataPoints4 = array(
+		array("x" => 19, "y" => 192),
+		array("x" => 27, "y" => 250),
+		array("x" => 22, "y" => 160)
+	);
 	
 	include('connect_to_sql.php');
 	$dbdata = $con->query("select * from history");
@@ -25,7 +25,7 @@ $dataPoints2 = array(
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
 	}	
 	$dataPoints1 = $inner;
-	print_r($dataPoints1);		
+	//print_r($dataPoints1);		
 ?>
 
 <!DOCTYPE html>
