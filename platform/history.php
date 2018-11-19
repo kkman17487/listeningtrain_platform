@@ -16,7 +16,7 @@ $dataPoints2 = array(
 		);
 	
 	include('connect_to_sql.php');
-	dbdata = $con->query("select * from history");
+	$dbdata = $con->query("select * from history");
 	$inner = array();
 	
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
