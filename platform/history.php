@@ -14,16 +14,16 @@
 		array("x" => 27, "y" => 250),
 		array("x" => 22, "y" => 160)
 	);
-	
+
 	include('connect_to_sql.php');
-	
+
 	$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
-	}	
+	}
 	$dataPoints1 = $inner;
 
 	$dbdata = $con->query("select * from history");
@@ -32,9 +32,9 @@
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
-	}	
-	$dataPoints2 = $inner;	
-	
+	}
+	$dataPoints2 = $inner;
+
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +84,7 @@ window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "Time"
+		text: "ID"
 	},
 	axisY: {
 		title: "Correct Rate"
@@ -92,7 +92,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{
 		type: "line",
 		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
-		
+
 	}]
 });
 chart.render();
