@@ -1,3 +1,12 @@
+/*
+ CanvasJS HTML5 & JavaScript Charts - v2.2 GA - https://canvasjs.com/ 
+ Copyright 2018 fenopix
+  --------------------- License Information --------------------
+ CanvasJS is a commercial product which requires purchase of license. Without a commercial license you can use it for evaluation purposes for upto 30 days. Please refer to the following link for further details.
+     https://canvasjs.com/license/
+*/
+/*eslint-disable*/
+/*jshint ignore:start*/
 (function(){function na(m,s){m.prototype=$a(s.prototype);m.prototype.constructor=m;m.base=s.prototype}function $a(m){function s(){}s.prototype=m;return new s}function Ta(m,s,q){"millisecond"===q?m.setMilliseconds(m.getMilliseconds()+1*s):"second"===q?m.setSeconds(m.getSeconds()+1*s):"minute"===q?m.setMinutes(m.getMinutes()+1*s):"hour"===q?m.setHours(m.getHours()+1*s):"day"===q?m.setDate(m.getDate()+1*s):"week"===q?m.setDate(m.getDate()+7*s):"month"===q?m.setMonth(m.getMonth()+1*s):"year"===q&&m.setFullYear(m.getFullYear()+
 1*s);return m}function ha(m,s){var q=!1;0>m&&(q=!0,m*=-1);m=""+m;for(s=s?s:1;m.length<s;)m="0"+m;return q?"-"+m:m}function Fa(m){if(!m)return m;m=m.replace(/^\s\s*/,"");for(var s=/\s/,q=m.length;s.test(m.charAt(--q)););return m.slice(0,q+1)}function Ba(m){m.roundRect=function(m,q,v,y,x,z,S,C){S&&(this.fillStyle=S);C&&(this.strokeStyle=C);"undefined"===typeof x&&(x=5);this.lineWidth=z;this.beginPath();this.moveTo(m+x,q);this.lineTo(m+v-x,q);this.quadraticCurveTo(m+v,q,m+v,q+x);this.lineTo(m+v,q+y-
 x);this.quadraticCurveTo(m+v,q+y,m+v-x,q+y);this.lineTo(m+x,q+y);this.quadraticCurveTo(m,q+y,m,q+y-x);this.lineTo(m,q+x);this.quadraticCurveTo(m,q,m+x,q);this.closePath();S&&this.fill();C&&0<z&&this.stroke()}}function Pa(m,s){return m-s}function R(m){var s=((m&16711680)>>16).toString(16),q=((m&65280)>>8).toString(16);m=((m&255)>>0).toString(16);s=2>s.length?"0"+s:s;q=2>q.length?"0"+q:q;m=2>m.length?"0"+m:m;return"#"+s+q+m}function ab(m,s){var q=this.length>>>0,v=Number(s)||0,v=0>v?Math.ceil(v):Math.floor(v);
@@ -846,7 +855,12 @@ b.save();0<a&&b.drawImage(c,0,0,c.width*a,c.height,0,0,c.width*a/ia,c.height/ia)
 f,b,c){return b*(a/=c)*a*a*a+f}}},$={drawMarker:function(a,f,b,c,e,g,h,l){if(b){var m=1;b.fillStyle=g?g:"#000000";b.strokeStyle=h?h:"#000000";b.lineWidth=l?l:0;b.setLineDash&&b.setLineDash(F("solid",l));"circle"===c?(b.moveTo(a,f),b.beginPath(),b.arc(a,f,e/2,0,2*Math.PI,!1),g&&b.fill(),l&&(h?b.stroke():(m=b.globalAlpha,b.globalAlpha=0.15,b.strokeStyle="black",b.stroke(),b.globalAlpha=m))):"square"===c?(b.beginPath(),b.rect(a-e/2,f-e/2,e,e),g&&b.fill(),l&&(h?b.stroke():(m=b.globalAlpha,b.globalAlpha=
 0.15,b.strokeStyle="black",b.stroke(),b.globalAlpha=m))):"triangle"===c?(b.beginPath(),b.moveTo(a-e/2,f+e/2),b.lineTo(a+e/2,f+e/2),b.lineTo(a,f-e/2),b.closePath(),g&&b.fill(),l&&(h?b.stroke():(m=b.globalAlpha,b.globalAlpha=0.15,b.strokeStyle="black",b.stroke(),b.globalAlpha=m)),b.beginPath()):"cross"===c&&(b.strokeStyle=g,b.lineWidth=e/4,b.beginPath(),b.moveTo(a-e/2,f-e/2),b.lineTo(a+e/2,f+e/2),b.stroke(),b.moveTo(a+e/2,f-e/2),b.lineTo(a-e/2,f+e/2),b.stroke())}},drawMarkers:function(a){for(var f=
 0;f<a.length;f++){var b=a[f];$.drawMarker(b.x,b.y,b.ctx,b.type,b.size,b.color,b.borderColor,b.borderThickness)}}};return q}();Ka.Chart.version="v2.2 GA"})();
+/*
+  excanvas is used to support IE678 which do not implement HTML5 Canvas Element. You can safely remove the following excanvas code if you don't need to support older browsers.
 
+  Copyright 2006 Google Inc. https://code.google.com/p/explorercanvas/
+  Licensed under the Apache License, Version 2.0
+*/
 document.createElement("canvas").getContext||function(){function V(){return this.context_||(this.context_=new C(this))}function W(a,b,c){var g=M.call(arguments,2);return function(){return a.apply(b,g.concat(M.call(arguments)))}}function N(a){return String(a).replace(/&/g,"&amp;").replace(/"/g,"&quot;")}function O(a){a.namespaces.g_vml_||a.namespaces.add("g_vml_","urn:schemas-microsoft-com:vml","#default#VML");a.namespaces.g_o_||a.namespaces.add("g_o_","urn:schemas-microsoft-com:office:office","#default#VML");
 a.styleSheets.ex_canvas_||(a=a.createStyleSheet(),a.owningElement.id="ex_canvas_",a.cssText="canvas{display:inline-block;overflow:hidden;text-align:left;width:300px;height:150px}")}function X(a){var b=a.srcElement;switch(a.propertyName){case "width":b.getContext().clearRect();b.style.width=b.attributes.width.nodeValue+"px";b.firstChild.style.width=b.clientWidth+"px";break;case "height":b.getContext().clearRect(),b.style.height=b.attributes.height.nodeValue+"px",b.firstChild.style.height=b.clientHeight+
 "px"}}function Y(a){a=a.srcElement;a.firstChild&&(a.firstChild.style.width=a.clientWidth+"px",a.firstChild.style.height=a.clientHeight+"px")}function D(){return[[1,0,0],[0,1,0],[0,0,1]]}function t(a,b){for(var c=D(),g=0;3>g;g++)for(var e=0;3>e;e++){for(var f=0,d=0;3>d;d++)f+=a[g][d]*b[d][e];c[g][e]=f}return c}function P(a,b){b.fillStyle=a.fillStyle;b.lineCap=a.lineCap;b.lineJoin=a.lineJoin;b.lineWidth=a.lineWidth;b.miterLimit=a.miterLimit;b.shadowBlur=a.shadowBlur;b.shadowColor=a.shadowColor;b.shadowOffsetX=
