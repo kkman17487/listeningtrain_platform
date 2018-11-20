@@ -1,9 +1,4 @@
 <?php
-	$dataPoints2 = array(
-		array("y" => 3373.64, "label" => "Germany" ),
-		array("y" => 2435.94, "label" => "France" ),
-		array("y" => 1039.99, "label" => "Switzerland" ),
-	);
 	$dataPoints3 = array(
 		array("x" => 23, "y" => 340),
 		array("x" => 28, "y" => 390),
@@ -34,7 +29,6 @@
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints2 = $inner;
-
 ?>
 
 <!DOCTYPE html>
