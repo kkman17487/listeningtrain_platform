@@ -8,17 +8,14 @@ include('backendsidebar.php');
 include('connect_to_sql.php');
 ?>
 
-<?php 
-if(isset($_GET['add'])){
-	//$con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',ChineseName,CURRENT_TIMESTAMP,EnglishName);");
+<?php
+if(isset($_POST['submit']))
+{
 	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',$_POST[ChineseName],CURRENT_TIMESTAMP,$_POST[EnglishName]);");
 	if (!$res) {
 	die('Invalid query: ' . mysqli_error($con));
 	}
-}
-
-if(isset($_POST['formSubmit']))
-{
+	
 	$acategory = $_POST['formcategory'];
 	
 	$frequency = $_POST['formfrequency'];
@@ -72,23 +69,23 @@ if(isset($_POST['formSubmit']))
     }
     echo("</p>");
   }
-  
 }
 ?>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">上傳檔案</h1>
     <div class="table-responsive">
-	
+
+	<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
+	<br></br>
+
 	<label>中文名稱</label>
 	<input type="text" name="ChineseName" placeholder="中文"/>
 
 	<label>英文名稱</label>
 	<input type="text" name="EnglishName" placeholder="English"/>
-	<br></br>
-
-	<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
-	<br></br>
-
+	
+	<br></br>	
 	<label for='formcategory[]'>選擇類別</label>
 	<select multiple="multiple" name="formcategory[]">
 		<option value="City">城市、房子</option>
@@ -132,10 +129,10 @@ if(isset($_POST['formSubmit']))
 	</form>
 
 	<?php
-	if (isset($_GET["formcategory"])) {
+	/*if (isset($_GET["formcategory"])) {
        header("Location: " . $_GET["formcategory"] . ".php");
        exit();
-	} 
+	} */
 	?>
 
     </div>
