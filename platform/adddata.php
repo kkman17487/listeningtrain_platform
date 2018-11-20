@@ -11,16 +11,11 @@ include('connect_to_sql.php');
 <?php
 if(isset($_POST['submit']))
 {
-	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',$_POST[ChineseName],CURRENT_TIMESTAMP,$_POST[EnglishName]);");
-	if (!$res) {
-	die('Invalid query: ' . mysqli_error($con));
-	}
+  $acategory = $_POST['formcategory'];
 	
-	$acategory = $_POST['formcategory'];
+  $frequency = $_POST['formfrequency'];
 	
-	$frequency = $_POST['formfrequency'];
-	
-	$waveform = $_POST['formwaveform'];
+  $waveform = $_POST['formwaveform'];
 	
   if(!isset($acategory))
   {

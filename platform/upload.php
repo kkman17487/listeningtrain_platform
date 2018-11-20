@@ -39,6 +39,12 @@ for ($i = 0; $i < $fileCount; $i++) {
 	else {
 		echo 'error';
 	}
+	
+	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',$_POST[ChineseName],'','',CURRENT_TIMESTAMP,$_POST[EnglishName]);");
+	if (!$res) {
+	die('Invalid query: ' . mysqli_error($con));
+	}
+	
 }
 }
 ?>
