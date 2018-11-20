@@ -76,64 +76,60 @@ if(isset($_POST['formSubmit']))
 }
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">修改聲音、圖片</h1>
+<h1 class="sub-header">上傳檔案</h1>
     <div class="table-responsive">
+	
+	<label>中文名稱</label>
+	<input type="text" name="ChineseName" placeholder="中文"/>
 
-    <h4>新增</h4>
+	<label>英文名稱</label>
+	<input type="text" name="EnglishName" placeholder="English"/>
+	<br></br>
+
+	<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
+	<br></br>
+
+	<label for='formcategory[]'>選擇類別</label>
+	<select multiple="multiple" name="formcategory[]">
+		<option value="City">城市、房子</option>
+		<option value="Street">街道</option>
+		<option value="Nature">自然、動物</option>
+		<option value="Kitchen">廚房</option>
+		<option value="Instrument">樂器</option>
+		<option value="Restaurant">餐廳</option>
+		<option value="Home">家</option>
+		<option value="School">學校</option>
+		<option value="Event">活動</option>
+		<option value="Dailylife">日常生活</option>
+		<option value="Others">其他</option>
+	</select>
 		
-		<label>中文名稱</label>
-		<input type="text" name="ChineseName" placeholder="中文"/>
+	<br></br>
+	<label for='formcategory[]'>選擇頻率</label>
+	<select multiple="multiple" name="formfrequency[]">
+		<option value="f0"><100</option>
+		<option value="f1">100~1000</option>
+		<option value="f2">1000~2000</option>
+		<option value="f3">2000~4000</option>
+		<option value="f4">4000~7000</option>
+		<option value="f5">>7000</option>
+		<option value="f6">全部</option>
+	</select>
 
-		<label>英文名稱</label>
-		<input type="text" name="EnglishName" placeholder="English"/>
-		<br></br>
-
-		<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
-		<!--檔名須為mp3,wav；檔名須為jpg,jpeg,png,gif-->
-		<br></br>
-
+	<br></br>		
+	<label>選擇波型</label>
+	<select multiple="multiple" name="formwaveform[]">
+		<option value="w0">平緩</option>
+		<option value="w1">低頻高</option>
+		<option value="w2">高頻高</option>
+		<option value="w3">中間高，兩邊低</option>
+		<option value="w4">中間低，兩邊高</option>
+		<option value="w5">全部</option>
+	</select>
 		
-		<label for='formcategory[]'>選擇類別</label>
-		<select multiple="multiple" name="formcategory[]">
-			<option value="City">城市、房子</option>
-			<option value="Street">街道</option>
-			<option value="Nature">自然、動物</option>
-			<option value="Kitchen">廚房</option>
-			<option value="Instrument">樂器</option>
-			<option value="Restaurant">餐廳</option>
-			<option value="Home">家</option>
-			<option value="School">學校</option>
-			<option value="Event">活動</option>
-			<option value="Dailylife">日常生活</option>
-			<option value="Others">其他</option>
-		</select>
-		
-		<br></br>
-		<label for='formcategory[]'>選擇頻率</label>
-		<select multiple="multiple" name="formfrequency[]">
-			<option value="f0"><100</option>
-			<option value="f1">100~1000</option>
-			<option value="f2">1000~2000</option>
-			<option value="f3">2000~4000</option>
-			<option value="f4">4000~7000</option>
-			<option value="f5">>7000</option>
-			<option value="f6">全部</option>
-		</select>
-
-		<br></br>		
-		<label>選擇波型</label>
-		<select multiple="multiple" name="formwaveform[]">
-			<option value="w0">平緩</option>
-			<option value="w1">低頻高</option>
-			<option value="w2">高頻高</option>
-			<option value="w3">中間高，兩邊低</option>
-			<option value="w4">中間低，兩邊高</option>
-			<option value="w5">全部</option>
-		</select>
-		
-		<br></br>
-		<input type="submit" value="送出" />
-		</form>
+	<br></br>
+	<input type="submit" value="送出" />
+	</form>
 
 	<?php
 	if (isset($_GET["formcategory"])) {

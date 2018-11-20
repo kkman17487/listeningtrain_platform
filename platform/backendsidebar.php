@@ -16,7 +16,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="edit_train.php">編輯訓練模式</a></li>
             <li><a href="set_exam.php">出題模式</a></li>
-            <li><a href="adddata.php">修改聲音與圖檔</a></li>
+            <li><a href="adddata.php">上傳聲音和圖片</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="setting.php">設定</a></li>
