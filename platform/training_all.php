@@ -18,7 +18,7 @@ include('sidebar.php');
 
   <div class="w3-container w3-text-grey" id="sounds">
     <form>
-      <select onChange="location = 'training.php?sound_type=' + this.options[this.selectedIndex].value;">
+      <select onChange="location = 'training_all.php?sound_type=' + this.options[this.selectedIndex].value;">
         <option value="#">全部</option>
         <?php
         $classfication = array();
