@@ -1,15 +1,4 @@
 <?php
-	$dataPoints3 = array(
-		array("x" => 23, "y" => 340),
-		array("x" => 28, "y" => 390),
-		array("x" => 24, "y" => 321)
-	);
-	$dataPoints4 = array(
-		array("x" => 19, "y" => 192),
-		array("x" => 27, "y" => 250),
-		array("x" => 22, "y" => 160)
-	);
-
 	include('connect_to_sql.php');
 
 	$dbdata = $con->query("select * from history");
@@ -29,6 +18,24 @@
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints2 = $inner;
+	
+	$dbdata = $con->query("select * from history");
+	$inner = array();
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{
+		$labelrs=mysqli_fetch_row($dbdata);
+		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
+	}
+	$dataPoints3 = $inner;
+	
+	$dbdata = $con->query("select * from history");
+	$inner = array();
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{
+		$labelrs=mysqli_fetch_row($dbdata);
+		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
+	}
+	$dataPoints4 = $inner;	
 ?>
 
 <!DOCTYPE html>
