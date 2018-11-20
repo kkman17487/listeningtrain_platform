@@ -1,32 +1,40 @@
-
 <?php
-$dataPoints2 = array(
-			array("y" => 3373.64, "label" => "Germany" ),
-			array("y" => 2435.94, "label" => "France" ),
-			array("y" => 1039.99, "label" => "Switzerland" ),
-		);
-		$dataPoints3 = array(
-			array("x" => 23, "y" => 340),
-			array("x" => 28, "y" => 390),
-			array("x" => 24, "y" => 321)
-		);
-		$dataPoints4 = array(
-			array("x" => 19, "y" => 192),
-			array("x" => 27, "y" => 250),
-			array("x" => 22, "y" => 160)
-		);
-		print_r($dataPoints4);
-include('connect_to_sql.php');
-$dbdata = $con->query("select * from history");
-$inner = array();
+	$dataPoints2 = array(
+		array("y" => 3373.64, "label" => "Germany" ),
+		array("y" => 2435.94, "label" => "France" ),
+		array("y" => 1039.99, "label" => "Switzerland" ),
+	);
+	$dataPoints3 = array(
+		array("x" => 23, "y" => 340),
+		array("x" => 28, "y" => 390),
+		array("x" => 24, "y" => 321)
+	);
+	$dataPoints4 = array(
+		array("x" => 19, "y" => 192),
+		array("x" => 27, "y" => 250),
+		array("x" => 22, "y" => 160)
+	);
+	
+	include('connect_to_sql.php');
+	
+	$dbdata = $con->query("select * from history");
+	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
 	}	
 	$dataPoints1 = $inner;
-	print_r($dataPoints1);
-		
+
+	$dbdata = $con->query("select * from history");
+	$inner = array();
+	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
+	{
+		$labelrs=mysqli_fetch_row($dbdata);
+		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
+	}	
+	$dataPoints2 = $inner;	
+	
 ?>
 
 <!DOCTYPE html>
@@ -71,8 +79,6 @@ $inner = array();
         </table>
     </div>
 
-
-
 <script>
 window.onload = function () {
 
@@ -95,7 +101,7 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "Kind"
+		text: "Category"
 	},
 	axisY: {
 		title: "Correct Rate"
@@ -155,22 +161,24 @@ function toggleDataSeries(e){
 }
 }
 </script>
+
+<br></br>
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script src="../dist/js/phpchart.js"></script>
     </div>
-
+<br></br>
 <h1 class="page-header">柱狀圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
-		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script src="../dist/js/phpchart.js"></script>
     </div>
-
+<br></br>
 <h1 class="page-header">散佈圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
-		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script src="../dist/js/phpchart.js"></script>
     </div>
 </div>
 </body>
