@@ -127,14 +127,6 @@ if(isset($_POST['submit']))
 	<br></br>
 	<input type="submit" value="送出" />
 	</form>
-
-	<?php
-	/*if (isset($_GET["formcategory"])) {
-       header("Location: " . $_GET["formcategory"] . ".php");
-       exit();
-	} */
-	?>
-
     </div>
 </div>
 </body>
