@@ -62,7 +62,7 @@
 			<tr>
 				<td width="5%"><?php echo $rs['id']?></td>
 				<td width="10%"><?php echo $rs['name']?></td>
-				<td width="25%"><?php echo $rs['data']?></td>
+				<td width="50%"><?php echo $rs['data']?></td>
 				<td width="15%"><?php echo $rs['correct']?>%</td>
 				<td width="20%"><?php echo $rs['time']?></td>
 			</tr>
@@ -159,19 +159,19 @@ function toggleDataSeries(e){
 <br></br>
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
-		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer" style="height: 370px; width: 95%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 <br></br>
 <h1 class="page-header">柱狀圖</h1>
     <div class="row placeholders">
-		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer2" style="height: 370px; width: 95%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 <br></br>
 <h1 class="page-header">散佈圖</h1>
     <div class="row placeholders">
-		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer3" style="height: 370px; width: 95%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 </div>
