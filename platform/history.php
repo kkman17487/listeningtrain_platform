@@ -114,10 +114,10 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 		text: "What?"
 	},
 	axisX: {
-		title:"Server Load (in TPS)"
+		title:"Correct rate (in %)"
 	},
 	axisY:{
-		title: "Response Time (in ms)"
+		title: "Time (in ms)"
 	},
 	legend:{
 		cursor: "pointer",
@@ -126,18 +126,18 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 	data: [
 	{
 		type: "scatter",
-		toolTipContent: "<span style=\"color:#4F81BC \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
-		name: "Server Jupiter",
+		toolTipContent: "<span style=\"color:#4F81BC \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Correct rate:</b></span> {y} %",
+		name: "Time",
 		markerType: "square",
 		showInLegend: true,
 		dataPoints: <?php echo json_encode($dataPoints3); ?>
 	},
 	{
 		type: "scatter",
-		name: "Server Neptune",
+		name: "Reaction Time",
 		markerType: "triangle",
 		showInLegend: true,
-		toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
+		toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Correct rate:</b></span> {y} %",
 		dataPoints: <?php echo json_encode($dataPoints4); ?>
 	}
 	]
@@ -159,19 +159,19 @@ function toggleDataSeries(e){
 <br></br>
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
-		<div id="chartContainer" style="height: 370px; width: 95%;"></div>
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 <br></br>
 <h1 class="page-header">柱狀圖</h1>
     <div class="row placeholders">
-		<div id="chartContainer2" style="height: 370px; width: 95%;"></div>
+		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 <br></br>
 <h1 class="page-header">散佈圖</h1>
     <div class="row placeholders">
-		<div id="chartContainer3" style="height: 370px; width: 95%;"></div>
+		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 </div>
