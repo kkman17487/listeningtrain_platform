@@ -15,7 +15,7 @@
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
+		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
 	}
 	$dataPoints2 = $inner;
 
@@ -85,7 +85,7 @@ window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "ID"
+		text: "?"
 	},
 	axisY: {
 		title: "Correct Rate"
@@ -102,7 +102,7 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "Category"
+		text: "ID"
 	},
 	axisY: {
 		title: "Correct Rate"
