@@ -18,7 +18,7 @@
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints2 = $inner;
-	
+
 	$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
@@ -27,7 +27,7 @@
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints3 = $inner;
-	
+
 	$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
@@ -35,7 +35,7 @@
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
-	$dataPoints4 = $inner;	
+	$dataPoints4 = $inner;
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
                 <tr>
                   <th>#</th>
                   <th>姓名</th>
-                  <th>作答情況</th>
+                  <th>作答情況(正確答案/選擇答案/作答時間)</th>
                   <th>答對率</th>
                   <th>平均作答反應時間</th>
                 </tr>
