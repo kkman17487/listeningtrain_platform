@@ -105,12 +105,11 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 		text: "ID"
 	},
 	axisY: {
-		title: "Correct Rate"
+		title: "Correct Rate (%)"
 	},
 	data: [{
 		type: "column",
-		//yValueFormatString: "#,##0.## ",
-		yValueFormatString: "#,##0.## %",
+		yValueFormatString: "#,##0.## ",
 		dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
 	}]
 });
