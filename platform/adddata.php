@@ -84,41 +84,41 @@ if(isset($_POST['submit']))
 
 	<br></br>
 	<label for='formcategory[]'>選擇類別</label>
-	<select multiple="multiple" name="formcategory[]">
-		<option value="City">城市、房子</option>
-		<option value="Street">街道</option>
-		<option value="Nature">自然、動物</option>
-		<option value="Kitchen">廚房</option>
-		<option value="Instrument">樂器</option>
-		<option value="Restaurant">餐廳</option>
-		<option value="Home">家</option>
-		<option value="School">學校</option>
-		<option value="Event">活動</option>
-		<option value="Dailylife">日常生活</option>
-		<option value="Others">其他</option>
+	<select multiple="multiple" name="formcategory">
+		<option value="城市、房子">城市、房子</option>
+		<option value="街道">街道</option>
+		<option value="自然、動物">自然、動物</option>
+		<option value="廚房">廚房</option>
+		<option value="樂器">樂器</option>
+		<option value="餐廳">餐廳</option>
+		<option value="家">家</option>
+		<option value="學校">學校</option>
+		<option value="活動">活動</option>
+		<option value="日常生活">日常生活</option>
+		<option value="其他">其他</option>
 	</select>
 
 	<br></br>
 	<label for='formcategory[]'>選擇頻率</label>
-	<select multiple="multiple" name="formfrequency[]">
-		<option value="f0"><100</option>
-		<option value="f1">100~1000</option>
-		<option value="f2">1000~2000</option>
-		<option value="f3">2000~4000</option>
-		<option value="f4">4000~7000</option>
-		<option value="f5">>7000</option>
-		<option value="f6">全部</option>
+	<select multiple="multiple" name="formfrequency">
+		<option value="100">100</option>
+		<option value="100~1000">100~1000</option>
+		<option value="1000~2000">1000~2000</option>
+		<option value="2000~4000">2000~4000</option>
+		<option value="4000~7000">4000~7000</option>
+		<option value="7000">7000</option>
+		<option value="全部">全部</option>
 	</select>
 
 	<br></br>
 	<label>選擇波型</label>
-	<select multiple="multiple" name="formwaveform[]">
-		<option value="w0">平緩</option>
-		<option value="w1">低頻高</option>
-		<option value="w2">高頻高</option>
-		<option value="w3">中間高，兩邊低</option>
-		<option value="w4">中間低，兩邊高</option>
-		<option value="w5">全部</option>
+	<select multiple="multiple" name="formwaveform">
+		<option value="平緩">平緩</option>
+		<option value="低頻高">低頻高</option>
+		<option value="高頻高">高頻高</option>
+		<option value="中間高，兩邊低">中間高，兩邊低</option>
+		<option value="中間低，兩邊高">中間低，兩邊高</option>
+		<option value="全部">全部</option>
 	</select>
 
 	<br></br>
