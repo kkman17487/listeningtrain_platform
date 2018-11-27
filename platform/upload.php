@@ -44,7 +44,7 @@ for ($i = 0; $i < $fileCount; $i++) {
 
 }
 }
-echo $_SESSION['pic_src'].' '.$_SESSION['sound_src'];
+echo $pic_src.' '.$sound_src;
 $res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_src','$_POST[formcategory]','$_POST[ChineseName]','$_POST[formfrequency]','$_POST[formwaveform]',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
