@@ -50,7 +50,6 @@ if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功');</script>";
-  header("Location: adddata.php");
+  echo "<script>alert('上傳成功');window.location.replace('adddata.php');</script>";
 }
 ?>
