@@ -1,5 +1,6 @@
 <?php
 # 取得上傳檔案數量
+include("connect_to_sql.php");
 $fileCount = count($_FILES['my_file']['name']);
 $type=$_FILES['my_file']['type'];
 
@@ -39,12 +40,12 @@ for ($i = 0; $i < $fileCount; $i++) {
 	else {
 		echo 'error';
 	}
-	
-	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES(NULL,NULL,'',$_POST[ChineseName],'','',CURRENT_TIMESTAMP,$_POST[EnglishName]);");
+
+	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES(NULL,NULL,'','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]');");
 	if (!$res) {
 	die('Invalid query: ' . mysqli_error($con));
 	}
-	
+
 }
 }
 ?>
