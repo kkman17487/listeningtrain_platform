@@ -1,5 +1,6 @@
 <?php
 # 取得上傳檔案數量
+session_start();
 include("connect_to_sql.php");
 $fileCount = count($_FILES['my_file']['name']);
 $type=$_FILES['my_file']['type'];
@@ -15,14 +16,14 @@ for ($i = 0; $i < $fileCount; $i++) {
     # 檢查檔案是否已經存在
     if($type=="image/jpeg" || $type=="image/jpg" || $type=="image/png" || $type=="image/gif"){
       if($type == "image/jpeg")
-        $pic_src = '../picture/'.$_FILES['my_file']['name'][$i].'.jpeg';
+        $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.jpeg';
       if($type == "image/jpg")
-        $pic_src = '../picture/'.$_FILES['my_file']['name'][$i].'.jpg';
+        $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.jpg';
       if($type == "image/png")
-        $pic_src = '../picture/'.$_FILES['my_file']['name'][$i].'.png';
+        $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.png';
       if($type == "image/gif")
-        $pic_src = '../picture/'.$_FILES['my_file']['name'][$i].'.gif';
-		  if (file_exists($pic_src)){
+        $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.gif';
+		  if (file_exists($_SESSION['pic_src'])){
 			  echo '檔案已存在。<br/>';
 		  }
 		  else {
@@ -34,10 +35,10 @@ for ($i = 0; $i < $fileCount; $i++) {
 	}
 	else if($type=="audio/mp3" || $type=="audio/wav"){
     if($type=="audio/mp3")
-      $sound_src = '../sound/'.$_FILES['my_file']['name'][$i].'.mp3';
+      $_SESSION['sound_src'] = '../sound/'.$_FILES['my_file']['name'][$i].'.mp3';
     if($type=="audio/mp3")
-      $sound_src = '../sound/'.$_FILES['my_file']['name'][$i].'.wav';
-		if (file_exists($sound_src)){
+      $_SESSION['sound_src'] = '../sound/'.$_FILES['my_file']['name'][$i].'.wav';
+		if (file_exists($_SESSION['sound_src'])){
 			echo '檔案已存在。<br/>';
 		}
 		else {
@@ -51,8 +52,8 @@ for ($i = 0; $i < $fileCount; $i++) {
 	else {
 		echo 'error<br>';
 	}
-  echo $pic_src.' '.$sound_pic;
-	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_pic','','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
+  echo $_SESSION['pic_src'].' '.$_SESSION['sound_src'];
+	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$_SESSION[pic_src]','$_SESSION[sound_src]','','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
 	if (!$res) {
 	die('Invalid query: ' . mysqli_error($con));
 	}

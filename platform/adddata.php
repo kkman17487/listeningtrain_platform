@@ -3,6 +3,8 @@
 <body>
 <?php
 session_start();
+unset($_SESSION['pic_src']);
+unset($_SESSION['sound_src']);
 include('backendheader.php');
 include('backendsidebar.php');
 include('connect_to_sql.php');
@@ -12,11 +14,11 @@ include('connect_to_sql.php');
 if(isset($_POST['submit']))
 {
   $acategory = $_POST['formcategory'];
-	
+
   $frequency = $_POST['formfrequency'];
-	
+
   $waveform = $_POST['formwaveform'];
-	
+
   if(!isset($acategory))
   {
     echo("<p>You didn't select any category!</p>\n");
@@ -32,7 +34,7 @@ if(isset($_POST['submit']))
     }
     echo("</p>");
   }
-  
+
   if(!isset($frequency))
   {
     echo("<p>You didn't select any frequency!</p>\n");
@@ -48,7 +50,7 @@ if(isset($_POST['submit']))
     }
     echo("</p>");
   }
-  
+
   if(!isset($waveform))
   {
     echo("<p>You didn't select any waveform!</p>\n");
@@ -79,8 +81,8 @@ if(isset($_POST['submit']))
 
 	<label>英文名稱</label>
 	<input type="text" name="EnglishName" placeholder="English"/>
-	
-	<br></br>	
+
+	<br></br>
 	<label for='formcategory[]'>選擇類別</label>
 	<select multiple="multiple" name="formcategory[]">
 		<option value="City">城市、房子</option>
@@ -95,7 +97,7 @@ if(isset($_POST['submit']))
 		<option value="Dailylife">日常生活</option>
 		<option value="Others">其他</option>
 	</select>
-		
+
 	<br></br>
 	<label for='formcategory[]'>選擇頻率</label>
 	<select multiple="multiple" name="formfrequency[]">
@@ -108,7 +110,7 @@ if(isset($_POST['submit']))
 		<option value="f6">全部</option>
 	</select>
 
-	<br></br>		
+	<br></br>
 	<label>選擇波型</label>
 	<select multiple="multiple" name="formwaveform[]">
 		<option value="w0">平緩</option>
@@ -118,7 +120,7 @@ if(isset($_POST['submit']))
 		<option value="w4">中間低，兩邊高</option>
 		<option value="w5">全部</option>
 	</select>
-		
+
 	<br></br>
 	<input type="submit" value="送出" />
 	</form>
