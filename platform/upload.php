@@ -52,7 +52,7 @@ for ($i = 0; $i < $fileCount; $i++) {
 		echo 'error';
 	}
   echo
-	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES($pic_src,$sound_pic,'','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]');");
+	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_pic','','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
 	if (!$res) {
 	die('Invalid query: ' . mysqli_error($con));
 	}
