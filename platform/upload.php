@@ -49,4 +49,8 @@ $res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`freq
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
+else {
+  echo "<script>alert('上傳成功');</script>";
+  redirect('adddata.php');
+}
 ?>
