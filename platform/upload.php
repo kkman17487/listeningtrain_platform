@@ -3,10 +3,10 @@
 session_start();
 include("connect_to_sql.php");
 $fileCount = count($_FILES['my_file']['name']);
-$type=$_FILES['my_file']['type'];
 
 for ($i = 0; $i < $fileCount; $i++) {
   # 檢查檔案是否上傳成功
+  $type=$_FILES['my_file']['type'][$i];
   if ($_FILES['my_file']['error'][$i] === UPLOAD_ERR_OK){
     echo '檔案名稱: ' . $_FILES['my_file']['name'][$i] . '<br/>';
     echo '檔案類型: ' . $_FILES['my_file']['type'][$i] . '<br/>';
@@ -15,9 +15,7 @@ for ($i = 0; $i < $fileCount; $i++) {
 
     # 檢查檔案是否已經存在
     if($type=="image/jpeg" || $type=="image/jpg" || $type=="image/png" || $type=="image/gif"){
-      if($type == "image/jpeg")
-        $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.jpeg';
-      if($type == "image/jpg")
+      if($type == "image/jpeg" || $type == "image/jpg")
         $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.jpg';
       if($type == "image/png")
         $_SESSION['pic_src'] = '../picture/'.$_FILES['my_file']['name'][$i].'.png';
@@ -52,12 +50,12 @@ for ($i = 0; $i < $fileCount; $i++) {
 	else {
 		echo 'error<br>';
 	}
-  echo $_SESSION['pic_src'].' '.$_SESSION['sound_src'];
-	$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$_SESSION[pic_src]','$_SESSION[sound_src]','','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
-	if (!$res) {
-	die('Invalid query: ' . mysqli_error($con));
-	}
 
 }
+}
+echo $_SESSION['pic_src'].' '.$_SESSION['sound_src'];
+$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$_SESSION[pic_src]','$_SESSION[sound_src]','','$_POST[ChineseName]','','',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
+if (!$res) {
+die('Invalid query: ' . mysqli_error($con));
 }
 ?>
