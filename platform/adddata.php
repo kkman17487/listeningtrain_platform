@@ -3,8 +3,6 @@
 <body>
 <?php
 session_start();
-unset($_SESSION['pic_src']);
-unset($_SESSION['sound_src']);
 include('backendheader.php');
 include('backendsidebar.php');
 include('connect_to_sql.php');
