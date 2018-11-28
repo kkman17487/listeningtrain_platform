@@ -186,7 +186,7 @@ else{
 <h1 class="sub-header">上傳檔案</h1>
     <div class="table-responsive">
 
-  <form action="upload_edit.php" method="post" enctype="multipart/form-data">
+  <form action="upload_edit.php?ID=<?php echo $_GET['ID']?>" method="post" enctype="multipart/form-data">
     圖片<input type="file" name="my_file[]"><img src="<?php echo $rs['pic_src']?>" width="100px" height="100px"><br>
     音檔<input type="file" name="my_file[]">
     <audio id= "<?php echo $rs['audio_id']?>">
