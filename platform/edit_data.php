@@ -186,7 +186,14 @@ else{
 <h1 class="sub-header">上傳檔案</h1>
     <div class="table-responsive">
 
-  <form action="upload_edit.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
+  <form action="upload_edit.php" method="post" enctype="multipart/form-data">
+    圖片<input type="file" name="my_file[]"><img src="<?php echo $rs['pic_src']?>" width="100px" height="100px">
+    音檔<input type="file" name="my_file[]">
+    <audio id= "<?php echo $rs['audio_id']?>">
+      <source src="<?php echo $rs['audio_id']?>" type="audio/mp3" />
+      <embed height="100" width="100" src="<?php echo $rs['audio_id']?>" />
+    </audio>
+    <button class="w3-button w3-black " onclick="document.getElementById(\'<?php echo $rs['audio_id']?>\').play(); set_timer(); enable_radio(); return false;">Play</button><br>';
   <br></br>
 
   <label>中文名稱</label>
