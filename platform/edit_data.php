@@ -193,7 +193,7 @@ else{
       <source src="<?php echo $rs['sound_src']?>" type="audio/mp3" />
       <embed height="100" width="100" src="<?php echo $rs['sound_src']?>" />
     </audio>
-    <button class="w3-button w3-black " onclick="document.getElementById('<?php echo $rs['audio_id']?>').play();">Play</button><br>
+    <button class="w3-button w3-black " onclick="document.getElementById('<?php echo $rs['audio_id']?>').play(); return false;">Play</button><br>
   <br></br>
 
   <label>中文名稱</label>
