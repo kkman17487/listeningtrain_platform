@@ -190,8 +190,8 @@ else{
     圖片<input type="file" name="my_file[]"><img src="<?php echo $rs['pic_src']?>" width="100px" height="100px"><br>
     音檔<input type="file" name="my_file[]">
     <audio id= "<?php echo $rs['audio_id']?>">
-      <source src="<?php echo $rs['audio_id']?>" type="audio/mp3" />
-      <embed height="100" width="100" src="<?php echo $rs['audio_id']?>" />
+      <source src="<?php echo $rs['sound_src']?>" type="audio/mp3" />
+      <embed height="100" width="100" src="<?php echo $rs['sound_src']?>" />
     </audio>
     <button class="w3-button w3-black " onclick="document.getElementById('<?php echo $rs['audio_id']?>').play();">Play</button><br>
   <br></br>
