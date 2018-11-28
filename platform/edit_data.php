@@ -175,60 +175,71 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </div>
 </div>
 <?php
-}?>
- <!--else{
+}
+else{
   $ID = $_GET['ID'];
-  $data = $con->query("select * from train where id = '$ID'");
-  $sound = $con->query("select * from data");
+  $data = $con->query("select * from data where id = '$ID'");
+  $rs = mysqli_fetch_assoc($data);
   //讓資料由最新呈現到最舊
 ?>
-  <div class="container">
-    <div class="CSSTableGenerator">
-      <form method="post" name="train" action="edit_train.php?ID=<? /*php echo $ID;?>">
-        <table align="center">
-              <tr>
-                <td width="5%">ID</td>
-                <td width="10%">名稱</td>
-                <td width="35%">題目</td>
-                <td width="10%">作者</td>
-                <td width="20%">創造時間</td>
-                <td width="20%">最近修改時間</td>
-              </tr>
-<?php
- $rs=mysqli_fetch_assoc($data);
-?>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h1 class="sub-header">上傳檔案</h1>
+    <div class="table-responsive">
 
-            <tr>
-              <td width="5%"><?php echo $rs['id'];?></td>
-              <td width="10%"><input type="text" name="name" value="<?php echo $rs['name'];?>"</td>
-              <td width="35%">
-                <?php
-                  $question = explode(",",$rs['question']);
-                  $j = 0;
-                  for($i = 1; $i <= mysqli_num_rows($sound); $i++)
-                  {
-                    $rs_sound = mysqli_fetch_assoc($sound);
-                    echo "<input type=checkbox name=question[] value=".$rs_sound['id'];
-                    if($j < sizeof($question) && $question[$j] == $rs_sound['id'])
-                    {
-                      echo " checked";
-                      $j++;
-                    }
-                    echo ">".$rs_sound['id'].":".$rs_sound['name'];
-                  }
-                ?>
-              </td>
-              <td width="10%"><?php echo $rs['creator'];?></td>
-              <td width="20%"><?php echo $rs['create_time'];?></td>
-              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
-            </tr>
-</table>
-<input type="submit" value="修改">
-<input type="button" value="取消" onclick="document.location.href='edit_train.php'" />
-</form>
+  <form action="upload_edit.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
+  <br></br>
+
+  <label>中文名稱</label>
+  <input type="text" name="ChineseName" placeholder="中文" value="<?php echo $rs['name'];?>"/>
+
+  <label>英文名稱</label>
+  <input type="text" name="EnglishName" placeholder="English" value="<?php echo $rs['audio_id'];?>"/>
+
+  <br></br>
+  <label for='formcategory[]'>選擇類別</label>
+  <select multiple="multiple" name="formcategory">
+    <option value="城市、房子" <?php if($rs['tag'] == "城市、房子") echo "selected=selected"?>>城市、房子</option>
+    <option value="街道" <?php if($rs['tag'] == "街道") echo "selected=selected"?>>街道</option>
+    <option value="自然、動物" <?php if($rs['tag'] == "自然、動物") echo "selected=selected"?>>自然、動物</option>
+    <option value="廚房" <?php if($rs['tag'] == "廚房") echo "selected=selected"?>>廚房</option>
+    <option value="樂器" <?php if($rs['tag'] == "樂器") echo "selected=selected"?>>樂器</option>
+    <option value="餐廳" <?php if($rs['tag'] == "餐廳") echo "selected=selected"?>>餐廳</option>
+    <option value="家" <?php if($rs['tag'] == "家") echo "selected=selected"?>>家</option>
+    <option value="學校" <?php if($rs['tag'] == "學校") echo "selected=selected"?>>學校</option>
+    <option value="活動" <?php if($rs['tag'] == "活動") echo "selected=selected"?>>活動</option>
+    <option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
+    <option value="其他" <?php if($rs['tag'] == "其他") echo "selected=selected"?>>其他</option>
+  </select>
+
+  <br></br>
+  <label for='formcategory[]'>選擇頻率</label>
+  <select multiple="multiple" name="formfrequency">
+    <option value="100" <?php if($rs['frequency'] == "100") echo "selected=selected"?>>100</option>
+    <option value="100~1000" <?php if($rs['frequency'] == "100~1000") echo "selected=selected"?>>100~1000</option>
+    <option value="1000~2000" <?php if($rs['frequency'] == "1000~2000") echo "selected=selected"?>>1000~2000</option>
+    <option value="2000~4000" <?php if($rs['frequency'] == "2000~4000") echo "selected=selected"?>>2000~4000</option>
+    <option value="4000~7000" <?php if($rs['frequency'] == "4000~7000") echo "selected=selected"?>>4000~7000</option>
+    <option value="7000" <?php if($rs['frequency'] == "7000") echo "selected=selected"?>>7000</option>
+    <option value="全部" <?php if($rs['frequency'] == "全部") echo "selected=selected"?>>全部</option>
+  </select>
+
+  <br></br>
+  <label>選擇波型</label>
+  <select multiple="multiple" name="formwaveform">
+    <option value="平緩" <?php if($rs['waveform'] == "平緩") echo "selected=selected"?>>平緩</option>
+    <option value="低頻高" <?php if($rs['waveform'] == "低頻高") echo "selected=selected"?>>低頻高</option>
+    <option value="高頻高" <?php if($rs['waveform'] == "高頻高") echo "selected=selected"?>>高頻高</option>
+    <option value="中間高，兩邊低" <?php if($rs['waveform'] == "中間高，兩邊低") echo "selected=selected"?>>中間高，兩邊低</option>
+    <option value="中間低，兩邊高" <?php if($rs['waveform'] == "中間低，兩邊高") echo "selected=selected"?>>中間低，兩邊高</option>
+    <option value="全部" <?php if($rs['waveform'] == "全部") echo "selected=selected"?>>全部</option>
+  </select>
+
+  <br></br>
+  <input type="submit" value="送出" />
+  </form>
+    </div>
 </div>
-</div>
-<?php }*/?>-->
+<?php }?>
 </div>
 </body>
 </html>
