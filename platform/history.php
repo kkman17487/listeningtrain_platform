@@ -19,7 +19,7 @@
 	}
 	$dataPoints2 = $inner;
 
-	$dbdata = $con->query("select * from history");
+	/*$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -35,7 +35,7 @@
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
-	$dataPoints4 = $inner;
+	$dataPoints4 = $inner;*/
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +115,7 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 });
 chart2.render();
 
-var chart3 = new CanvasJS.Chart("chartContainer3", {
+/*var chart3 = new CanvasJS.Chart("chartContainer3", {
 	animationEnabled: true,
 	title:{
 		text: "What?"
@@ -159,7 +159,7 @@ function toggleDataSeries(e){
 		e.dataSeries.visible = true;
 	}
 	chart3.render();
-}
+}*/
 }
 </script>
 
@@ -175,12 +175,12 @@ function toggleDataSeries(e){
 		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
-<br></br>
+<!--<br></br>
 <h1 class="page-header">散佈圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
-    </div>
+    </div>-->
 </div>
 </body>
 </html>
