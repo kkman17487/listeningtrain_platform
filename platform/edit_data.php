@@ -175,8 +175,8 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </div>
 </div>
 <?php
-}
-/*else{
+}?>
+ <!--else{
   $ID = $_GET['ID'];
   $data = $con->query("select * from train where id = '$ID'");
   $sound = $con->query("select * from data");
@@ -184,7 +184,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 ?>
   <div class="container">
     <div class="CSSTableGenerator">
-      <form method="post" name="train" action="edit_train.php?ID=<?php echo $ID;?>">
+      <form method="post" name="train" action="edit_train.php?ID=<? /*php echo $ID;?>">
         <table align="center">
               <tr>
                 <td width="5%">ID</td>
@@ -228,7 +228,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </form>
 </div>
 </div>
-<?php }?>*/
+<?php }?>-->*/
 </div>
 </body>
 </html>
