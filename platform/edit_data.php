@@ -228,7 +228,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </form>
 </div>
 </div>
-<?php }?>-->*/
+<?php }*/?>-->
 </div>
 </body>
 </html>
