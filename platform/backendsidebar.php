@@ -18,9 +18,6 @@
             <li><a href="set_exam.php">出題模式</a></li>
             <li><a href="edit_data.php">聲音和圖片</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="setting.php">設定</a></li>
-          </ul>
         </div>
 	 </div>
     </div>
