@@ -150,7 +150,7 @@ $data = $con->query("select * from data");
                 <td width="20%">頻率</td>
                 <td width="15%">波形</td>
                 <td width="15%">標籤</td>
-                <td width="20%">創造時間</td>
+                <!--<td width="20%">創造時間</td>-->
                 <td width="15%">最近修改時間</td>
               </tr>
 <?php
@@ -162,11 +162,11 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
               <td width="1%"><input type="checkbox" name="delete[]" value="<?php echo $rs['id'];?>"></td>
               <td width="4%"><a href="edit_data.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
               <td width="10%"><?php echo $rs['name'];?></td>
-              <td width="15%"><?php echo $rs['frequency'];?></td>
-              <td width="10%"><?php echo $rs['waveform'];?></td>
-              <td width="20%"><?php echo $rs['tag'];?></td>
+              <td width="20%"><?php echo $rs['frequency'];?></td>
+              <td width="15%"><?php echo $rs['waveform'];?></td>
+              <td width="15%"><?php echo $rs['tag'];?></td>
               <td width="20%"><?php echo $rs['created_time'];?></td>
-              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
+              <td width="15%"><?php echo $rs['recent_edit_time'];?></td>
             </tr>
 <?php } ?>
 </table>
