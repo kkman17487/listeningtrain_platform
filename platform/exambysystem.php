@@ -279,6 +279,8 @@ document.getElementById('question_number').addEventListener('submit', function(e
   if(!Number.isInteger(number) || number <= 0 || number > numberOFdata)
   {
     event.preventDefault();
+    if(Number.isInteger(number))
+    alert("數字");
     alert("您輸入："+ number +"有效範圍為：" + 1 + "~" + numberOFdata);
     return false;
   }
