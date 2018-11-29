@@ -183,9 +183,7 @@ else{
   //讓資料由最新呈現到最舊
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">上傳檔案</h1>
-    <div class="table-responsive">
-
+<div class="table-responsive">
   <form action="upload_edit.php?ID=<?php echo $_GET['ID']?>" method="post" enctype="multipart/form-data">
     圖片<input type="file" name="my_file[]"><img src="<?php echo $rs['pic_src']?>" width="100px" height="100px"><br>
     音檔<input type="file" name="my_file[]">
@@ -244,7 +242,7 @@ else{
   <br></br>
   <input type="submit" value="送出" />
   </form>
-    </div>
+</div>
 </div>
 <?php }?>
 </div>
