@@ -275,7 +275,7 @@ function enable_submit()
 }
 document.getElementById('question_number').addEventListener('submit', function(event){
   var number = document.getElementById('number').value;
-  var numberOFdata = <?php Print($numberOFdata); ?>;
+  var numberOFdata = <?php echo $numberOFdata; ?>;
   if(!Number.isInteger(number) || number <= 0 || number > numberOFdata)
   {
     event.preventDefault();
