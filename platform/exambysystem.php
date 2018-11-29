@@ -274,13 +274,11 @@ function enable_submit()
   document.getElementById("submit").disabled = false;
 }
 document.getElementById('question_number').addEventListener('submit', function(event){
-  var number = document.getElementById('number').value;
+  var number = parseInt(document.getElementById('number').value);
   var numberOFdata = <?php echo $numberOFdata; ?>;
   if(!Number.isInteger(number) || number <= 0 || number > numberOFdata)
   {
     event.preventDefault();
-    if(!Number.isInteger(number))
-    alert("非數字");
     alert("您輸入："+ number +"有效範圍為：" + 1 + "~" + numberOFdata);
     return false;
   }
