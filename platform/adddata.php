@@ -83,16 +83,16 @@ if(isset($_POST['submit']))
 	<br></br>
 	<label for='formcategory[]'>選擇類別</label>
 	<select multiple="multiple" name="formcategory">
-		<option value="城市、房子">城市、房子</option>
+		<option value="房子">房子</option>
+		<option value="廚房、餐廳">廚房、餐廳</option>
+		<option value="日常生活">日常生活</option>
 		<option value="街道">街道</option>
-		<option value="自然、動物">自然、動物</option>
-		<option value="廚房">廚房</option>
+		<option value="動物">動物</option>
+		<option value="自然">自然</option>
 		<option value="樂器">樂器</option>
-		<option value="餐廳">餐廳</option>
-		<option value="家">家</option>
 		<option value="學校">學校</option>
 		<option value="活動">活動</option>
-		<option value="日常生活">日常生活</option>
+		<option value="軍事">軍事</option>
 		<option value="其他">其他</option>
 	</select>
 

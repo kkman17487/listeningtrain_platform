@@ -147,11 +147,11 @@ $data = $con->query("select * from data");
                 <td width="1%"></td>
                 <td width="4%">ID</td>
                 <td width="10%">名稱</td>
-                <td width="15%">頻率</td>
-                <td width="10%">波形</td>
-                <td width="20%">標籤</td>
-                <td width="20%">創造時間</td>
-                <td width="20%">最近修改時間</td>
+                <td width="20%">頻率</td>
+                <td width="15%">波形</td>
+                <td width="15%">標籤</td>
+                <!--<td width="20%">創造時間</td>-->
+                <td width="15%">最近修改時間</td>
               </tr>
 <?php
 for($i=1;$i<=mysqli_num_rows($data);$i++){
@@ -162,11 +162,11 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
               <td width="1%"><input type="checkbox" name="delete[]" value="<?php echo $rs['id'];?>"></td>
               <td width="4%"><a href="edit_data.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
               <td width="10%"><?php echo $rs['name'];?></td>
-              <td width="15%"><?php echo $rs['frequency'];?></td>
-              <td width="10%"><?php echo $rs['waveform'];?></td>
-              <td width="20%"><?php echo $rs['tag'];?></td>
+              <td width="20%"><?php echo $rs['frequency'];?></td>
+              <td width="15%"><?php echo $rs['waveform'];?></td>
+              <td width="15%"><?php echo $rs['tag'];?></td>
               <td width="20%"><?php echo $rs['created_time'];?></td>
-              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
+              <td width="15%"><?php echo $rs['recent_edit_time'];?></td>
             </tr>
 <?php } ?>
 </table>
@@ -183,9 +183,7 @@ else{
   //讓資料由最新呈現到最舊
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">上傳檔案</h1>
-    <div class="table-responsive">
-
+<div class="table-responsive">
   <form action="upload_edit.php?ID=<?php echo $_GET['ID']?>" method="post" enctype="multipart/form-data">
     圖片<input type="file" name="my_file[]"><img src="<?php echo $rs['pic_src']?>" width="100px" height="100px"><br>
     音檔<input type="file" name="my_file[]">
@@ -205,16 +203,16 @@ else{
   <br></br>
   <label for='formcategory[]'>選擇類別</label>
   <select multiple="multiple" name="formcategory">
-    <option value="城市、房子" <?php if($rs['tag'] == "城市、房子") echo "selected=selected"?>>城市、房子</option>
+    <option value="房子" <?php if($rs['tag'] == "房子") echo "selected=selected"?>>房子</option>
+	<option value="廚房、餐廳" <?php if($rs['tag'] == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
+	<option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
     <option value="街道" <?php if($rs['tag'] == "街道") echo "selected=selected"?>>街道</option>
-    <option value="自然、動物" <?php if($rs['tag'] == "自然、動物") echo "selected=selected"?>>自然、動物</option>
-    <option value="廚房" <?php if($rs['tag'] == "廚房") echo "selected=selected"?>>廚房</option>
+    <option value="動物" <?php if($rs['tag'] == "動物") echo "selected=selected"?>>動物</option>
+    <option value="自然" <?php if($rs['tag'] == "自然") echo "selected=selected"?>>自然</option>
     <option value="樂器" <?php if($rs['tag'] == "樂器") echo "selected=selected"?>>樂器</option>
-    <option value="餐廳" <?php if($rs['tag'] == "餐廳") echo "selected=selected"?>>餐廳</option>
-    <option value="家" <?php if($rs['tag'] == "家") echo "selected=selected"?>>家</option>
     <option value="學校" <?php if($rs['tag'] == "學校") echo "selected=selected"?>>學校</option>
     <option value="活動" <?php if($rs['tag'] == "活動") echo "selected=selected"?>>活動</option>
-    <option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
+	<option value="軍事" <?php if($rs['tag'] == "軍事") echo "selected=selected"?>>軍事</option>
     <option value="其他" <?php if($rs['tag'] == "其他") echo "selected=selected"?>>其他</option>
   </select>
 
@@ -244,7 +242,7 @@ else{
   <br></br>
   <input type="submit" value="送出" />
   </form>
-    </div>
+</div>
 </div>
 <?php }?>
 </div>
