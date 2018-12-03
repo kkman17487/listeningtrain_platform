@@ -162,7 +162,7 @@ elseif(isset($_GET['checkanswer']))
                 echo '<div class="w3-col l6 s6">
                   <div class="w3-container">
                     <div class="w3-display-container">';
-              echo '<input onclick="enable_submit();" type="radio" id="answer'.$j.'" name="answer" value="'.$answer[$j][0].'" disabled>'.$answer[$j][0].'<br><img height="40%" width="90%" src="'.$answer[$j][1].'"></div></div></div>';
+              echo '<input onclick="enable_submit();" type="radio" id="answer'.$j.'" name="answer" value="'.$answer[$j][0].'" disabled>'.$answer[$j][0].'<br><img height="30%" width="68%" src="'.$answer[$j][1].'"></div></div></div>';
               //print_r($rs);
               if($j%2==1)echo '</div>';
             }
