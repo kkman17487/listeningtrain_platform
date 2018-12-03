@@ -2,7 +2,7 @@
 # 取得上傳檔案數量
 include("connect_to_sql.php");
 $fileCount = count($_FILES['my_file']['name']);
-$origin_data = $con->query("SELECT `data` WHERE id = '$_GET[ID]'");
+$origin_data = $con->query("SELECT * FROM `data` WHERE id = '$_GET[ID]'");
 $rs_origin_data = mysqli_fetch_assoc($origin_data);
 for ($i = 0; $i < $fileCount; $i++) {
   # 檢查檔案是否上傳成功
@@ -62,6 +62,6 @@ if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功');window.location.replace('edit_data.php');</script>";
+  echo "<script>alert('上傳成功,".$rs_origin_data['sound_src']." ".$rs_origin_data['pic_src']."');window.location.replace('edit_data.php');</script>";
 }
 ?>

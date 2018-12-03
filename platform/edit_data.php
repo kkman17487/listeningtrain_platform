@@ -107,6 +107,10 @@ include("connect_to_sql.php");
 if(isset($_POST['delete']))
 {
   foreach ($_POST['delete'] as $key => $value) {
+    $data = $con->query("SELECT * FROM `data` WHERE id = '$value'");
+    $rs = mysqli_fetch_assoc($data);
+    unlink($rs['pic_src']);
+    unlink($rs['sound_src']);
     $con->query("DELETE FROM data WHERE id = '$value'");
   }
   header("Location: edit_data.php");
