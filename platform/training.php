@@ -82,7 +82,7 @@ include('sidebar.php');
           <?php
           //if()
             //echo '<span class="w3-tag w3-display-topleft">New</span>'?>
-          <div class="w3-display-middle w3-display-hover" style="margin:0px auto">
+          <div class="w3-display-middle w3-display-hover" style="margin-right:60%">
 			<button class="w3-button w3-black" onclick="document.getElementById('<?php echo $rs[audio_id]?>').play(); return false;">Play</button>
           </div>
         </div>
