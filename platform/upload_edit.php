@@ -2,7 +2,8 @@
 # 取得上傳檔案數量
 include("connect_to_sql.php");
 $fileCount = count($_FILES['my_file']['name']);
-
+$origin_data = $con->query("SELECT `data` WHERE id = '$_GET[ID]'");
+$rs_origin_data = mysqli_fetch_assoc($origin_data);
 for ($i = 0; $i < $fileCount; $i++) {
   # 檢查檔案是否上傳成功
   $type=$_FILES['my_file']['type'][$i];
@@ -23,6 +24,7 @@ for ($i = 0; $i < $fileCount; $i++) {
 			  # 將檔案移至指定位置
 		    move_uploaded_file($file, $dest);
         $pic_src = '../picture/' . $_FILES['my_file']['name'][$i];
+        unlink($rs_origin_data['pic_src']);
 		  }
 	}
 	else if($type=="audio/mp3" || $type=="audio/wav"){
@@ -36,7 +38,8 @@ for ($i = 0; $i < $fileCount; $i++) {
 			# 將檔案移至指定位置
 			move_uploaded_file($file, $dest);
       $sound_src = '../sound/' . $_FILES['my_file']['name'][$i];
-		}
+      unlink($rs_origin_data['sound_src']);
+    }
 	}
 	else {
 		echo 'error<br>';
@@ -44,8 +47,17 @@ for ($i = 0; $i < $fileCount; $i++) {
 
 }
 }
-echo $pic_src.' '.$sound_src;
-$res = $con->query("UPDATE `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`)");
+$sql = "";
+if(isset($sound_src))
+  $sql .= "sound_src = ".$sound_src;
+if(isset($pic_src))
+  $sql .= "pic_src = ".$pic_src;
+if(isset($_POST['ChineseName']))
+  $sql .= "name = ".$_POST['ChineseName'];
+if(isset($_POST['EnglishName']))
+  $sql .= "audio_id = ".$_POST['EnglishName'];
+$sql .= "tag = ".$_POST['formcategory']."frequency = ".$_POST['formfrequency']."waveform = ".$_POST['formwaveform'];
+$res = $con->query("UPDATE `data` SET  $sql WHERE id = '$_GET[ID]'");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
