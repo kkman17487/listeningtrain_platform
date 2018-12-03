@@ -221,7 +221,7 @@ else{
   <br></br>
   <label for='formcategory[]'>選擇頻率</label>
   <select multiple="multiple" name="formfrequency">
-    <option value="100" <?php if($rs['frequency'] == "100") echo "selected=selected"?>>100</option>
+    <option value="<100" <?php if($rs['frequency'] == "<100") echo "selected=selected"?>><100</option>
     <option value="100~1000" <?php if($rs['frequency'] == "100~1000") echo "selected=selected"?>>100~1000</option>
     <option value="1000~2000" <?php if($rs['frequency'] == "1000~2000") echo "selected=selected"?>>1000~2000</option>
     <option value="2000~4000" <?php if($rs['frequency'] == "2000~4000") echo "selected=selected"?>>2000~4000</option>
