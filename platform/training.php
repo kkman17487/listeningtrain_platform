@@ -78,11 +78,11 @@ include('sidebar.php');
             <source src="<?php echo $rs[sound_src]?>" type="audio/mp3" />
             <embed height="100" width="100" src="<?php echo $rs[sound_src]?>" />
           </audio>
-	
+          <img src="<?php echo $rs[pic_src]?>" height="65%" width="85%" align="center"/>
+        <?php 
           //if()
             //echo '<span class="w3-tag w3-display-topleft">New</span>'?>
           <div class="w3-display-middle w3-display-hover">
-		<img src="<?php echo $rs[pic_src]?>" height="60%" width="80%" align="center"/>
 			<button class="w3-button w3-black" onclick="document.getElementById('<?php echo $rs[audio_id]?>').play(); return false;">Play</button>
           </div>
         </div>
