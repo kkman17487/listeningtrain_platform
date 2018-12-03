@@ -84,7 +84,7 @@ if(isset($_POST['submit']))
 	<label for='formcategory[]'>選擇類別</label>
 	<select multiple="multiple" name="formcategory">
 		<option value="房子">房子</option>
-		<option value="廚房、餐廳">餐廳</option>
+		<option value="廚房、餐廳">廚房、餐廳</option>
 		<option value="日常生活">日常生活</option>
 		<option value="街道">街道</option>
 		<option value="動物">動物</option>
