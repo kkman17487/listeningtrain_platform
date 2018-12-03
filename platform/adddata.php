@@ -71,7 +71,9 @@ if(isset($_POST['submit']))
 <h1 class="sub-header">上傳檔案</h1>
     <div class="table-responsive">
 
-	<form action="upload.php" method="post" enctype="multipart/form-data"><input type="file" name="my_file[]" multiple>
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+    圖片<input type="file" name="my_file[]"><br>
+    音檔<input type="file" name="my_file[]">
 	<br></br>
 
 	<label>中文名稱</label>

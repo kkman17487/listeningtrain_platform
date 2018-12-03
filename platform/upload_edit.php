@@ -62,6 +62,6 @@ if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功,".$rs_origin_data['sound_src']." ".$rs_origin_data['pic_src']."');window.location.replace('edit_data.php');</script>";
+  echo "<script>alert('上傳成功');window.location.replace('edit_data.php');</script>";
 }
 ?>
