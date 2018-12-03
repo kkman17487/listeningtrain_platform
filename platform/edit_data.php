@@ -203,16 +203,16 @@ else{
   <br></br>
   <label for='formcategory[]'>選擇類別</label>
   <select multiple="multiple" name="formcategory">
-    <option value="城市、房子" <?php if($rs['tag'] == "城市、房子") echo "selected=selected"?>>城市、房子</option>
+    <option value="房子" <?php if($rs['tag'] == "房子") echo "selected=selected"?>>房子</option>
+	<option value="廚房、餐廳" <?php if($rs['tag'] == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
+	<option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
     <option value="街道" <?php if($rs['tag'] == "街道") echo "selected=selected"?>>街道</option>
-    <option value="自然、動物" <?php if($rs['tag'] == "自然、動物") echo "selected=selected"?>>自然、動物</option>
-    <option value="廚房" <?php if($rs['tag'] == "廚房") echo "selected=selected"?>>廚房</option>
+    <option value="動物" <?php if($rs['tag'] == "動物") echo "selected=selected"?>>動物</option>
+    <option value="自然" <?php if($rs['tag'] == "自然") echo "selected=selected"?>>自然</option>
     <option value="樂器" <?php if($rs['tag'] == "樂器") echo "selected=selected"?>>樂器</option>
-    <option value="餐廳" <?php if($rs['tag'] == "餐廳") echo "selected=selected"?>>餐廳</option>
-    <option value="家" <?php if($rs['tag'] == "家") echo "selected=selected"?>>家</option>
     <option value="學校" <?php if($rs['tag'] == "學校") echo "selected=selected"?>>學校</option>
     <option value="活動" <?php if($rs['tag'] == "活動") echo "selected=selected"?>>活動</option>
-    <option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
+	<option value="軍事" <?php if($rs['tag'] == "軍事") echo "selected=selected"?>>軍事</option>
     <option value="其他" <?php if($rs['tag'] == "其他") echo "selected=selected"?>>其他</option>
   </select>
 
