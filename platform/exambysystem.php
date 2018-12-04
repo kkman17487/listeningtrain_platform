@@ -167,9 +167,9 @@ elseif(isset($_GET['checkanswer']))
               if($j%2==1)echo '</div>';
             }
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
-      echo '<br><input type="submit" name="submit" id="submit" value="提交" align="center" disabled></form></div>';
+      echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="提交" align="center" disabled></form></div>';
     else
-      echo '<br><input type="submit" name="submit" id="submit" value="下一題" align="center" disabled></form></div>';
+      echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="下一題" align="center" disabled></form></div>';
   }
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
     $correct_answer = $_SESSION['correct_answer'];
@@ -247,11 +247,16 @@ elseif(isset($_GET['checkanswer']))
   }
   ?>
 <script>
+var btn = 0;
 var time;
 function set_timer()
 {
-  time = new Date();
-  timer();
+  if(!btn)
+  {
+    time = new Date();
+    timer();
+  }
+  btn = 1;
 }
 function timer()
 {
