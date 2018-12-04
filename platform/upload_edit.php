@@ -66,10 +66,9 @@ if(isset($_POST['EnglishName']))
 $sql .= " tag = '$_POST[formcategory]',frequency = '$frequency',waveform = '$_POST[formwaveform]'";
 $res = $con->query("UPDATE `data` SET  $sql WHERE id = '$_GET[ID]'");
 if (!$res) {
-  echo $frequency;
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功".$frequency."');window.location.replace('edit_data.php');</script>";
+  echo "<script>alert('上傳成功');window.location.replace('edit_data.php');</script>";
 }
 ?>
