@@ -66,6 +66,7 @@ if(isset($_POST['EnglishName']))
 $sql .= " tag = '$_POST[formcategory]',frequency = '$frequency',waveform = '$_POST[formwaveform]'";
 $res = $con->query("UPDATE `data` SET  $sql WHERE id = '$_GET[ID]'");
 if (!$res) {
+  echo $frequency;
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
