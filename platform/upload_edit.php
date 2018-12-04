@@ -49,6 +49,7 @@ for ($i = 0; $i < $fileCount; $i++) {
 }
 $sql = "";
 $frequency = "";
+//explode("、",$_POST['frequency']);
 foreach ($_POST['formfrequency'] as $key => $value)
 {
   $frequency .= $value."、";
@@ -68,6 +69,6 @@ if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功".$frequency."');window.location.replace('edit_data.php');</script>";
+  echo "<script>alert('上傳成功".$_POST['frequency']." ".$frequency."');window.location.replace('edit_data.php');</script>";
 }
 ?>
