@@ -288,19 +288,6 @@ document.getElementById('question_number').addEventListener('submit', function(e
     return false;
   }
 });
-/*$(window).ready(function() {
-  $('#question_number').submit(function() {
-    var number = document.getElementById('number').value;
-    var numberOFdata = <?php Print($numberOFdata); ?>;
-    if(number <= 0 || number > numberOFdata)
-    {
-      alert("有效範圍為：" + 1 + "~" + numberOFdata);
-      return false;
-    }
-    else
-      return true;
-  });
-});*/
 </script>
 </body>
 </html>
