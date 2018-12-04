@@ -111,19 +111,6 @@ if(isset($_POST['delete']))
   }
   header("Location: edit_train.php");
 }
-if(isset($_POST['name']) && isset($_POST['question']))
-{
-  $question = "";
-  foreach($_POST['question'] as $key => $value)
-  {
-    $question .= $value.",";
-  }
-  $question = substr($question, 0, -1);
-  $date = date("Y-m-d H:i:s",time());
-  $con->query("UPDATE train SET question='$question',name='$_POST[name]',creator='$_POST[creator]',recent_edit_time='$date' WHERE id='$_GET[ID]'");
-  header("Location: edit_train.php");
-  die();
-}
 if(isset($_GET['addtrain']))
 {
   $question = "";
@@ -134,6 +121,19 @@ if(isset($_GET['addtrain']))
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
   $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES ('','$_POST[name]','$question','$_POST[creator]','$date','$date')");
+  header("Location: edit_train.php");
+  die();
+}
+if(isset($_POST['name']) && isset($_POST['question']))
+{
+  $question = "";
+  foreach($_POST['question'] as $key => $value)
+  {
+    $question .= $value.",";
+  }
+  $question = substr($question, 0, -1);
+  $date = date("Y-m-d H:i:s",time());
+  $con->query("UPDATE train SET question='$question',name='$_POST[name]',creator='$_POST[creator]',recent_edit_time='$date' WHERE id='$_GET[ID]'");
   header("Location: edit_train.php");
   die();
 }
