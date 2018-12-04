@@ -45,7 +45,7 @@ for ($i = 0; $i < $fileCount; $i++) {
 }
 }
 $frequency = "";
-foreach ($_POST['formfrequency'] as $key => $value)
+foreach ($_POST['formfrequency'] as $value)
 {
   $frequency .= $value."、";
 }
@@ -55,6 +55,6 @@ if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功".$_POST['formfrequency']." ".$frequency."');window.location.replace('adddata.php');</script>";
+  echo "<script>alert('上傳成功".$frequency."');window.location.replace('adddata.php');</script>";
 }
 ?>
