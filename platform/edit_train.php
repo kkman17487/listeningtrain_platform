@@ -104,13 +104,6 @@
 
 <?php
 include("connect_to_sql.php");
-if(isset($_GET['add']))
-{
-  $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL, '', '', 'Ian', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);");
-  $train = $con->query("SELECT * FROM train ORDER BY id DESC LIMIT 1");
-  $tmp = mysqli_fetch_assoc($train);
-  header("Location: edit_train.php?ID=".$tmp['id']);
-}
 if(isset($_POST['delete']))
 {
   foreach ($_POST['delete'] as $key => $value) {
@@ -120,8 +113,6 @@ if(isset($_POST['delete']))
 }
 if(isset($_POST['name']) && isset($_POST['question']))
 {
-  $ID = $_GET['ID'];
-  $name = $_POST['name'];
   $question = "";
   foreach($_POST['question'] as $key => $value)
   {
@@ -129,7 +120,20 @@ if(isset($_POST['name']) && isset($_POST['question']))
   }
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
-  $con->query("UPDATE train SET question='$question',name='$name',recent_edit_time='$date' WHERE id='$ID'");
+  $con->query("UPDATE train SET question='$question',name='$_POST[name]',creator='$_POST[creator]',recent_edit_time='$date' WHERE id='$_GET[ID]'");
+  header("Location: edit_train.php");
+  die();
+}
+if(isset($_GET['addtrain']))
+{
+  $question = "";
+  foreach($_POST['question'] as $key => $value)
+  {
+    $question .= $value.",";
+  }
+  $question = substr($question, 0, -1);
+  $date = date("Y-m-d H:i:s",time());
+  $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES ('','$_POST[name]','$question','$_POST[creator]','$date','$date')");
   header("Location: edit_train.php");
   die();
 }
@@ -140,7 +144,7 @@ include('backendheader.php'); ?>
 <h1 class="sub-header">編輯訓練教材</h1>
 題庫選擇
 <?php
-if(!isset($_GET['ID'])){
+if(!isset($_GET['ID'])&&!isset($_GET['add'])){//顯示全部
 $data = $con->query("select * from train");
 $sound = $con->query("select * from data");
 //讓資料由最新呈現到最舊
@@ -194,7 +198,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </div>
 <?php
 }
-else{
+elseif(isset($_GET['ID']) && !isset($_GET['add'])){//修改個別
   $ID = $_GET['ID'];
   $data = $con->query("select * from train where id = '$ID'");
   $sound = $con->query("select * from data");
@@ -218,7 +222,7 @@ else{
 
             <tr>
               <td width="5%"><?php echo $rs['id'];?></td>
-              <td width="10%"><input type="text" name="name" value="<?php echo $rs['name'];?>"</td>
+              <td width="10%"><input type="text" name="name" value="<?php echo $rs['name'];?>"></td>
               <td width="35%">
                 <?php
                   $question = explode(",",$rs['question']);
@@ -236,7 +240,7 @@ else{
                   }
                 ?>
               </td>
-              <td width="10%"><?php echo $rs['creator'];?></td>
+              <td width="10%"><input type="text" name="creator" value="<?php echo $rs['creator'];?>"></td>
               <td width="20%"><?php echo $rs['create_time'];?></td>
               <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
             </tr>
@@ -246,7 +250,41 @@ else{
 </form>
 </div>
 </div>
-<?php }?>
+<?php }
+elseif(!isset($_GET['ID']) && isset($_GET['add'])){
+  $sound = $con->query("select * from data");
+?>
+<div class="container">
+  <div class="CSSTableGenerator">
+    <form method="post" name="train" action="edit_train.php?addtrain=true">
+      <table align="center">
+            <tr>
+              <td width="10%">名稱</td>
+              <td width="35%">題目</td>
+              <td width="10%">作者</td>
+            </tr>
+
+          <tr>
+            <td width="10%"><input type="text" name="name"></td>
+            <td width="35%">
+              <?php
+                for($i = 1; $i <= mysqli_num_rows($sound); $i++)
+                {
+                  $rs_sound = mysqli_fetch_assoc($sound);
+                  echo "<input type=checkbox name=question[] value=".$rs_sound['id'];
+                  echo ">".$rs_sound['id'].":".$rs_sound['name'];
+                }
+              ?>
+            </td>
+            <td width="10%"><?php echo $rs['creator'];?></td>
+          </tr>
+</table>
+<input type="submit" value="修改">
+<input type="button" value="取消" onclick="document.location.href='edit_train.php'" />
+</form>
+</div>
+</div>
+?>
 </div>
 </body>
 </html>
