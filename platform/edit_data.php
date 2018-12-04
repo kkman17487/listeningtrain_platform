@@ -221,15 +221,16 @@ else{
   </select>
 
   <br></br>
+  <?php $frequency = explode("、",$rs['frequency'];?>
   <label for='formcategory[]'>選擇頻率</label>
   <select multiple="multiple" name="formfrequency">
-    <option value="<100" <?php if($rs['frequency'] == "<100") echo "selected=selected"?>><100</option>
-    <option value="100~1000" <?php if($rs['frequency'] == "100~1000") echo "selected=selected"?>>100~1000</option>
-    <option value="1000~2000" <?php if($rs['frequency'] == "1000~2000") echo "selected=selected"?>>1000~2000</option>
-    <option value="2000~4000" <?php if($rs['frequency'] == "2000~4000") echo "selected=selected"?>>2000~4000</option>
-    <option value="4000~7000" <?php if($rs['frequency'] == "4000~7000") echo "selected=selected"?>>4000~7000</option>
-    <option value="7000" <?php if($rs['frequency'] == "7000") echo "selected=selected"?>>7000</option>
-    <option value="全部" <?php if($rs['frequency'] == "全部") echo "selected=selected"?>>全部</option>
+    <option value="<100" <?php foreach($frequency as $key => $value)if($value == "<100") echo "selected=selected"?>><100</option>
+    <option value="100~1000" <?php foreach($frequency as $key => $value)if($value == "100~1000") echo "selected=selected"?>>100~1000</option>
+    <option value="1000~2000" <?php foreach($frequency as $key => $value)if($value == "1000~2000") echo "selected=selected"?>>1000~2000</option>
+    <option value="2000~4000" <?php foreach($frequency as $key => $value)if($value == "2000~4000") echo "selected=selected"?>>2000~4000</option>
+    <option value="4000~7000" <?php foreach($frequency as $key => $value)if($value == "4000~7000") echo "selected=selected"?>>4000~7000</option>
+    <option value="7000" <?php foreach($frequency as $key => $value)if($value == "7000") echo "selected=selected"?>>7000</option>
+    <option value="全部" <?php foreach($frequency as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>
   </select>
 
   <br></br>
