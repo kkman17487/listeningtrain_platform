@@ -48,6 +48,12 @@ for ($i = 0; $i < $fileCount; $i++) {
 }
 }
 $sql = "";
+$frequency = "";
+foreach ($_POST['formfrequency'] as $key => $value)
+{
+  $frequency .= $value."、";
+}
+$frequency = substr($frequency,0,-1);
 if(isset($sound_src))
   $sql .= " sound_src = '$sound_src',";
 if(isset($pic_src))
@@ -56,7 +62,7 @@ if(isset($_POST['ChineseName']))
   $sql .= " name = '$_POST[ChineseName]',";
 if(isset($_POST['EnglishName']))
   $sql .= " audio_id = '$_POST[EnglishName]',";
-$sql .= " tag = '$_POST[formcategory]',frequency = '$_POST[formfrequency]',waveform = '$_POST[formwaveform]'";
+$sql .= " tag = '$_POST[formcategory]',frequency = '$frequency',waveform = '$_POST[formwaveform]'";
 $res = $con->query("UPDATE `data` SET  $sql WHERE id = '$_GET[ID]'");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
