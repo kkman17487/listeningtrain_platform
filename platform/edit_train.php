@@ -276,7 +276,7 @@ elseif(!isset($_GET['ID']) && isset($_GET['add'])){
                 }
               ?>
             </td>
-            <td width="10%"><?php echo $rs['creator'];?></td>
+            <td width="10%"><input type="text" name="creator"></td>
           </tr>
 </table>
 <input type="submit" value="修改">
