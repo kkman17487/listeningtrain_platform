@@ -208,7 +208,23 @@ else{
   <?php $category = explode(";",$rs['category']);?>
   <label for='formcategory[]'>選擇類別</label>
   <select multiple="multiple" name="formcategory[]">
-    <option value="房子" <?php foreach ($category as $key => $value)if($value == "房子") echo "selected=selected"?>>房子</option>
+    <?php
+    $all_category = array();
+    $data = $con->query("SELECT * FROM `data`")
+    for($j = 1;$j <= mysqli_num_rows($data);$j++){
+      $rs_data = mysqli_fetch_assoc($data);
+      $tmp = explode(";",$rs_data[category]);
+        $all_category = array_merge($all_category, $tmp);
+    }
+    $all_category = array_unique($all_category);
+    foreach ($all_category as $key => $value){
+      echo '<option value="'.$value.'"';
+      foreach ($category as $m_key => $m_value)
+        if($m_value == "$value")
+          echo 'selected=selected';
+      echo '>'.$value.'</option>';
+    }?>
+    <!--<option value="房子" <?php foreach ($category as $key => $value)if($value == "房子") echo "selected=selected"?>>房子</option>
 	<option value="廚房、餐廳" <?php foreach ($category as $key => $value)if($value == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
 	<option value="日常生活" <?php foreach ($category as $key => $value)if($value == "日常生活") echo "selected=selected"?>>日常生活</option>
     <option value="街道" <?php foreach ($category as $key => $value)if($value == "街道") echo "selected=selected"?>>街道</option>
@@ -218,7 +234,7 @@ else{
     <option value="學校" <?php foreach ($category as $key => $value)if($value == "學校") echo "selected=selected"?>>學校</option>
     <option value="活動" <?php foreach ($category as $key => $value)if($value == "活動") echo "selected=selected"?>>活動</option>
 	<option value="軍事" <?php foreach ($category as $key => $value)if($value == "軍事") echo "selected=selected"?>>軍事</option>
-    <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>
+    <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>-->
   </select>
 
   <br></br>

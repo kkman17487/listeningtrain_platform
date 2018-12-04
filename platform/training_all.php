@@ -34,7 +34,6 @@ include('sidebar.php');
             echo 'selected';
           echo '>'.$value.'</option>';
         }?>
-
       </select>
     </form>
     <p>一共有<?php echo mysqli_num_rows($data);?>筆資料</p>
