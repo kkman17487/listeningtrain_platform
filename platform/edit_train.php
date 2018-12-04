@@ -121,10 +121,6 @@ if(isset($_GET['addtrain']))
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
   $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL,'$_POST[name]','$question','$_POST[creator]','$date','$date')");
-  if (!$res) {
-  die('Invalid query: ' . mysqli_error($con));
-  }
-  else{
   header("Location: edit_train.php");
   die();
 }
@@ -284,7 +280,7 @@ elseif(!isset($_GET['ID']) && isset($_GET['add'])){
             <td width="10%"><input type="text" name="creator"></td>
           </tr>
 </table>
-<input type="submit" value="修改">
+<input type="submit" value="新增">
 <input type="button" value="取消" onclick="document.location.href='edit_train.php'" />
 </form>
 </div>
