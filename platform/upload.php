@@ -49,7 +49,7 @@ foreach ($_POST['formfrequency'] as $value)
 {
   $frequency .= $value."、";
 }
-$frequency = substr($frequency,0,-1);
+//$frequency = substr($frequency,0,-1);
 $res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_src','$_POST[formcategory]','$_POST[ChineseName]','$frequency','$_POST[formwaveform]',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));

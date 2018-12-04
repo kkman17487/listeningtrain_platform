@@ -54,7 +54,7 @@ foreach ($_POST['formfrequency'] as $value)
 {
   $frequency .= $value."、";
 }
-$frequency = substr($frequency,0,-1);
+//$frequency = substr($frequency,0,-1);
 if(isset($sound_src))
   $sql .= " sound_src = '$sound_src',";
 if(isset($pic_src))
