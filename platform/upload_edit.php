@@ -68,6 +68,6 @@ if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }
 else {
-  echo "<script>alert('上傳成功');window.location.replace('edit_data.php');</script>";
+  echo "<script>alert('上傳成功".$frequency."');window.location.replace('edit_data.php');</script>";
 }
 ?>

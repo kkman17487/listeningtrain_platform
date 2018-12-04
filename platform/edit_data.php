@@ -154,8 +154,8 @@ $data = $con->query("select * from data");
                 <td width="20%">頻率</td>
                 <td width="15%">波形</td>
                 <td width="15%">標籤</td>
-                <!--<td width="20%">創造時間</td>-->
-                <td width="15%">最近修改時間</td>
+                <td width="20%">創造時間</td>
+                <!--<td width="15%">最近修改時間</td>-->
               </tr>
 <?php
 for($i=1;$i<=mysqli_num_rows($data);$i++){
@@ -170,7 +170,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
               <td width="15%"><?php echo $rs['waveform'];?></td>
               <td width="15%"><?php echo $rs['tag'];?></td>
               <td width="20%"><?php echo $rs['created_time'];?></td>
-              <td width="15%"><?php echo $rs['recent_edit_time'];?></td>
+              <!--<td width="15%"><?php echo $rs['recent_edit_time'];?></td>-->
             </tr>
 <?php } ?>
 </table>
