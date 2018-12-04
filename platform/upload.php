@@ -50,7 +50,19 @@ foreach ($_POST['formfrequency'] as $value)
   $frequency .= $value.";";
 }
 $frequency = substr($frequency,0,-1);
-$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_src','$_POST[formcategory]','$_POST[ChineseName]','$frequency','$_POST[formwaveform]',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
+$waveform = "";
+foreach ($_POST['formwaveform'] as $value)
+{
+  $waveform .= $value.";";
+}
+$waveform = substr($waveform,0,-1);
+$category = "";
+foreach ($_POST['formcategory'] as $value)
+{
+  $category .= $value.";";
+}
+$category = substr($category,0,-1);
+$res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`tag`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_src','$category','$_POST[ChineseName]','$frequency','$waveform',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));
 }

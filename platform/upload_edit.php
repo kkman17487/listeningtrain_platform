@@ -49,12 +49,23 @@ for ($i = 0; $i < $fileCount; $i++) {
 }
 $sql = "";
 $frequency = "";
-//explode("、",$_POST['frequency']);
 foreach ($_POST['formfrequency'] as $value)
 {
   $frequency .= $value.";";
 }
 $frequency = substr($frequency,0,-1);
+$waveform = "";
+foreach ($_POST['formwaveform'] as $value)
+{
+  $waveform .= $value.";";
+}
+$waveform = substr($waveform,0,-1);
+$category = "";
+foreach ($_POST['formcategory'] as $value)
+{
+  $category .= $value.";";
+}
+$category = substr($category,0,-1);
 if(isset($sound_src))
   $sql .= " sound_src = '$sound_src',";
 if(isset($pic_src))
@@ -63,7 +74,7 @@ if(isset($_POST['ChineseName']))
   $sql .= " name = '$_POST[ChineseName]',";
 if(isset($_POST['EnglishName']))
   $sql .= " audio_id = '$_POST[EnglishName]',";
-$sql .= " tag = '$_POST[formcategory]',frequency = '$frequency',waveform = '$_POST[formwaveform]'";
+$sql .= " tag = '$category',frequency = '$frequency',waveform = '$waveform'";
 $res = $con->query("UPDATE `data` SET  $sql WHERE id = '$_GET[ID]'");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));

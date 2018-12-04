@@ -84,7 +84,7 @@ if(isset($_POST['submit']))
 
 	<br></br>
 	<label for='formcategory[]'>選擇類別</label>
-	<select multiple="multiple" name="formcategory">
+	<select multiple="multiple" name="formcategory[]">
 		<option value="房子">房子</option>
 		<option value="廚房、餐廳">廚房、餐廳</option>
 		<option value="日常生活">日常生活</option>
@@ -100,8 +100,8 @@ if(isset($_POST['submit']))
 
 	<br></br>
 	<label for='formcategory[]'>選擇頻率</label>
-	<select multiple="multiple" name="formfrequency">
-		<option value="100">100</option>
+	<select multiple="multiple" name="formfrequency[]">
+		<option value="<100"><100</option>
 		<option value="100~1000">100~1000</option>
 		<option value="1000~2000">1000~2000</option>
 		<option value="2000~4000">2000~4000</option>
@@ -112,7 +112,7 @@ if(isset($_POST['submit']))
 
 	<br></br>
 	<label>選擇波型</label>
-	<select multiple="multiple" name="formwaveform">
+	<select multiple="multiple" name="formwaveform[]">
 		<option value="平緩">平緩</option>
 		<option value="低頻高">低頻高</option>
 		<option value="高頻高">高頻高</option>

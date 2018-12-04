@@ -206,7 +206,7 @@ else{
 
   <br></br>
   <label for='formcategory[]'>選擇類別</label>
-  <select multiple="multiple" name="formcategory">
+  <select multiple="multiple" name="formcategory[]">
     <option value="房子" <?php if($rs['tag'] == "房子") echo "selected=selected"?>>房子</option>
 	<option value="廚房、餐廳" <?php if($rs['tag'] == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
 	<option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
@@ -235,7 +235,7 @@ else{
 
   <br></br>
   <label>選擇波型</label>
-  <select multiple="multiple" name="formwaveform">
+  <select multiple="multiple" name="formwaveform[]">
     <option value="平緩" <?php if($rs['waveform'] == "平緩") echo "selected=selected"?>>平緩</option>
     <option value="低頻高" <?php if($rs['waveform'] == "低頻高") echo "selected=selected"?>>低頻高</option>
     <option value="高頻高" <?php if($rs['waveform'] == "高頻高") echo "selected=selected"?>>高頻高</option>
