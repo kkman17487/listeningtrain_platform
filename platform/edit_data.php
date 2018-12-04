@@ -205,6 +205,7 @@ else{
   <input type="text" name="EnglishName" placeholder="English" value="<?php echo $rs['audio_id'];?>"/>
 
   <br></br>
+  <?php $category = explode(";",$rs['category']);?>
   <label for='formcategory[]'>選擇類別</label>
   <select multiple="multiple" name="formcategory[]">
     <option value="房子" <?php if($rs['tag'] == "房子") echo "selected=selected"?>>房子</option>
@@ -234,6 +235,7 @@ else{
   </select>
 
   <br></br>
+  <?php $waveform = explode(";",$rs['waveform']);?>
   <label>選擇波型</label>
   <select multiple="multiple" name="formwaveform[]">
     <option value="平緩" <?php if($rs['waveform'] == "平緩") echo "selected=selected"?>>平緩</option>
