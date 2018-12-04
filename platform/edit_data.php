@@ -208,17 +208,17 @@ else{
   <?php $category = explode(";",$rs['category']);?>
   <label for='formcategory[]'>選擇類別</label>
   <select multiple="multiple" name="formcategory[]">
-    <option value="房子" <?php if($rs['tag'] == "房子") echo "selected=selected"?>>房子</option>
-	<option value="廚房、餐廳" <?php if($rs['tag'] == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
-	<option value="日常生活" <?php if($rs['tag'] == "日常生活") echo "selected=selected"?>>日常生活</option>
-    <option value="街道" <?php if($rs['tag'] == "街道") echo "selected=selected"?>>街道</option>
-    <option value="動物" <?php if($rs['tag'] == "動物") echo "selected=selected"?>>動物</option>
-    <option value="自然" <?php if($rs['tag'] == "自然") echo "selected=selected"?>>自然</option>
-    <option value="樂器" <?php if($rs['tag'] == "樂器") echo "selected=selected"?>>樂器</option>
-    <option value="學校" <?php if($rs['tag'] == "學校") echo "selected=selected"?>>學校</option>
-    <option value="活動" <?php if($rs['tag'] == "活動") echo "selected=selected"?>>活動</option>
-	<option value="軍事" <?php if($rs['tag'] == "軍事") echo "selected=selected"?>>軍事</option>
-    <option value="其他" <?php if($rs['tag'] == "其他") echo "selected=selected"?>>其他</option>
+    <option value="房子" <?php foreach ($category as $key => $value)if($value == "房子") echo "selected=selected"?>>房子</option>
+	<option value="廚房、餐廳" <?php foreach ($category as $key => $value)if($value == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
+	<option value="日常生活" <?php foreach ($category as $key => $value)if($value == "日常生活") echo "selected=selected"?>>日常生活</option>
+    <option value="街道" <?php foreach ($category as $key => $value)if($value == "街道") echo "selected=selected"?>>街道</option>
+    <option value="動物" <?php foreach ($category as $key => $value)if($value == "動物") echo "selected=selected"?>>動物</option>
+    <option value="自然" <?php foreach ($category as $key => $value)if($value == "自然") echo "selected=selected"?>>自然</option>
+    <option value="樂器" <?php foreach ($category as $key => $value)if($value == "樂器") echo "selected=selected"?>>樂器</option>
+    <option value="學校" <?php foreach ($category as $key => $value)if($value == "學校") echo "selected=selected"?>>學校</option>
+    <option value="活動" <?php foreach ($category as $key => $value)if($value == == "活動") echo "selected=selected"?>>活動</option>
+	<option value="軍事" <?php foreach ($category as $key => $value)if($value == == "軍事") echo "selected=selected"?>>軍事</option>
+    <option value="其他" <?php foreach ($category as $key => $value)if($value == == "其他") echo "selected=selected"?>>其他</option>
   </select>
 
   <br></br>
@@ -238,12 +238,12 @@ else{
   <?php $waveform = explode(";",$rs['waveform']);?>
   <label>選擇波型</label>
   <select multiple="multiple" name="formwaveform[]">
-    <option value="平緩" <?php if($rs['waveform'] == "平緩") echo "selected=selected"?>>平緩</option>
-    <option value="低頻高" <?php if($rs['waveform'] == "低頻高") echo "selected=selected"?>>低頻高</option>
-    <option value="高頻高" <?php if($rs['waveform'] == "高頻高") echo "selected=selected"?>>高頻高</option>
-    <option value="中間高，兩邊低" <?php if($rs['waveform'] == "中間高，兩邊低") echo "selected=selected"?>>中間高，兩邊低</option>
-    <option value="中間低，兩邊高" <?php if($rs['waveform'] == "中間低，兩邊高") echo "selected=selected"?>>中間低，兩邊高</option>
-    <option value="全部" <?php if($rs['waveform'] == "全部") echo "selected=selected"?>>全部</option>
+    <option value="平緩" <?php foreach($waveform as $key => $value)if($value == "平緩") echo "selected=selected"?>>平緩</option>
+    <option value="低頻高" <?php foreach($waveform as $key => $value)if($value == "低頻高") echo "selected=selected"?>>低頻高</option>
+    <option value="高頻高" <?php foreach($waveform as $key => $value)if($value == "高頻高") echo "selected=selected"?>>高頻高</option>
+    <option value="中間高，兩邊低" <?php foreach($waveform as $key => $value)if($value == "中間高，兩邊低") echo "selected=selected"?>>中間高，兩邊低</option>
+    <option value="中間低，兩邊高" <?php foreach($waveform as $key => $value)if($value == "中間低，兩邊高") echo "selected=selected"?>>中間低，兩邊高</option>
+    <option value="全部" <?php foreach($waveform as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>
   </select>
 
   <br></br>
