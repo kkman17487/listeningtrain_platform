@@ -61,6 +61,10 @@ foreach ($_POST['formcategory'] as $value)
 {
   $category .= $value.";";
 }
+foreach ($_POST['category'] as $value)
+{
+  $category .= $value.";";
+}
 $category = substr($category,0,-1);
 $res = $con->query("INSERT INTO `data` (`pic_src`,`sound_src`,`category`,`name`,`frequency`,`waveform`,`created_time`,`audio_id`) VALUES('$pic_src','$sound_src','$category','$_POST[ChineseName]','$frequency','$waveform',CURRENT_TIMESTAMP,'$_POST[EnglishName]')");
 if (!$res) {

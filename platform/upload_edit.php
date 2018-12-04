@@ -65,6 +65,10 @@ foreach ($_POST['formcategory'] as $value)
 {
   $category .= $value.";";
 }
+foreach ($_POST['category'] as $value)
+{
+  $category .= $value.";";
+}
 $category = substr($category,0,-1);
 if(isset($sound_src))
   $sql .= " sound_src = '$sound_src',";

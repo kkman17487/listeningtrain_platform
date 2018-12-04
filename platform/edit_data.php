@@ -207,7 +207,7 @@ else{
   <br></br>
   <?php $category = explode(";",$rs['category']);?>
   <label for='formcategory[]'>選擇類別</label>
-  <select multiple="multiple" name="formcategory[]" id="category" onchange="detect_other()">
+  <select multiple="multiple" name="formcategory[]">
     <?php
     $all_category = array();
     $data = $con->query("SELECT * FROM `data`");
@@ -224,7 +224,6 @@ else{
           echo 'selected=selected';
       echo '>'.$value.'</option>';
     }?>
-    <option value="其他">其他</option>
     <!--<option value="房子" <?php foreach ($category as $key => $value)if($value == "房子") echo "selected=selected"?>>房子</option>
 	<option value="廚房、餐廳" <?php foreach ($category as $key => $value)if($value == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
 	<option value="日常生活" <?php foreach ($category as $key => $value)if($value == "日常生活") echo "selected=selected"?>>日常生活</option>
@@ -237,8 +236,7 @@ else{
 	<option value="軍事" <?php foreach ($category as $key => $value)if($value == "軍事") echo "selected=selected"?>>軍事</option>
     <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>-->
   </select>
-  <p id="demo"></p>
-  <input type="text" id="category" name="category" size="10" maxlength="10" hidden>
+  找不到想要的類別?<input type="text" id="category" name="category" size="10" maxlength="10" hidden>(請用;區隔不同類別)
 
   <br></br>
   <?php $frequency = explode(";",$rs['frequency']);?>
@@ -257,31 +255,13 @@ else{
   <?php $waveform = explode(";",$rs['waveform']);?>
   <label>選擇波型</label>
   <select multiple="multiple" name="formwaveform[]">
-    <?php
-    $all_waveform = array();
-    $data = $con->query("SELECT * FROM `data`");
-    for($j = 1;$j <= mysqli_num_rows($data);$j++){
-      $rs_data = mysqli_fetch_assoc($data);
-      $tmp = explode(";",$rs_data[waveform]);
-        $all_waveform = array_merge($all_waveform, $tmp);
-    }
-    $all_waveform = array_unique($all_waveform);
-    foreach ($all_waveform as $key => $value){
-      echo '<option value="'.$value.'"';
-      foreach ($waveform as $m_key => $m_value)
-        if($m_value == "$value")
-          echo 'selected=selected';
-      echo '>'.$value.'</option>';
-    }?>
-    <option value="其他">其他</option>
-    <!--<option value="平緩" <?php foreach($waveform as $key => $value)if($value == "平緩") echo "selected=selected"?>>平緩</option>
+    <option value="平緩" <?php foreach($waveform as $key => $value)if($value == "平緩") echo "selected=selected"?>>平緩</option>
     <option value="低頻高" <?php foreach($waveform as $key => $value)if($value == "低頻高") echo "selected=selected"?>>低頻高</option>
     <option value="高頻高" <?php foreach($waveform as $key => $value)if($value == "高頻高") echo "selected=selected"?>>高頻高</option>
     <option value="中間高，兩邊低" <?php foreach($waveform as $key => $value)if($value == "中間高，兩邊低") echo "selected=selected"?>>中間高，兩邊低</option>
     <option value="中間低，兩邊高" <?php foreach($waveform as $key => $value)if($value == "中間低，兩邊高") echo "selected=selected"?>>中間低，兩邊高</option>
-    <option value="全部" <?php foreach($waveform as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>-->
+    <option value="全部" <?php foreach($waveform as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>
   </select>
-
   <br></br>
   <input type="submit" value="送出" />
   </form>
@@ -290,11 +270,6 @@ else{
 <?php }?>
 </div>
 <script>
-function detect_other()
-{
-  var x = document.getElementById("category").value;
-    document.getElementById("demo").innerHTML = "You selected: " + x;
-}
 </script>
 </body>
 </html>
