@@ -120,7 +120,7 @@ if(isset($_GET['addtrain']))
   }
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
-  $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES ('','$_POST[name]','$question','$_POST[creator]','$date','$date')");
+  $con->query("INSERT INTO `train` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL,'$_POST[name]','$question','$_POST[creator]','$date','$date')");
   if (!$res) {
   die('Invalid query: ' . mysqli_error($con));
   }
