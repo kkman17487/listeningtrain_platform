@@ -221,7 +221,7 @@ else{
   </select>
 
   <br></br>
-  <?php $frequency = explode("、",$rs['frequency']);?>
+  <?php $frequency = explode(";",$rs['frequency']);?>
   <label for='formcategory[]'>選擇頻率</label>
   <select multiple="multiple" name="formfrequency[]">
     <option value="<100" <?php foreach($frequency as $key => $value)if($value == "<100") echo "selected=selected"?>><100</option>
