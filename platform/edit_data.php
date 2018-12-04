@@ -224,6 +224,7 @@ else{
           echo 'selected=selected';
       echo '>'.$value.'</option>';
     }?>
+    <option value="其他">其他</option>
     <!--<option value="房子" <?php foreach ($category as $key => $value)if($value == "房子") echo "selected=selected"?>>房子</option>
 	<option value="廚房、餐廳" <?php foreach ($category as $key => $value)if($value == "廚房、餐廳") echo "selected=selected"?>>廚房、餐廳</option>
 	<option value="日常生活" <?php foreach ($category as $key => $value)if($value == "日常生活") echo "selected=selected"?>>日常生活</option>
@@ -236,30 +237,65 @@ else{
 	<option value="軍事" <?php foreach ($category as $key => $value)if($value == "軍事") echo "selected=selected"?>>軍事</option>
     <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>-->
   </select>
+  <input type="text" id="category" name="category" size="10" maxlength="10" hidden>
 
   <br></br>
   <?php $frequency = explode(";",$rs['frequency']);?>
   <label for='formcategory[]'>選擇頻率</label>
   <select multiple="multiple" name="formfrequency[]">
-    <option value="<100" <?php foreach($frequency as $key => $value)if($value == "<100") echo "selected=selected"?>><100</option>
+    <?php
+    $all_frequency = array();
+    $data = $con->query("SELECT * FROM `data`");
+    for($j = 1;$j <= mysqli_num_rows($data);$j++){
+      $rs_data = mysqli_fetch_assoc($data);
+      $tmp = explode(";",$rs_data[frequency]);
+        $all_frequency = array_merge($all_frequency, $tmp);
+    }
+    $all_frequency = array_unique($all_frequency);
+    foreach ($all_frequency as $key => $value){
+      echo '<option value="'.$value.'"';
+      foreach ($frequency as $m_key => $m_value)
+        if($m_value == "$value")
+          echo 'selected=selected';
+      echo '>'.$value.'</option>';
+    }?>
+    <option value="其他">其他</option>
+    <!--<option value="<100" <?php foreach($frequency as $key => $value)if($value == "<100") echo "selected=selected"?>><100</option>
     <option value="100~1000" <?php foreach($frequency as $key => $value)if($value == "100~1000") echo "selected=selected"?>>100~1000</option>
     <option value="1000~2000" <?php foreach($frequency as $key => $value)if($value == "1000~2000") echo "selected=selected"?>>1000~2000</option>
     <option value="2000~4000" <?php foreach($frequency as $key => $value)if($value == "2000~4000") echo "selected=selected"?>>2000~4000</option>
     <option value="4000~7000" <?php foreach($frequency as $key => $value)if($value == "4000~7000") echo "selected=selected"?>>4000~7000</option>
     <option value="7000" <?php foreach($frequency as $key => $value)if($value == "7000") echo "selected=selected"?>>7000</option>
-    <option value="全部" <?php foreach($frequency as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>
+    <option value="全部" <?php foreach($frequency as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>-->
   </select>
 
   <br></br>
   <?php $waveform = explode(";",$rs['waveform']);?>
   <label>選擇波型</label>
   <select multiple="multiple" name="formwaveform[]">
-    <option value="平緩" <?php foreach($waveform as $key => $value)if($value == "平緩") echo "selected=selected"?>>平緩</option>
+    <?php
+    $all_waveform = array();
+    $data = $con->query("SELECT * FROM `data`");
+    for($j = 1;$j <= mysqli_num_rows($data);$j++){
+      $rs_data = mysqli_fetch_assoc($data);
+      $tmp = explode(";",$rs_data[waveform]);
+        $all_waveform = array_merge($all_waveform, $tmp);
+    }
+    $all_waveform = array_unique($all_waveform);
+    foreach ($all_waveform as $key => $value){
+      echo '<option value="'.$value.'"';
+      foreach ($waveform as $m_key => $m_value)
+        if($m_value == "$value")
+          echo 'selected=selected';
+      echo '>'.$value.'</option>';
+    }?>
+    <option value="其他">其他</option>
+    <!--<option value="平緩" <?php foreach($waveform as $key => $value)if($value == "平緩") echo "selected=selected"?>>平緩</option>
     <option value="低頻高" <?php foreach($waveform as $key => $value)if($value == "低頻高") echo "selected=selected"?>>低頻高</option>
     <option value="高頻高" <?php foreach($waveform as $key => $value)if($value == "高頻高") echo "selected=selected"?>>高頻高</option>
     <option value="中間高，兩邊低" <?php foreach($waveform as $key => $value)if($value == "中間高，兩邊低") echo "selected=selected"?>>中間高，兩邊低</option>
     <option value="中間低，兩邊高" <?php foreach($waveform as $key => $value)if($value == "中間低，兩邊高") echo "selected=selected"?>>中間低，兩邊高</option>
-    <option value="全部" <?php foreach($waveform as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>
+    <option value="全部" <?php foreach($waveform as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>-->
   </select>
 
   <br></br>
@@ -269,5 +305,7 @@ else{
 </div>
 <?php }?>
 </div>
+<script>
+</script>
 </body>
 </html>
