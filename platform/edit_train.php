@@ -284,7 +284,7 @@ elseif(!isset($_GET['ID']) && isset($_GET['add'])){
 </form>
 </div>
 </div>
-?>
+<?php }?>
 </div>
 </body>
 </html>
