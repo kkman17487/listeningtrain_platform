@@ -236,7 +236,8 @@ else{
 	<option value="軍事" <?php foreach ($category as $key => $value)if($value == "軍事") echo "selected=selected"?>>軍事</option>
     <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>-->
   </select>
-  找不到想要的類別?<input type="text" id="category" name="category" size="10" maxlength="10" hidden>(請用;區隔不同類別)
+  <br>
+  找不到想要的類別?<input type="text" id="category" name="category" size="20" maxlength="20">(請用;區隔不同類別)
 
   <br></br>
   <?php $frequency = explode(";",$rs['frequency']);?>

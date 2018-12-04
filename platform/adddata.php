@@ -113,7 +113,8 @@ if(isset($_POST['submit']))
 		<option value="軍事">軍事</option>
 		<option value="其他">其他</option>-->
 	</select>
-  找不到想要的類別?<input type="text" id="category" name="category" size="10" maxlength="10" hidden>(請用;區隔不同類別)
+  <br>
+  找不到想要的類別?<input type="text" id="category" name="category" size="20" maxlength="20">(請用;區隔不同類別)
 	<br></br>
 	<label for='formcategory[]'>選擇頻率</label>
 	<select multiple="multiple" name="formfrequency[]">
