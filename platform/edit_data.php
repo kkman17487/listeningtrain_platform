@@ -168,7 +168,7 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="20%"><?php echo $rs['frequency'];?></td>
               <td width="15%"><?php echo $rs['waveform'];?></td>
-              <td width="15%"><?php echo $rs['tag'];?></td>
+              <td width="15%"><?php echo $rs['category'];?></td>
               <td width="20%"><?php echo $rs['created_time'];?></td>
               <!--<td width="15%"><?php echo $rs['recent_edit_time'];?></td>-->
             </tr>
@@ -216,9 +216,9 @@ else{
     <option value="自然" <?php foreach ($category as $key => $value)if($value == "自然") echo "selected=selected"?>>自然</option>
     <option value="樂器" <?php foreach ($category as $key => $value)if($value == "樂器") echo "selected=selected"?>>樂器</option>
     <option value="學校" <?php foreach ($category as $key => $value)if($value == "學校") echo "selected=selected"?>>學校</option>
-    <option value="活動" <?php foreach ($category as $key => $value)if($value == == "活動") echo "selected=selected"?>>活動</option>
-	<option value="軍事" <?php foreach ($category as $key => $value)if($value == == "軍事") echo "selected=selected"?>>軍事</option>
-    <option value="其他" <?php foreach ($category as $key => $value)if($value == == "其他") echo "selected=selected"?>>其他</option>
+    <option value="活動" <?php foreach ($category as $key => $value)if($value == "活動") echo "selected=selected"?>>活動</option>
+	<option value="軍事" <?php foreach ($category as $key => $value)if($value == "軍事") echo "selected=selected"?>>軍事</option>
+    <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>
   </select>
 
   <br></br>

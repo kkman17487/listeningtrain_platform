@@ -74,7 +74,7 @@ if(isset($_POST['ChineseName']))
   $sql .= " name = '$_POST[ChineseName]',";
 if(isset($_POST['EnglishName']))
   $sql .= " audio_id = '$_POST[EnglishName]',";
-$sql .= " tag = '$category',frequency = '$frequency',waveform = '$waveform'";
+$sql .= " category = '$category',frequency = '$frequency',waveform = '$waveform'";
 $res = $con->query("UPDATE `data` SET  $sql WHERE id = '$_GET[ID]'");
 if (!$res) {
 die('Invalid query: ' . mysqli_error($con));

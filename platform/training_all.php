@@ -2,8 +2,8 @@
 <?php
 include('connect_to_sql.php');
 $this_type = $_GET['sound_type'];
-$data = $con->query("select * from data where tag LIKE '%$this_type%'");
-$tag = $con->query("select tag from data where tag != ''");
+$data = $con->query("select * from data where category LIKE '%$this_type%'");
+$category = $con->query("select category from data where category != ''");
 include('sidebar.php');
 ?>
 <html>
@@ -22,9 +22,9 @@ include('sidebar.php');
         <option value="#">全部</option>
         <?php
         $classfication = array();
-        for($j = 1;$j <= mysqli_num_rows($tag);$j++){
-          $rs_tag = mysqli_fetch_assoc($tag);
-          $tmp = explode(";",$rs_tag[tag]);
+        for($j = 1;$j <= mysqli_num_rows($category);$j++){
+          $rs_category = mysqli_fetch_assoc($category);
+          $tmp = explode(";",$rs_category[category]);
             $classfication = array_merge($classfication, $tmp);
         }
         $classfication = array_unique($classfication);
