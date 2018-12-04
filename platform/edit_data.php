@@ -243,30 +243,13 @@ else{
   <?php $frequency = explode(";",$rs['frequency']);?>
   <label for='formcategory[]'>選擇頻率</label>
   <select multiple="multiple" name="formfrequency[]">
-    <?php
-    $all_frequency = array();
-    $data = $con->query("SELECT * FROM `data`");
-    for($j = 1;$j <= mysqli_num_rows($data);$j++){
-      $rs_data = mysqli_fetch_assoc($data);
-      $tmp = explode(";",$rs_data[frequency]);
-        $all_frequency = array_merge($all_frequency, $tmp);
-    }
-    $all_frequency = array_unique($all_frequency);
-    foreach ($all_frequency as $key => $value){
-      echo '<option value="'.$value.'"';
-      foreach ($frequency as $m_key => $m_value)
-        if($m_value == "$value")
-          echo 'selected=selected';
-      echo '>'.$value.'</option>';
-    }?>
-    <option value="其他">其他</option>
-    <!--<option value="<100" <?php foreach($frequency as $key => $value)if($value == "<100") echo "selected=selected"?>><100</option>
+    <option value="<100" <?php foreach($frequency as $key => $value)if($value == "<100") echo "selected=selected"?>><100</option>
     <option value="100~1000" <?php foreach($frequency as $key => $value)if($value == "100~1000") echo "selected=selected"?>>100~1000</option>
     <option value="1000~2000" <?php foreach($frequency as $key => $value)if($value == "1000~2000") echo "selected=selected"?>>1000~2000</option>
     <option value="2000~4000" <?php foreach($frequency as $key => $value)if($value == "2000~4000") echo "selected=selected"?>>2000~4000</option>
     <option value="4000~7000" <?php foreach($frequency as $key => $value)if($value == "4000~7000") echo "selected=selected"?>>4000~7000</option>
     <option value="7000" <?php foreach($frequency as $key => $value)if($value == "7000") echo "selected=selected"?>>7000</option>
-    <option value="全部" <?php foreach($frequency as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>-->
+    <!--<option value="全部" <?php foreach($frequency as $key => $value)if($value == "全部") echo "selected=selected"?>>全部</option>-->
   </select>
 
   <br></br>
