@@ -24,7 +24,7 @@ include('sidebar.php');
         $classfication = array();
         for($j = 1;$j <= mysqli_num_rows($tag);$j++){
           $rs_tag = mysqli_fetch_assoc($tag);
-          $tmp = explode("、",$rs_tag[tag]);
+          $tmp = explode(";",$rs_tag[tag]);
             $classfication = array_merge($classfication, $tmp);
         }
         $classfication = array_unique($classfication);
