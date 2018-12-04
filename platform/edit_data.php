@@ -207,7 +207,7 @@ else{
   <br></br>
   <?php $category = explode(";",$rs['category']);?>
   <label for='formcategory[]'>選擇類別</label>
-  <select multiple="multiple" name="formcategory[]">
+  <select multiple="multiple" name="formcategory[]" id="category" onchange="detect_other()">
     <?php
     $all_category = array();
     $data = $con->query("SELECT * FROM `data`");
@@ -237,6 +237,7 @@ else{
 	<option value="軍事" <?php foreach ($category as $key => $value)if($value == "軍事") echo "selected=selected"?>>軍事</option>
     <option value="其他" <?php foreach ($category as $key => $value)if($value == "其他") echo "selected=selected"?>>其他</option>-->
   </select>
+  <p id="demo"></p>
   <input type="text" id="category" name="category" size="10" maxlength="10" hidden>
 
   <br></br>
@@ -289,6 +290,11 @@ else{
 <?php }?>
 </div>
 <script>
+function detect_other()
+{
+  var x = document.getElementById("category").value;
+    document.getElementById("demo").innerHTML = "You selected: " + x;
+}
 </script>
 </body>
 </html>
