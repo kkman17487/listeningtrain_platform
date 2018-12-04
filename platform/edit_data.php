@@ -210,7 +210,7 @@ else{
   <select multiple="multiple" name="formcategory[]">
     <?php
     $all_category = array();
-    $data = $con->query("SELECT * FROM `data`")
+    $data = $con->query("SELECT * FROM `data`");
     for($j = 1;$j <= mysqli_num_rows($data);$j++){
       $rs_data = mysqli_fetch_assoc($data);
       $tmp = explode(";",$rs_data[category]);
