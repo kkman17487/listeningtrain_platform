@@ -124,7 +124,6 @@ if(isset($_GET['addtrain']))
   header("Location: edit_train.php");
   die();
 }
-}
 if(isset($_POST['name']) && isset($_POST['question']))
 {
   $question = "";
