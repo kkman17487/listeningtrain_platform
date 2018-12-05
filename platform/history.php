@@ -6,7 +6,7 @@ if(isset($_GET['name'])){
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array(label => $i+1, "y" => $labelrs[3]));
+		array_push($inner,array(label => $i+1, "y" => $labelrs[4]));
 	}
 	$dataPoints1 = $inner;
 
@@ -141,10 +141,10 @@ window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "?"
+		text: "平均作答時間"
 	},
 	axisY: {
-		title: "Correct Rate"
+		title: "秒"
 	},
 	data: [{
 		type: "line",
