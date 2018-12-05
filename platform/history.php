@@ -10,7 +10,7 @@ if(isset($_GET['name'])){
 	}
 	$dataPoints1 = $inner;
 
-	$dbdata = $con->query("select * from history");
+	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
