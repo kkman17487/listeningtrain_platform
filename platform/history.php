@@ -69,7 +69,7 @@ if(isset($_GET['name']))
 				$rs=mysqli_fetch_assoc($dbdata);
 			?>
 			<tr>
-				<td width="5%"><?php echo $rs['id']?></td>
+				<td width="5%"><?php echo $i+1?></td>
 				<td width="10%"><?php echo $rs['name']?></td>
 				<td width="50%"><?php echo $rs['data']?></td>
 				<td width="15%"><?php echo $rs['correct']?>%</td>
