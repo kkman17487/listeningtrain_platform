@@ -144,7 +144,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "平均作答時間"
 	},
 	axisY: {
-		title: "秒"
+		title: "秒",
+		interval: 0.5,
+    intervalType: "month"
 	},
 	data: [{
 		type: "line",
