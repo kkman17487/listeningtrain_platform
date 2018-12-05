@@ -119,7 +119,7 @@ else {
 	        for($j = 1;$j <= mysqli_num_rows($dbdata);$j++){
 	          $rs_dbdata = mysqli_fetch_assoc($dbdata);
 						echo $rs_dbdata['name'];
-	          $name = array_merge($name, $rs_dbdata['name']);
+	          array_push($name, $rs_dbdata['name']);
 	        }
 	        $name = array_unique($name);
 					print_r($name);
