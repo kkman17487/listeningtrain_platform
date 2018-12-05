@@ -150,8 +150,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	axisY: {
 		title: "秒",
-		minimum: <?php echo $min-0.1;?>,
-		maximum: <?php echo $max+0.1;?>,
+		minimum: <?php echo $min-1;?>,
+		maximum: <?php echo $max+1;?>,
 		interval: <?php echo ($max-$min)/10;?>,
     intervalType: "month"
 	},
