@@ -79,7 +79,25 @@
             </tbody>
         </table>
     </div>
-
+<br></br>
+<h1 class="page-header">折線圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="../dist/js/phpchart.js"></script>
+    </div>
+<br></br>
+<h1 class="page-header">柱狀圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+		<script src="../dist/js/phpchart.js"></script>
+    </div>
+<!--<br></br>
+<h1 class="page-header">散佈圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+		<script src="../dist/js/phpchart.js"></script>
+    </div>-->
+</div>
 <script>
 window.onload = function () {
 
@@ -162,25 +180,5 @@ function toggleDataSeries(e){
 }*/
 }
 </script>
-
-<br></br>
-<h1 class="page-header">折線圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>
-<br></br>
-<h1 class="page-header">柱狀圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>
-<!--<br></br>
-<h1 class="page-header">散佈圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>-->
-</div>
 </body>
 </html>
