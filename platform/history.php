@@ -46,7 +46,8 @@
 ?>
 <body>
 <?php
-	$dbdata = $con->query("select * from history");
+if(isset($_GET['name']))
+	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
