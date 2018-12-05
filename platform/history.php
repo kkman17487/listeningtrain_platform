@@ -145,7 +145,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	axisY: {
 		title: "秒",
-		interval: 0.5,
+		interval: 0.1,
     intervalType: "month"
 	},
 	data: [{
