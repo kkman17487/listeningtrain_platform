@@ -1,6 +1,6 @@
 <?php
 	include('connect_to_sql.php');
-if($_GET['name']){
+//if($_GET['name']){
 	$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
@@ -36,7 +36,7 @@ if($_GET['name']){
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints4 = $inner;*/
-}?>
+?>
 
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
