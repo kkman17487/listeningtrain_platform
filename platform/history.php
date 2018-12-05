@@ -121,7 +121,7 @@ else {
 	          $name = array_merge($name, $rs_dbdata['name']);
 	        }
 	        $name = array_unique($name);
-	        foreach ($name as $key => $value){
+	        foreach ($name as $value){
 				?>
 				<tr>
 					<td width="10%"><a href="history.php?name=<?php echo $value?>"><?php echo $value?></a></td>
