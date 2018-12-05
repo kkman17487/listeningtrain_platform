@@ -66,7 +66,7 @@ if(isset($_GET['name']))
             <tbody>
 			<?php
 				$max = 0;
-				$min = 0;
+				$min = 100;
 				for($i=0;$i<mysqli_num_rows($dbdata);$i++){
 				$rs=mysqli_fetch_assoc($dbdata);
 				if($rs['time'] > $max)
