@@ -152,7 +152,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		title: "秒",
 		minimum: <?php echo $min-0.1;?>,
 		maximum: <?php echo $max+0.1;?>,
-		interval: 0.1,
+		interval: <?php echo ($max-$min)/0.5;?>,
     intervalType: "month"
 	},
 	data: [{
