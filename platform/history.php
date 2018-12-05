@@ -127,7 +127,7 @@ else {
 				foreach ($name as $key => $value){
 				?>
 				<tr>
-					<td width="10%"><a href="history.php?name=<?php echo $value?>"><?php echo $value?></a></td>
+					<td width="10%"><a href="history.php?name=<?php echo $value;?>"><?php echo $value;?></a></td>
 				</tr>
 				<?php
 				}
@@ -135,7 +135,7 @@ else {
 	            </tbody>
 	        </table>
 	    </div>
-
+</div>
 
 
 	<br></br>
