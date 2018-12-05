@@ -122,7 +122,7 @@ else {
 	          array_push($name, $rs_dbdata['name']);
 	        }
 	        $name = array_unique($name);
-					print_r($name);
+					//print_r($name);
 	        foreach ($name as $value){
 				?>
 				<tr>
