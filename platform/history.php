@@ -100,7 +100,7 @@ if(isset($_GET['name']))
 		<script src="../dist/js/phpchart.js"></script>
     </div>-->
 </div>
-<?php}
+<?php }
 else {
 	$dbdata = $con->query("select * from history");
 ?>
@@ -128,7 +128,7 @@ else {
 	        </table>
 	    </div>
 	</div>
-<?php}?>
+<?php } ?>
 <script>
 window.onload = function () {
 
