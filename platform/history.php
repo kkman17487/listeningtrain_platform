@@ -6,7 +6,7 @@ if(isset($_GET['name'])){
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
+		array_push($inner,array("x" => $i+1, "y" => $labelrs[3]));
 	}
 	$dataPoints1 = $inner;
 
@@ -15,7 +15,7 @@ if(isset($_GET['name'])){
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
+		array_push($inner,array("x" => $i+1, "y" => $labelrs[3]));
 	}
 	$dataPoints2 = $inner;
 
