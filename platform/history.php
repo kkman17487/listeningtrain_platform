@@ -65,8 +65,14 @@ if(isset($_GET['name']))
             </thead>
             <tbody>
 			<?php
+				$max = 0;
+				$min = 0;
 				for($i=0;$i<mysqli_num_rows($dbdata);$i++){
 				$rs=mysqli_fetch_assoc($dbdata);
+				if($rs['time'] > $max)
+					$max = $rs['time'];
+				if($rs['time'] < $min)
+					$min = $rs['time'];
 			?>
 			<tr>
 				<td width="5%"><?php echo $i+1?></td>
@@ -138,13 +144,16 @@ else {
 <?php } ?>
 <script>
 window.onload = function () {
-
+var max = <?php echo $max?>;
+var min = <?php echo $min?>;
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
 		text: "平均作答時間"
 	},
 	axisY: {
 		title: "秒",
+		minimum: min,
+		maximum: max,
 		interval: 0.1,
     intervalType: "month"
 	},
@@ -163,7 +172,9 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 		text: "ID"
 	},
 	axisY: {
-		title: "Correct Rate (%)"
+		title: "Correct Rate (%)",
+		minimum: 0,
+		maximum: 100
 	},
 	data: [{
 		type: "column",
