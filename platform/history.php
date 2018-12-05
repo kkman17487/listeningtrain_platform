@@ -115,11 +115,16 @@ else {
 	            </thead>
 	            <tbody>
 				<?php
-					for($i=0;$i<mysqli_num_rows($dbdata);$i++){
-					$rs=mysqli_fetch_assoc($dbdata);
+					$name = array();
+	        for($j = 1;$j <= mysqli_num_rows($dbdata);$j++){
+	          $rs_dbdata = mysqli_fetch_assoc($dbdata);
+	          $name = array_merge($name, $rs_dbdata['name']);
+	        }
+	        $name = array_unique($name);
+	        foreach ($name as $key => $value){
 				?>
 				<tr>
-					<td width="10%"><?php echo $rs['name']?></td>
+					<td width="10%"><a href="history.php?name=<?php echo $value?>"><?php echo $value?></a></td>
 				</tr>
 				<?php
 				}
