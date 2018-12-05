@@ -1,7 +1,7 @@
 <?php
 	include('connect_to_sql.php');
-
-	$dbdata = $con->query("select * from history");
+if(isset($_GET['name'])){
+	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -36,7 +36,7 @@
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints4 = $inner;*/
-?>
+}?>
 
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -46,7 +46,9 @@
 ?>
 <body>
 <?php
-	$dbdata = $con->query("select * from history");
+if(isset($_GET['name']))
+{
+	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
@@ -98,6 +100,35 @@
 		<script src="../dist/js/phpchart.js"></script>
     </div>-->
 </div>
+<?php}
+else {
+	$dbdata = $con->query("select * from history");
+?>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h1 class="sub-header">作答人</h1>
+	    <div class="table-responsive">
+	        <table class="table table-striped">
+	            <thead>
+	                <tr>
+	                  <th>姓名</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+				<?php
+					for($i=0;$i<mysqli_num_rows($dbdata);$i++){
+					$rs=mysqli_fetch_assoc($dbdata);
+				?>
+				<tr>
+					<td width="10%"><?php echo $rs['name']?></td>
+				</tr>
+				<?php
+				}
+				?>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+<?php}?>
 <script>
 window.onload = function () {
 
