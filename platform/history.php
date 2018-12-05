@@ -167,7 +167,7 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "ID"
+		text: "次數"
 	},
 	axisY: {
 		title: "Correct Rate (%)",
