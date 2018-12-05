@@ -121,6 +121,7 @@ else {
 	          $name = array_merge($name, $rs_dbdata['name']);
 	        }
 	        $name = array_unique($name);
+					print_r($name);
 	        foreach ($name as $value){
 				?>
 				<tr>
