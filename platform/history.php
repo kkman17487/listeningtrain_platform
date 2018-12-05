@@ -81,13 +81,13 @@ if(isset($_GET['name']))
             </tbody>
         </table>
     </div>
-<br></br>
+<br><br>
 <h1 class="page-header">折線圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
-<br></br>
+<br><br>
 <h1 class="page-header">柱狀圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
