@@ -1,7 +1,7 @@
 <?php
 	include('connect_to_sql.php');
 
-	$dbdata = $con->query("select * from history");
+	/*$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -17,7 +17,7 @@
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[3]));
 	}
-	$dataPoints2 = $inner;
+	$dataPoints2 = $inner;*/
 
 	/*$dbdata = $con->query("select * from history");
 	$inner = array();
@@ -46,7 +46,9 @@
 ?>
 <body>
 <?php
-	$dbdata = $con->query("select * from history");
+if(isset($_GET['name']))
+{
+	$dbdata = $con->query("SELECT * from `history` WHERE name = '$_GET[name]'");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
@@ -80,6 +82,64 @@
         </table>
     </div>
 
+
+
+<br></br>
+<!--<h1 class="page-header">折線圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="../dist/js/phpchart.js"></script>
+    </div>
+<br></br>
+<h1 class="page-header">柱狀圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+		<script src="../dist/js/phpchart.js"></script>
+	</div>-->
+<!--<br></br>
+<h1 class="page-header">散佈圖</h1>
+    <div class="row placeholders">
+		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+		<script src="../dist/js/phpchart.js"></script>
+    </div>-->
+</div>
+<?php}
+else {
+	$dbdata = $con->query("select * from history");
+	?>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h1 class="sub-header">作答人</h1>
+	    <div class="table-responsive">
+	        <table class="table table-striped">
+	            <thead>
+	                <tr>
+	                  <th>姓名</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+				<?php
+				$name = array();
+				for($j = 1;$j <= mysqli_num_rows($dbdata);$j++){
+					$rs_dbdata = mysqli_fetch_assoc($dbdata);
+					$name = array_merge($name, $rs_dbdata['name']);
+				}
+				$name = array_unique($name);
+				foreach ($name as $key => $value){
+				?>
+				<tr>
+					<td width="10%"><a href="history.php?name=<?php echo $value?>"><?php echo $value?></a></td>
+				</tr>
+				<?php
+				}
+				?>
+	            </tbody>
+	        </table>
+	    </div>
+
+
+
+	<br></br>
+<?php}?>
 <script>
 window.onload = function () {
 
@@ -162,25 +222,5 @@ function toggleDataSeries(e){
 }*/
 }
 </script>
-
-<br></br>
-<h1 class="page-header">折線圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>
-<br></br>
-<h1 class="page-header">柱狀圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>
-<!--<br></br>
-<h1 class="page-header">散佈圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>-->
-</div>
 </body>
 </html>
