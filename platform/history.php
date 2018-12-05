@@ -1,6 +1,6 @@
 <?php
 	include('connect_to_sql.php');
-//if($_GET['name']){
+
 	$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
@@ -46,8 +46,9 @@
 ?>
 <body>
 <?php
-if(isset($_GET['name'])){
-	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
+if(isset($_GET['name']))
+{
+	$dbdata = $con->query("select * from history");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
