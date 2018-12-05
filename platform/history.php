@@ -144,16 +144,14 @@ else {
 <?php } ?>
 <script>
 window.onload = function () {
-var max = <?php echo $max?>;
-var min = <?php echo $min?>;
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
 		text: "平均作答時間"
 	},
 	axisY: {
 		title: "秒",
-		minimum: min,
-		maximum: max,
+		minimum: <?php echo $min?>,
+		maximum: <?php echo $max?>,
 		interval: 0.1,
     intervalType: "month"
 	},
