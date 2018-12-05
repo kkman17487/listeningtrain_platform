@@ -118,7 +118,7 @@ else {
 					$name = array();
 	        for($j = 1;$j <= mysqli_num_rows($dbdata);$j++){
 	          $rs_dbdata = mysqli_fetch_assoc($dbdata);
-						print_r($rs_dbdata);
+						echo $rs_dbdata['name'];
 	          $name = array_merge($name, $rs_dbdata['name']);
 	        }
 	        $name = array_unique($name);
