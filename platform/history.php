@@ -1,6 +1,6 @@
 <?php
 	include('connect_to_sql.php');
-
+if($_GET['name']){
 	$dbdata = $con->query("select * from history");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
@@ -36,7 +36,7 @@
 		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
 	}
 	$dataPoints4 = $inner;*/
-?>
+}?>
 
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -46,7 +46,7 @@
 ?>
 <body>
 <?php
-if(isset($_GET['name']))
+if(isset($_GET['name'])){
 	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -99,6 +99,7 @@ if(isset($_GET['name']))
 		<script src="../dist/js/phpchart.js"></script>
     </div>-->
 </div>
+<?php}?>
 <script>
 window.onload = function () {
 
