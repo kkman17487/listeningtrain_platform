@@ -78,8 +78,8 @@ function sound(next_play)
     document.getElementById('previous_play').currentTime = 0;
   }
   document.getElementById('next_play').play();
-  return false;
   previous_play = next_play;
+  return false;
 }
 </script>
 </body>
