@@ -57,7 +57,7 @@ include('sidebar.php');
           //if()
             //echo '<span class="w3-tag w3-display-topleft">New</span>'?>
           <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black " onclick="document.getElementById(<?php echo $rs['audio_id']?>).play();">Play</button>
+            <button class="w3-button w3-black " onclick="sound(<?php echo $rs['audio_id']?>);">Play</button>
           </div>
         </div>
         <p align = 'center'><?php echo $rs[name]?></p>
@@ -72,8 +72,9 @@ include('sidebar.php');
 var previous_play;
 function sound(next_play)
 {
-  /*alert(next_play);
-  if(typeof previous_play !== 'undefined')
+  next_play = "\'" + next_play + "\'";
+  alert(next_play);
+  /*if(typeof previous_play !== 'undefined')
   {
     document.getElementById(previous_play).pause();
     document.getElementById(previous_play).currentTime = 0;
