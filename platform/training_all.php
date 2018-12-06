@@ -72,6 +72,7 @@ include('sidebar.php');
 var previous_play;
 function sound(next_play)
 {
+  alert(next_play);
   if(typeof previous_play !== 'undefined')
   {
     document.getElementById('previous_play').pause();
