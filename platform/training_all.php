@@ -2,7 +2,7 @@
 <?php
 include('connect_to_sql.php');
 $this_type = $_GET['sound_type'];
-$data = $con->query("select * from data where category LIKE '%$this_type%'");
+$data = $con->query("SELECT * FROM data WHERE category LIKE '%$this_type%' ORDER BY id");
 $category = $con->query("select category from data where category != ''");
 include('sidebar.php');
 ?>

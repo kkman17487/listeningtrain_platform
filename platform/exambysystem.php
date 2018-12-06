@@ -6,7 +6,7 @@ if(isset($_GET['number']) && (isset($_GET['no']) && $_GET['no'] == 0))
   $_SESSION['star'] = array();
   unset($_SESSION['data']);
   unset($_SESSION['read']);
-  $_SESSION['data'] = $con->query("select * from data ORDER BY RAND() LIMIT $_GET[number]");
+  $_SESSION['data'] = $con->query("SELECT * FROM data ORDER BY RAND() LIMIT $_GET[number]");
   for($i = 0;$i < mysqli_num_rows($_SESSION['data']);$i++)
   {
     $_SESSION['read'][$i] = mysqli_fetch_assoc($_SESSION['data']);
