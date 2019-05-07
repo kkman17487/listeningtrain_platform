@@ -23,6 +23,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <ul>
       <li><a href="training_all.php" class="w3-bar-item w3-button">訓練模式(全)</a></li>
       <li><a href="training.php" class="w3-bar-item w3-button">訓練模式(教材)</a></li>
+	  <li><a href="envirotrain.php" class="w3-bar-item w3-button">訓練模式(情境)</a></li>
     </ul>
 	<a href="exambysystem.php" class="w3-bar-item w3-button">測驗模式</a>
   </div>
