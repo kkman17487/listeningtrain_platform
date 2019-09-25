@@ -17,6 +17,7 @@
             <li><a href="edit_train.php">編輯訓練模式</a></li>
             <li><a href="set_exam.php">出題模式</a></li>
             <li><a href="edit_data.php">聲音和圖片</a></li>
+			<li><a href="edit_enviro.php">情境管理</a></li>
           </ul>
         </div>
 	 </div>
