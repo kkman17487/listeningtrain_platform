@@ -1,7 +1,8 @@
 <?php
 	include('connect_to_sql.php');
 if(isset($_GET['name'])){
-	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
+	$data = $con->query("SELECT * FROM enviro");
+	$dbdata = $con->query("select * from envirohistory where name = '$_GET[name]' and mode = 1");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -10,7 +11,7 @@ if(isset($_GET['name'])){
 	}
 	$dataPoints1 = $inner;
 
-	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
+	$dbdata = $con->query("select * from envirohistory where name = '$_GET[name]'and mode = 1");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -19,7 +20,7 @@ if(isset($_GET['name'])){
 	}
 	$dataPoints2 = $inner;
 
-	/*$dbdata = $con->query("select * from history");
+	/*$dbdata = $con->query("select * from envirohistory");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -28,7 +29,7 @@ if(isset($_GET['name'])){
 	}
 	$dataPoints3 = $inner;
 
-	$dbdata = $con->query("select * from history");
+	$dbdata = $con->query("select * from envirohistory");
 	$inner = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
@@ -48,11 +49,11 @@ if(isset($_GET['name'])){
 <?php
 if(isset($_GET['name']))
 {
-	$dbdata = $con->query("select * from history where name = '$_GET[name]'");
+	$dbdata = $con->query("select * from envirohistory where name = '$_GET[name]'");
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
-<input value="下載作答紀錄" type="button" class="w3-button w3-black " onclick="location.href='download_excel.php?name=<?php echo $_GET['name']?>&mode=1'"></input>
+<input value="下載作答紀錄" type="button" class="w3-button w3-black " onclick="location.href='download_excel.php?name=<?php echo $_GET['name']?>&mode=0'"></input>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -62,6 +63,8 @@ if(isset($_GET['name']))
                   <th>作答情況(正確答案/選擇答案/作答時間)</th>
                   <th>答對率</th>
                   <th>平均作答反應時間</th>
+				  <th>情境</th>
+				  <th>模式</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,9 +81,12 @@ if(isset($_GET['name']))
 			<tr>
 				<td width="5%"><?php echo $i+1?></td>
 				<td width="10%"><?php echo $rs['name']?></td>
-				<td width="50%"><?php echo $rs['data']?></td>
-				<td width="15%"><?php echo $rs['correct']?>%</td>
+				<td width="45%"><?php echo $rs['data']?></td>
+				<td width="10%"><?php echo $rs['correct']?>%</td>
 				<td width="20%"><?php echo $rs['time']?></td>
+				<td width="5%"><?php echo $rs['enviroid']?></td>
+				<td width="5%"><?php if($rs['mode']==1) echo "測驗";
+									 else if($rs['mode']==2)echo "練習";?></td>
 			</tr>
 			<?php
 			}
@@ -89,13 +95,13 @@ if(isset($_GET['name']))
         </table>
     </div>
 <br></br>
-<h1 class="page-header">折線圖</h1>
+<h1 class="page-header">測驗反應時間折線圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
 <br></br>
-<h1 class="page-header">柱狀圖</h1>
+<h1 class="page-header">測驗正確率柱狀圖</h1>
     <div class="row placeholders">
 		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
@@ -109,10 +115,10 @@ if(isset($_GET['name']))
 </div>
 <?php }
 else {
-	$dbdata = $con->query("select * from history");
+	$dbdata = $con->query("select * from envirohistory");
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<input value="下載作答紀錄" type="button" class="w3-button w3-black " onclick="location.href='download_excel.php?name=all&mode=1'"></input>
+	<input value="下載作答紀錄" type="button" class="w3-button w3-black " onclick="location.href='download_excel.php?name=all&mode=0'"></input>
 	<h1 class="sub-header">作答人</h1>
 	    <div class="table-responsive">
 	        <table class="table table-striped">
@@ -134,7 +140,7 @@ else {
 	        foreach ($name as $value){
 				?>
 				<tr>
-					<td width="10%"><a href="history.php?name=<?php echo $value?>"><?php echo $value?></a></td>
+					<td width="10%"><a href="envirohistory.php?name=<?php echo $value?>"><?php echo $value?></a></td>
 				</tr>
 				<?php
 				}

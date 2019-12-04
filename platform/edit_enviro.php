@@ -99,8 +99,6 @@
   background: -o-linear-gradient(top,#005fbf,005fbf);
   background-color:#005fbf;
 }
-
-
 </style>-->
 </head>
 
@@ -109,11 +107,11 @@ include("connect_to_sql.php");
 if(isset($_POST['delete']))
 {
   foreach ($_POST['delete'] as $key => $value) {
-    $con->query("DELETE FROM exam WHERE id = '$value'");
+    $con->query("DELETE FROM enviro WHERE id = '$value'");
   }
-  header("Location: set_exam.php");
+  header("Location: edit_enviro.php");
 }
-if(isset($_GET['addexam']))
+/*if(isset($_GET['addenviro']))
 {
   $question = "";
   foreach($_POST['question'] as $key => $value)
@@ -122,8 +120,8 @@ if(isset($_GET['addexam']))
   }
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
-  $con->query("INSERT INTO `exam` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL,'$_POST[name]','$question','$_POST[creator]','$date','$date')");
-  header("Location: set_exam.php");
+  $con->query("INSERT INTO `enviro` (`id`, `name`, `question`, `creator`, `create_time`, `recent_edit_time`) VALUES (NULL,'$_POST[name]','$question','$_POST[creator]','$date','$date')");
+  header("Location: edit_enviro.php");
   die();
 }
 if(isset($_POST['name']) && isset($_POST['question']))
@@ -135,35 +133,36 @@ if(isset($_POST['name']) && isset($_POST['question']))
   }
   $question = substr($question, 0, -1);
   $date = date("Y-m-d H:i:s",time());
-  $con->query("UPDATE exam SET question='$question',name='$_POST[name]',creator='$_POST[creator]',recent_edit_time='$date' WHERE id='$_GET[ID]'");
-  header("Location: set_exam.php");
+  $con->query("UPDATE enviro SET question='$question',name='$_POST[name]',creator='$_POST[creator]',recent_edit_time='$date' WHERE id='$_GET[ID]'");
+  header("Location: edit_enviro.php");
   die();
-}
+}*/
 include('backendheader.php'); ?>
 <body>
 <?php include('backendsidebar.php'); ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 class="sub-header">題庫選擇</h1>
+<h1 class="sub-header">編輯情境</h1>
+情境選擇
 <?php
-if(!isset($_GET['ID'])&&!isset($_GET['add'])){
-$data = $con->query("select * from exam");
-$sound = $con->query("select * from data");
+if(!isset($_GET['ID'])&&!isset($_GET['add'])){//顯示全部
+$data = $con->query("select * from enviro");
+$obje = $con->query("select * from object");
 //讓資料由最新呈現到最舊
 ?>
 
   <div class="container">
     <div class="CSSTableGenerator">
-      <a href="set_exam.php?add=true">新增</a>
+      <a href="addenviro.php">新增</a>
       <form method="post" action="">
         <table align="center">
               <tr>
                 <td width="1%"></td>
                 <td width="4%">ID</td>
                 <td width="10%">名稱</td>
-                <td width="35%">題目</td>
-                <td width="10%">作者</td>
+                <td width="35%">物品</td>
+                <td width="30%">背景圖</td>
                 <td width="20%">創造時間</td>
-                <td width="20%">最近修改時間</td>
+                
               </tr>
 <?php
 for($i=1;$i<=mysqli_num_rows($data);$i++){
@@ -172,24 +171,23 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 
             <tr>
               <td width="1%"><input type="checkbox" name="delete[]" value="<?php echo $rs['id'];?>"></td>
-              <td width="4%"><a href="set_exam.php?ID=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
+              <td width="4%"><a href="addenviro_object.php?id=<?php echo $rs['id'];?>"><?php echo $rs['id'];?></a></td>
               <td width="10%"><?php echo $rs['name'];?></td>
               <td width="35%">
                 <?php
-                  $question = explode(",",$rs['question']);
+                  $question = explode(",",$rs['object']);
                   foreach($question as $key => $value)
                   {
-                    $sound = $con->query("select * from data where id = '$value'");
-                    $rs_sound = mysqli_fetch_assoc($sound);
+                    $obje = $con->query("select * from object where id = '$value'");
+                    $rs_obje = mysqli_fetch_assoc($obje);
                     echo $value;
                     echo ':';
-                    echo $rs_sound['name'];
+                    echo $rs_obje['name'];
                   }
                 ?>
               </td>
-              <td width="10%"><?php echo $rs['creator'];?></td>
-              <td width="20%"><?php echo $rs['create_time'];?></td>
-              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
+              <td width="30%"><img src = "<?php echo $rs['background_src'];?>" width ="300px"></td>
+              <td width="20%"><?php echo $rs['created_time'];?></td>
             </tr>
 <?php } ?>
 </table>
@@ -198,94 +196,11 @@ for($i=1;$i<=mysqli_num_rows($data);$i++){
 </div>
 </div>
 <?php
-}
-elseif(isset($_GET['ID']) && !isset($_GET['add'])){
-  $ID = $_GET['ID'];
-  $data = $con->query("select * from exam where id = '$ID'");
-  $sound = $con->query("select * from data")
-  //讓資料由最新呈現到最舊
-?>
-  <div class="container">
-    <div class="CSSTableGenerator">
-      <form method="post" name="exam" action="set_exam.php?ID=<?php echo $ID;?>" style="">
-        <table align="center">
-              <tr>
-                <td width="5%">ID</td>
-                <td width="10%">名稱</td>
-                <td width="35%">題目</td>
-                <td width="10%">作者</td>
-                <td width="20%">創造時間</td>
-                <td width="20%">最近修改時間</td>
-              </tr>
-<?php
- $rs=mysqli_fetch_assoc($data);
-?>
+}?>
 
-            <tr>
-              <td width="5%"><?php echo $rs['id'];?></td>
-              <td width="10%"><input type="text" name="name" value="<?php echo $rs['name'];?>"</td>
-              <td width="35%">
-                <?php
-                  $question = explode(",",$rs['question']);
-                  $j = 0;
-                  for($i = 1; $i <= mysqli_num_rows($sound); $i++)
-                  {
-                    $rs_sound = mysqli_fetch_assoc($sound);
-                    echo "<input type=checkbox name=question[] value=".$rs_sound['id'];
-                    if($j < sizeof($question) && $question[$j] == $rs_sound['id'])
-                    {
-                      echo " checked";
-                      $j++;
-                    }
-                    echo ">".$rs_sound['id'].":".$rs_sound['name'];
-                  }
-                ?>
-              </td>
-              <td width="10%"><input type="text" name="creator" value="<?php echo $rs['creator'];?>"></td>
-              <td width="20%"><?php echo $rs['create_time'];?></td>
-              <td width="20%"><?php echo $rs['recent_edit_time'];?></td>
-            </tr>
-</table>
-<input type="submit" value="修改">
-<input type="button" value="取消" onclick="document.location.href='set_exam.php'" />
 </form>
 </div>
 </div>
-<?php }
-elseif(!isset($_GET['ID']) && isset($_GET['add'])){
-  $sound = $con->query("select * from data");
-?>
-<div class="container">
-  <div class="CSSTableGenerator">
-    <form method="post" name="train" action="set_exam.php?addexam=true">
-      <table align="center">
-            <tr>
-              <td width="10%">名稱</td>
-              <td width="35%">題目</td>
-              <td width="10%">作者</td>
-            </tr>
-
-          <tr>
-            <td width="10%"><input type="text" name="name"></td>
-            <td width="35%">
-              <?php
-                for($i = 1; $i <= mysqli_num_rows($sound); $i++)
-                {
-                  $rs_sound = mysqli_fetch_assoc($sound);
-                  echo "<input type=checkbox name=question[] value=".$rs_sound['id'];
-                  echo ">".$rs_sound['id'].":".$rs_sound['name'];
-                }
-              ?>
-            </td>
-            <td width="10%"><input type="text" name="creator"></td>
-          </tr>
-</table>
-<input type="submit" value="新增">
-<input type="button" value="取消" onclick="document.location.href='set_exam.php'" />
-</form>
-</div>
-</div>
-<?php }?>
 </div>
 </body>
 </html>
