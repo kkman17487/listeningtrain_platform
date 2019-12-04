@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<script src="./lib/preloadjs.min.js"></script>
 <?php
 include('connect_to_sql.php');
 include('backendheader.php');
@@ -44,7 +43,7 @@ $category = $con->query("select category from data where category != ''");
   $rs = mysqli_fetch_assoc($data);
   ?>
   <!-- Product grid -->
-      <div class="container" id="env">
+      <div class="col-md-6 col-md-offset-2" id="env">
         <canvas id="_2DCanvas" >
 		瀏覽器如果不支援 canvas 元素，就顯示這行文字
         </canvas>
@@ -52,7 +51,7 @@ $category = $con->query("select category from data where category != ''");
 		瀏覽器如果不支援 canvas 元素，就顯示這行文字
         </canvas>
         </div>
-		<div class="container" id="addo">
+		<div class="col-md-6 col-md-offset-2" id="addo">
 		<h1 align="center">新增物件</h1>
 		<form action="upload_object.php" method="post" enctype="multipart/form-data" style="position:relative;">
 		<input type="hidden" name="enviro_ID" value=<?php echo "\"{$this_type}\""?>></input>
@@ -143,6 +142,7 @@ $category = $con->query("select category from data where category != ''");
   var displayY = [];
   var displayName= [];
   var displayID= [];
+  var width = [];
 	<?php
 		       $object = explode(",",$rs['object']);
 		       foreach($object as $key => $value)
@@ -153,9 +153,9 @@ $category = $con->query("select category from data where category != ''");
 				   ?>
             var img=new Image();
             img.src=<?php echo "'{$rs_obje['pic_src']} '";?>;
-			img.height=(img.height*<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>)/img.width;
-			img.width =<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>;
-			
+			//img.height=(img.height*<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>)/img.width;
+			//img.width =<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>;
+			width.push(<?php echo "{$rs_obje['size']} "?>);
 			displayList.push(img);
 			displayX.push(<?php echo "{$coordinate[0]} "?>);
 			displayY.push(<?php if(count($coordinate)>1) echo "{$coordinate[1]} ";?>);
@@ -165,7 +165,19 @@ $category = $con->query("select category from data where category != ''");
 			  
 		//網頁載入完成
 		window.onload = function(){
-			
+			for(var i=0,l=displayList.length;i<displayList.length;i++)
+				{
+					if(displayList[i].complete)
+					{
+						displayList[i].height=(displayList[i].height*width[i])/displayList[i].width;
+						displayList[i].width =width[i];
+					}
+					else
+					{
+						displayList[i].onload=function(){displayList[i].height=(displayList[i].height*width[i])/displayList[i].width;
+						displayList[i].width =width[i];}
+					}
+				}
         drawScene();
 		}		
             var WIDTH = canvasObject.width, HEIGHT = canvasObject.height;
@@ -174,6 +186,9 @@ $category = $con->query("select category from data where category != ''");
             var SELECTED;
 			var SELECTEDID;
             var MouseOriginX, MouseOriginY;
+			var radra = ctxObject.createRadialGradient(0,0,0,0,0,0);
+			radra.addColorStop(0,'rgba(255,255,255,1)');
+			radra.addColorStop(1,'rgba(255,255,255,0)');
 
 			if(canvasObject && canvasObject.getContext){
 
@@ -190,16 +205,30 @@ $category = $con->query("select category from data where category != ''");
 				//檢查陣列繪製每個圖形
 				for(var i=0,l=displayList.length;i<displayList.length;i++)
 				{
+					if(displayList[i].width>displayList[i].height)
+					radra=ctxObject.createRadialGradient(displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].width/4,
+					                                        displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].width*0.75);
+					else
+					radra=ctxObject.createRadialGradient(displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].height/4,
+					                                        displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].height*0.75);
+					radra.addColorStop(0,'rgba(255,255,255,1)');
+					radra.addColorStop(1,'rgba(0,0,0,0)');
 					ctxObject.beginPath();
 					ctxObject.rect(displayX[i],displayY[i],displayList[i].width,displayList[i].height);
 					ctxObject.closePath();
+					ctxObject.rect(displayX[i]-displayList[i].width/4,displayY[i]-displayList[i].height/4,displayList[i].width*1.5,displayList[i].height*1.5);
+					ctxObject.fillStyle=radra;
+					ctxObject.fill();
 					if(displayList[i].complete)
 					{
 						ctxObject.drawImage(displayList[i],displayX[i],displayY[i],displayList[i].width,displayList[i].height);
 					}
 					else
 					{
-						displayList[i].onload=function(){ctxObject.drawImage(displayList[i],displayX[i],displayY[i],displayList[i].width,displayList[i].height);}
+						displayList[i].onload=function()
+							{
+								ctxObject.drawImage(displayList[i],displayX[i],displayY[i],displayList[i].width,displayList[i].height);
+							};
 					}
 					if(coord)
 					{
@@ -323,7 +352,7 @@ $category = $con->query("select category from data where category != ''");
 		//放大功能
 		function bigger()
 		{
-			displayList[SELECTEDID].height=displayList[SELECTEDID].height*(displayList[SELECTEDID].width+5)/displayList[SELECTEDID].width;
+			displayList[SELECTEDID].height=(displayList[SELECTEDID].width+5)*(displayList[SELECTEDID].height/displayList[SELECTEDID].width);
 			displayList[SELECTEDID].width=5+displayList[SELECTEDID].width;
 			drawScene();
 		}
@@ -331,7 +360,7 @@ $category = $con->query("select category from data where category != ''");
 		//縮小功能
 		function smaller()
 		{
-			displayList[SELECTEDID].height=displayList[SELECTEDID].height*(displayList[SELECTEDID].width-5)/displayList[SELECTEDID].width;
+			displayList[SELECTEDID].height=(displayList[SELECTEDID].width+5)*(displayList[SELECTEDID].height/displayList[SELECTEDID].width);
 			displayList[SELECTEDID].width=displayList[SELECTEDID].width-5;
 			drawScene();
 		}

@@ -12,6 +12,7 @@
           <ul class="nav nav-sidebar">
 			<br>
 			<li><a href="history.php">使用者作答記錄</a></li>
+			<li><a href="envirohistory.php">情境作答記錄</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="edit_train.php">編輯訓練模式</a></li>

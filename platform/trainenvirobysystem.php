@@ -21,16 +21,9 @@ if(isset($_GET['ID']) && (isset($_GET['no']) && $_GET['no'] == 0) && isset($_GET
   $sql .= "id = '{$rs_sdq['sound_src']}' OR ";                                                         //將sql串接上對應的sound_src
   }
   $sql = substr($sql,0,-4);                                                                            //將最後的OR剪掉
-  if($_GET['number']<=count($tmp_question))
-  {
-   $sql .= " ORDER BY RAND() LIMIT {$_GET['number']}";                                                 //題數限制在選擇範圍內
-  }
-  else
-  {
-	$sql .= " ORDER BY RAND()"; 
-  }
+  $sql .= " ORDER BY RAND() LIMIT {$_GET['number']}";                                                 //題數限制在選擇範圍內
   $_SESSION['data'] = $con->query($sql);                                                               //儲存題目
-  for($i = 0;$i < $_GET['number'];$i++)
+  for($i = 0;$i < mysqli_num_rows($_SESSION['data']);$i++)
   {
     $_SESSION['read'][$i] = mysqli_fetch_assoc($_SESSION['data']);                                     //將每行題目個別拿出
   }
@@ -83,7 +76,7 @@ elseif(isset($_GET['checkanswer']))
 <?php include('sidebar.php'); ?>
   <!-- Top header -->
   <header class="w3-container w3-xlarge"><!-- header的設定 -->
-    <p class="w3-left">情境測驗</p>
+    <p class="w3-left">情境練習</p>
   </header>
   <!-- Image header -->
   <?php
@@ -96,7 +89,7 @@ elseif(isset($_GET['checkanswer']))
     <img src=\"../picture/test2.jpg\" alt=\"Photo\" style=\"width:100%\">                            <!--背景圖-->
     <div class=\"w3-display-topleft w3-text-white\" style=\"padding:24px 48px\">                     <!--用div分出顯示區域-->
       <h1 class=\"w3-hide-small\">選擇題數</h1>                                                      <!--標題-->
-      <form action=\"examenvirobysystem.php\" method=\"get\" id=\"question_number\">                 <!--表單傳輸-->
+      <form action=\"trainenvirobysystem.php\" method=\"get\" id=\"question_number\">                 <!--表單傳輸-->
 	    <input type=\"hidden\" name=\"ID\" value=\"{$_GET['ID']}\"></input>                          <!--紀錄情境-->
   題數: <input type=\"text\" maxlength=\"2\" size=\"2\" name=\"number\" id=\"number\">有效範圍：1~{$numberOFdata}<br>   <!--紀錄題數-->
         <input name=\"no\" value=\"0\" hidden>                                                       <!--從第一題開始-->
@@ -125,12 +118,12 @@ elseif(isset($_GET['checkanswer']))
     if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_POST['answer'])
     {
       //echo 'incorrect'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
-      $_SESSION['star'][$_GET['no']-1] = "黃色星星.png";
+      $_SESSION['star'][$_GET['no']-1] = "紅色星星.png";
     }
     elseif($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] == $_POST['answer'])
     {
       //echo 'correct'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
-      $_SESSION['star'][$_GET['no']-1] = "黃色星星.png";
+      $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";
     }
     for($i = 0;$i < count($_SESSION['star']);$i++)
     {
@@ -142,11 +135,11 @@ elseif(isset($_GET['checkanswer']))
     }
     if($_GET['no'] == (sizeof($_SESSION['read'])-1))
     {
-        echo '<form name="answer" method="post" action="examenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&checkanswer=true">';
+        echo '<form name="answer" method="post" action="trainenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&checkanswer=true">';
     }
     elseif(isset($_GET['number'])&&isset($_GET['ID']))
       echo '
-      <form name="answer_sheet" id="answer_sheet" method="post" action="examenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&no='.$next.'">';
+      <form name="answer_sheet" id="answer_sheet" method="post" action="trainenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&no='.$next.'">';
     echo '<input type="text" name="time" id="time" hidden>';
 	echo "<input type=\"hidden\" id=\"sendanswer\" name=\"answer\" value=\"\" >";
     $rs = $_SESSION['read'][$_GET['no']];
@@ -217,7 +210,7 @@ elseif(isset($_GET['checkanswer']))
     //echo $time.' '.sizeof($_SESSION['select_answer']);
     $correct_rate = $correct_number * 100 / sizeof($correct_answer);
     //echo $correct_rate.' '.$correct_number.' '.sizeof($correct_answer);
-    $res = $con->query("INSERT INTO `envirohistory` (`id`, `name`, `data`, `correct`, `time`, `enviroid`, `mode`) VALUES (NULL, '$name', '$data_string', round($correct_rate,0), round($time,3), $sid, 1)");
+    $res = $con->query("INSERT INTO `envirohistory` (`id`, `name`, `data`, `correct`, `time` ,`enviroid`, `mode`) VALUES (NULL, '$name', '$data_string', round($correct_rate,0), round($time,3), $sid, 2)");
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
@@ -311,7 +304,6 @@ var canvas = document.getElementById('_2DCanvas');
 					}
 				}
         drawScene();			
-		}
             var WIDTH = canvasObject.width, HEIGHT = canvasObject.height;
 
             //定義當被滑鼠選取的狀態
@@ -411,8 +403,9 @@ var canvas = document.getElementById('_2DCanvas');
 
                 //回傳一個 Object，包含座標屬性
                 return {x: x, y: y};				
-            }
-		
+            };
+           
+		};
 
 var btn = 0;
 var time;
@@ -451,3 +444,4 @@ document.getElementById('question_number').addEventListener('submit', function(e
 </script>
 </body>
 </html>
+

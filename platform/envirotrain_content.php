@@ -43,6 +43,16 @@ include('sidebar.php');
   </header>
   <body> 
   <?php
+    session_start();
+  if(isset($_SESSION['name']))
+      $name = $_SESSION['name'];
+    else
+      $name = "訪客";
+  $res = $con->query("INSERT INTO `trainhistory` (`name`,`data`,`time`) VALUES('$name','',CURRENT_TIMESTAMP)");
+  if (!$res) {
+die('Invalid query: ' . mysqli_error($con));
+}
+  $last_id = $con->insert_id;
   $rs = mysqli_fetch_assoc($data);
   $object = explode(",",$rs['object']);
 		foreach($object as $key => $value)
@@ -54,7 +64,7 @@ include('sidebar.php');
 			?>
             <audio id='<?php echo $rs_sound['audio_id']?>'>
             <source src="<?php echo $rs_sound['sound_src']?>" type="audio/mp3" />
-            <embed height="100" width="100" src="<?php echo $rs[sound_src]?>" />
+            <embed height="100" width="100" src="<?php echo $rs_sound['sound_src']?>" />
             </audio>
 			  <?php }?>
   <!-- Product grid -->
@@ -100,6 +110,9 @@ include('sidebar.php');
   var displayX = [];
   var displayY = [];
   var displaySound = [];
+  var clicktimes= [];
+  var clickname= [];
+  var width = [];
 	<?php
 		       $object = explode(",",$rs['object']);
 		       foreach($object as $key => $value)
@@ -113,19 +126,40 @@ include('sidebar.php');
 			var li = document.createElement("li");
 			li.appendChild(document.createTextNode(<?php echo "\"{$rs_obje['name']}\""?>));
 			ul.appendChild(li);
+			clickname.push(<?php echo "\"{$rs_obje['name']}\""?>);
             var img=new Image();
             img.src=<?php echo "'{$rs_obje['pic_src']} '"?>;
-			img.height=(img.height*<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>)/img.width;
-			img.width =<?php echo "{$rs_obje['size']} "?>;
+			//img.height=(img.height*<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>)/img.width;
+			//img.width =<?php echo "{$rs_obje['size']} "?>;
+			width.push(<?php echo "{$rs_obje['size']} "?>);
 			displayList.push(img);
 			displayX.push(<?php echo "{$coordinate[0]} "?>);
 			displayY.push(<?php echo "{$coordinate[1]} "?>);
 			displaySound.push(<?php echo "'{$rs_sound['audio_id']}'"?>);
 			  <?php }?>
+			  clicktimes.length=<?php echo count($object)?>;
+			  for(var i=0;i<clicktimes.length;i++)
+			  {
+				  clicktimes[i]=0;
+			  }
+			  
   
   
 		//網頁載入完成
 		window.onload = function(){
+			for(var i=0,l=displayList.length;i<displayList.length;i++)
+				{
+					if(displayList[i].complete)
+					{
+						displayList[i].height=(displayList[i].height*width[i])/displayList[i].width;
+						displayList[i].width =width[i];
+					}
+					else
+					{
+						displayList[i].onload=function(){displayList[i].height=(displayList[i].height*width[i])/displayList[i].width;
+						displayList[i].width =width[i];}
+					}
+				}
         drawScene();			
             var WIDTH = canvasObject.width, HEIGHT = canvasObject.height;
 
@@ -200,7 +234,8 @@ include('sidebar.php');
                 drawScene(coord);
                 	if(SELECTED)					//為變數設定值為 true 表示選取了矩形
 					sound(displaySound[SELECTEDID]);
-                
+					clicktimes[SELECTEDID]+=1;
+					uphistory();
             }
             //定義 mouseup 事件處理函數  ===============================================
             function canvasMouseUpHandler(evt){
@@ -241,6 +276,43 @@ function sound(next_play)
   previous_play = next_play;
 }
 </script>
-  
+  <script type="text/JavaScript">
+  function uphistory()
+  {
+   var request = new XMLHttpRequest();
+   var savestr = clickname[0]+"/"+clicktimes[0].toString();
+   for(var i=1;i<clickname.length;i++)
+   {
+	   savestr=savestr+";"+clickname[i]+"/"+clicktimes[i].toString();
+   }
+					request.open("POST", "upload_trainhistory.php");
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					var NID="SaveStr="+savestr+"&LID="+<?php echo "\"".$last_id."\""?>;
+					request.send(NID);
+ 
+					request.onreadystatechange = function()
+					{
+						// 伺服器請求完成
+					if (request.readyState === 4)
+					{
+						// 伺服器回應成功
+						if (request.status === 200)
+						{
+							var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+ 
+							// 判斷回應類型，這裡使用 JSON
+							if (type.indexOf("application/json") === 0)
+							{               
+							}
+						}
+						else
+						{
+							alert("發生錯誤: " + request.status);
+						}
+					}
+					}
+                
+                }
+  </script>
 </body>
 </html>

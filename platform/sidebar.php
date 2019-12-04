@@ -27,6 +27,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </ul>
 	<a href="exambysystem.php" class="w3-bar-item w3-button">測驗模式</a>
 	<ul>
+	  <li><a href="enviroexercise.php" class="w3-bar-item w3-button">練習模式(情境)</a></li>
 	  <li><a href="enviroexam.php" class="w3-bar-item w3-button">測驗模式(情境)</a></li>
     </ul>
   </div>
@@ -58,8 +59,6 @@ function myAccFunc() {
     }
 }
 
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
-document.getElementById("myBtn").click();
 
 
 // Script to open and close sidebar

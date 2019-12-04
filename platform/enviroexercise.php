@@ -9,7 +9,7 @@ include('sidebar.php');
 <html>
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">情境測驗模式</p>
+    <p class="w3-left">情境練習模式</p>
     <!--<p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <i class="fa fa-search"></i>
@@ -18,7 +18,7 @@ include('sidebar.php');
   <body> 
   <div class="w3-container w3-text-grey" id="sounds">
     <form>
-      <select onChange="location = 'enviroexam.php?sound_type=' + this.options[this.selectedIndex].value;">
+      <select onChange="location = 'enviroexercise.php?sound_type=' + this.options[this.selectedIndex].value;">
         <option value="#">全部</option>
         <?php
         $classfication = array();
@@ -53,7 +53,7 @@ include('sidebar.php');
           //if()
             //echo '<span class="w3-tag w3-display-topleft">New</span>'?>
           <div class="w3-display-middle w3-display-hover">
-			<input value="Play" type="button" class="w3-button w3-black " onclick="location.href='examenvirobysystem.php?ID='+<?php echo $rs['id']?>"></input>
+			<input value="Play" type="button" class="w3-button w3-black " onclick="location.href='trainenvirobysystem.php?ID='+<?php echo $rs['id']?>"></input>
           </div>
         </div>
         <p align = 'center'><?php echo $rs['name']?></p>

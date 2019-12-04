@@ -41,9 +41,12 @@ else {
 	$enviro_OB=$con->query("SELECT object FROM enviro WHERE id ='$_POST[enviro_ID]'");
 	$enrs=mysqli_fetch_assoc($enviro_OB);
 	$rs = mysqli_fetch_assoc($add_ID);
+	if($enrs['object']=='')
+		$concatid=$rs['id'];
+	else
 	$concatid=$enrs['object'].",".$rs['id'];
 	echo $concatid;
 $a=$con->query("UPDATE enviro SET object='$concatid' WHERE id='$_POST[enviro_ID]'");
-  #echo "<script>alert('上傳成功');window.location.replace('addenviro_object.php?id={$_POST[enviro_ID]}');</script>";
+  echo "<script>alert('上傳成功');window.location.replace('addenviro_object.php?id={$_POST[enviro_ID]}');</script>";
 }
 ?>

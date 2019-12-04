@@ -96,9 +96,6 @@ if(isset($_POST['submit']))
       $all_category = array_unique($all_category);
       foreach ($all_category as $key => $value){
         echo '<option value="'.$value.'"';
-        foreach ($category as $m_key => $m_value)
-          if($m_value == "$value")
-            echo 'selected=selected';
         echo '>'.$value.'</option>';
       }?>
 		<!--<option value="房子">房子</option>
