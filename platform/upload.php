@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 # 取得上傳檔案數量
 include("connect_to_sql.php");
 $fileCount = count($_FILES['my_file']['name']);

@@ -96,7 +96,7 @@ if(isset($_GET['name']))
         </table>
     </div>
 	</div>
-	<div id="train" class="tab-pane fade in active">
+	<div id="train" class="tab-pane fade">
 	<div class="table-responsive">
         <table class="table table-striped">
             <thead>
