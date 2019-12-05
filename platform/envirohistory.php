@@ -1,24 +1,19 @@
 <?php
 	include('connect_to_sql.php');
 if(isset($_GET['name'])){
-	$data = $con->query("SELECT * FROM enviro");
 	$dbdata = $con->query("select * from envirohistory where name = '$_GET[name]' and mode = 1");
 	$inner = array();
+	$inner2 = array();
 	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
 	{
 		$labelrs=mysqli_fetch_row($dbdata);
 		array_push($inner,@array(label => $i+1, "y" => $labelrs[4]));
+		array_push($inner2,@array(label => $i+1, "y" => $labelrs[3]));
 	}
 	$dataPoints1 = $inner;
-
-	$dbdata = $con->query("select * from envirohistory where name = '$_GET[name]'and mode = 1");
-	$inner = array();
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{
-		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,@array(label => $i+1, "y" => $labelrs[3]));
-	}
-	$dataPoints2 = $inner;
+	$dataPoints2 = $inner2;
+	$dbdata2 = $con->query("select * from trainhistory where name = '$_GET[name]'");
+	
 
 	/*$dbdata = $con->query("select * from envirohistory");
 	$inner = array();
@@ -54,7 +49,13 @@ if(isset($_GET['name']))
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 class="sub-header">作答紀錄</h1>
 <input value="下載作答紀錄" type="button" class="w3-button w3-black " onclick="location.href='download_excel.php?name=<?php echo $_GET['name']?>&mode=0'"></input>
-    <div class="table-responsive">
+    <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#exam">測驗與練習</a></li>
+    <li><a data-toggle="tab" href="#train">訓練紀錄</a></li>
+	</ul>
+	<div class="tab-content">
+    <div id="exam" class="tab-pane fade in active">
+	<div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -94,6 +95,37 @@ if(isset($_GET['name']))
             </tbody>
         </table>
     </div>
+	</div>
+	<div id="train" class="tab-pane fade in active">
+	<div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th>#</th>
+                  <th>姓名</th>
+                  <th>訓練情況(物件名稱/點擊次數)</th>
+                  <th>訓練日期</th>
+                </tr>
+            </thead>
+            <tbody>
+			<?php
+				for($i=0;$i<mysqli_num_rows($dbdata2);$i++){
+				$trs=mysqli_fetch_assoc($dbdata2);
+			?>
+			<tr>
+				<td width="5%"><?php echo $i+1?></td>
+				<td width="10%"><?php echo $trs['name']?></td>
+				<td width="50%"><?php echo $trs['data']?></td>
+				<td width="35%"><?php echo $trs['time']?></td>
+			</tr>
+			<?php
+			}
+			?>
+            </tbody>
+        </table>
+    </div>
+	</div>
+	</div>
 <br></br>
 <h1 class="page-header">測驗反應時間折線圖</h1>
     <div class="row placeholders">
