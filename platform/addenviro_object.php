@@ -367,6 +367,8 @@ $category = $con->query("select category from data where category != ''");
 		//刪除功能
 		function deobject()
 		{
+			if(typeof SELECTEDID !== 'undefined')
+			window.location = 'delete_object.php?OD='+displayID[SELECTEDID]+<?php echo"'&EID=".$this_type."'" ?>
 			
 		}
 		//儲存功能
