@@ -44,7 +44,7 @@ elseif(isset($_GET['no']) && $_GET['no'] > 0)                                   
 }
 elseif(isset($_GET['checkanswer']))
 {
-  array_push($_SESSION['select_answer'],array($_POST['answer'],$_POST['time']));
+  //array_push($_SESSION['select_answer'],array($_POST['answer'],$_POST['time']));
 }
 /*
 初始化設定結束
@@ -119,7 +119,10 @@ elseif(isset($_GET['checkanswer']))
     }
     //echo '<div class="w3-row">';
 	$one='1';
+    if($_GET['no'] <= (sizeof($_SESSION['read'])-1))
     echo $_GET['no']+$one."/".sizeof($_SESSION['read']);
+    else
+	echo sizeof($_SESSION['read'])."/".sizeof($_SESSION['read']);
     $next = $_GET['no'] + 1;
     //print_r($_SESSION['correct_answer']);
     if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_POST['answer'])
@@ -140,7 +143,7 @@ elseif(isset($_GET['checkanswer']))
     {
       echo '<img height=50 width=50 src="../picture/透明星星.png">';
     }
-    if($_GET['no'] == (sizeof($_SESSION['read'])-1))
+    if($_GET['no'] > (sizeof($_SESSION['read'])-1))
     {
         echo '<form name="answer" method="post" action="examenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&checkanswer=true">';
     }
@@ -149,6 +152,8 @@ elseif(isset($_GET['checkanswer']))
       <form name="answer_sheet" id="answer_sheet" method="post" action="examenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&no='.$next.'">';
     echo '<input type="text" name="time" id="time" hidden>';
 	echo "<input type=\"hidden\" id=\"sendanswer\" name=\"answer\" value=\"\" >";
+	if($_GET['no'] <= (sizeof($_SESSION['read'])-1))
+	{
     $rs = $_SESSION['read'][$_GET['no']];
     echo '
             <audio id= "'.$rs['audio_id'].'">
@@ -166,8 +171,9 @@ elseif(isset($_GET['checkanswer']))
 		瀏覽器如果不支援 canvas 元素，就顯示這行文字
         </canvas>  
 		</div>";
-    if($_GET['no'] == (sizeof($_SESSION['read'])-1))
-      echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="提交" align="center" disabled></form></div>';
+	}
+    if($_GET['no'] > (sizeof($_SESSION['read'])-1))
+      echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="提交" align="center" ></form></div>';
     else
       echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="下一題" align="center" disabled></form></div>';
   }
@@ -248,7 +254,9 @@ elseif(isset($_GET['checkanswer']))
   }
   ?>
 <script>
-
+<?php
+		       if(isset($_GET['no']))
+			   { ?>
 var canvas = document.getElementById('_2DCanvas');
   var ctx = canvas.getContext('2d');
   var canvasObject = document.getElementById('Canvasobject');
@@ -267,14 +275,17 @@ var canvas = document.getElementById('_2DCanvas');
   ctx.drawImage(backimg, 0, 0,1000,backimg.height*(1000/backimg.width));
   
 }, false);
-  backimg.src=<?php echo '\'';?><?php echo $rs_question['background_src']?><?php echo '\'';?>;
+			   
+  backimg.src=<?php echo '\'';?><?php if(isset($_GET['no'])) echo $rs_question['background_src']?><?php echo '\'';?>;
   var displayList = [];
   var displayX = [];
   var displayY = [];
   var displaySound=[];
   var width = [];
 	<?php
-		       $object = explode(",",$rs_question['object']);
+		       if(isset($_GET['no']))
+			   {
+			   $object = explode(",",$rs_question['object']);
 		       foreach($object as $key => $value)
 			   {
 				   $obje = $con->query("select * from object where id = '$value'");
@@ -284,17 +295,17 @@ var canvas = document.getElementById('_2DCanvas');
 				   $rs_sound = mysqli_fetch_assoc($sound);
 				   ?>
             var img=new Image();
-            img.src=<?php echo "'{$rs_obje['pic_src']} '"?>;
+            img.src=<?php if(isset($_GET['no'])) echo "'{$rs_obje['pic_src']} '"?>;
 			//img.height=(img.height*<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>)/img.width;
 			//img.width =<?php echo "{$rs_obje['size']} "?>;
-			width.push(<?php echo "{$rs_obje['size']} "?>);
+			width.push(<?php if(isset($_GET['no'])) echo "{$rs_obje['size']} "?>);
 			displayList.push(img);
 			displayX.push(<?php echo "{$coordinate[0]} "?>);
 			displayY.push(<?php echo "{$coordinate[1]} "?>);
-			displaySound.push(<?php echo "'{$rs_sound['name']}'"?>);
-			  <?php }?>
+			displaySound.push(<?php if(isset($_GET['no'])) echo "'{$rs_sound['name']}'"?>);
+			   <?php }}?>
   
-  
+        
 		//網頁載入完成
 		window.onload = function(){
 			for(var i=0,l=displayList.length;i<displayList.length;i++)
@@ -412,7 +423,7 @@ var canvas = document.getElementById('_2DCanvas');
                 //回傳一個 Object，包含座標屬性
                 return {x: x, y: y};				
             }
-		
+		<?php }?>
 
 var btn = 0;
 var time;

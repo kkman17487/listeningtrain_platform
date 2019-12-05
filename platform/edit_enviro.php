@@ -107,6 +107,17 @@ include("connect_to_sql.php");
 if(isset($_POST['delete']))
 {
   foreach ($_POST['delete'] as $key => $value) {
+	$deleteEnviro = $con->query("SELECT * FROM `enviro` WHERE id = '$value'");
+	$Obrs = mysqli_fetch_assoc($deleteEnviro);
+	$tmp_object = explode(',',$Obrs['object']);
+	foreach($tmp_object as $key => $value1)                                                             
+	{
+		$object=$con->query("SELECT * FROM object WHERE id ='$value1'");                                     
+		$rs_object=mysqli_fetch_assoc($object);
+		unlink($rs_object['pic_src']);
+		$con->query("DELETE FROM object WHERE id = '$value1'");
+	}
+	unlink($Obrs['background_src']);
     $con->query("DELETE FROM enviro WHERE id = '$value'");
   }
   header("Location: edit_enviro.php");
