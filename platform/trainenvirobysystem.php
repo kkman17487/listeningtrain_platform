@@ -102,52 +102,54 @@ elseif(isset($_GET['checkanswer']))
     }
 	/*設定題數的部分結束*/
 	/*設定每題顯示畫面，播放的聲音*/
+	
+	//題目顯示部分開始
   elseif((isset($_GET['number']) && isset($_GET['ID'])) && !isset($_GET['checkanswer'])){           //是否設定題數和情境ID以及是否作答完畢
-    if(isset($_GET['no']) && $_GET['no'] == 0)
+    if(isset($_GET['no']) && $_GET['no'] == 0)                                                      //從第一題開始做時
     {
-      unset($_SESSION['correct_answer']);
-      unset($_SESSION['select_answer']);
-      $_SESSION['correct_answer'] = array();
+      unset($_SESSION['correct_answer']);                                                           //清除正確答案紀錄
+      unset($_SESSION['select_answer']);                                                            //清除選擇答案紀錄
+      $_SESSION['correct_answer'] = array();                                                        //初始化
       $_SESSION['select_answer'] = array(array());
     }
     //echo '<div class="w3-row">';
 	$one='1';
-	if($_GET['no'] <= (sizeof($_SESSION['read'])-1))
-    echo $_GET['no']+$one."/".sizeof($_SESSION['read']);
+	if($_GET['no'] <= (sizeof($_SESSION['read'])-1))                                                //檢查目前做到第幾題
+    echo $_GET['no']+$one."/".sizeof($_SESSION['read']);                                            //印出目前題號
     else
-	echo sizeof($_SESSION['read'])."/".sizeof($_SESSION['read']);
-    $next = $_GET['no'] + 1;
+	echo sizeof($_SESSION['read'])."/".sizeof($_SESSION['read']);                                   //全做完後皆印出最後題號
+    $next = $_GET['no'] + 1;                                                                        //下一題
     //print_r($_SESSION['correct_answer']);
-    if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_POST['answer'])
+    if($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] != $_POST['answer'])           //確認是否正確
     {
       //echo 'incorrect'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
-      $_SESSION['star'][$_GET['no']-1] = "紅色星星.png";
+      $_SESSION['star'][$_GET['no']-1] = "紅色星星.png";                                           //錯誤儲存為紅色
     }
     elseif($_GET['no'] > 0 && $_SESSION['correct_answer'][$_GET['no']-1] == $_POST['answer'])
     {
       //echo 'correct'.$_SESSION['correct_answer'][$_GET['no']-1].$_POST['answer'];
-      $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";
+      $_SESSION['star'][$_GET['no']-1] = "綠色星星.png";                                            //正確儲存為綠色
     }
-    for($i = 0;$i < count($_SESSION['star']);$i++)
+    for($i = 0;$i < count($_SESSION['star']);$i++)                                                  //顯示星星
     {
       echo '<img height=50 width=50 src="../picture/'.$_SESSION['star'][$i].'">';
     }
-    for($i = 0;$i < sizeof($_SESSION['read']) - count($_SESSION['star']);$i++)
+    for($i = 0;$i < sizeof($_SESSION['read']) - count($_SESSION['star']);$i++)                      //還沒做的顯示透明
     {
       echo '<img height=50 width=50 src="../picture/透明星星.png">';
     }
-    if($_GET['no'] > (sizeof($_SESSION['read'])-1))
+    if($_GET['no'] > (sizeof($_SESSION['read'])-1))                                                 //全做完後的表單按下後checkanswer=true進入顯示答案的畫面
     {
         echo '<form name="answer" method="post" action="trainenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&checkanswer=true">';
     }
-    elseif(isset($_GET['number'])&&isset($_GET['ID']))
+    elseif(isset($_GET['number'])&&isset($_GET['ID']))                                              //尚未做完的表單提交後進入下一題
       echo '
       <form name="answer_sheet" id="answer_sheet" method="post" action="trainenvirobysystem.php?ID='.$_GET['ID'].'&number='.$_GET['number'].'&no='.$next.'">';
-    echo '<input type="text" name="time" id="time" hidden>';
-	echo "<input type=\"hidden\" id=\"sendanswer\" name=\"answer\" value=\"\" >";
-	if($_GET['no'] <= (sizeof($_SESSION['read'])-1))
+    echo '<input type="text" name="time" id="time" hidden>';                                        //紀錄時間
+	echo "<input type=\"hidden\" id=\"sendanswer\" name=\"answer\" value=\"\" >";                   //傳送答案用的，值用script改
+	if($_GET['no'] <= (sizeof($_SESSION['read'])-1))                                                //尚未做完題目要顯示題目的情境
 	{
-    $rs = $_SESSION['read'][$_GET['no']];
+    $rs = $_SESSION['read'][$_GET['no']];                                                           //取得此題題目印出按鈕提供播放
     echo '
             <audio id= "'.$rs['audio_id'].'">
               <source src="'.$rs['sound_src'].'" type="audio/mp3" />
@@ -155,6 +157,7 @@ elseif(isset($_GET['checkanswer']))
             </audio>
             <button class="w3-button w3-black " type="button" onclick="document.getElementById(\''.$rs['audio_id'].'\').play(); set_timer(); enable_radio(); return false;">Play</button><br>';
 			array_push($_SESSION['correct_answer'],$rs['name']);
+			                                                                                       //做出情境的畫布
      echo"   
 	    <div class=\"container\" id=\"env\">
         <canvas id=\"_2DCanvas\" >
@@ -165,20 +168,30 @@ elseif(isset($_GET['checkanswer']))
         </canvas>  
 		</div>";
 	}
-    if($_GET['no'] > (sizeof($_SESSION['read'])-1))
+    if($_GET['no'] > (sizeof($_SESSION['read'])-1))                                                                //全做完後顯示提交
       echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="提交" align="center" ></form></div>';
-    else
+    else                                                                                                           //未做完後顯示下一題
       echo '<br><input type="submit" onclick="<script>btn=0;</script>" name="submit" id="submit" value="下一題" align="center" disabled></form></div>';
   }
+  
+  //題目顯示部分結束
+  
+  //解答部分開始
   elseif((isset($_GET['number']) || isset($_GET['ID'])) && isset($_GET['checkanswer'])){
+	  //初始化
     $correct_answer = $_SESSION['correct_answer'];
     $_SESSION['select_answer'] = array_filter($_SESSION['select_answer']);
     $data_string = '';
     $correct_number = 0;
+	//開始印出解答
     for($i = 0;$i < sizeof($correct_answer);$i++){
+		//取出資料庫中的題目資料
       $tmp = $con->query("select * from data where name = '$correct_answer[$i]'");
+	  //取出一行
       $rs = mysqli_fetch_assoc($tmp);
+	  //製作作答紀錄要儲存的字串
       $data_string .= $correct_answer[$i].'/'.$_SESSION['select_answer'][$i+1][0].'/'.strval($_SESSION['select_answer'][$i+1][1]).';';
+	  //印出所有解答
       if($i % 4 == 0)echo '<div class="w3-row">';
       echo '<div class="w3-col l3 s6">
         <div class="w3-container">
@@ -200,6 +213,9 @@ elseif(isset($_GET['checkanswer']))
       echo '</div></div></div>';
       if($i % 4 == 3 || $i == sizeof($correct_answer)-1)echo '</div><br>';
     }
+	//印出解答完畢
+	
+	//儲存作答紀錄
     $data_string = substr($data_string,0,strlen($data_string)-1);
     if(isset($_SESSION['name']))
       $name = $_SESSION['name'];
@@ -220,30 +236,7 @@ elseif(isset($_GET['checkanswer']))
     if (!$res) {
     die('Invalid query: ' . mysqli_error($con));
     }
-    /*for($i = 1;$i <= mysqli_num_rows($_SESSION['data']);$i++){
-      $rs = mysqli_fetch_assoc($_SESSION['data']);
-    echo '
-      <table>
-      <tr>
-      <td>
-            <audio id= "'.$rs[audio_id].'">
-              <source src="'.$rs[sound_src].'" type="audio/mp3" />
-              <embed height="100" width="100" src="'.$rs[sound_src].'" />
-            </audio>
-            <button class="w3-button w3-black " onclick="document.getElementById(\''.$rs[audio_id].'\').play(); return false;">Play</button>
-      </td>
-      </tr>
-          <tr>';
-              for($j = 1;$j <=3;$j++){
-              $randanswer = $con->query("select * from data ORDER BY RAND() LIMIT 2");
-              echo '<td><input type="radio" name="answer'.$i.'" value="'.$rs[name].'">'.$rs[name].'</td>';
-            }
-          echo '
-        </tr>
-        </table>';
-
-
-    }*/
+	//儲存記錄完畢
   }
   ?>
 <script>
@@ -324,12 +317,6 @@ var canvas = document.getElementById('_2DCanvas');
 
 			if(canvasObject && canvasObject.getContext){
 
-                //滑鼠拖曳物件 ===============================================
-
-                //繪製矩形
-                
-                
-				
                 //定義監聽事件
                 canvasObject.addEventListener('mousedown', canvasMouseDownHandler, false);
                 canvasObject.addEventListener('mouseup', canvasMouseUpHandler, false);
@@ -417,6 +404,7 @@ var canvas = document.getElementById('_2DCanvas');
 <?php }?>
 var btn = 0;
 var time;
+//初始化時間
 function set_timer()
 {
   if(!btn)
@@ -426,6 +414,7 @@ function set_timer()
   }
   btn = 1;
 }
+//計算總時間
 function timer()
 {
   var timeDiff = new Date() - time;
@@ -435,10 +424,13 @@ function timer()
   document.getElementById('time').value = timestr;
   var t=setTimeout("timer()",1);
 }
+//選擇答案後才能進入下一題
 function enable_submit()
 {
   document.getElementById("submit").disabled = false;
 }
+
+//檢查輸入範圍
 document.getElementById('question_number').addEventListener('submit', function(event){
   var number = parseInt(document.getElementById('number').value);
   var numberOFdata = <?php echo $numberOFdata; ?>;

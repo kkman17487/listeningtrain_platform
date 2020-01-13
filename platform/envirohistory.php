@@ -14,24 +14,6 @@ if(isset($_GET['name'])){
 	$dataPoints2 = $inner2;
 	$dbdata2 = $con->query("select * from trainhistory where name = '$_GET[name]'");
 	
-
-	/*$dbdata = $con->query("select * from envirohistory");
-	$inner = array();
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{
-		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
-	}
-	$dataPoints3 = $inner;
-
-	$dbdata = $con->query("select * from envirohistory");
-	$inner = array();
-	for($i=0;$i<mysqli_num_rows($dbdata);$i++)
-	{
-		$labelrs=mysqli_fetch_row($dbdata);
-		array_push($inner,array("x" => $labelrs[0], "y" => $labelrs[4]));
-	}
-	$dataPoints4 = $inner;*/
 }?>
 
 <!DOCTYPE html>
@@ -138,12 +120,6 @@ if(isset($_GET['name']))
 		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 		<script src="../dist/js/phpchart.js"></script>
     </div>
-<!--<br></br>
-<h1 class="page-header">散佈圖</h1>
-    <div class="row placeholders">
-		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
-		<script src="../dist/js/phpchart.js"></script>
-    </div>-->
 </div>
 <?php }
 else {
@@ -221,52 +197,6 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 	}]
 });
 chart2.render();
-
-/*var chart3 = new CanvasJS.Chart("chartContainer3", {
-	animationEnabled: true,
-	title:{
-		text: "What?"
-	},
-	axisX: {
-		title:"Correct rate (in %)"
-	},
-	axisY:{
-		title: "Time (in ms)"
-	},
-	legend:{
-		cursor: "pointer",
-		itemclick: toggleDataSeries
-	},
-	data: [
-	{
-		type: "scatter",
-		toolTipContent: "<span style=\"color:#4F81BC \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Correct rate:</b></span> {y} %",
-		name: "Time",
-		markerType: "square",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints3); ?>
-	},
-	{
-		type: "scatter",
-		name: "Reaction Time",
-		markerType: "triangle",
-		showInLegend: true,
-		toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Correct rate:</b></span> {y} %",
-		dataPoints: <?php echo json_encode($dataPoints4); ?>
-	}
-	]
-});
-
-chart3.render();
-function toggleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	}
-	else{
-		e.dataSeries.visible = true;
-	}
-	chart3.render();
-}*/
 }
 </script>
 </body>

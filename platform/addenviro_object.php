@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <?php
-include('connect_to_sql.php');
-include('backendheader.php');
-include('backendsidebar.php');
-@$this_type = $_GET['id'];
-$data = $con->query("SELECT * FROM enviro WHERE id =$this_type");
-$sound = $con->query("SELECT * FROM data ORDER BY category");
-$category = $con->query("select category from data where category != ''");
+include('connect_to_sql.php');//加入連線資料庫的檔案
+include('backendheader.php');//加入後台header
+include('backendsidebar.php');//加入後台側邊選單
+@$this_type = $_GET['id'];//抓取用GET傳入的id參數
+$data = $con->query("SELECT * FROM enviro WHERE id =$this_type");//從資料庫選取對應的情境
+$sound = $con->query("SELECT * FROM data ORDER BY category");//抓取所有聲音資料
+$category = $con->query("select category from data where category != ''");//所有聲音類型
 ?>
 <html lang="zh-Hant-TW">
+<!--style設定開始-->
 <style>
 .object{
   position: absolute;
@@ -37,12 +38,15 @@ $category = $con->query("select category from data where category != ''");
 	}
 	
 </style>
+<!--style設定結束-->
+
+<!--網頁內容開始-->
 <body>
 <p class="w3-left">添加物件</p>
   <?php
-  $rs = mysqli_fetch_assoc($data);
+  $rs = mysqli_fetch_assoc($data);//在script中才會用到將情境資料抓出一行
   ?>
-  <!-- Product grid -->
+  <!--顯示情境用的canvas畫布第一個為背景用，第二個是物件-->
       <div class="col-md-6 col-md-offset-2" id="env">
         <canvas id="_2DCanvas" >
 		瀏覽器如果不支援 canvas 元素，就顯示這行文字
@@ -51,10 +55,15 @@ $category = $con->query("select category from data where category != ''");
 		瀏覽器如果不支援 canvas 元素，就顯示這行文字
         </canvas>
         </div>
+		
+		<!--新增物件的部分開始-->
 		<div class="col-md-6 col-md-offset-2" id="addo">
 		<h1 align="center">新增物件</h1>
+		<!--新增物件的表單輸入的參數以POST傳輸到upload_object.php處理-->
 		<form action="upload_object.php" method="post" enctype="multipart/form-data" style="position:relative;">
+		<!--隱藏的參數紀錄是哪個情境-->
 		<input type="hidden" name="enviro_ID" value=<?php echo "\"{$this_type}\""?>></input>
+		<!--輸入的table-->
 		<table align="center" width="1000px">
               <tr>
                 <td width="20%" style="float:left;">名稱</td>
@@ -62,26 +71,36 @@ $category = $con->query("select category from data where category != ''");
 				<td width="20%">聲音類別</td>
                 <td width="30%">聲音</td>
               </tr>
+			  <!--輸入的表格開始-->
 			  <tr>
+			  <!--輸入名字-->
 			  <td width="20%" style="float:left;"><input type="text" name="ChineseName" placeholder="中文"/></td>
-                <td width="30%"><input type="file" name="my_file[]"></td>
-				<td width="30%"><select id="soundtype" onChange="setSoundType();">
-				<option value="#">全部</option>
+			  <!--輸入圖片檔案-->
+              <td width="30%"><input type="file" name="my_file[]"></td>
+			  <!--選擇聲音類別-->
+			  <td width="30%"><select id="soundtype" onChange="setSoundType();">
+			  <option value="#">全部</option>
         <?php
+		//建立類別選項
         $classfication = array();
+		//不斷將類別拿出一行直到沒有下一行，將其加入$classfication
         for($j = 1;$j <= mysqli_num_rows($category);$j++){
           $rs_category = mysqli_fetch_assoc($category);
           $tmp = explode(";",$rs_category['category']);
-            $classfication = array_merge($classfication, $tmp);
+          $classfication = array_merge($classfication, $tmp);
         }
+		//選出不重複的類別
         $classfication = array_unique($classfication);
+		//將類別放入選項
         foreach ($classfication as $key => $value){
           echo '<option value="'.$value.'"';
           echo '>'.$value.'</option>';
         }?>
 				</select></td>
+		<!--選擇聲音-->
               <td width="30%"><select id="soundoption" name="SoundSrc">
         <?php
+		//將聲音加入選項
         for($i = 1;$i <= mysqli_num_rows($sound);$i++){
           $rs_sound = mysqli_fetch_assoc($sound);
           echo "<option value=\"{$rs_sound['id']}\" name=\"{$rs_sound['category']}\"";
@@ -90,12 +109,18 @@ $category = $con->query("select category from data where category != ''");
 				</select></td>
 			  </tr>
 			  <tr>
+			  <!--輸入的表格結束-->
 			  <td><input type="submit" value="送出" /></td>
 			  </tr>
 		</table>
 		</form>
+		<!--新增物件的部分結束-->
+		
+		<!--調整物件的部分開始-->
 		<h1 align="center">個別物件調整</h1>
+		<!--參數以POST傳輸由upload_objectEdit.php處理-->
 		<form action="upload_objectEdit.php" id="editObData" method="post" enctype="multipart/form-data" >
+		<!--下面三個參數由Script填入-->
 		<input id="upID" type="hidden" name="updataId" value="" >
 		<input id="upcoord" type="hidden" name="updataCoordinate" value="" >
 		<input id="upSize" type="hidden" name="updataSize" value="" >
@@ -114,10 +139,11 @@ $category = $con->query("select category from data where category != ''");
 		</table>
 		</form>
 		</div>
-		
-		
-  <!-- End page content -->
+	<!--網頁內容結束-->	
+
+  
   <script>
+  //設定各畫布參數
   var canvas = document.getElementById('_2DCanvas');
   var ctx = canvas.getContext('2d');
   var canvasObject = document.getElementById('Canvasobject');
@@ -133,10 +159,11 @@ $category = $con->query("select category from data where category != ''");
   document.getElementById('env').style.width="1000px";
   var h=backimg.height*(1000/backimg.width)+"px";
   document.getElementById('env').style.height=h;
-  ctx.drawImage(backimg, 0, 0,1000,backimg.height*(1000/backimg.width));
+  ctx.drawImage(backimg, 0, 0,1000,backimg.height*(1000/backimg.width));//繪製背景
   
 }, false);
   backimg.src=<?php echo '\'';?><?php echo $rs['background_src']?><?php echo '\'';?>;
+  //紀錄所有物件的資料
   var displayList = [];
   var displayX = [];
   var displayY = [];
@@ -144,6 +171,7 @@ $category = $con->query("select category from data where category != ''");
   var displayID= [];
   var width = [];
 	<?php
+	//將所有物件加入array中
 		       $object = explode(",",$rs['object']);
 		       foreach($object as $key => $value)
 			   {
@@ -153,8 +181,6 @@ $category = $con->query("select category from data where category != ''");
 				   ?>
             var img=new Image();
             img.src=<?php echo "'{$rs_obje['pic_src']} '";?>;
-			//img.height=(img.height*<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>)/img.width;
-			//img.width =<?php if($rs_obje['size']!='') echo "{$rs_obje['size']}";else echo "0"?>;
 			width.push(<?php echo "{$rs_obje['size']} "?>);
 			displayList.push(img);
 			displayX.push(<?php echo "{$coordinate[0]} "?>);
@@ -163,7 +189,7 @@ $category = $con->query("select category from data where category != ''");
 			displayID.push(<?php echo "'{$rs_obje['id']}'";?>);
 			  <?php }?>
 			  
-		//網頁載入完成
+		//網頁載入完成；設定好所有物件大小後做第一次繪製
 		window.onload = function(){
 			for(var i=0,l=displayList.length;i<displayList.length;i++)
 				{
@@ -198,13 +224,14 @@ $category = $con->query("select category from data where category != ''");
                 canvasObject.addEventListener('mouseup', canvasMouseUpHandler, false);
                 canvasObject.addEventListener('mouseout', canvasMouseUpHandler, false);   //特別加上 mouseout 是以防指標回來後，矩形會黏著它
             }
-            //繪製顯示清單
+            //繪製顯示清單上的所有物件
 			function drawScene(coord){
 				//清空畫布
 				ctxObject.clearRect(0,0,canvasObject.width,canvasObject.height);
 				//檢查陣列繪製每個圖形
 				for(var i=0,l=displayList.length;i<displayList.length;i++)
 				{
+					//繪製背光
 					if(displayList[i].width>displayList[i].height)
 					radra=ctxObject.createRadialGradient(displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].width/4,
 					                                        displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].width*0.75);
@@ -213,12 +240,15 @@ $category = $con->query("select category from data where category != ''");
 					                                        displayX[i]+displayList[i].width/2,displayY[i]+displayList[i].height/2,displayList[i].height*0.75);
 					radra.addColorStop(0,'rgba(255,255,255,1)');
 					radra.addColorStop(1,'rgba(0,0,0,0)');
+					//可點擊範圍
 					ctxObject.beginPath();
 					ctxObject.rect(displayX[i],displayY[i],displayList[i].width,displayList[i].height);
 					ctxObject.closePath();
+					//填入背光
 					ctxObject.rect(displayX[i]-displayList[i].width/4,displayY[i]-displayList[i].height/4,displayList[i].width*1.5,displayList[i].height*1.5);
 					ctxObject.fillStyle=radra;
 					ctxObject.fill();
+					//在圖片讀取完成後才開始繪製
 					if(displayList[i].complete)
 					{
 						ctxObject.drawImage(displayList[i],displayX[i],displayY[i],displayList[i].width,displayList[i].height);
@@ -230,6 +260,7 @@ $category = $con->query("select category from data where category != ''");
 								ctxObject.drawImage(displayList[i],displayX[i],displayY[i],displayList[i].width,displayList[i].height);
 							};
 					}
+					//檢測是否點擊到物件
 					if(coord)
 					{
 						if(ctxObject.isPointInPath(coord.x,coord.y))
@@ -241,20 +272,7 @@ $category = $con->query("select category from data where category != ''");
 				}
 			}
 
-            //定義 draw 重繪物件  ===============================================
-            function draw(x, y){
-                ctxObject = canvasObject.getContext('2d');
-                ctxObject.clearRect(0, 0, canvasObject.width, canvasObject.height);
-
-                ctxObject.fillStyle = '#c00';
-                ctxObject.beginPath();
-                ctxObject.rect(x, y, 100, 100);
-                DrawOriginX = x;
-                DrawOriginY = y;
-                ctxObject.fill();
-            }
-
-
+            
             //定義 mousedown 事件處理函數  ===============================================
             function canvasMouseDownHandler(evt){
                 evt.preventDefault(); //取消預設行為
@@ -270,8 +288,8 @@ $category = $con->query("select category from data where category != ''");
                 drawScene(coord);
                 	if(SELECTED)					//為變數設定值為 true 表示選取了矩形
                     canvasObject.style.cursor = 'move';			//改變鼠標
-					console.log(SELECTEDID);
-					document.getElementById("obname").innerHTML=displayName[SELECTEDID];
+					console.log(SELECTEDID);//測試用看選中的object
+					document.getElementById("obname").innerHTML=displayName[SELECTEDID];//顯示選中的物件是哪個
                 
             }
 
@@ -283,10 +301,11 @@ $category = $con->query("select category from data where category != ''");
                 //檢測是否有選取到的物體，然後移動物體到 x、y 座標到滑鼠位置
                 if(SELECTED){
                     var coord = getMousePointerCoord(evt);	//取得滑鼠點擊位置
+					//更新XY座標將滑鼠位置的新座標減去滑鼠位置的舊座標後加入物件座標位置
 					displayX[SELECTEDID]=displayX[SELECTEDID]+coord.x-MouseOriginX;
 					displayY[SELECTEDID]=displayY[SELECTEDID]+coord.y-MouseOriginY;
 
-                    //使用起始的座標繪製一個矩形
+                    //更新座標後重新繪製
                     drawScene();
 
                     //更新滑鼠原始位置
@@ -323,12 +342,13 @@ $category = $con->query("select category from data where category != ''");
             }
 			
 			
-		
+		//soundT為聲音類別；soundO聲音；
 		var soundT = document.getElementById('soundtype');
 		var soundO = document.getElementById('soundoption');
 		var ALLOpValue =[];
 		var ALLOpText  =[];
 		var ALLOpName  =[];
+		//將所有聲音記錄下來更改聲音類別時要做更變使用
 		for(var i=0;i<<?php echo mysqli_num_rows($sound);?>;i++)
 		{
 			ALLOpValue.push(soundO.options[i].value);
@@ -349,7 +369,7 @@ $category = $con->query("select category from data where category != ''");
         
 		};
 		
-		//放大功能
+		//放大功能；將選中的物件長寬等比放大後重新繪製畫布
 		function bigger()
 		{
 			displayList[SELECTEDID].height=(displayList[SELECTEDID].width+5)*(displayList[SELECTEDID].height/displayList[SELECTEDID].width);
@@ -357,21 +377,21 @@ $category = $con->query("select category from data where category != ''");
 			drawScene();
 		}
 		
-		//縮小功能
+		//縮小功能；將選中的物件長寬等比縮小後重新繪製畫布
 		function smaller()
 		{
 			displayList[SELECTEDID].height=(displayList[SELECTEDID].width+5)*(displayList[SELECTEDID].height/displayList[SELECTEDID].width);
 			displayList[SELECTEDID].width=displayList[SELECTEDID].width-5;
 			drawScene();
 		}
-		//刪除功能
+		//刪除功能；將object和enviro的ID給delete_object.php做刪除
 		function deobject()
 		{
 			if(typeof SELECTEDID !== 'undefined')
 			window.location = 'delete_object.php?OD='+displayID[SELECTEDID]+<?php echo"'&EID=".$this_type."'" ?>
 			
 		}
-		//儲存功能
+		//儲存功能；將所有的object資料照順序以：隔開，填入上面三個參數中後送出
 		function savedata()
 		{
 			for(var i=0;i<displayList.length;i++)
